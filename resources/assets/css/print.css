@@ -1,0 +1,19 @@
+@media print { 
+    
+    .main-header{ 
+        display:none; 
+    } 
+    .parte-cima{
+        display:none;
+    }
+    .rel-mes-ano{
+        display:block;
+    }
+    .no-print{
+        display:none;
+    }
+    .content{
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+}
