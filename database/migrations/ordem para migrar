@@ -1,0 +1,22 @@
+drop
+insert
+primary
+auto_increment
+
+
+drop old table
+    cargo
+    cmi_cadastr_de_funcionarios
+    fornecedor_contas_a_pagar_old
+    funcionarios
+    stock
+    stock_category
+    unidades_quantidades_procedimentos
+    unidades_valores_procedimentos
+    usuarios
+    
+
+
+
+
+

@@ -123,14 +123,14 @@ class financeiro extends Model {
 
                 
 
-           $select_valores = DB::table('contas_a_pagar as C')
-            ->select('C.id','A.valor','C.inicio_conta as data')
-                ->leftjoin('valor_contas_a_pagar as A', function($anterior) {
+           $select_valores = DB::table('contas_a_pagar as c')
+            ->select('c.id','a.valor','c.inicio_conta as data')
+                ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
                     $anterior->on('c.id', '=', 'a.codigo');                                         
                 })           
             ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
             ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
-            ->where('C.area','=', $unidade)
+            ->where('c.area','=', $unidade)
             ->distinct()
             ->get();  
             
@@ -334,11 +334,11 @@ function totalmensal($mesano, $mesanoanterior){
       /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
             $valores = DB::table('contas_a_pagar as c')
                     ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
-                     'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'C.contas', 'c.parcelas', 
+                     'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
                      'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                      'V.inicio_mes as dia', 'p.pagador as pagador', 'p.numero_cheque' , 
+                      'v.inicio_mes as dia', 'p.pagador as pagador', 'p.numero_cheque' , 
                      'c.inicio_conta', 'c.fim_conta')
-                    ->leftjoin('valor_contas_a_pagar as V', function($join) {
+                    ->leftjoin('valor_contas_a_pagar as v', function($join) {
                         $join->on('c.id', '=', 'v.codigo')
                         ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
                         ;
@@ -348,7 +348,7 @@ function totalmensal($mesano, $mesanoanterior){
                         ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
                         ->where('p.numero_cheque', '>', '');
                     })
-                    ->leftjoin('valor_contas_a_pagar as A', function($anterior) {
+                    ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
                         $anterior->on('c.id', '=', 'a.codigo')
                         ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
                     })
@@ -389,11 +389,11 @@ $valortotal = number_format($valortotal, 2,',','.');
       /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
             $valores = DB::table('contas_a_pagar as c')
                     ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
-                     'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'C.contas', 'c.parcelas', 
+                     'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
                      'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                      'V.inicio_mes as dia', 'p.pagador as pagador', 'p.numero_cheque' , 
+                      'v.inicio_mes as dia', 'p.pagador as pagador', 'p.numero_cheque' , 
                      'c.inicio_conta', 'c.fim_conta')
-                    ->leftjoin('valor_contas_a_pagar as V', function($join) {
+                    ->leftjoin('valor_contas_a_pagar as v', function($join) {
                         $join->on('c.id', '=', 'v.codigo')
                         ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
                         ;
@@ -403,7 +403,7 @@ $valortotal = number_format($valortotal, 2,',','.');
                         ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
                         ->where('p.numero_cheque', '>', '');
                     })
-                    ->leftjoin('valor_contas_a_pagar as A', function($anterior) {
+                    ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
                         $anterior->on('c.id', '=', 'a.codigo')
                         ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
                     })
@@ -440,9 +440,9 @@ $valortotal = number_format($valortotal, 2,',','.');
 
         $valortotal = "";
 
-        $selectpagamento = DB::table('financeiro_pagamentos_feitos as C')
+        $selectpagamento = DB::table('financeiro_pagamentos_feitos as c')
         ->where('numero_cheque', $numero)
-        ->leftjoin('valor_contas_a_pagar as A', function($anterior) {
+        ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
             $anterior->on('c.id_conta', '=', 'a.codigo');
         })
         ->get();
@@ -478,11 +478,9 @@ $valortotal = number_format($valortotal, 2,',','.');
         $tipopagamento = $request->tipopagamento;
             
 
-        
-        foreach($checklist as $check){
-            $id = $check;
-            
 
+        foreach($checklist as $check){
+            $id = $check;          
             try{    
                 DB::table('financeiro_pagamentos_feitos')
                 ->insert(['id_conta' => $id, 'valor_pago' => $somavalor, 
@@ -491,10 +489,11 @@ $valortotal = number_format($valortotal, 2,',','.');
                 
             }catch(\Excepetion $e){
                 dd($e);
-            }
-            
-            
+            }            
         }
+    
+
+
 
     
         return("CADASTRADO");
@@ -701,19 +700,19 @@ $valortotal = number_format($valortotal, 2,',','.');
        
         $this->data = $data;
 
-        $objetos = DB::table('contas_a_pagar as C')
+        $objetos = DB::table('contas_a_pagar as c')
         
-                ->select('C.id', 'C.tipo', 'C.parcelas', 'p.pagador as pagador',
-                'V.inicio_mes', 'V.observacoes', 'C.contas', 'V.favorecido', 'C.parcelas', 'V.valor', 'V.item', 'C.area')
-                    ->leftjoin('valor_contas_a_pagar as V', function($join) {
-                        $join->on('C.id', '=', 'V.codigo')
+                ->select('c.id', 'c.tipo', 'c.parcelas', 'p.pagador as pagador',
+                'v.inicio_mes', 'v.observacoes', 'c.contas', 'v.favorecido', 'c.parcelas', 'v.valor', 'v.item', 'c.area')
+                    ->leftjoin('valor_contas_a_pagar as v', function($join) {
+                        $join->on('c.id', '=', 'v.codigo')
                         ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '<=', $this->data)                    ;
                     })->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
                         $pago->on('c.id', '=', 'p.id_conta')
                         ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
                         ->where('p.numero_cheque', '>', '');
                     })
-                    ->where('C.id', $id)
+                    ->where('c.id', $id)
                     ->take(1)
                     ->get();
                     
@@ -770,8 +769,8 @@ $valortotal = number_format($valortotal, 2,',','.');
     public function tratarData($datas){
 
     /* ############# TRATA A DATA QUE VEM DO INPUT ################ */
-        setlocale(LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese');
-        date_default_timezone_set('Europe/Lisbon');
+        setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        date_default_timezone_set('America/Sao_Paulo');
         $this->mes_atual = date('m');
         $this->ano_atual = date('Y');
 
@@ -785,7 +784,8 @@ $valortotal = number_format($valortotal, 2,',','.');
         $this->mesPosterior = date('m', strtotime($this->dataPosterior));
         $this->anoAnterior = date('Y', strtotime($this->dataAnterior));
         $this->anoPosterior = date('Y', strtotime($this->dataPosterior));
-        $this->nomeMes = utf8_encode(ucfirst(strftime("%B", strtotime($this->data))));
+        $this->nomeMes = ucfirst(strftime("%B", strtotime($this->data)));
+ 
     }
 
     public function selectContas(){
