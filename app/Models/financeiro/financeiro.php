@@ -784,9 +784,10 @@ $valortotal = number_format($valortotal, 2,',','.');
         $this->mesPosterior = date('m', strtotime($this->dataPosterior));
         $this->anoAnterior = date('Y', strtotime($this->dataAnterior));
         $this->anoPosterior = date('Y', strtotime($this->dataPosterior));
-        $this->nomeMes = ucfirst(strftime("%B", strtotime($this->data)));
+        // $this->nomeMes = ucfirst(strftime("%B", strtotime($this->data)));
+        $this->nomeMes = ucfirst(utf8_encode(strftime("%B", strtotime($this->data))));
  
-    }
+    } 
 
     public function selectContas(){
 
