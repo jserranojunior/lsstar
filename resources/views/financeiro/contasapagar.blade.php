@@ -52,40 +52,40 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',01,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Janeiro</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',01,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Janeiro</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',02,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Fevereiro</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',02,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Fevereiro</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',03,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Março</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',03,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Março</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',04,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Abril</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',04,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Abril</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',05,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Maio</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',05,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Maio</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',06,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Junho</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',06,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Junho</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',07,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Julho</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',07,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Julho</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',08,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Agosto</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',08,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Agosto</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',09,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Setembro</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',09,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Setembro</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',10,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}');">Outubro</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',10,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Outubro</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',11,{{$ano}},'{{$areafiltro}}',{{$contafiltro}}');">Novembro</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',11,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Novembro</a>
                                     </li>
                                     <li>
-                                        <a href="#" onclick="enviar('{{$ordenacao}}',12,{{$ano}},'{{$areafiltro}}',{{$contafiltro}}');">Dezembro</a>
+                                        <a href="#" onclick="enviar('{{$ordenacao}}',12,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Dezembro</a>
                                     </li>
                                 </ul>
                             </div>
