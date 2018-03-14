@@ -103,6 +103,16 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="pagador"  class="col-xs-4 control-label">Pagador</label>
+                    <div class="col-xs-8"> 
+                        <select name="pagador" id="pagador" class="form-control select_busca">                             
+                            <option>Recibo</option>
+                            <option>Nota Fiscal</option>
+                        </select>
+                    </div>
+                </div>
+
 
         </div>
         <div class="box-footer with-border">

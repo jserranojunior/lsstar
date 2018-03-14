@@ -336,7 +336,7 @@ function totalmensal($mesano, $mesanoanterior){
                     ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
                      'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
                      'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                      'v.inicio_mes as dia', 'p.pagador as pagador', 'p.numero_cheque' , 
+                      'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
                      'c.inicio_conta', 'c.fim_conta')
                     ->leftjoin('valor_contas_a_pagar as v', function($join) {
                         $join->on('c.id', '=', 'v.codigo')
@@ -391,7 +391,7 @@ $valortotal = number_format($valortotal, 2,',','.');
                     ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
                      'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
                      'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                      'v.inicio_mes as dia', 'p.pagador as pagador', 'p.numero_cheque' , 
+                      'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
                      'c.inicio_conta', 'c.fim_conta')
                     ->leftjoin('valor_contas_a_pagar as v', function($join) {
                         $join->on('c.id', '=', 'v.codigo')
@@ -566,19 +566,9 @@ $valortotal = number_format($valortotal, 2,',','.');
         $observacoes = $dados['observacoes'];
         $area = $dados['area'];
         $ccustos = $dados['ccustos'];
-        $fim_conta = "";
-
-        if(isset($dados['pagador'])){
-
         $pagador = $dados['pagador'];
-
-        if($pagador <> "" or $pagador !== null){
-             DB::table('financeiro_pagamentos_feitos')
-            ->where('id_conta', $id)
-            ->update(['pagador' => $pagador]);
-        }
-    }
-
+        $fim_conta = "";
+        
         /* SELECT E INSERT NA TABELA CASO NÂO TENHA */
         $select_favorecido = DB::table('fornecedor_contas_a_pagar')
         ->where('fornecedor','=',$favorecido)
@@ -645,6 +635,7 @@ $valortotal = number_format($valortotal, 2,',','.');
             'area' => $area,
             'contas' => $ccustos,
             'tipo' => $tipo,
+            'pagador' => $pagador,
         );
 
         $valor_atualizar = array(
@@ -702,7 +693,7 @@ $valortotal = number_format($valortotal, 2,',','.');
 
         $objetos = DB::table('contas_a_pagar as c')
         
-                ->select('c.id', 'c.tipo', 'c.parcelas', 'p.pagador as pagador',
+                ->select('c.id', 'c.tipo', 'c.parcelas', 'c.pagador as pagador',
                 'v.inicio_mes', 'v.observacoes', 'c.contas', 'v.favorecido', 'c.parcelas', 'v.valor', 'v.item', 'c.area')
                     ->leftjoin('valor_contas_a_pagar as v', function($join) {
                         $join->on('c.id', '=', 'v.codigo')
@@ -797,7 +788,7 @@ $valortotal = number_format($valortotal, 2,',','.');
                 ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
                  'c.area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
                  'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                  'v.inicio_mes as dia', 'p.pagador as pagador', 'p.numero_cheque' , 
+                  'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
                  'c.inicio_conta', 'c.fim_conta')
                 ->leftjoin('valor_contas_a_pagar as v', function($join) {
                     $join->on('c.id', '=', 'v.codigo')
@@ -1099,6 +1090,7 @@ $valortotal = number_format($valortotal, 2,',','.');
         $area = $dados['area'];
         $ccustos = $dados['ccustos'];
         $fim_conta = "";
+        $pagador = $dados['pagador'];
 
         $select_favorecido = DB::table('fornecedor_contas_a_pagar')
         ->where('fornecedor','=',$favorecido)
@@ -1167,6 +1159,7 @@ $valortotal = number_format($valortotal, 2,',','.');
             'area' => $area,
             'contas' => $ccustos,
             'tipo' => $tipo,
+            'pagador' => $pagador,
         );
 
         try{

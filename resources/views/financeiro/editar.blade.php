@@ -101,7 +101,7 @@
                         </select>
                     </div>
                 </div>
-    @if($objeto->pagador <> "" or $objeto->pagador !== null)
+    
                 <div class="form-group">
                     <label for="pagador"  class="col-xs-4 control-label">Pagador</label>
                     <div class="col-xs-8"> 
@@ -111,7 +111,7 @@
                         </select>
                     </div>
                 </div>
-    @endif
+   
 
         </div>
         <div class="box-footer with-border">

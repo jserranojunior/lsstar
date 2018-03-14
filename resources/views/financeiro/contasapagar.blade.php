@@ -452,7 +452,7 @@ document.getElementById("formulariofiltros").submit();
 function editar($id,$data) { 
  var $url = 'financeiro/'+$id+'/'+$data+'/editar';
  var width = 560;
- var height = 610;   
+ var height = 650;   
 var left = 400;
     var top = 100; 
   window.open($url,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
