@@ -470,7 +470,6 @@ $valortotal = number_format($valortotal, 2,',','.');
 
     public function salvarpagamento($request){
         $checklist = $request->check_list;
-        $pagador = $request->pagador;
         $datapagamento = $request->data;
         $numeropagamento = $request->numeropagamento;
         $somavalor = $request->somavalor;
@@ -484,7 +483,7 @@ $valortotal = number_format($valortotal, 2,',','.');
             try{    
                 DB::table('financeiro_pagamentos_feitos')
                 ->insert(['id_conta' => $id, 'valor_pago' => $somavalor, 
-                'data_conta' => $datapagamento, 'numero_cheque' => $numeropagamento, 'pagador' => $pagador, 
+                'data_conta' => $datapagamento, 'numero_cheque' => $numeropagamento,  
                 'mes_referencia' => $dataconta, 'tipo_pagamento' => $tipopagamento]);
                 
             }catch(\Excepetion $e){
@@ -510,7 +509,7 @@ $valortotal = number_format($valortotal, 2,',','.');
         $data = date('d/m/Y',strtotime($data));
         $somavalor = '';           
 
-
+        if(isset($checklist)){
                 foreach($checklist as $check){
                     $id = $check;
                     $contas =  DB::table('valor_contas_a_pagar')        
@@ -535,7 +534,9 @@ $valortotal = number_format($valortotal, 2,',','.');
                              
                     }
                 }
-
+        }else{
+            dd("Selecione uma conta para pagar");
+        }        
                     
         $somavalor = number_format($somavalor,2,',','.');
         $dados = array('conta' => $arrayConta, 'somavalor' =>$somavalor,'data' => $dataatual, 'dataconta' => $dataconta, 'numerocadastro' =>  $numerocadastro);

@@ -11,9 +11,7 @@
 
    <table class=" table table-condensed no-padding table-striped table-bordered table-hover">
         <tr>
-            <td>
-                Pagador
-            </td>
+            
             <td>
                 Numero Pagamento
             </td>
@@ -23,9 +21,7 @@
         </tr>
 
         <tr>
-            <td>
-                {{$pagador}}
-            </td>
+            
             <td>
                 {{$numero_cheque}}
             </td>

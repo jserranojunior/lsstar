@@ -23,20 +23,7 @@
                     </select>
                 </div>
             </div>
-
-            <div class="form-group">
-                <div class="col-xs-4">
-                    <label for="pagador" class="control-label">Pagador</label>
-                </div>
-
-                <div class="col-xs-8">
-                    <select class="form-control" name="pagador" id="pagador" required>
-                    <option></option>
-                    <option>Nota Fiscal</option>
-                    <option>Recibo</option>
-                    </select>
-                </div>
-            </div>
+            
 
             <div class="form-group">
                 <div class="col-xs-4">
