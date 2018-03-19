@@ -147,6 +147,8 @@
     
         </div>
         </div>
+        </div>    
+        </div>  
         <div class="row">
             <div class="col-md-12">
                 <h3 class="text-center ocultar rel-mes-ano">Relatório mensal de {{$nomeMes}} de {{$ano}}</h3>
