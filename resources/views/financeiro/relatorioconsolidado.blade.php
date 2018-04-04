@@ -3,19 +3,19 @@
 
 <h3 class="text-center">Relatório Consolidado</h3>
 
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-8 col-md-offset-2">
 <table class="table table-hover table-condensed" >
     <tr>
         <th class="text-center">#</th>
         <th>NOME</th>
-        <th>2017</th>
-        <th>2018</th>
-        <th>TOTAL</th>
+        <th class="text-right">2017</th>
+        <th class="text-right">2018</th>
+        <th class="text-right">TOTAL</th>
     </tr>
 
     @foreach($dados['unidades'] as $item)
 
-    <tr>
+    <tr onclick="location.href = '{{url('financeiro/anual')}}';">
         <td  class="text-center"> {{$count++}} </td>
         <td> {{$item['nomeUnidade']}} </td>        
         @foreach($item['valores'] as $valor )
