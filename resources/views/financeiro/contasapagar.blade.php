@@ -231,7 +231,7 @@
             <ul class="nav nav-tabs nav-hr">
                 <li class="dropdown @if($areafiltro != "Todos")filtroselect @endif">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <span class="filtro-hr bold"> Áreas </span> <span class="caret"></span>
+                        <span class="filtro-hr bold"> Negócios </span> <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -286,7 +286,7 @@
                                         <ul class="nav nav-tabs nav-hr">
                                             <li class="dropdown dropdown @if($pagadorfiltro != "Todos")filtroselect @endif">
                                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    <span class="filtro-hr bold"> Pagador </span> <span class="caret"></span>
+                                                    <span class="filtro-hr bold"> REC/NF </span> <span class="caret"></span>
                                                 </a>
                                                 <ul class="dropdown-menu">
                                                     <li>

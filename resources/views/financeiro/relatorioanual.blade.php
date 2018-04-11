@@ -58,7 +58,7 @@
 <thead>
    <tr>
       <th>
-         Área
+         Negócios
       </th>
       <th class="point point-link text-center" onclick="enviar('favorecido',{{1}},{{$listaAnual['anoContas']}},'Todos','Todos');">
          Jan

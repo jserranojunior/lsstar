@@ -18,7 +18,7 @@
                 <ul class="nav nav-tabs">
                     <li class="dropdown @if($areafiltro != "Todos")filtroselect @endif">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Áreas<span class="caret"></span></a>
+                            Negócios<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                         <li><a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, 'Todos', '{{$contafiltro}}', '{{$pagadorfiltro}}')">Todos</a></li>
                         
@@ -168,7 +168,7 @@
                                     
                                     
                                     <td>
-                                        <p class="bold"> Área </p>
+                                        <p class="bold"> Negócios </p>
                                     </td>
                                     
                                     
@@ -177,7 +177,7 @@
                                     </td>
                                     
                                     <td>
-                                        <p class="bold ">Pagador</p>
+                                        <p class="bold ">REC/NF</p>
                                     </td>
 
                                     <td>

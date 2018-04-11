@@ -37,14 +37,7 @@
 
 
 
-                <div class="form-group">
-                    <label for="item" class="col-xs-4 control-label">Item</label>
-                    <div class="col-xs-8">
-                      
-                        <input type="text" name="item" value="" id="item" class="form-control">
-                   
-                    </div>
-                </div>
+                
 
                 <div class="form-group">
                     <label for="inicio_conta" class="col-xs-4 control-label">Data Pagamento</label>
@@ -71,16 +64,9 @@
                         <input type="number" name="parcelas"  id="parcelas" class="form-control"></input>
                     </div>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="observacoes" class="col-xs-4 control-label">Observações</label>
-                    <div class="col-xs-8">
-                        <input type="text" name="observacoes"  id="observacoes" class="form-control"></input>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="area" class="col-xs-4 control-label">Área</label>
+                    <label for="area" class="col-xs-4 control-label">Negócios</label>
                     <div class="col-xs-8"> 
                         <select name="area" id="area" class="form-control">
                    
@@ -94,7 +80,7 @@
                 <div class="form-group">
                     <label for="ccustos"  class="col-xs-4 control-label">Conta</label>
                     <div class="col-xs-8"> 
-                        <select name="ccustos" id="ccustos" class="form-control select_busca">
+                        <select name="ccustos" id="ccustos" class="form-control">
                             <option></option>
                             @foreach($contas as $conta)
                             <option>{{$conta->nome}}</option>
@@ -104,7 +90,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="pagador"  class="col-xs-4 control-label">Pagador</label>
+                    <label for="item" class="col-xs-4 control-label">Detalhes</label>
+                    <div class="col-xs-8">                      
+                        <input type="text" name="item" value="" id="item" class="form-control">                   
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pagador"  class="col-xs-4 control-label">REC/NF</label>
                     <div class="col-xs-8"> 
                         <select name="pagador" id="pagador" class="form-control select_busca">                             
                             <option>Recibo</option>
