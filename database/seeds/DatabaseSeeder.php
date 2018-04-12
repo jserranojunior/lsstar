@@ -13,6 +13,19 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+        DB::table('conta')
+        ->where('nome', 'Piso Revestimento Louças')
+        ->update(['nome' => 'Piso Revest. Louças']);
+
+        DB::table('contas_a_pagar')
+        ->where('contas', 'Piso Revestimento Louças')
+        ->update(['contas' => 'Piso Revest. Louças']);
+
+        DB::table('valor_contas_a_pagar')
+        ->where('ccustos', 'Piso Revestimento Louças')
+        ->update(['ccustos' => 'Piso Revest. Louças']);
+
+        /*
         DB::table('valor_contas_a_pagar')
         ->update(['ccustos' => '']);
         
@@ -43,7 +56,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        /* AREA */
+        
+
+
         DB::table('area')
         ->where('nome', 'Administração')
         ->update(['nome' => 'Administrativo']);
@@ -52,7 +67,7 @@ class DatabaseSeeder extends Seeder
         ->where('area', 'Administração')
         ->update(['area' => 'Administrativo']);
 
-        /* RUA JULIO PEDRO */
+   
 
         DB::table('area')
         ->where('nome', 'Júlio Pedro Pontes')
@@ -62,8 +77,7 @@ class DatabaseSeeder extends Seeder
         ->where('area', 'Júlio Pedro Pontes')
         ->update(['area' => 'Rua Júlio Pedro Pontes']);
 
-        /* ASTURIAS */
-
+       
         DB::table('area')
         ->where('nome', 'Obras Asturias')
         ->update(['nome' => 'Jardim Asturias']);
@@ -71,7 +85,7 @@ class DatabaseSeeder extends Seeder
         DB::table('contas_a_pagar')
         ->where('area', 'Obras Asturias')
         ->update(['area' => 'Jardim Asturias']);
-
+*/
 
 
 
