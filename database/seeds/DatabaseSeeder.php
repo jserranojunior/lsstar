@@ -14,6 +14,20 @@ class DatabaseSeeder extends Seeder
     {
 
         DB::table('conta')
+        ->where('nome', 'Portas Janelas e Vidro')
+        ->update(['nome' => 'Porta Janela e Vidro']);
+
+        DB::table('contas_a_pagar')
+        ->where('contas', 'Portas Janelas e Vidro')
+        ->update(['contas' => 'Porta Janela e Vidro']);
+
+        DB::table('valor_contas_a_pagar')
+        ->where('ccustos', 'Portas Janelas e Vidro')
+        ->update(['ccustos' => 'Porta Janela e Vidro']);
+
+        /*
+
+        DB::table('conta')
         ->where('nome', 'Piso Revestimento Louças')
         ->update(['nome' => 'Piso Revest. Louças']);
 
@@ -24,6 +38,8 @@ class DatabaseSeeder extends Seeder
         DB::table('valor_contas_a_pagar')
         ->where('ccustos', 'Piso Revestimento Louças')
         ->update(['ccustos' => 'Piso Revest. Louças']);
+
+        */
 
         /*
         DB::table('valor_contas_a_pagar')
