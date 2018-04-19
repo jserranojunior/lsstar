@@ -1,5 +1,11 @@
 <?php
 
+/* API */ 
+
+Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
+
+/* FIM API */
+
 Route::get('/sair',function(){
    Auth::logout(); 
    return redirect('/login');

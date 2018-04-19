@@ -14,16 +14,37 @@ class DatabaseSeeder extends Seeder
     {
 
         DB::table('conta')
-        ->where('nome', 'Portas Janelas e Vidro')
-        ->update(['nome' => 'Porta Janela e Vidro']);
+        ->where('nome', 'Concreto')
+        ->update(['nome' => 'Estrutural']);
 
         DB::table('contas_a_pagar')
-        ->where('contas', 'Portas Janelas e Vidro')
-        ->update(['contas' => 'Porta Janela e Vidro']);
+        ->where('contas', 'Concreto')
+        ->update(['contas' => 'Estrutural']);
 
         DB::table('valor_contas_a_pagar')
-        ->where('ccustos', 'Portas Janelas e Vidro')
-        ->update(['ccustos' => 'Porta Janela e Vidro']);
+        ->where('ccustos', 'Concreto')
+        ->update(['ccustos' => 'Estrutural']);
+
+
+        DB::table('conta')
+        ->insert([
+        ['nome' => 'Engenheiro']]);
+
+        DB::table('conta')
+        ->where('nome', 'Aquisição')
+        ->take(1)
+        ->delete();
+
+        DB::table('contas_a_pagar')
+        ->where('contas', 'Aquisição')
+        ->update(['contas' => '']);
+
+        DB::table('valor_contas_a_pagar')
+        ->where('ccustos', 'Aquisição')
+        ->update(['ccustos' => '']);
+
+       
+
 
         /*
 

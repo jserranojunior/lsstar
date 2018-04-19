@@ -9,7 +9,6 @@ use DB;
 class financeiro extends Model {
 
     public $dados;
-
     public $data;
     public $dataAnterior;
     public $mes;
@@ -17,91 +16,88 @@ class financeiro extends Model {
     public $dataPosterior;
     public $dataMenosDois;
     public $nomeMes;
-
     public $aprovados;
     public $somaextra;
     public $somaatual;
     public $estimadonaolancado;
     public $totalpago;
     public $porcentagemconta;
-
     public $contas;
 
     public function relatorioConsolidado(){
-        $dados = array();
-        $ValoresUnidades = array();
-        $dadosUnidades = array();
-        $valorTotalAno = 0;
+            $dados = array();
+            $ValoresUnidades = array();
+            $dadosUnidades = array();
+            $valorTotalAno = 0;
 
-        $unidades = DB::table('area')
-        ->select('nome','id')
-        ->get(); 
+            $unidades = DB::table('area')
+            ->select('nome','id')
+            ->get(); 
 
-        $totalTudo = 0;
-        $valorAno = 0;
+            $totalTudo = 0;
+            $valorAno = 0;
 
-        foreach($unidades as $unidade){  
-            $id = $unidade->id;
-            $unidade = $unidade->nome;
-           
-
-            $anoFinal = date('Y', strtotime('+1 year'));
-
-            $valorSoma = 0;
-            $arrayTotalAno = array();
+            foreach($unidades as $unidade){  
+                $id = $unidade->id;
+                $unidade = $unidade->nome;
             
-            for($ano = 2017; $ano < $anoFinal; $ano++){   
 
-                $valor = $this->somaTotalPorUnidade($ano, $unidade);
-                $valorAnual[$ano] = number_format($valor, 2,',','.');  
-                $valorSoma += $valor; 
+                $anoFinal = date('Y', strtotime('+1 year'));
+
+                $valorSoma = 0;
+                $arrayTotalAno = array();
                 
+                for($ano = 2017; $ano < $anoFinal; $ano++){   
+
+                    $valor = $this->somaTotalPorUnidade($ano, $unidade);
+                    $valorAnual[$ano] = number_format($valor, 2,',','.');  
+                    $valorSoma += $valor; 
+                    
+                }
+
+            
+                $totalTudo +=  $valorSoma;
+
+                $valorSoma = number_format($valorSoma, 2,',','.');
+        
+                $dadosUnidades['unidades'][$unidade]['soma'] = $valorSoma; 
+                $dadosUnidades['unidades'][$unidade]['nomeUnidade']  = $unidade;
+                $dadosUnidades['unidades'][$unidade]['valores']  = $valorAnual;
             }
 
-           
-            $totalTudo +=  $valorSoma;
+        $unidades =  $dadosUnidades['unidades'];
+        
+        $somaTotalAnoArray = array(); 
 
-            $valorSoma = number_format($valorSoma, 2,',','.');
+        for($ano = 2017; $ano < $anoFinal; $ano++){
+            $somaTotalAno = 0; 
+            foreach($unidades as $da){ 
+                foreach($da['valores'] as $key => $valor){ 
+                        if($key == $ano){   
+                            $valorSemVirgula = str_ireplace(".","",$valor); //remove o separador de milhares
+                            $valorSemVirgula = str_ireplace(",",".",$valorSemVirgula); //substitui a virgula por ponto 
+                            $somaTotalAno += $valorSemVirgula;                                        
+                        }  
+                }      
+            }
+            $somaTotalAnoArray[$ano] = number_format($somaTotalAno, 2,',','.'); 
+        }    
+
+
+        $somaTotalAnoArray['totalTudo'] = number_format($totalTudo, 2,',','.');
+
     
-            $dadosUnidades['unidades'][$unidade]['soma'] = $valorSoma; 
-            $dadosUnidades['unidades'][$unidade]['nomeUnidade']  = $unidade;
-            $dadosUnidades['unidades'][$unidade]['valores']  = $valorAnual;
-}
 
-    $unidades =  $dadosUnidades['unidades'];
-     
-     $somaTotalAnoArray = array(); 
+        $dadosUnidades['total'] = $somaTotalAnoArray;
+        
 
-     for($ano = 2017; $ano < $anoFinal; $ano++){
-        $somaTotalAno = 0; 
-        foreach($unidades as $da){ 
-            foreach($da['valores'] as $key => $valor){ 
-                    if($key == $ano){   
-                        $valorSemVirgula = str_ireplace(".","",$valor); //remove o separador de milhares
-                        $valorSemVirgula = str_ireplace(",",".",$valorSemVirgula); //substitui a virgula por ponto 
-                        $somaTotalAno += $valorSemVirgula;                                        
-                    }  
-            }      
-        }
-        $somaTotalAnoArray[$ano] = number_format($somaTotalAno, 2,',','.'); 
-    }    
-
-
-    $somaTotalAnoArray['totalTudo'] = number_format($totalTudo, 2,',','.');
-
-   
-
-    $dadosUnidades['total'] = $somaTotalAnoArray;
-      
-
-    //echo("<pre>$somaTotalAno</pre>");
- 
-    return($dadosUnidades);
+        //echo("<pre>$somaTotalAno</pre>");
+    
+        return($dadosUnidades);
 
     }
        
-
-        public function somaTotalPorUnidade($ano, $unidade){
+    public function somaTotalPorUnidade($ano, $unidade){
             $valor = 0;          
             $mes = 01;         
             $valorAnual = 0;  
@@ -134,11 +130,7 @@ class financeiro extends Model {
             ->distinct()
             ->get();  
             
-            //dd($select_valores);
-            
-                     
             foreach($select_valores as $valores){                 
-               
 
                 if($this->data > $datePrev){
                     $valores->valor = 0; 
@@ -150,46 +142,11 @@ class financeiro extends Model {
                 }
               
                 $valorMensal +=  $valorSemVirgula;  
-                
-               
             }
-        
-        
-            $valorAnual += $valorMensal; 
-            
-              
-        }
-
-   
-          
-                            
+            $valorAnual += $valorMensal;    
+        }                    
         return($valorAnual);   
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
     public function anual($ano){
        
@@ -320,121 +277,118 @@ class financeiro extends Model {
         $arrayDados = collect($arrayDados);
         $dados = $arrayDados;
         
-        return($dados);
-      
+        return($dados);     
     
-}
-
-/* FUNÇÃO PARA PEGAR A SOMA DOS VALORES DA TABELA */
-function totalmensal($mesano, $mesanoanterior){ 
-    
-    $valortotal = 0;    
-    $this->data = $mesano;
-    $this->dataAnterior = $mesanoanterior;
-      /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
-            $valores = DB::table('contas_a_pagar as c')
-                    ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
-                     'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
-                     'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                      'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
-                     'c.inicio_conta', 'c.fim_conta')
-                    ->leftjoin('valor_contas_a_pagar as v', function($join) {
-                        $join->on('c.id', '=', 'v.codigo')
-                        ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
-                        ;
-                    })
-                    ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
-                        $pago->on('c.id', '=', 'p.id_conta')
-                        ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
-                        ->where('p.numero_cheque', '>', '');
-                    })
-                    ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
-                        $anterior->on('c.id', '=', 'a.codigo')
-                        ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
-                    })
-                    ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
-                    ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
-                    ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
-                    ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
-                    ->where('area','=', '$unidade')
-                    ->distinct()
-                    ->get();       
-                    
-                   
-    foreach($valores as $valor){
-     /* ############# VERIFICA SE O VALOR ATUAL É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
-     if ($valor->valor == "" or $valor->valor == "NULL") {
-        $this->selectValorVazioParcelado($valor->id);
-        foreach ($this->valorVazioParcelado as $valorVazioParcela) {
-            $valor->valor = $valorVazioParcela->valor;
     }
-}
-    $valor = $valor->valor;
-    $valor = str_ireplace(".","",$valor); //remove o separador de milhares
-    $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto    
-    $valortotal = $valortotal + $valor;
-}
-$valortotal = number_format($valortotal, 2,',','.');
 
-
- return($valortotal);
-}
-
- /* FUNÇÃO PARA PEGAR A SOMA DOS VALORES DA TABELA */
- function valormensal($mesano, $mesanoanterior, $unidade){ 
-    
-    $valortotal = 0;    
-    $this->data = $mesano;
-    $this->dataAnterior = $mesanoanterior;
-      /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
-            $valores = DB::table('contas_a_pagar as c')
-                    ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
-                     'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
-                     'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                      'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
-                     'c.inicio_conta', 'c.fim_conta')
-                    ->leftjoin('valor_contas_a_pagar as v', function($join) {
-                        $join->on('c.id', '=', 'v.codigo')
-                        ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
-                        ;
-                    })
-                    ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
-                        $pago->on('c.id', '=', 'p.id_conta')
-                        ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
-                        ->where('p.numero_cheque', '>', '');
-                    })
-                    ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
-                        $anterior->on('c.id', '=', 'a.codigo')
-                        ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
-                    })
-                    ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
-                    ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
-                    ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
-                    ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
-                    ->where('area','=', '$unidade')
-                    ->distinct()
-                    ->get();       
+    function totalmensal($mesano, $mesanoanterior){ 
+        
+        $valortotal = 0;    
+        $this->data = $mesano;
+        $this->dataAnterior = $mesanoanterior;
+        /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
+                $valores = DB::table('contas_a_pagar as c')
+                        ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
+                        'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
+                        'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
+                        'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
+                        'c.inicio_conta', 'c.fim_conta')
+                        ->leftjoin('valor_contas_a_pagar as v', function($join) {
+                            $join->on('c.id', '=', 'v.codigo')
+                            ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
+                            ;
+                        })
+                        ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
+                            $pago->on('c.id', '=', 'p.id_conta')
+                            ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
+                            ->where('p.numero_cheque', '>', '');
+                        })
+                        ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
+                            $anterior->on('c.id', '=', 'a.codigo')
+                            ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
+                        })
+                        ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
+                        ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
+                        ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
+                        ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
+                        ->where('area','=', '$unidade')
+                        ->distinct()
+                        ->get();       
+                        
                     
-                    $valores = $valores->where('area', $unidade);
- 
-    foreach($valores as $valor){
-     /* ############# VERIFICA SE O VALOR ATUAL É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
-     if ($valor->valor == "" or $valor->valor == "NULL") {
-        $this->selectValorVazioParcelado($valor->id);
-        foreach ($this->valorVazioParcelado as $valorVazioParcela) {
-            $valor->valor = $valorVazioParcela->valor;
+            foreach($valores as $valor){
+            /* ############# VERIFICA SE O VALOR ATUAL É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
+            if ($valor->valor == "" or $valor->valor == "NULL") {
+                $this->selectValorVazioParcelado($valor->id);
+                foreach ($this->valorVazioParcelado as $valorVazioParcela) {
+                    $valor->valor = $valorVazioParcela->valor;
+            }
+        }
+        $valor = $valor->valor;
+        $valor = str_ireplace(".","",$valor); //remove o separador de milhares
+        $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto    
+        $valortotal = $valortotal + $valor;
+        }
+        $valortotal = number_format($valortotal, 2,',','.');
+
+        return($valortotal);
     }
-}
-    $valor = $valor->valor;
-    $valor = str_ireplace(".","",$valor); //remove o separador de milhares
-    $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto    
-    $valortotal = $valortotal + $valor;
-}
-$valortotal = number_format($valortotal, 2,',','.');
 
+    function valormensal($mesano, $mesanoanterior, $unidade){ 
+        
+        $valortotal = 0;    
+        $this->data = $mesano;
+        $this->dataAnterior = $mesanoanterior;
+        /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
+                $valores = DB::table('contas_a_pagar as c')
+                        ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
+                        'c.area as area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
+                        'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
+                        'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
+                        'c.inicio_conta', 'c.fim_conta')
+                        ->leftjoin('valor_contas_a_pagar as v', function($join) {
+                            $join->on('c.id', '=', 'v.codigo')
+                            ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
+                            ;
+                        })
+                        ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
+                            $pago->on('c.id', '=', 'p.id_conta')
+                            ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
+                            ->where('p.numero_cheque', '>', '');
+                        })
+                        ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
+                            $anterior->on('c.id', '=', 'a.codigo')
+                            ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
+                        })
+                        ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
+                        ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
+                        ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
+                        ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
+                        ->where('area','=', '$unidade')
+                        ->distinct()
+                        ->get();       
+                        
+                        $valores = $valores->where('area', $unidade);
+    
+        foreach($valores as $valor){
+        /* ############# VERIFICA SE O VALOR ATUAL É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
+            if ($valor->valor == "" or $valor->valor == "NULL") {
+                $this->selectValorVazioParcelado($valor->id);
+                foreach ($this->valorVazioParcelado as $valorVazioParcela) {
+                    $valor->valor = $valorVazioParcela->valor;
+                }
+            }
 
- return($valortotal);
-}
+        $valor = $valor->valor;
+        $valor = str_ireplace(".","",$valor); //remove o separador de milhares
+        $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto    
+        $valortotal = $valortotal + $valor;
+        }
+
+        $valortotal = number_format($valortotal, 2,',','.');
+
+        return($valortotal);
+    }
 
     public function pagamento($numero){
 
@@ -489,12 +443,8 @@ $valortotal = number_format($valortotal, 2,',','.');
             }catch(\Excepetion $e){
                 dd($e);
             }            
-        }
-    
+        }    
 
-
-
-    
         return("CADASTRADO");
     }
 
@@ -544,7 +494,6 @@ $valortotal = number_format($valortotal, 2,',','.');
         return($dados);
     }
 
-
     public function apagar($id){
        try{
             DB::table('valor_contas_a_pagar')->where('codigo', '=', $id)->delete();
@@ -553,8 +502,7 @@ $valortotal = number_format($valortotal, 2,',','.');
         return($e);
        }
     }
-    
-     
+         
     public function atualizar($dados){
         
         $id = $dados['id'];
@@ -567,9 +515,8 @@ $valortotal = number_format($valortotal, 2,',','.');
         $area = $dados['area'];
         $ccustos = $dados['ccustos'];
         $pagador = $dados['pagador'];
-        $fim_conta = "";
-        
-        /* SELECT E INSERT NA TABELA CASO NÂO TENHA */
+        $fim_conta = "";  
+
         $select_favorecido = DB::table('fornecedor_contas_a_pagar')
         ->where('fornecedor','=',$favorecido)
         ->count();
@@ -583,7 +530,6 @@ $valortotal = number_format($valortotal, 2,',','.');
             }
         }
 
-/* SELECT E INSERT NA TABELA CASO NÂO TENHA */
         $select_area = DB::table('area')
         ->where('nome','=',$area)
         ->count();
@@ -595,10 +541,8 @@ $valortotal = number_format($valortotal, 2,',','.');
             }catch(\Expection $e){
                 echo dd($e);
             }
-        }
-   
+        }   
 
- /* SELECT E INSERT NA TABELA CASO NÂO TENHA */
         $select_conta = DB::table('conta')
         ->where('nome','=',$ccustos)
         ->count();
@@ -609,10 +553,7 @@ $valortotal = number_format($valortotal, 2,',','.');
             }catch(\Expection $e){
                 echo dd($e);
             }
-
-        }
-
-        
+        }       
         if($tipo == "Extra"){
             $parcelas = "";
             
@@ -623,10 +564,8 @@ $valortotal = number_format($valortotal, 2,',','.');
         if($tipo == "Parcelado"){
         $parcelas_menos_um = $parcelas -1;    
         $inicio_conta = date('Y-m-d', strtotime($inicio_conta));
-        $fim_conta = date('Y-m-d',strtotime(date('Y-m-d', strtotime($inicio_conta)) . "+$parcelas_menos_um month"));
-            
-     }
-        
+        $fim_conta = date('Y-m-d',strtotime(date('Y-m-d', strtotime($inicio_conta)) . "+$parcelas_menos_um month"));      
+        }
     
          $contas_atualizar = array('tipo' => $tipo, 
             'inicio_conta' => $inicio_conta,
@@ -647,23 +586,22 @@ $valortotal = number_format($valortotal, 2,',','.');
             'valor' => $valor
         );
 
-
         try{
         DB::table('contas_a_pagar')
         ->where('id', '=', $id)
         ->update($contas_atualizar);
-    }catch(\Expection $e){
-        echo dd($e);
-    }       
-           
+        }catch(\Expection $e){
+            echo dd($e);
+        }       
+         
 
-    try{
-        DB::table('valor_contas_a_pagar')
-        ->where('codigo', '=', $id)
-        ->update($valor_atualizar);
-    }catch(\Expection $e){
-        echo dd($e);
-    }      
+        try{
+            DB::table('valor_contas_a_pagar')
+            ->where('codigo', '=', $id)
+            ->update($valor_atualizar);
+        }catch(\Expection $e){
+            echo dd($e);
+        }      
 }
 
     public function criar($data){
@@ -684,9 +622,7 @@ $valortotal = number_format($valortotal, 2,',','.');
         return $dados;
     }
 
-
     public function editar($id,$data){
-
        
         $this->data = $data;
 
@@ -704,8 +640,7 @@ $valortotal = number_format($valortotal, 2,',','.');
                     })
                     ->where('c.id', $id)
                     ->take(1)
-                    ->get();
-                    
+                    ->get();                   
                     
                                       
                     $favorecido = DB::table('fornecedor_contas_a_pagar')
@@ -718,19 +653,13 @@ $valortotal = number_format($valortotal, 2,',','.');
             
                     $conta = DB::table('conta')
                     ->orderBy('nome','asc')
-                    ->get(); 
-            
-                  
+                    ->get();                               
 
                 $dados = array('favorecidos' => $favorecido, 'data_atual' => $data,'areas' => $area, 'contas' => $conta, 'objetos' => $objetos);   
                       
-                    return  $dados;
+                return  $dados;
                     
-        }
-
-
-
-
+    }
 
     public function Index($datas, $ordenacao, $areafiltro, $contafiltro, $pagadorfiltro){
 
@@ -751,66 +680,61 @@ $valortotal = number_format($valortotal, 2,',','.');
         return($lista);
     }
 
-    
-
-    
-
-
     public function tratarData($datas){
 
-    /* ############# TRATA A DATA QUE VEM DO INPUT ################ */
-        setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-        date_default_timezone_set('America/Sao_Paulo');
-        $this->mes_atual = date('m');
-        $this->ano_atual = date('Y');
+        /* ############# TRATA A DATA QUE VEM DO INPUT ################ */
+            setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+            $this->mes_atual = date('m');
+            $this->ano_atual = date('Y');
 
-        $this->data = $datas['data'];
-        $this->mes = $datas['mes'];
-        $this->ano = $datas['ano'];
-        $this->dataMenosDois = date("Y-m", strtotime(date("Y-m", strtotime($this->data)) . " -2 month"));
-        $this->dataAnterior = date("Y-m", strtotime(date("Y-m", strtotime($this->data)) . " -1 month"));
-        $this->dataPosterior = date("Y-m", strtotime(date("Y-m", strtotime($this->data)) . " +1 month"));
-        $this->mesAnterior = date('m', strtotime($this->dataAnterior));
-        $this->mesPosterior = date('m', strtotime($this->dataPosterior));
-        $this->anoAnterior = date('Y', strtotime($this->dataAnterior));
-        $this->anoPosterior = date('Y', strtotime($this->dataPosterior));
-        // $this->nomeMes = ucfirst(strftime("%B", strtotime($this->data)));
-        $this->nomeMes = ucfirst(utf8_encode(strftime("%B", strtotime($this->data))));
- 
+            $this->data = $datas['data'];
+            $this->mes = $datas['mes'];
+            $this->ano = $datas['ano'];
+            $this->dataMenosDois = date("Y-m", strtotime(date("Y-m", strtotime($this->data)) . " -2 month"));
+            $this->dataAnterior = date("Y-m", strtotime(date("Y-m", strtotime($this->data)) . " -1 month"));
+            $this->dataPosterior = date("Y-m", strtotime(date("Y-m", strtotime($this->data)) . " +1 month"));
+            $this->mesAnterior = date('m', strtotime($this->dataAnterior));
+            $this->mesPosterior = date('m', strtotime($this->dataPosterior));
+            $this->anoAnterior = date('Y', strtotime($this->dataAnterior));
+            $this->anoPosterior = date('Y', strtotime($this->dataPosterior));
+            // $this->nomeMes = ucfirst(strftime("%B", strtotime($this->data)));
+            $this->nomeMes = ucfirst(utf8_encode(strftime("%B", strtotime($this->data))));
+    
     } 
 
     public function selectContas(){
 
 
-        /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
-        $this->contas = DB::table('contas_a_pagar as c')
-                ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
-                 'c.area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
-                 'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                  'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
-                 'c.inicio_conta', 'c.fim_conta')
-                ->leftjoin('valor_contas_a_pagar as v', function($join) {
-                    $join->on('c.id', '=', 'v.codigo')
-                    ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
-                    ;
-                })
-                ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
-                    $pago->on('c.id', '=', 'p.id_conta')
-                    ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
-                    ->where('p.numero_cheque', '>', '');
-                })
-                ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
-                    $anterior->on('c.id', '=', 'a.codigo')
-                    ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
-                })
-                ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
-                ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
-                ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
-                ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
-                ->distinct()
-                ->get();
+            /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
+            $this->contas = DB::table('contas_a_pagar as c')
+                    ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
+                    'c.area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
+                    'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
+                    'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
+                    'c.inicio_conta', 'c.fim_conta')
+                    ->leftjoin('valor_contas_a_pagar as v', function($join) {
+                        $join->on('c.id', '=', 'v.codigo')
+                        ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
+                        ;
+                    })
+                    ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
+                        $pago->on('c.id', '=', 'p.id_conta')
+                        ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
+                        ->where('p.numero_cheque', '>', '');
+                    })
+                    ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
+                        $anterior->on('c.id', '=', 'a.codigo')
+                        ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
+                    })
+                    ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
+                    ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
+                    ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
+                    ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
+                    ->distinct()
+                    ->get();
 
-}
+    }
     
     public function selectMesAnterior($id){
                         $this->contaanterior = DB::table('valor_contas_a_pagar as v')
@@ -818,8 +742,7 @@ $valortotal = number_format($valortotal, 2,',','.');
                         ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '<', $this->data)
                         ->orderby('inicio_mes', 'desc')
                         ->get();
-                        return($this->contaanterior);
-                    
+                        return($this->contaanterior);                    
     }
 
     public function selectDoisMesesAnterior($id){
@@ -828,7 +751,6 @@ $valortotal = number_format($valortotal, 2,',','.');
                             ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->dataMenosDois)
                             ->orderby('inicio_mes', 'desc')
                             ->get();
-
                             return($this->valorDoisMesesAnterior);
     }
 
@@ -841,243 +763,227 @@ $valortotal = number_format($valortotal, 2,',','.');
                             return($this->valorVazioParcelado);
     }
 
-
-    public function lista() {
-        
-     
-           foreach ($this->contas as $conta) {
-            
-           
-            /* ############# PEGA O DIA ################ */      
-            
-            $conta->dia = date('d', strtotime($conta->inicio_conta));
-            
-
-
-
-            /* ############# VERIFICA SE O VALOR È VAZIO, SE TIVER MUDA VALOR PARA O ANTERIOR ################ */
-                if (isset($conta->favorecido) == false) {
-                $this->selectMesAnterior($conta->id);
-                foreach ($this->contaanterior as $anterior) {
-                    $conta->favorecido = $anterior->favorecido;
-                    $conta->item = $anterior->item;
-                    $conta->ccustos = $anterior->ccustos;
-                }
-            }
-
-            /* ############# REPETE O VALOR DO FIXO APENAS POR 2 MESES ################ */
-            if (($conta->valor_anterior == "") and ($conta->tipo == "Fixo") or ($conta->tipo == "Fixo") and ($conta->valor_anterior == null)){
-                    $this->selectDoisMesesAnterior($conta->id);
-                    foreach ($this->valorDoisMesesAnterior as $anteriorNull) {
-                        $conta->valor_anterior = $anteriorNull->valor;
-                }
-            }
-
-            
-            
-
-            /* ############# MUDANÇAS CASO O VALOR SEJA PARCELADO ################ */
-            if ($conta->tipo == "Parcelado") {
-
-                    $p_cont = 1;
-                     
-
-                    while ($conta->inicio_conta < $this->data) {
-                    $p_cont += 1;
-                    $conta->inicio_conta = date('Y-m', strtotime("+1 months", strtotime($conta->inicio_conta)));
-
-                }
-
-                $conta->parcelas = "$p_cont/$conta->parcelas";
+    public function lista(){     
+                    foreach ($this->contas as $conta) {
                 
+            
+                /* ############# PEGA O DIA ################ */      
                 
-                /* ############# VERIFICA SE O VALOR ATUAL É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
-                if ($conta->valor == "" and $conta->tipo_parcela !== "Especial" or $conta->valor == "NULL" and $conta->tipo_parcela !== "Especial") {
-                        $this->selectValorVazioParcelado($conta->id);
-                        foreach ($this->valorVazioParcelado as $valorVazioParcela) {
-                        $conta->valor = $valorVazioParcela->valor;
+                $conta->dia = date('d', strtotime($conta->inicio_conta));            
+
+                /* ############# VERIFICA SE O VALOR È VAZIO, SE TIVER MUDA VALOR PARA O ANTERIOR ################ */
+                    if (isset($conta->favorecido) == false) {
+                    $this->selectMesAnterior($conta->id);
+                    foreach ($this->contaanterior as $anterior) {
+                        $conta->favorecido = $anterior->favorecido;
+                        $conta->item = $anterior->item;
+                        $conta->ccustos = $anterior->ccustos;
                     }
                 }
-                
-                /* ############# VERIFICA SE O VALOR ANTERIOR É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
-                if ($conta->valor_anterior == "" and $p_cont > 1 or $conta->valor_anterior == "NULL" and $p_cont > 1) {
-                    $contaparcelada = DB::table('valor_contas_a_pagar as v')
-                            ->where('v.codigo', '=', $conta->id)
-                            ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '<', $this->data)
-                            ->orderby('inicio_mes', 'asc')
-                            ->get();
 
-                    foreach ($contaparcelada as $ctparcelada) {
-                        $conta->valor_anterior = $ctparcelada->valor;
+                /* ############# REPETE O VALOR DO FIXO APENAS POR 2 MESES ################ */
+                if (($conta->valor_anterior == "") and ($conta->tipo == "Fixo") or ($conta->tipo == "Fixo") and ($conta->valor_anterior == null)){
+                        $this->selectDoisMesesAnterior($conta->id);
+                        foreach ($this->valorDoisMesesAnterior as $anteriorNull) {
+                            $conta->valor_anterior = $anteriorNull->valor;
+                    }
+                }            
+                
+                /* ############# MUDANÇAS CASO O VALOR SEJA PARCELADO ################ */
+                if ($conta->tipo == "Parcelado") {
+
+                        $p_cont = 1;
+                        
+
+                        while ($conta->inicio_conta < $this->data) {
+                        $p_cont += 1;
+                        $conta->inicio_conta = date('Y-m', strtotime("+1 months", strtotime($conta->inicio_conta)));
+
+                    }
+
+                    $conta->parcelas = "$p_cont/$conta->parcelas";
+                    
+                    
+                    /* ############# VERIFICA SE O VALOR ATUAL É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
+                    if ($conta->valor == "" and $conta->tipo_parcela !== "Especial" or $conta->valor == "NULL" and $conta->tipo_parcela !== "Especial") {
+                            $this->selectValorVazioParcelado($conta->id);
+                            foreach ($this->valorVazioParcelado as $valorVazioParcela) {
+                            $conta->valor = $valorVazioParcela->valor;
+                        }
+                    }
+                    
+                    /* ############# VERIFICA SE O VALOR ANTERIOR É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
+                    if ($conta->valor_anterior == "" and $p_cont > 1 or $conta->valor_anterior == "NULL" and $p_cont > 1) {
+                        $contaparcelada = DB::table('valor_contas_a_pagar as v')
+                                ->where('v.codigo', '=', $conta->id)
+                                ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '<', $this->data)
+                                ->orderby('inicio_mes', 'asc')
+                                ->get();
+
+                        foreach ($contaparcelada as $ctparcelada) {
+                            $conta->valor_anterior = $ctparcelada->valor;
+                        }
                     }
                 }
+
+                /* ############# FILTROS ################ */           
+                
+                if($this->areafiltro!= "Todos"){
+                $this->contas = $this->contas->where('area', $this->areafiltro);
+                }
+
+                if($this->contafiltro != "Todos"){
+                $this->contas = $this->contas->where('contas', $this->contafiltro);
+                }
+
+                if($this->pagadorfiltro != "Todos"){
+                    $this->contas = $this->contas->where('pagador', $this->pagadorfiltro);
+                }            
+                
+                /* ############# ORDENAÇÃO ################ */            
             }
+            
+                $contas = $this->contas->toArray();
+                
+                $contas = collect($contas);
+            
+                $contas = $contas->sortBy($this->ordenacao);
 
+                
 
-            /* ############# FILTROS ################ */
+            foreach ($contas as $conta) {
+
+                
+
+                /* ############# REMOVENDO VIRGULAS PARA SOMAR ################ */
+
+                $conta->valor_anterior = str_ireplace(".", "", $conta->valor_anterior);
+                $conta->valor_anterior = str_ireplace(",", ".", $conta->valor_anterior);
+                $conta->valor = str_ireplace(".", "", $conta->valor);
+                $conta->valor = str_ireplace(",", ".", $conta->valor);
 
             
-            
-            if($this->areafiltro!= "Todos"){
-            $this->contas = $this->contas->where('area', $this->areafiltro);
-            }
-
-            if($this->contafiltro != "Todos"){
-            $this->contas = $this->contas->where('contas', $this->contafiltro);
-            }
-
-            if($this->pagadorfiltro != "Todos"){
-                $this->contas = $this->contas->where('pagador', $this->pagadorfiltro);
-            }
-            
-            
-            /* ############# ORDENAÇÃO ################ */
-            
-        }
-        
-            $contas = $this->contas->toArray();
-            
-            $contas = collect($contas);
-          
-            $contas = $contas->sortBy($this->ordenacao);
-
-            
-
-        foreach ($contas as $conta) {
-
-              
-
-            /* ############# REMOVENDO VIRGULAS PARA SOMAR ################ */
-
-            $conta->valor_anterior = str_ireplace(".", "", $conta->valor_anterior);
-            $conta->valor_anterior = str_ireplace(",", ".", $conta->valor_anterior);
-            $conta->valor = str_ireplace(".", "", $conta->valor);
-            $conta->valor = str_ireplace(",", ".", $conta->valor);
-
-           
-            /* ############# SOMAS ################ */
-            if ($conta->tipo == "Extra") {
-                $this->somaextra += $conta->valor;
-            } else {
-                if (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
-                    $conta->valor = 0;
+                /* ############# SOMAS ################ */
+                if ($conta->tipo == "Extra") {
+                    $this->somaextra += $conta->valor;
                 } else {
-                    $this->somaatual += $conta->valor;
+                    if (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
+                        $conta->valor = 0;
+                    } else {
+                        $this->somaatual += $conta->valor;
+                    }
                 }
-            }
-            /* ############# SOMA TOTAL ESTIMADO ################ */
-            $this->porcentagemconta = '';
-            if (($conta->tipo !== "Extra") and ( $conta->valor == "") and ( $conta->valor_anterior > "") and ( $conta->suspenso !== "Sim")) {
-                $this->estimadonaolancado += $conta->valor_anterior;
-            }
+                /* ############# SOMA TOTAL ESTIMADO ################ */
+                $this->porcentagemconta = '';
+                if (($conta->tipo !== "Extra") and ( $conta->valor == "") and ( $conta->valor_anterior > "") and ( $conta->suspenso !== "Sim")) {
+                    $this->estimadonaolancado += $conta->valor_anterior;
+                }
 
-            /* ############# SIMBOLO PARA PAGAMENTO EMITIDO ################ */
-            if ($conta->tipo_pagamento == "Cheque") {
-                $conta->tipo_pagamento = "#2196f3";
-                $this->totalpago += $conta->valor;
-            } elseif (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
-                $conta->tipo_pagamento = "#2196f3";
-            } elseif ($conta->tipo_pagamento == "Transferência") {
-                $conta->tipo_pagamento = "#2196f3";
-                $this->totalpago += $conta->valor;
-            }
-            elseif ($conta->tipo_pagamento == "Cartão") {
+                /* ############# SIMBOLO PARA PAGAMENTO EMITIDO ################ */
+                if ($conta->tipo_pagamento == "Cheque") {
                     $conta->tipo_pagamento = "#2196f3";
                     $this->totalpago += $conta->valor;
+                } elseif (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
+                    $conta->tipo_pagamento = "#2196f3";
+                } elseif ($conta->tipo_pagamento == "Transferência") {
+                    $conta->tipo_pagamento = "#2196f3";
+                    $this->totalpago += $conta->valor;
+                }
+                elseif ($conta->tipo_pagamento == "Cartão") {
+                        $conta->tipo_pagamento = "#2196f3";
+                        $this->totalpago += $conta->valor;
 
-                    
-            } elseif ($conta->tipo_pagamento == "" and $conta->valor > "") {
-                $conta->tipo_pagamento = "<input type='checkbox' form='form-emitir' name='check_list[]' value='$conta->id' class='checkbox-inline'></input>";
+                        
+                } elseif ($conta->tipo_pagamento == "" and $conta->valor > "") {
+                    $conta->tipo_pagamento = "<input type='checkbox' form='form-emitir' name='check_list[]' value='$conta->id' class='checkbox-inline'></input>";
+                }
+
+                
+                if ($conta->valor > '') {
+                    $conta->valor = number_format($conta->valor, 2, ',', '.');
+                }
             }
 
-            
-            if ($conta->valor > '') {
-                $conta->valor = number_format($conta->valor, 2, ',', '.');
-            }
-        }
-
-        /* ############# SOMA OS TOTAIS ################ */
-        $totalsomames = $this->somaextra + $this->somaatual;
-        $apagar = $totalsomames - $this->totalpago;
-        $totalestimado = $totalsomames + $this->estimadonaolancado;
-        $necessidadefluxo = $totalestimado - $this->totalpago;
+            /* ############# SOMA OS TOTAIS ################ */
+            $totalsomames = $this->somaextra + $this->somaatual;
+            $apagar = $totalsomames - $this->totalpago;
+            $totalestimado = $totalsomames + $this->estimadonaolancado;
+            $necessidadefluxo = $totalestimado - $this->totalpago;
 
 
-        /* ############# FORMATA OS NUMEROS COM VIRGULA ################ */
-        $totalsomames = number_format($totalsomames, 2, ',', '.');
-        $this->somaextra = number_format($this->somaextra, 2, ',', '.');
-        $this->somaatual = number_format($this->somaatual, 2, ',', '.');
-        $this->totalpago = number_format($this->totalpago, 2, ',', '.');
-        $apagar = number_format($apagar, 2, ',', '.');
-        $this->estimadonaolancado = number_format($this->estimadonaolancado, 2, ',', '.');
-        $totalestimado = number_format($totalestimado, 2, ',', '.');
-        $necessidadefluxo = number_format($necessidadefluxo, 2, ',', '.');
+            /* ############# FORMATA OS NUMEROS COM VIRGULA ################ */
+            $totalsomames = number_format($totalsomames, 2, ',', '.');
+            $this->somaextra = number_format($this->somaextra, 2, ',', '.');
+            $this->somaatual = number_format($this->somaatual, 2, ',', '.');
+            $this->totalpago = number_format($this->totalpago, 2, ',', '.');
+            $apagar = number_format($apagar, 2, ',', '.');
+            $this->estimadonaolancado = number_format($this->estimadonaolancado, 2, ',', '.');
+            $totalestimado = number_format($totalestimado, 2, ',', '.');
+            $necessidadefluxo = number_format($necessidadefluxo, 2, ',', '.');
 
-        /* ############# VERIFICA SE O VALOR FOI SUSPENSO E COLOCA ... ################ */
-        foreach ($contas as $conta) {
-            if (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
-                $conta->valor = "...";
+            /* ############# VERIFICA SE O VALOR FOI SUSPENSO E COLOCA ... ################ */
+            foreach ($contas as $conta) {
+                if (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
+                    $conta->valor = "...";
+                }
+
+                
             }
 
-            
-        }
+        
 
-       
-
-        foreach ($contas as $conta) {
-            if ($conta->tipo == "Extra"){
-                $conta->tipo = "Á vista";
+            foreach ($contas as $conta) {
+                if ($conta->tipo == "Extra"){
+                    $conta->tipo = "Á vista";
+                }
             }
-        }
 
-        $area = DB::table('area')
-        ->orderBy('nome','asc')
-        ->get();            
+            $area = DB::table('area')
+            ->orderBy('nome','asc')
+            ->get();            
 
-        $conta = DB::table('conta')
-        ->orderBy('nome','asc')
-        ->get(); 
+            $conta = DB::table('conta')
+            ->orderBy('nome','asc')
+            ->get(); 
 
-        $dataatualcompleta = date('d-m-Y');
+            $dataatualcompleta = date('d-m-Y');
 
-        /* ############# ARRAY QUE CONTEM TODOS OS DADOS ################ */
-        $this->dados = array(
-            'contas' => $contas,
-            'somaextra' => $this->somaextra,
-            'somaatual' => $this->somaatual,
-            'totalsomames' => $totalsomames,
-            'estimadonaolancado' => $this->estimadonaolancado,
-            'porcentagemconta' => $this->porcentagemconta,
-            'dataatual' => $this->data,
-            'totalpago' => $this->totalpago,
-            'apagar' => $apagar,
-            'totalestimado' => $totalestimado,
-            'necessidadedefluxo' => $necessidadefluxo,
-            'mes' => $this->mes,
-            'ano' => $this->ano,
-            'nomeMes' => $this->nomeMes,
-            'mesPosterior' => $this->mesPosterior,
-            'mesAnterior' => $this->mesAnterior,
-            'anoPosterior' => $this->anoPosterior,
-            'anoAnterior' => $this->anoAnterior,
-            'mesConst' => $this->mes_atual,
-            'anoConst' => $this->ano_atual,
-            'all_area' => $area,
-            'all_conta' => $conta,
-            'areafiltro' => $this->areafiltro,
-            'pagadorfiltro' => $this->pagadorfiltro,
-            'contafiltro' => $this->contafiltro,
-            'ordenacao' => $this->ordenacao,
-            'aprovados' => $this->aprovados,
-            'dataatualcompleta' => $dataatualcompleta,
-        );
+            /* ############# ARRAY QUE CONTEM TODOS OS DADOS ################ */
+            $this->dados = array(
+                'contas' => $contas,
+                'somaextra' => $this->somaextra,
+                'somaatual' => $this->somaatual,
+                'totalsomames' => $totalsomames,
+                'estimadonaolancado' => $this->estimadonaolancado,
+                'porcentagemconta' => $this->porcentagemconta,
+                'dataatual' => $this->data,
+                'totalpago' => $this->totalpago,
+                'apagar' => $apagar,
+                'totalestimado' => $totalestimado,
+                'necessidadedefluxo' => $necessidadefluxo,
+                'mes' => $this->mes,
+                'ano' => $this->ano,
+                'nomeMes' => $this->nomeMes,
+                'mesPosterior' => $this->mesPosterior,
+                'mesAnterior' => $this->mesAnterior,
+                'anoPosterior' => $this->anoPosterior,
+                'anoAnterior' => $this->anoAnterior,
+                'mesConst' => $this->mes_atual,
+                'anoConst' => $this->ano_atual,
+                'all_area' => $area,
+                'all_conta' => $conta,
+                'areafiltro' => $this->areafiltro,
+                'pagadorfiltro' => $this->pagadorfiltro,
+                'contafiltro' => $this->contafiltro,
+                'ordenacao' => $this->ordenacao,
+                'aprovados' => $this->aprovados,
+                'dataatualcompleta' => $dataatualcompleta,
+            );
 
-        /* ############# RETORNO DOS DADOS PARA O CONTROLLER ################ */
-        return $this->dados;
+            /* ############# RETORNO DOS DADOS PARA O CONTROLLER ################ */
+            return $this->dados;
     }
-
-
-
+    
     public function salvar($dados){
         $tipo = $dados['tipo'];
         $favorecido = trim($dados['favorecido']);
@@ -1103,7 +1009,7 @@ $valortotal = number_format($valortotal, 2,',','.');
             }
         }
 
-/* SELECT E INSERT NA TABELA CASO NÂO TENHA */
+        /* SELECT E INSERT NA TABELA CASO NÂO TENHA */
         $select_area = DB::table('area')
         ->where('nome','=',$area)
         ->count();
@@ -1118,7 +1024,7 @@ $valortotal = number_format($valortotal, 2,',','.');
         }
    
 
- /* SELECT E INSERT NA TABELA CASO NÂO TENHA */
+        /* SELECT E INSERT NA TABELA CASO NÂO TENHA */
         $select_conta = DB::table('conta')
         ->where('nome','=',$ccustos)
         ->count();
@@ -1134,67 +1040,65 @@ $valortotal = number_format($valortotal, 2,',','.');
 
 
 
-        
-        if($tipo == "Extra"){
-            $parcelas = "";
             
+            if($tipo == "Extra"){
+                $parcelas = "";
+                
+                $inicio_conta = date('Y-m-d', strtotime($inicio_conta));
+                $fim_conta = $inicio_conta;
+            }
+
+            if($tipo == "Parcelado"){
+            $parcelas_menos_um = $parcelas -1;    
             $inicio_conta = date('Y-m-d', strtotime($inicio_conta));
-            $fim_conta = $inicio_conta;
+            $fim_conta = date('Y-m-d',strtotime(date('Y-m-d', strtotime($inicio_conta)) . "+$parcelas_menos_um month"));
+                
+        }
+            
+        
+            $contas_insert = array('tipo' => $tipo, 
+                'inicio_conta' => $inicio_conta,
+                'fim_conta' => $fim_conta,
+                'parcelas' => $parcelas,
+                'area' => $area,
+                'contas' => $ccustos,
+                'tipo' => $tipo,
+                'pagador' => $pagador,
+            );
+
+            try{
+            DB::table('contas_a_pagar')->insert($contas_insert);
+        }catch(\Expection $e){
+            echo dd($e);
+        }
+        
+            /* Seleciona o último id para fazer o insert na tabela de valor */
+            $id_select = DB::table('contas_a_pagar')
+            ->distinct('id')
+            ->select('id')
+            ->orderBy('id', 'asc')
+            ->get();
+            
+            foreach($id_select as $nm_id){
+
+            $id = $nm_id->id;
+                $valor_insert = array(
+                'codigo' => $id,
+                'inicio_mes' => $inicio_conta,
+                'ccustos' => $ccustos,
+                'item' => $item,
+                'favorecido' => $favorecido,
+                'valor' => $valor
+            );
         }
 
-        if($tipo == "Parcelado"){
-        $parcelas_menos_um = $parcelas -1;    
-        $inicio_conta = date('Y-m-d', strtotime($inicio_conta));
-        $fim_conta = date('Y-m-d',strtotime(date('Y-m-d', strtotime($inicio_conta)) . "+$parcelas_menos_um month"));
-            
-     }
-        
-    
-         $contas_insert = array('tipo' => $tipo, 
-            'inicio_conta' => $inicio_conta,
-            'fim_conta' => $fim_conta,
-            'parcelas' => $parcelas,
-            'area' => $area,
-            'contas' => $ccustos,
-            'tipo' => $tipo,
-            'pagador' => $pagador,
-        );
-
         try{
-        DB::table('contas_a_pagar')->insert($contas_insert);
-    }catch(\Expection $e){
-        echo dd($e);
-    }
-       
-        /* Seleciona o último id para fazer o insert na tabela de valor */
-        $id_select = DB::table('contas_a_pagar')
-        ->distinct('id')
-        ->select('id')
-        ->orderBy('id', 'asc')
-        ->get();
-        
-        foreach($id_select as $nm_id){
-
-        $id = $nm_id->id;
-             $valor_insert = array(
-            'codigo' => $id,
-            'inicio_mes' => $inicio_conta,
-            'ccustos' => $ccustos,
-            'item' => $item,
-            'favorecido' => $favorecido,
-            'valor' => $valor
-        );
-    }
-
-    try{
-        DB::table('valor_contas_a_pagar')->insert($valor_insert);
-    }catch(\Expection $e){
-        echo dd($e);
-    }
+            DB::table('valor_contas_a_pagar')->insert($valor_insert);
+        }catch(\Expection $e){
+            echo dd($e);
+        }
  
 
     }
-    
-    
 
 }

@@ -5,10 +5,29 @@ use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\financeiro\financeiro;
+use App\Models\financeiro\contasAPagar;
 use App\Models\data\dataClass;
 use App\Http\Controllers\Controller;
+use App\Models\financeiro\valorContasAPagar;
 
 class ContasapagarController extends Controller {
+
+    public function __construct(contasAPagar $contasAPagar){
+        $this->bills = $contasAPagar;
+    }
+
+    function apiContas(){
+        $bills = valorContasAPagar::all();
+        
+        foreach($bills as $bill){
+            echo("$bill->valor<br>");
+        }
+
+       // return($valor->valor);
+
+       // $billsToPay = $this->bills->allPayMounth();
+      //  return($billsToPay);
+    }
 
     function Index() {
       if(!isset($_POST['areafiltro'])){
@@ -53,8 +72,8 @@ class ContasapagarController extends Controller {
         
         $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro);
      
-      
-    return view('financeiro.contasapagar')->with($dados);
+       
+       return view('financeiro.contasapagar')->with($dados);
     }
 
 
@@ -63,7 +82,6 @@ class ContasapagarController extends Controller {
         $dados = $conta->pagamento($data);
         return view('financeiro.pagamentos')->with($dados);
     }
-
 
     
     function create($data){
@@ -74,7 +92,7 @@ class ContasapagarController extends Controller {
     
     function edit($id,$data){
         
-    $conta = new financeiro();
+        $conta = new financeiro();
        $dados = $conta->editar($id,$data);
       
        return view('financeiro.editar')->with($dados);
