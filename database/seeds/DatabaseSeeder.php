@@ -14,6 +14,12 @@ class DatabaseSeeder extends Seeder
     {
 
         DB::table('conta')
+        ->where('nome', 'Engenheiro')
+        ->update(['nome' => 'Engenh. Arquiteto']);
+
+        /*
+
+        DB::table('conta')
         ->where('nome', 'Concreto')
         ->update(['nome' => 'Estrutural']);
 
@@ -43,6 +49,7 @@ class DatabaseSeeder extends Seeder
         ->where('ccustos', 'Aquisição')
         ->update(['ccustos' => '']);
 
+        */
        
 
 
