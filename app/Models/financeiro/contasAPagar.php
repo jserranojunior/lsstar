@@ -23,17 +23,16 @@ class contasAPagar extends Model
     public function relatorioPorUnidade(){
 
         $count = 0;
-        $dados = array();
+        $dados = array();        
+        $valorTotalAno = 0;
+ 
 
-       setlocale(LC_ALL, "pt_BR", "pt_BR.iso-8859-1", "pt_BR.utf-8", "portuguese");
-	date_default_timezone_set('America/Sao_Paulo');
-
+        $area = "Av. Adriano";
         $dataInicio = "2018-01";
         $dataFim = "2018-12";
-
         $dataInicioMeses = $dataInicio;
         
-        /* MES TOPO */
+        /* MES TOPO || MES SOMA ANUAL || MES SOMA CATEGORIA ANUAL*/
         while($dataInicioMeses <= $dataFim){
             $numeroMes = date('m', strtotime($dataInicioMeses));
             $nomeMes = date('M', strtotime($dataInicioMeses));
@@ -50,13 +49,42 @@ class contasAPagar extends Model
             $meses[$count]['numeroMes'] =  $numeroMes;
             $meses[$count]['nomeMes'] = $nomeMes;
             $meses[$count]['ano'] = $ano;
+
+
+
+         $totaisDoMes  = $this->contas->contaMensal($dataInicioMeses);
+        
+         $totaisDoMes = $totaisDoMes->where('area', $area);
+         
+
+                         foreach($totaisDoMes as $totalMes){
+                            $valoresContasAPagar = $this->valoresContasAPagar::where('codigo', $totalMes->id) 
+                            ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '=', $dataInicioMeses)      
+                            ->orWhere('codigo', $totalMes->id)
+                            ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '<=', $dataInicioMeses)      
+                            ->take(1)
+                            ->select('valor')
+                            ->get();
+                            
+                            foreach($valoresContasAPagar as $valores){
+                                $valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
+                                $valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
+                                $totalMes->valor =  $valores->valor;                             
+                            }                
+                        }                        
+                
+                     $valorTotalAno += $totaisDoMes->sum('valor');
+                     $meses[$count]['valoresTotais'] = $totaisDoMes->sum('valor');
+                     
+
             $dataInicioMeses = date('Y-m', strtotime("+1 months", strtotime($dataInicioMeses)));
             $count += 1;
         }
 
         $categorias = $this->categoria::all();   
-        $categorias = $this->categoria->orderBy('nome', 'asc')->get();
-           
+        $categorias = $this->categoria->orderBy('nome', 'asc')->get();   
+        
+        /* LAÇO DE CATEGORIA E SOMA MENSAL */
         foreach($categorias as $categoria){
           
             $data = $dataInicio;
@@ -75,7 +103,7 @@ class contasAPagar extends Model
                 // antigo
                 $contas = $this->contas->contaMensal($data);
             
-                        $contas = $contas->where('area', 'Administrativo'); 
+                        $contas = $contas->where('area', $area); 
                         $contas = $contas->where('contas', $categoria->nome); 
                          /* VALORES */
                          foreach($contas as $conta){
@@ -97,27 +125,23 @@ class contasAPagar extends Model
                             $total = $contas->sum('valor');  
                             $dados[$categoria->nome]['meses'][$count]['valor'] = $total;
                             $dados[$categoria->nome]['meses'][$count]['categoria'] = $categoria->nome;
-
                             
-                            $totalAnualCategoria += $total;
-                            
+                            $totalAnualCategoria += $total;                            
     
                 $data = date('Y-m', strtotime("+1 months", strtotime($data)));
                 $count += 1;
             }
-            $dados[$categoria->nome]['totalAnualCategoria'] = $totalAnualCategoria;
-            // return($dados);
-        
-           // $categoria->meses = $meses;
-           
+            $dados[$categoria->nome]['totalAnualCategoria'] = $totalAnualCategoria;           
         }
 
-        $dados = array('relatorio' => $dados, 'mesesTopo' => $meses);
-        
+        $dados = array(
+            'relatorio' => $dados, 
+            'mesesTopo' => $meses, 
+            'valorTotalAno' => $valorTotalAno, 
+            'area' => $area,
+        );        
        return($dados);
     }
-
-
 
 
     public function valorContasAPagar()

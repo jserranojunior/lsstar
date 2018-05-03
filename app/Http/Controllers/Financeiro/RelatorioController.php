@@ -17,8 +17,6 @@ class RelatorioController extends Controller
         $dados = $contasAPagar->relatorioPorUnidade();
 
         $dados = array('dados' =>  $dados);
-  //      dd($dados);
-        //return $dados;
         return view('financeiro.relatorioarea')->with($dados);    
     }
 
