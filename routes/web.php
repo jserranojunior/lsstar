@@ -41,6 +41,7 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
     Route::any('/mensal',['as' => 'mensal', 'uses' => 'Financeiro\RelatorioController@mensal']);
     Route::any('/anual',['as' => 'anual', 'uses' => 'Financeiro\RelatorioController@anual']);
     Route::any('/relatorioconsolidado',['as' => 'relatorioconsolidado', 'uses' => 'Financeiro\RelatorioController@consolidado']);
+    Route::any('/relatorioarea',['as' => 'relatoriarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
     
 
     /* EMITIR PAGAMENTO*/
@@ -50,8 +51,17 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
     
 
      /*FATURA CONSOLIDADA*/
-    Route::get('faturaconsolidada',['as' =>'indexconsolidada','uses' => 'Financeiro\FaturaConsolidadaController@index']); 
-     Route::get('faturaconsolidada/dd',['as' =>'indexconsolidadadd','uses' => 'Financeiro\FaturaConsolidadaController@dd']); 
+    Route::get('faturaconsolidada',['as' =>'indexconsolidada','uses' => 'Financeiro\faturaConsolidadaController@index']); 
+    Route::get('faturaconsolidada/dd',['as' =>'indexconsolidadadd','uses' => 'Financeiro\faturaConsolidadaController@dd']); 
+
+
+
+});
+
+    /* AREA */
+Route::group(['as' => 'areas.', 'prefix' => 'areas', 'middleware' => ['auth']], function(){
+    Route::get('/', ['uses' => 'areasController@allAreas'])->name('index');    
+    Route::get('/{id}', ['uses' => 'areasController@editArea'])->name('editar');
 });
 
 

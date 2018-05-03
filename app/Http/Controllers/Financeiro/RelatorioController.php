@@ -6,9 +6,24 @@ use App\Models\financeiro\financeiro;
 use App\Models\data\dataClass;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\financeiro\contasAPagar;
+
 
 class RelatorioController extends Controller
 {
+
+    
+    public function relatorioArea(contasAPagar $contasAPagar){
+        $dados = $contasAPagar->relatorioPorUnidade();
+
+        $dados = array('dados' =>  $dados);
+  //      dd($dados);
+        //return $dados;
+        return view('financeiro.relatorioarea')->with($dados);    
+    }
+
+
+
 
     public function consolidado(){
         $financeiro = new financeiro();

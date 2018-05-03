@@ -77,6 +77,11 @@
                      <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
                             <a href="{{Route('agenda.index')}}" class="glyphicon glyphicon-list-alt"><span class="menu-ocultar">Agenda </span></a>
                     </li>
+
+                    <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
+                            <a href="{{Route('areas.index')}}" class="fa fa-home"><span class="menu-ocultar">Áreas</span></a>
+                    </li>
+
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
                             <a href="{{Route('fornecedor.index')}}"><i class="fa fa-handshake-o" aria-hidden="true"></i><span class="menu-ocultar">Fornecedores </span></a>
                     </li>
