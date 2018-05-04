@@ -26,7 +26,13 @@
                     <div class="col-md-6 ">
                         <a class="btn btn-info btn-xs" href="{{Route('financeiro.relatorioconsolidado')}}" role="button">Relatório Consolidado</a>
 				    </div>
+            
+                    <div class="col-md-6 ">
+                        <a class="btn btn-danger btn-xs" href="{{Route('financeiro.relatorioarea')}}" role="button">Relatório de Negócios</a>
+				    </div>
                 </div>
+
+                
 
 						
 					</div>

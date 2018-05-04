@@ -13,10 +13,14 @@ class RelatorioController extends Controller
 {
 
     
-    public function relatorioArea(contasAPagar $contasAPagar){
-        $dados = $contasAPagar->relatorioPorUnidade();
+    public function relatorioArea(contasAPagar $contasAPagar, request $request){
+
+       
+        //dd($request->area);
+        $dados = $contasAPagar->relatorioPorUnidade($request);
 
         $dados = array('dados' =>  $dados);
+   
         return view('financeiro.relatorioarea')->with($dados);    
     }
 

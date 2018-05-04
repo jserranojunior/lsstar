@@ -41,7 +41,10 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
     Route::any('/mensal',['as' => 'mensal', 'uses' => 'Financeiro\RelatorioController@mensal']);
     Route::any('/anual',['as' => 'anual', 'uses' => 'Financeiro\RelatorioController@anual']);
     Route::any('/relatorioconsolidado',['as' => 'relatorioconsolidado', 'uses' => 'Financeiro\RelatorioController@consolidado']);
-    Route::any('/relatorioarea',['as' => 'relatoriarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
+    
+    Route::any('/relatorioarea',['as' => 'relatorioarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
+
+    //  Route::any('/relatorioarea/{id}',['as' => 'relatoriarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
     
 
     /* EMITIR PAGAMENTO*/
@@ -59,7 +62,7 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
 });
 
     /* AREA */
-Route::group(['as' => 'areas.', 'prefix' => 'areas', 'middleware' => ['auth']], function(){
+    Route::group(['as' => 'areas.', 'prefix' => 'areas', 'middleware' => ['auth']], function(){
     Route::get('/', ['uses' => 'areasController@allAreas'])->name('index');    
     Route::get('/{id}', ['uses' => 'areasController@editArea'])->name('editar');
 });

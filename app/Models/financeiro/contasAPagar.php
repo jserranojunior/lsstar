@@ -20,17 +20,63 @@ class contasAPagar extends Model
         $this->categoria = $categorias;
     }
 
-    public function relatorioPorUnidade(){
+    public function relatorioPorUnidade($request){
+
+        
+        $request = array();
+
+        if(!isset($_POST['area'])){
+            $area = 'Administrativo';
+        }else {
+            $area = $_POST['area'];
+        }
+
+        if(!isset($_POST['mesInicio'])){
+            $mesInicio =  date('m');
+        }else {
+            $mesInicio = $_POST['mesInicio'];
+        }
+
+        if(!isset($_POST['anoInicio'])){
+            $anoInicio =  date('Y');
+        }else {
+            $anoInicio = $_POST['anoInicio'];
+        }
+        
+        $dataInicio = "$anoInicio-$mesInicio";
+
+        if(!isset($_POST['anoInicio']) or !isset($_POST['mesInicio'])){
+            $dataInicio = date('Y-m', strtotime("-12 months", strtotime($dataInicio)));
+        }
+
+        if(!isset($_POST['mesFim'])){
+            $mesFim =  date('m');
+        }else {
+            $mesFim = $_POST['mesFim'];
+        }
+        if(!isset($_POST['anoFim'])){
+            $anoFim =  date('Y');
+        }else {
+            $anoFim = $_POST['anoFim'];
+        }
+
+        $dataFim = "$anoFim-$mesFim";
+
+      
+
 
         $count = 0;
         $dados = array();        
         $valorTotalAno = 0;
  
 
-        $area = "Av. Adriano";
-        $dataInicio = "2018-01";
-        $dataFim = "2018-12";
+        $area = $area;
+        $dataInicio = $dataInicio;
+        $dataFim = $dataFim;
         $dataInicioMeses = $dataInicio;
+
+        $areas = $this->areas->select('nome')->get();
+      
         
         /* MES TOPO || MES SOMA ANUAL || MES SOMA CATEGORIA ANUAL*/
         while($dataInicioMeses <= $dataFim){
@@ -139,6 +185,11 @@ class contasAPagar extends Model
             'mesesTopo' => $meses, 
             'valorTotalAno' => $valorTotalAno, 
             'area' => $area,
+            'mesInicio' => $mesInicio,
+            'mesFim' => $mesFim,
+            'anoInicio' => $anoInicio,
+            'anoFim' => $anoFim,
+            'areas' => $areas,
         );        
        return($dados);
     }

@@ -1,213 +1,148 @@
 @extends('layouts.header')
 @section('content')
 
-<div class="col-md-4">
-    <div class="box box-warning">
-        <div class="box-header with-border">
-            <p class="center bold"> {{$dados['area']}} </p>
-        </div>
-    </div>
-</div>
-
-<div class="col-md-4 ">
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <p class="center bold"> DATA DE INICIO </p>
-        </div>
-        <div class="box-body">
-            <div class="col-md-6">
-                <ul class="nav nav-tabs">
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle widcem" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <a href="#">Janeiro
-                                    
-                                <span class="caret"></span>
-                            </a></button><a href="#"> 
-                            </a><ul class="dropdown-menu" aria-labelledby="dropdownMenu1"><a href="#"> 
-                                </a><li><a href="#">
-                                    </a><a href="#" onclick="enviar('favorecido',01,2018,'Av. Adriano','Todos', 'Todos');">Janeiro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',02,2018,'Av. Adriano','Todos', 'Todos');">Fevereiro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',03,2018,'Av. Adriano','Todos', 'Todos');">Março</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',04,2018,'Av. Adriano','Todos', 'Todos');">Abril</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',05,2018,'Av. Adriano','Todos', 'Todos');">Maio</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',06,2018,'Av. Adriano','Todos', 'Todos');">Junho</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',07,2018,'Av. Adriano','Todos', 'Todos');">Julho</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',08,2018,'Av. Adriano','Todos', 'Todos');">Agosto</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',09,2018,'Av. Adriano','Todos', 'Todos');">Setembro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',10,2018,'Av. Adriano','Todos', 'Todos');">Outubro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',11,2018,'Av. Adriano','Todos', 'Todos');">Novembro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',12,2018,'Av. Adriano','Todos', 'Todos');">Dezembro</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </div>
-        <div class="col-md-6">
-            <ul class="nav nav-tabs">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle widcem" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <a href="#">2018
-                            
-                            <span class="caret"></span>
-                        </a></button><a href="#">
-                        </a><ul class="dropdown-menu" aria-labelledby="dropdownMenu1"><a href="#">
-                            </a><li><a href="#">
-                                </a><a href="#">2017</a>
-                            </li>
-                            <li>
-                                <a href="#">2018</a>
-                            </li>
-                            <li>
-                                <a href="#">2019</a>
-                            </li>
-                        </ul>
-                    </div>
-                </ul>
-            </div>                        
-        </div>                   
-    </div>
-</div>
-
-
-<div class="col-md-4 ">
-    <div class="box box-danger">
-        <div class="box-header with-border">
-            <p class="center bold"> DATA DE FIM </p>
-        </div>
-        <div class="box-body">
-            <div class="col-md-6">
-                <ul class="nav nav-tabs">
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle widcem" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <a href="#">Janeiro
-                                    
-                                <span class="caret"></span>
-                            </a></button><a href="#"> 
-                            </a><ul class="dropdown-menu" aria-labelledby="dropdownMenu1"><a href="#"> 
-                                </a><li><a href="#">
-                                    </a><a href="#" onclick="enviar('favorecido',01,2018,'Av. Adriano','Todos', 'Todos');">Janeiro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',02,2018,'Av. Adriano','Todos', 'Todos');">Fevereiro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',03,2018,'Av. Adriano','Todos', 'Todos');">Março</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',04,2018,'Av. Adriano','Todos', 'Todos');">Abril</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',05,2018,'Av. Adriano','Todos', 'Todos');">Maio</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',06,2018,'Av. Adriano','Todos', 'Todos');">Junho</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',07,2018,'Av. Adriano','Todos', 'Todos');">Julho</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',08,2018,'Av. Adriano','Todos', 'Todos');">Agosto</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',09,2018,'Av. Adriano','Todos', 'Todos');">Setembro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',10,2018,'Av. Adriano','Todos', 'Todos');">Outubro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',11,2018,'Av. Adriano','Todos', 'Todos');">Novembro</a>
-                                </li>
-                                <li>
-                                    <a href="#" onclick="enviar('favorecido',12,2018,'Av. Adriano','Todos', 'Todos');">Dezembro</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </div>
-        <div class="col-md-6">
-            <ul class="nav nav-tabs">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle widcem" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <a href="#">2018
-                            
-                            <span class="caret"></span>
-                        </a></button><a href="#">
-                        </a><ul class="dropdown-menu" aria-labelledby="dropdownMenu1"><a href="#">
-                            </a><li><a href="#">
-                                </a><a href="#">2017</a>
-                            </li>
-                            <li>
-                                <a href="#">2018</a>
-                            </li>
-                            <li>
-                                <a href="#">2019</a>
-                            </li>
-                        </ul>
-                    </div>
-                </ul>
-            </div>                        
-        </div>                   
-    </div>
-</div>
-
-
-<table class="table">
-    <thead>        
-        <th>Categorias</th>
-        @foreach($dados['mesesTopo'] as $mes)
+<style>
+.scroll-horizontal {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
      
-            <th>{{$mes['nomeMes']}}</th>
-        @endforeach
-   
-        <th class="text-green text-bold">TOTAL</th>
-        
-    </thead>
-    <tbody>
-    @foreach($dados['relatorio'] as $itens)  
-        <tr>     
-                <td>{{$itens['nome']}}</td>
-            @foreach($itens['meses'] as $mes)
-                <td>{{$mes['valor']}}</td>
-            @endforeach
-            <td class="text-green text-bold">{{$itens['totalAnualCategoria']}}</td>
-        </tr>
-        
-@endforeach
+}
 
-    <tr>
-        <td  class="text-primary text-bold">TOTAL</td>
-        @foreach($dados['mesesTopo'] as $mes)     
-            <td class="text-primary text-bold">{{$mes['valoresTotais']}}</td>
-        @endforeach
-            <td class="text-warning text-bold">{{$dados['valorTotalAno']}}</td>
-    
-    </tr>
-   
-    </tbody>
 
-</table>
+
+
+</style>
+
+<div class="row">
+
+<form action="./" method="post">
+    <div class="col-md-4">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <p class="center bold"> UNIDADE DE NEGÓCIO </p>
+            </div>
+            <div class="box-body">  
+            <div class="col-md-6 col-md-offset-3">
+            <select name="area" id="area" class="form-control" onchange="this.form.submit()">
+        
+                @foreach($dados['areas'] as $itemArea)
+                    <option @if($itemArea->nome == $dados['area']) selected @endif value="{{$itemArea->nome}}">{{$itemArea->nome}}</option>
+                    @endforeach
+            
+            </select>
+            
+                </div>          
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 ">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <p class="center bold"> DATA DE INICIO </p>
+            </div>
+            <div class="box-body">
+                <div class="col-md-6">
+                    <select name="mesInicio" class="form-control" onchange="this.form.submit()">
+                
+                        <option @if($dados['mesInicio'] == "01") selected @endif value="01">Janeiro</option>
+                        <option @if($dados['mesInicio'] == "02") selected @endif value="02">Fevereiro</option>
+                        <option @if($dados['mesInicio'] == "03") selected @endif value="03">Março</option>
+                        <option @if($dados['mesInicio'] == "04") selected @endif value="04">Abril</option>
+                        <option @if($dados['mesInicio'] == "05") selected @endif value="05">Maio</option>
+                        <option @if($dados['mesInicio'] == "06") selected @endif value="06">Junho</option>
+                        <option @if($dados['mesInicio'] == "07") selected @endif value="07">Julho</option>
+                        <option @if($dados['mesInicio'] == "08") selected @endif value="08">Agosto</option>
+                        <option @if($dados['mesInicio'] == "09") selected @endif value="09">Setembro</option>
+                        <option @if($dados['mesInicio'] == "10") selected @endif value="10">Outubro</option>
+                        <option @if($dados['mesInicio'] == "11") selected @endif value="11">Novembro</option>
+                        <option @if($dados['mesInicio'] == "12") selected @endif value="12">Dezembro</option>
+                    </select>
+                </div>
+
+
+            <div class="col-md-6">
+                <select name="anoInicio" class="form-control" onchange="this.form.submit()">
+                    <option  @if($dados['anoInicio'] == "2017") selected @endif value="2017">2017</option>
+                    <option @if($dados['anoInicio'] == "2018") selected @endif value="2018">2018</option>
+                    <option @if($dados['anoInicio'] == "2019") selected @endif value="2019">2019</option>
+                </select>
+            </div>                        
+            </div>                   
+        </div>
+    </div>
+
+    <div class="col-md-4 ">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <p class="center bold"> DATA FIM </p>
+            </div>
+            <div class="box-body">
+                <div class="col-md-6">
+                    <select name="mesFim" class="form-control" onchange="this.form.submit()">
+                        <option @if($dados['mesFim'] == "01") selected @endif value="01">Janeiro</option>
+                        <option @if($dados['mesFim'] == "02") selected @endif value="02">Fevereiro</option>
+                        <option @if($dados['mesFim'] == "03") selected @endif value="03">Março</option>
+                        <option @if($dados['mesFim'] == "04") selected @endif value="04">Abril</option>
+                        <option @if($dados['mesFim'] == "05") selected @endif value="05">Maio</option>
+                        <option @if($dados['mesFim'] == "06") selected @endif value="06">Junho</option>
+                        <option @if($dados['mesFim'] == "07") selected @endif value="07">Julho</option>
+                        <option @if($dados['mesFim'] == "08") selected @endif value="08">Agosto</option>
+                        <option @if($dados['mesFim'] == "09") selected @endif value="09">Setembro</option>
+                        <option @if($dados['mesFim'] == "10") selected @endif value="10">Outubro</option>
+                        <option @if($dados['mesFim'] == "11") selected @endif value="11">Novembro</option>
+                        <option @if($dados['mesFim'] == "12") selected @endif value="12">Dezembro</option>
+                
+                    </select>
+                </div>
+
+
+            <div class="col-md-6">
+                <select name="anoFim" class="form-control" onchange="this.form.submit()">
+                    <option  @if($dados['anoFim'] == "2017") selected @endif value="2017">2017</option>
+                    <option @if($dados['anoFim'] == "2018") selected @endif value="2018">2018</option>
+                    <option @if($dados['anoFim'] == "2019") selected @endif value="2019">2019</option>
+                </select>
+            </div>                        
+            </div>                   
+        </div>
+    </div>
+
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+</form>
+
+</div>
+
+<div class=" scroll-horizontal">       
+            <table class="table table-responsive">
+                <thead>        
+                    <th>Categorias</th>
+                @foreach($dados['mesesTopo'] as $mes)     
+                    <th>{{$mes['nomeMes']}}</th>
+                @endforeach   
+                    <th class="text-green text-bold">TOTAL</th>        
+                </thead>
+                <tbody>
+                @foreach($dados['relatorio'] as $itens)  
+                    <tr>     
+                            <td>{{$itens['nome']}}</td>
+                        @foreach($itens['meses'] as $mes)
+                            <td>{{$mes['valor']}}</td>
+                        @endforeach
+                        <td class="text-green text-bold">{{$itens['totalAnualCategoria']}}</td>
+                    </tr>        
+                @endforeach
+                <tr>
+                    <td  class="text-primary text-bold">TOTAL</td>
+                @foreach($dados['mesesTopo'] as $mes)     
+                    <td class="text-primary text-bold">{{$mes['valoresTotais']}}</td>
+                @endforeach
+                    <td class="text-warning text-bold">{{$dados['valorTotalAno']}}</td>    
+                </tr>   
+                </tbody>
+            </table>
+</div>
 
 
 @endsection
