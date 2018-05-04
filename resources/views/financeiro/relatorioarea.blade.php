@@ -64,9 +64,11 @@
 
             <div class="col-md-6">
                 <select name="anoInicio" class="form-control" onchange="this.form.submit()">
-                    <option  @if($dados['anoInicio'] == "2017") selected @endif value="2017">2017</option>
+                    <option @if($dados['anoInicio'] == "2017") selected @endif value="2017">2017</option>
                     <option @if($dados['anoInicio'] == "2018") selected @endif value="2018">2018</option>
                     <option @if($dados['anoInicio'] == "2019") selected @endif value="2019">2019</option>
+                    <option @if($dados['anoInicio'] == "2020") selected @endif value="2020">2020</option>
+                    <option @if($dados['anoInicio'] == "2021") selected @endif value="2021">2021</option>
                 </select>
             </div>                        
             </div>                   
@@ -97,12 +99,13 @@
                     </select>
                 </div>
 
-
             <div class="col-md-6">
                 <select name="anoFim" class="form-control" onchange="this.form.submit()">
                     <option  @if($dados['anoFim'] == "2017") selected @endif value="2017">2017</option>
                     <option @if($dados['anoFim'] == "2018") selected @endif value="2018">2018</option>
                     <option @if($dados['anoFim'] == "2019") selected @endif value="2019">2019</option>
+                    <option @if($dados['anoFim'] == "2020") selected @endif value="2020">2020</option>
+                    <option @if($dados['anoFim'] == "2021") selected @endif value="2021">2021</option>
                 </select>
             </div>                        
             </div>                   

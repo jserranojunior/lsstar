@@ -69,6 +69,12 @@ class contasAPagar extends Model
         $dados = array();        
         $valorTotalAno = 0;
  
+        if($dataInicio > $dataFim){
+            $dataFim = date('Y-m', strtotime("+12 months", strtotime($dataInicio)));
+            $mesFim = date('m', strtotime($dataFim));
+            $anoFim = date('Y', strtotime($dataFim));
+        }
+
 
         $area = $area;
         $dataInicio = $dataInicio;
@@ -77,8 +83,10 @@ class contasAPagar extends Model
 
         $areas = $this->areas->select('nome')->get();
       
+       
         
         /* MES TOPO || MES SOMA ANUAL || MES SOMA CATEGORIA ANUAL*/
+        
         while($dataInicioMeses <= $dataFim){
             $numeroMes = date('m', strtotime($dataInicioMeses));
             $nomeMes = date('M', strtotime($dataInicioMeses));
@@ -96,12 +104,8 @@ class contasAPagar extends Model
             $meses[$count]['nomeMes'] = $nomeMes;
             $meses[$count]['ano'] = $ano;
 
-
-
-         $totaisDoMes  = $this->contas->contaMensal($dataInicioMeses);
-        
-         $totaisDoMes = $totaisDoMes->where('area', $area);
-         
+         $totaisDoMes  = $this->contas->contaMensal($dataInicioMeses);        
+         $totaisDoMes = $totaisDoMes->where('area', $area);         
 
                          foreach($totaisDoMes as $totalMes){
                             $valoresContasAPagar = $this->valoresContasAPagar::where('codigo', $totalMes->id) 
@@ -117,11 +121,10 @@ class contasAPagar extends Model
                                 $valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
                                 $totalMes->valor =  $valores->valor;                             
                             }                
-                        }                        
-                
+                        }                       
+
                      $valorTotalAno += $totaisDoMes->sum('valor');
-                     $meses[$count]['valoresTotais'] = $totaisDoMes->sum('valor');
-                     
+                     $meses[$count]['valoresTotais'] = $totaisDoMes->sum('valor');     
 
             $dataInicioMeses = date('Y-m', strtotime("+1 months", strtotime($dataInicioMeses)));
             $count += 1;
