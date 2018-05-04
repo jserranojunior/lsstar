@@ -153,6 +153,8 @@ $(document).ready(function ()  {
   
 /* MASCARA TELEFONE */
 $('.telefone_mascara').mask('(00)0000-00000');
+$('.dinheiro_mascara').mask('000.000.000.000.000,00', {reverse: true});
+
 
 
 

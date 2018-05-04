@@ -12,6 +12,7 @@
  * Date: 2016-05-20T17:17Z
  */
 
+
 (function( global, factory ) {
     
         if ( typeof module === "object" && typeof module.exports === "object" ) {
@@ -49946,5 +49947,8 @@ $(document).ready(function () {
             });
         });
 
-
+        $(document).ready(function(){
+            $('.dinheiro_mascara').mask('000.000.000.000.000,00', {reverse: true});
+         });
+        
 //# sourceMappingURL=all.js.map

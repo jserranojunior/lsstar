@@ -16,7 +16,7 @@
 
 <div class="row">
 
-<form action="./" method="post">
+<form action="{{Route('financeiro.relatorioarea')}}" method="post">
     <div class="col-md-4">
         <div class="box box-warning">
             <div class="box-header with-border">
@@ -128,17 +128,17 @@
                     <tr>     
                             <td>{{$itens['nome']}}</td>
                         @foreach($itens['meses'] as $mes)
-                            <td>{{$mes['valor']}}</td>
+                            <td class="dinheiro_mascara">{{$mes['valor']}}</td>
                         @endforeach
-                        <td class="text-green text-bold">{{$itens['totalAnualCategoria']}}</td>
+                        <td class="text-green text-bold dinheiro_mascara">{{$itens['totalAnualCategoria']}}</td>
                     </tr>        
                 @endforeach
                 <tr>
                     <td  class="text-primary text-bold">TOTAL</td>
                 @foreach($dados['mesesTopo'] as $mes)     
-                    <td class="text-primary text-bold">{{$mes['valoresTotais']}}</td>
+                    <td class="text-primary text-bold dinheiro_mascara">{{$mes['valoresTotais']}}</td>
                 @endforeach
-                    <td class="text-warning text-bold">{{$dados['valorTotalAno']}}</td>    
+                    <td class="text-warning text-bold dinheiro_mascara">{{$dados['valorTotalAno']}}</td>    
                 </tr>   
                 </tbody>
             </table>
