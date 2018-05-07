@@ -125,7 +125,8 @@ class contasAPagar extends Model
                         }                       
 
                      $valorTotalAno += $totaisDoMes->sum('valor');
-                     $meses[$count]['valoresTotais'] = $totaisDoMes->sum('valor');     
+                     $meses[$count]['valoresTotais'] = $totaisDoMes->sum('valor'); 
+                     $meses[$count]['valoresTotais'] = number_format($meses[$count]['valoresTotais'], 2,',','.');    
 
             $dataInicioMeses = date('Y-m', strtotime("+1 months", strtotime($dataInicioMeses)));
             $count += 1;
@@ -169,10 +170,11 @@ class contasAPagar extends Model
                                 $valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
                                 $valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
                                 $conta->valor =  $valores->valor;
+                                //$conta->valorExibir = number_format($conta->valor, 2,'.',',');
                             }                
                         }                        
                             
-                            $total = $contas->sum('valor');  
+                            $total = $contas->sum('valor');                              
                             $dados[$categoria->nome]['meses'][$count]['valor'] = $total;
                             $dados[$categoria->nome]['meses'][$count]['categoria'] = $categoria->nome;
                             
@@ -181,8 +183,11 @@ class contasAPagar extends Model
                 $data = date('Y-m', strtotime("+1 months", strtotime($data)));
                 $count += 1;
             }
-            $dados[$categoria->nome]['totalAnualCategoria'] = $totalAnualCategoria;           
+            $dados[$categoria->nome]['totalAnualCategoria'] = number_format($totalAnualCategoria, 2,'.',',');           
         }
+
+      
+        $valorTotalAno = number_format($valorTotalAno, 2,'.',',');
 
         $dados = array(
             'relatorio' => $dados, 

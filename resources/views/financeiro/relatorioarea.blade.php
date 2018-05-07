@@ -130,17 +130,17 @@
                     <tr>     
                             <td>{{$itens['nome']}}</td>
                         @foreach($itens['meses'] as $mes)
-                            <td class="dinheiro_mascara">{{$mes['valor']}}</td>
+                            <td class="">{{$mes['valor'] = number_format($mes['valor'],2,',','.')}}</td>
                         @endforeach
-                        <td class="text-green text-bold dinheiro_mascara">{{$itens['totalAnualCategoria']}}</td>
+                        <td class="text-green text-bold">{{$itens['totalAnualCategoria']}}</td>
                     </tr>        
                 @endforeach
                 <tr>
                     <td  class="text-primary text-bold">TOTAL</td>
                 @foreach($dados['mesesTopo'] as $mes)     
-                    <td class="text-primary text-bold dinheiro_mascara">{{$mes['valoresTotais']}}</td>
+                    <td class="text-primary text-bold">{{$mes['valoresTotais']}}</td>
                 @endforeach
-                    <td class="text-warning text-bold dinheiro_mascara">{{$dados['valorTotalAno']}}</td>    
+                    <td class="text-warning text-bold ">{{$dados['valorTotalAno']}}</td>    
                 </tr>   
                 </tbody>
             </table>
