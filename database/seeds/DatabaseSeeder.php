@@ -12,7 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        DB::table('conta')
+        ->insert([
+        ['nome' => 'Diretoria']]);
+        
+        /*
         DB::table('conta')
         ->where('nome', 'Engenheiro')
         ->update(['nome' => 'Engenh. Arquiteto']);
