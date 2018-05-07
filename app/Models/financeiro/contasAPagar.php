@@ -47,6 +47,7 @@ class contasAPagar extends Model
 
         if(!isset($_POST['anoInicio']) or !isset($_POST['mesInicio'])){
             $dataInicio = date('Y-m', strtotime("-12 months", strtotime($dataInicio)));
+            $anoInicio = date('Y', strtotime($dataInicio));
         }
 
         if(!isset($_POST['mesFim'])){
@@ -62,7 +63,7 @@ class contasAPagar extends Model
 
         $dataFim = "$anoFim-$mesFim";
 
-      
+    
 
 
         $count = 0;

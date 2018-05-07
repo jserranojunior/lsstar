@@ -61,7 +61,6 @@
                     </select>
                 </div>
 
-
             <div class="col-md-6">
                 <select name="anoInicio" class="form-control" onchange="this.form.submit()">
                     <option @if($dados['anoInicio'] == "2017") selected @endif value="2017">2017</option>
