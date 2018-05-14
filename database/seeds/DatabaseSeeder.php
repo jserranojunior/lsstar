@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('conta')
+        DB::table('area')
         ->insert([
         ['nome' => 'Diretoria']]);
         

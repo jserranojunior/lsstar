@@ -82,7 +82,7 @@ class contasAPagar extends Model
         $dataFim = $dataFim;
         $dataInicioMeses = $dataInicio;
 
-        $areas = $this->areas->select('nome')->get();
+        $areas = $this->areas->select('nome')->orderBy('nome')->get();
       
        
         
