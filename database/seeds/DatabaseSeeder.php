@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('area')
         ->insert([
-        ['nome' => 'Diretoria']]);
+        ['nome' => 'Chácara do JB']]);
         
         /*
         DB::table('conta')
