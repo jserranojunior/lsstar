@@ -611,11 +611,11 @@ class financeiro extends Model {
         ->get();
 
         $area = DB::table('area')
-        ->orderBy('nome','asc')
+        ->orderBy('ordem','asc')
         ->get();            
 
         $conta = DB::table('conta')
-        ->orderBy('nome','asc')
+        ->orderBy('ordem','asc')
         ->get(); 
 
         $dados = array('favorecidos' => $favorecido, 'data_atual' => $data,'areas' => $area, 'contas' => $conta);            
@@ -648,11 +648,11 @@ class financeiro extends Model {
                     ->get();
             
                     $area = DB::table('area')
-                    ->orderBy('nome','asc')
+                    ->orderBy('ordem','asc')
                     ->get();            
             
                     $conta = DB::table('conta')
-                    ->orderBy('nome','asc')
+                    ->orderBy('ordem','asc')
                     ->get();                               
 
                 $dados = array('favorecidos' => $favorecido, 'data_atual' => $data,'areas' => $area, 'contas' => $conta, 'objetos' => $objetos);   
@@ -939,11 +939,11 @@ class financeiro extends Model {
             }
 
             $area = DB::table('area')
-            ->orderBy('nome','asc')
+            ->orderBy('ordem','asc')
             ->get();            
 
             $conta = DB::table('conta')
-            ->orderBy('nome','asc')
+            ->orderBy('ordem','asc')
             ->get(); 
 
             $dataatualcompleta = date('d-m-Y');
