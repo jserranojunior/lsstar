@@ -12,7 +12,63 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /* UPDATE AREA */
+
+        $areas = DB::table('area')
+        ->orderBy('ordem', 'asc')
+        ->get();
+
+       foreach($areas as $area){
+
+
+        if($area->ordem == 1){
+                $area->ordem = "01";
+        }
+        if($area->ordem == 2){
+                $area->ordem = "02";
+        }
+        if($area->ordem == 3){
+                $area->ordem = "03";
+        }
+        if($area->ordem == 4){
+                $area->ordem = "04";
+        }
+        if($area->ordem == 5){
+                $area->ordem = "05";
+        }
+        if($area->ordem == 6){
+                $area->ordem = "06";
+        }
+        if($area->ordem == 7){
+                $area->ordem = "07";
+        }
+        if($area->ordem == 8){
+                $area->ordem = "08";
+        }
+        if($area->ordem == 9){
+                $area->ordem = "09";
+        }
+          
+                $novoNome = "$area->ordem - $area->nome";
+
+               
+
+               DB::table('contas_a_pagar')
+               ->where('area', $area->nome)
+               ->update(['area' => $novoNome]);
+       
+               DB::table('valor_contas_a_pagar')
+               ->where('conta', $area->nome)
+               ->update(['conta' => $novoNome]);
+
+       
+       }
+/*
+ 
+
+
             /* UPDATE CONTAS AND CUSTOS */
+            /*
             DB::table('contas_a_pagar')
             ->where('contas', 'Administração')
             ->update(['contas' => '01 - Administração']);
@@ -111,7 +167,9 @@ class DatabaseSeeder extends Seeder
             ->where('ccustos', 'Pintura')
             ->update(['ccustos' => '14 - Pintura']);
 
-      
+      */
+
+
 /* UPDATE UNIDADE DE NEGOCIO */
 /*
         DB::table('area')
