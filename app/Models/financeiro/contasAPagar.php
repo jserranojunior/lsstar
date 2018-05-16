@@ -82,7 +82,7 @@ class contasAPagar extends Model
         $dataFim = $dataFim;
         $dataInicioMeses = $dataInicio;
 
-        $areas = $this->areas->select('nome')->orderBy('nome')->get();
+        $areas = $this->areas->select('nome', 'ordem')->orderBy('ordem')->get();
       
        
         
@@ -133,7 +133,7 @@ class contasAPagar extends Model
         }
 
         $categorias = $this->categoria::all();   
-        $categorias = $this->categoria->orderBy('nome', 'asc')->get();   
+        $categorias = $this->categoria->orderBy('ordem', 'asc')->get();   
         
         /* LAÇO DE CATEGORIA E SOMA MENSAL */
         foreach($categorias as $categoria){
@@ -146,6 +146,7 @@ class contasAPagar extends Model
                 $nomeMes = date('M', strtotime($data));
                 $ano = date('Y', strtotime($data));
     
+                $dados[$categoria->nome]['ordem'] = $categoria->ordem;
                $dados[$categoria->nome]['nome'] = $categoria->nome;
                 $dados[$categoria->nome]['meses'][$count]['numeroMes'] =  $numeroMes;
                 $dados[$categoria->nome]['meses'][$count]['nomeMes'] = $nomeMes;

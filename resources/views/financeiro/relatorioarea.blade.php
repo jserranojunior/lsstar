@@ -119,6 +119,7 @@
 <div class=" scroll-horizontal">       
             <table class="table table-responsive">
                 <thead>        
+                    <th>#</th>
                     <th>Categorias</th>
                 @foreach($dados['mesesTopo'] as $mes)     
                     <th>{{$mes['nomeMes']}}</th>
@@ -128,6 +129,7 @@
                 <tbody>
                 @foreach($dados['relatorio'] as $itens)  
                     <tr>     
+                        <td>{{$itens['ordem']}}</td>
                             <td>{{$itens['nome']}}</td>
                         @foreach($itens['meses'] as $mes)
                             <td class="">{{$mes['valor'] = number_format($mes['valor'],2,',','.')}}</td>
@@ -136,6 +138,7 @@
                     </tr>        
                 @endforeach
                 <tr>
+                <td>#</td>
                     <td  class="text-primary text-bold">TOTAL</td>
                 @foreach($dados['mesesTopo'] as $mes)     
                     <td class="text-primary text-bold">{{$mes['valoresTotais']}}</td>

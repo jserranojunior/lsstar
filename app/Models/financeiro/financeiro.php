@@ -32,6 +32,7 @@ class financeiro extends Model {
 
             $unidades = DB::table('area')
             ->select('nome','id')
+            ->orderBy('ordem', 'asc')
             ->get(); 
 
             $totalTudo = 0;
@@ -153,6 +154,7 @@ class financeiro extends Model {
         
         $unidades = DB::table('area')
         ->select('nome','id')
+        ->orderBy('ordem', 'asc')
         ->get(); 
         
         
