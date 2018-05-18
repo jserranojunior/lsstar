@@ -663,7 +663,9 @@ class financeiro extends Model {
                     
     }
 
-    public function Index($datas, $ordenacao, $areafiltro, $contafiltro, $pagadorfiltro){
+    public function Index($datas, $ordenacao, $areafiltro, $contafiltro, $pagadorfiltro, $diaInicial, $diaFinal){
+
+       
 
         $fb = array($ordenacao, $areafiltro, $contafiltro, $pagadorfiltro);
        
@@ -675,20 +677,28 @@ class financeiro extends Model {
 
         $this->pagadorfiltro = $pagadorfiltro;
 
-        $this->tratarData($datas);
+        $this->tratarData($datas, $diaInicial, $diaFinal);
         $this->selectContas();
         
         $lista = $this->lista();
         return($lista);
     }
 
-    public function tratarData($datas){
+    public function tratarData($datas, $diaInicial, $diaFinal){
 
         /* ############# TRATA A DATA QUE VEM DO INPUT ################ */
             setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
             date_default_timezone_set('America/Sao_Paulo');
             $this->mes_atual = date('m');
             $this->ano_atual = date('Y');
+
+          
+            $this->diaInicial = $diaInicial; 
+            $this->diaFinal = $diaFinal; 
+            
+                        
+
+            
 
             $this->data = $datas['data'];
             $this->mes = $datas['mes'];
@@ -735,7 +745,7 @@ class financeiro extends Model {
                     ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
                     ->distinct()
                     ->get();
-
+           
     }
     
     public function selectMesAnterior($id){
@@ -828,7 +838,9 @@ class financeiro extends Model {
                     }
                 }
 
-                /* ############# FILTROS ################ */           
+                /* ############# FILTROS ################ */      
+                
+             
                 
                 if($this->areafiltro!= "Todos"){
                 $this->contas = $this->contas->where('area', $this->areafiltro);
@@ -841,9 +853,13 @@ class financeiro extends Model {
                 if($this->pagadorfiltro != "Todos"){
                     $this->contas = $this->contas->where('pagador', $this->pagadorfiltro);
                 }            
-                
+
+                          
                 /* ############# ORDENAÇÃO ################ */            
             }
+
+            $this->contas = $this->contas->where('dia','>=', $this->diaInicial);                 
+            $this->contas = $this->contas->where('dia','<=', $this->diaFinal); 
             
                 $contas = $this->contas->toArray();
                 
@@ -980,6 +996,8 @@ class financeiro extends Model {
                 'ordenacao' => $this->ordenacao,
                 'aprovados' => $this->aprovados,
                 'dataatualcompleta' => $dataatualcompleta,
+                'diaInicial' => $this->diaInicial,
+                'diaFinal' => $this->diaFinal,
             );
 
             /* ############# RETORNO DOS DADOS PARA O CONTROLLER ################ */

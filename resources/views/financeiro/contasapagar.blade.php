@@ -134,8 +134,17 @@
                         </div>
                     </div>
                     <div class="box-footer">
+                    <div class="col-xs-4">
                         <a class="esquerda btn btn-primary btn-sm" href="#" onclick="criar('{{$dataatual}}');"                                          >
                         (+)  Incluir</a>
+                </div>
+                <div class="col-xs-4">
+                    <input type="number" class="form-control" id="diaInicial" value="{{$diaInicial}}" name="diaInicial" form="formulariofiltros">
+                </div>
+                <div class="col-xs-4">
+                    <input type="number" class="form-control" id="diaFinal" value="{{$diaFinal}}" name="diaFinal" form="formulariofiltros">
+                </div>
+                        
                     </div>
                 </div>
             </div>
@@ -434,7 +443,10 @@
                     <input type="hidden" value="" name="contafiltro" id="contafiltro">
                         <input type="hidden" value="" name="pagadorfiltro" id="pagadorfiltro">
                             <input type="hidden" value="" name="ordenacao" id="ordenacao">
+                          
+
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            
                                 </form>
                                 <script>
 function enviar(ordenacao, mes, ano, areafiltro, contafiltro, pagadorfiltro){
@@ -495,6 +507,25 @@ function criar($data) {
                , filename: $nomearquivo
             });
         });
+    });
+
+
+    $(document).ready(function(){
+
+
+                function filtroDia(){
+                    enviar('{{$ordenacao}}','{{$mes}}','{{$ano}}', '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}')
+                     }
+
+                    $('#diaInicial').change(function() {                            
+                        filtroDia();                
+                    });
+
+                    $('#diaFinal').change(function() {                            
+                        filtroDia();                
+                    });
+
+        
     });
 
 
