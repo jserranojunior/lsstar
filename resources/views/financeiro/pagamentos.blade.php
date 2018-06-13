@@ -18,6 +18,9 @@
             <td>
                 Data Pagamento
             </td>
+            <td>
+                Link Comprovante
+            </td>
         </tr>
 
         <tr>
@@ -27,6 +30,10 @@
             </td>
             <td>
                 {{$data_conta}}
+            </td>
+            <td>
+                <a href="{{$link_comprovante}}" class="text-bold" target="_BLANK">ACESSAR COMPROVANTE</a>
+                
             </td>
         </tr>
     </table>

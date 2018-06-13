@@ -37,6 +37,16 @@
 
             <div class="form-group">
                 <div class="col-xs-4">
+                    <label for="link_comprovante" class="control-label">Link Comprovante</label>
+                </div>
+
+                <div class="col-xs-8">
+                    <input type="text"  class="form-control" name="link_comprovante" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-4">
                     <label for="data" class="control-label">Data</label>
                 </div>
 

@@ -408,6 +408,7 @@ class financeiro extends Model {
             $pagador = $pagamento->pagador;
             $data_conta = $pagamento->data_conta;
             $numero_cheque = $pagamento->numero_cheque;
+            $link_comprovante = $pagamento->link_comprovante;
 
             $valor = str_ireplace(".","",$valor); //remove o separador de milhares
             $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto
@@ -419,7 +420,14 @@ class financeiro extends Model {
         $valortotal  = number_format($valortotal ,2,',','.');
 
 
-        $dados = array('contas' => $selectpagamento,'valortotal' => $valortotal,'pagador' =>$pagador, 'numero_cheque' => $numero_cheque, 'data_conta' => $data_conta);
+        $dados = array(
+            'contas' => $selectpagamento,
+            'valortotal' => $valortotal,
+            'pagador' =>$pagador, 
+            'numero_cheque' => $numero_cheque, 
+            'data_conta' => $data_conta,
+            'link_comprovante' => $link_comprovante,
+        );
 
         return($dados);
     }
@@ -431,16 +439,22 @@ class financeiro extends Model {
         $somavalor = $request->somavalor;
         $dataconta = $request->dataconta;
         $tipopagamento = $request->tipopagamento;
-            
+        $link_comprovante = $request->link_comprovante;
 
 
         foreach($checklist as $check){
             $id = $check;          
             try{    
                 DB::table('financeiro_pagamentos_feitos')
-                ->insert(['id_conta' => $id, 'valor_pago' => $somavalor, 
-                'data_conta' => $datapagamento, 'numero_cheque' => $numeropagamento,  
-                'mes_referencia' => $dataconta, 'tipo_pagamento' => $tipopagamento]);
+                ->insert([
+                    'id_conta' => $id, 
+                    'valor_pago' => $somavalor, 
+                'data_conta' => $datapagamento, 
+                'numero_cheque' => $numeropagamento,  
+                'mes_referencia' => $dataconta, 
+                'tipo_pagamento' => $tipopagamento,
+                'link_comprovante' => $link_comprovante,
+                ]);
                 
             }catch(\Excepetion $e){
                 dd($e);
