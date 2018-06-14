@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="col-xs-8">
-                    <input type="text"  class="form-control" name="link_comprovante" required>
+                    <input type="text"  class="form-control" name="link_comprovante">
                 </div>
             </div>
 
