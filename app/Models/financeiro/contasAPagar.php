@@ -184,7 +184,7 @@ class contasAPagar extends Model
                 $data = date('Y-m', strtotime("+1 months", strtotime($data)));
                 $count += 1;
             }
-            $dados[$categoria->nome]['totalAnualCategoria'] = number_format($totalAnualCategoria, 2,'.',',');           
+            $dados[$categoria->nome]['totalAnualCategoria'] = number_format($totalAnualCategoria, 2,',','.');           
         }
 
       
