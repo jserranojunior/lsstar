@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 class faturaconsolidada extends Model
 {
-    public function index(){
-        
-        
+    public function index(){        
         
         $ano = '2015';
         $data = "$ano-10";
@@ -25,8 +23,7 @@ class faturaconsolidada extends Model
                 ->where('dt_final', '>', '2016-06-01')
                 ->distinct()
                 ->get();
-                
-           
+                           
 
         $faturas = $faturas->toArray();
         for ($count = 1; $count <= 12; $count++) {
@@ -178,25 +175,25 @@ class faturaconsolidada extends Model
        
             
             
-            switch ($count) {
-        case "01":    $mes = 'Janeiro';     break;
-        case "02":    $mes = 'Fevereiro';   break;
-        case "03":    $mes = 'Março';       break;
-        case "04":    $mes = 'Abril';       break;
-        case "05":    $mes = 'Maio';        break;
-        case "06":    $mes = 'Junho';       break;
-        case "07":    $mes = 'Julho';       break;
-        case "08":    $mes = 'Agosto';      break;
-        case "09":    $mes = 'Setembro';    break;
-        case "10":    $mes = 'Outubro';     break;
-        case "11":    $mes = 'Novembro';    break;
-        case "12":    $mes = 'Dezembro';    break; 
- }
+                switch ($count) {
+                    case "01":    $mes = 'Janeiro';     break;
+                    case "02":    $mes = 'Fevereiro';   break;
+                    case "03":    $mes = 'Março';       break;
+                    case "04":    $mes = 'Abril';       break;
+                    case "05":    $mes = 'Maio';        break;
+                    case "06":    $mes = 'Junho';       break;
+                    case "07":    $mes = 'Julho';       break;
+                    case "08":    $mes = 'Agosto';      break;
+                    case "09":    $mes = 'Setembro';    break;
+                    case "10":    $mes = 'Outubro';     break;
+                    case "11":    $mes = 'Novembro';    break;
+                    case "12":    $mes = 'Dezembro';    break; 
+                }
             
            
-            $arrayMes[$count] = array('totalGeralSoma'=>$totalGeralSomaFormatado,'totalGeralProcedimentos' => $totalGeralProcedimentos,'nomeMes'=>$mes ,'dadosFaturas' =>$arrayCodigo);
+                $arrayMes[$count] = array('totalGeralSoma'=>$totalGeralSomaFormatado,'totalGeralProcedimentos' => $totalGeralProcedimentos,'nomeMes'=>$mes ,'dadosFaturas' =>$arrayCodigo);
             
-        }
+            }
         
         
        
@@ -206,7 +203,7 @@ class faturaconsolidada extends Model
       
       
       
-      return($dados);
+        return($dados);
      
         
         

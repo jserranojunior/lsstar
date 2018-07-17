@@ -204,9 +204,7 @@ class contasAPagar extends Model
        return($dados);
     }
 
-
-    public function valorContasAPagar()
-    {        
+    public function valorContasAPagar(){        
         return $this->hasOne('App\Models\Financeiro\valorContasAPagar');
     }
 
@@ -223,9 +221,5 @@ class contasAPagar extends Model
        echo $this->bills->id;
         return($this->bills);
     }
-
-
-
-
 
 }

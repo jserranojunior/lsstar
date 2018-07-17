@@ -39,7 +39,7 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
 
     /* RELATÓRIOS */
     Route::any('/mensal',['as' => 'mensal', 'uses' => 'Financeiro\RelatorioController@mensal']);
-    Route::any('/anual',['as' => 'anual', 'uses' => 'Financeiro\RelatorioController@anual']);
+    Route::any('/anual/{ano?}',['as' => 'anual', 'uses' => 'Financeiro\RelatorioController@anual']);
     Route::any('/relatorioconsolidado',['as' => 'relatorioconsolidado', 'uses' => 'Financeiro\RelatorioController@consolidado']);
     
     Route::any('/relatorioarea',['as' => 'relatorioarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);

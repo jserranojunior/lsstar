@@ -13,11 +13,14 @@
 				</div>
 				<div class="box-body">
                 <div class="row">
-					<div class="col-md-6 ">
+					<div class="col-md-5 ">
 						<a class="btn btn-warning btn-xs" href="{{Route('financeiro.mensal')}}" role="button">Relatório Mensal</a>
 					</div>
-					<div class="col-md-6 text-center">
-						<a class="btn btn-primary btn-xs" href="{{Route('financeiro.anual')}}" role="button">Relatório Anual</a>
+					<div class="col-md-3 text-center">
+						<a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2017')}}" role="button">Anual 2017</a>
+                    </div>
+                    <div class="col-md-3 text-center">
+						<a class="btn btn-primary btn-xs" href="{{Route('financeiro.anual')}}" role="button">Anual 2018</a>
 					</div>
                 </div>
                 <br>

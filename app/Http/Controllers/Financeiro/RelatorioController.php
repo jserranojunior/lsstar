@@ -40,12 +40,13 @@ class RelatorioController extends Controller
         if($request->ano == null){
             $request->ano = date('Y');
         }
+       // dd($request->ano);
         
         $financeiro = new financeiro();
-        $dados2017 = $financeiro->anual(2017);
-        $dados2018 = $financeiro->anual(2018);
+        //$dados2017 = $financeiro->anual(2017);
+        $dados = $financeiro->anual($request->ano);
 
-        $dadosAnuais = array('dados2018' => $dados2018, 'dados2017' => $dados2017);
+    $dadosAnuais = array('dados' => $dados/*, 'dados2017' => $dados2017*/);
         $dados = array('dadosAnuais' => $dadosAnuais, 'ano' => $request->ano );
        
         return view('financeiro.relatorioanual')->with($dados);

@@ -8,8 +8,7 @@ use DB;
 
 class fornecedor extends Model
 {
-    public function atualizar($request)
-    {
+    public function atualizar($request){
         $id = $request->id;
 
         $dados = array(

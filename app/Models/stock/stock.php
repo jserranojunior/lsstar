@@ -35,9 +35,7 @@ class stock extends Model
                 ->where('id', $id)
                 ->delete();
     }
-    
-    
-    
+        
     public function atualizar($dados){
        
         $id = $dados['id'];
@@ -73,10 +71,10 @@ class stock extends Model
         'reason' => $reason,
         'category' => $category,
                     'amount' => $amount
-    ]);
+        ]);
         
         return('CADASTRADO COM SUCESSO');
-}
+    }
     
     public function put($dados){
         
@@ -119,6 +117,5 @@ class stock extends Model
                 );
         return('CADASTRADO COM SUCESSO');
     }
-    
-    
+        
 }
