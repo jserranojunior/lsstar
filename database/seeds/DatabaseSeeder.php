@@ -12,43 +12,51 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /* UPDATE AREA */
 
+        DB::table('users')->insert([
+                'name' => 'Andreia',
+                'email' => 'andreia@lsstar.com.br',
+                'password' => bcrypt('@1andreia'),
+                'photo' => 'menina.png',
+            ]);
+
+        /* UPDATE AREA */
+/*
         $areas = DB::table('area')
         ->orderBy('ordem', 'asc')
         ->get();
 
        foreach($areas as $area){
-
-
-        if($area->ordem == 1){
-                $area->ordem = "01";
-        }
-        if($area->ordem == 2){
-                $area->ordem = "02";
-        }
-        if($area->ordem == 3){
-                $area->ordem = "03";
-        }
-        if($area->ordem == 4){
-                $area->ordem = "04";
-        }
-        if($area->ordem == 5){
-                $area->ordem = "05";
-        }
-        if($area->ordem == 6){
-                $area->ordem = "06";
-        }
-        if($area->ordem == 7){
-                $area->ordem = "07";
-        }
-        if($area->ordem == 8){
-                $area->ordem = "08";
-        }
-        if($area->ordem == 9){
-                $area->ordem = "09";
-        }
-          
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
+secret
                 $novoNome = "$area->ordem - $area->nome";               
 
                DB::table('contas_a_pagar')
@@ -98,7 +106,7 @@ class DatabaseSeeder extends Seeder
                 ->where('nome', $area->nome)
                 ->update(['nome' => $novoNome]);
        
-       }
+       }*/
 /*
  
 
