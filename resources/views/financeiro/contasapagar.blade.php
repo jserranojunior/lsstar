@@ -5,50 +5,52 @@
 <div class="atualizar" onunload="window.opener.location.reload();"></div>
 <div class="parte-cima">
 	<div class="row">
-		<!-- PANEL 1 -->
-		<div class="col-md-4 ">
-			<div class="box box-info">
-				<div class="box-header with-border">
-					<p class="center bold">Relatórios</p>
-				</div>
-				<div class="box-body">
-                <div class="row">
-					<div class="col-md-5 ">
-						<a class="btn btn-warning btn-xs" href="{{Route('financeiro.mensal')}}" role="button">Relatório Mensal</a>
-					</div>
-					<div class="col-md-3 text-center">
-						<a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2017')}}" role="button">Anual 2017</a>
+        @if(Auth::user()->id == 2 or Auth::user()->id == 3 or Auth::user()->id == 5 or Auth::user()->id == 1)
+            <!-- PANEL 1 -->
+            <div class="col-md-4 ">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <p class="center bold">Relatórios</p>
                     </div>
-                    <div class="col-md-3 text-center">
-						<a class="btn btn-primary btn-xs" href="{{Route('financeiro.anual')}}" role="button">Anual 2018</a>
-					</div>
-                </div>
-                <br>
-					
-                <div class="row">
-                    <div class="col-md-6 ">
-                        <a class="btn btn-info btn-xs" href="{{Route('financeiro.relatorioconsolidado')}}" role="button">Relatório Consolidado</a>
-				    </div>
-            
-                    <div class="col-md-6 ">
-                        <a class="btn btn-danger btn-xs" href="{{Route('financeiro.relatorioarea')}}" role="button">Relatório de Negócios</a>
-				    </div>
-                </div>
-
+                    <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-5 ">
+                            <a class="btn btn-warning btn-xs" href="{{Route('financeiro.mensal')}}" role="button">Relatório Mensal</a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2017')}}" role="button">Anual 2017</a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a class="btn btn-primary btn-xs" href="{{Route('financeiro.anual')}}" role="button">Anual 2018</a>
+                        </div>
+                    </div>
+                    <br>
+                        
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <a class="btn btn-info btn-xs" href="{{Route('financeiro.relatorioconsolidado')}}" role="button">Relatório Consolidado</a>
+                        </div>
                 
+                        <div class="col-md-6 ">
+                            <a class="btn btn-danger btn-xs" href="{{Route('financeiro.relatorioarea')}}" role="button">Relatório de Negócios</a>
+                        </div>
+                    </div>
 
-						
-					</div>
-				<div class="box-footer">
-					<input type="button" class="esquerda btn btn-success excel btn-sm" id="btnExport"  value="Exportar Excel">
-				</div>
-			</div>
-		</div>
+                    
+
+                            
+                        </div>
+                    <div class="box-footer">
+                        <input type="button" class="esquerda btn btn-success excel btn-sm" id="btnExport"  value="Exportar Excel">
+                    </div>
+                </div>
+            </div>
+        @endif
     <!-- PANEL 2 -->
     <div class="col-md-4 ">
         <div class="box box-info">
             <div class="box-header with-border">
-                <p class="center bold"> Data </p>
+                <p class="center bold"> Data {{Auth::user()->id }}</p>
             </div>
             <div class="box-body">
                 <div class="col-md-6">
