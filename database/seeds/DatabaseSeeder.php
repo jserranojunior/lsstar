@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         ->update([         
                 'name' => 'Andrea',       
                 'email' => 'andrea@lsstar.com.br',
-                'password' => bcrypt('@1andrea'),
+                'password' => bcrypt('senha'),
             ]);
 
         // cadastrar usuario
