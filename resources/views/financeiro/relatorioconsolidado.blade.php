@@ -19,10 +19,23 @@
         <td  class="text-center"> {{$count++}} </td>
         <td> {{$item['nomeUnidade']}} </td>        
         @foreach($item['valores'] as $valor )
-            <td  class="text-right">{{$valor}}</td>
+            <td  class="text-right">
+                    @if($valor > 0) 
+                    {{number_format($valor ,2,',','.')}}
+                    @else
+                    0,00
+                    @endif                 
+               </td>
         @endforeach
         
-        <td  class="text-right text-warning text-bold">{{$item['soma']}}</td>
+        <td  class="text-right text-warning text-bold">
+                @if($item['soma'] > 0) 
+                {{number_format($item['soma'] ,2,',','.')}}
+                @else
+                0,00
+                @endif 
+       
+        </td>
        
 
         

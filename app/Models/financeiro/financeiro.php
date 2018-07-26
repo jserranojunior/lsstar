@@ -51,7 +51,7 @@ class financeiro extends Model {
                 for($ano = 2017; $ano < $anoFinal; $ano++){   
 
                     $valor = $this->somaTotalPorUnidade($ano, $unidade);
-                    $valorAnual[$ano] = number_format($valor, 2,',','.');  
+                    $valorAnual[$ano] = $valor; //number_format($valor, 2,',','.');  
                     $valorSoma += $valor; 
                     
                 }
@@ -59,7 +59,7 @@ class financeiro extends Model {
             
                 $totalTudo +=  $valorSoma;
 
-                $valorSoma = number_format($valorSoma, 2,',','.');
+                $valorSoma = $valorSoma; //number_format($valorSoma, 2,',','.');
         
                 $dadosUnidades['unidades'][$unidade]['soma'] = $valorSoma; 
                 $dadosUnidades['unidades'][$unidade]['nomeUnidade']  = $unidade;
@@ -76,7 +76,8 @@ class financeiro extends Model {
                 foreach($da['valores'] as $key => $valor){ 
                         if($key == $ano){   
                             $somaTotalAno += $valor;                                        
-                        }  
+                        }
+                         
                 }      
             }
             $somaTotalAnoArray[$ano] = number_format($somaTotalAno, 2,',','.'); 
