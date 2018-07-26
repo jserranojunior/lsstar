@@ -13,14 +13,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //converter
-        $valores = DB::table('valor_contas_a_pagar')->select('valor','id')->get();
-        foreach($valores as $item){
-                $item->valor = str_replace(',','.',str_replace('.', '', $item->valor));
-                
-                DB::table('valor_contas_a_pagar')
-               ->where('id', $item->id)
-               ->update(['valor' => $item->valor]);
-        }
+        DB::table('users')->take(1)
+        ->where('email','andreai@lsstar.com.br')
+        ->update([         
+                'name' => 'Andrea',       
+                'email' => 'andrea@lsstar.com.br',
+                'password' => bcrypt('@1andrea'),
+            ]);
 
         // cadastrar usuario
         /*DB::table('users')->insert([
