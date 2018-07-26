@@ -5,8 +5,8 @@ use DB;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\financeiro\valorContasAPagar;
 use App\Models\areas;
-use App\Models\contas_a_pagar;
-use App\Models\valor_contas_a_pagar;
+use App\Models\tables\contas_a_pagar;
+use App\Models\tables\valor_contas_a_pagar;
 use App\Models\conta;
 
 class contasAPagar extends Model
@@ -105,7 +105,7 @@ class contasAPagar extends Model
             $meses[$count]['nomeMes'] = $nomeMes;
             $meses[$count]['ano'] = $ano;
 
-         $totaisDoMes  = $this->contas->contaMensal($dataInicioMeses);        
+         $totaisDoMes  = $this->contas->contasMensais($dataInicioMeses);        
          $totaisDoMes = $totaisDoMes->where('area', $area);         
 
                          foreach($totaisDoMes as $totalMes){
@@ -118,8 +118,8 @@ class contasAPagar extends Model
                             ->get();
                             
                             foreach($valoresContasAPagar as $valores){
-                                $valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
-                                $valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
+                                ///$valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
+                                //$valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
                                 $totalMes->valor =  $valores->valor;                             
                             }                
                         }                       
@@ -153,7 +153,7 @@ class contasAPagar extends Model
                 $dados[$categoria->nome]['meses'][$count]['ano'] = $ano;
 
                 // antigo
-                $contas = $this->contas->contaMensal($data);
+                $contas = $this->contas->contasMensais($data);
             
                         $contas = $contas->where('area', $area); 
                         $contas = $contas->where('contas', $categoria->nome); 
@@ -168,8 +168,8 @@ class contasAPagar extends Model
                             ->get();
                             
                             foreach($valoresContasAPagar as $valores){
-                                $valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
-                                $valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
+                                //$valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
+                               // $valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
                                 $conta->valor =  $valores->valor;
                                 //$conta->valorExibir = number_format($conta->valor, 2,'.',',');
                             }                
@@ -204,22 +204,29 @@ class contasAPagar extends Model
        return($dados);
     }
 
-    public function valorContasAPagar(){        
+    public function valorContasAPagar(){       
         return $this->hasOne('App\Models\Financeiro\valorContasAPagar');
     }
 
-    public function allBillsPay(){
-        $this->bills = self::all(); 
-        return($this->bills);
-    }
 
-    public function allPayMounth(){
-        $this->bills = $this->allBillsPay();
-        $this->bills = $this->bills->where('inicio_conta','>=','2017-06-01')        
-                        ->where('inicio_conta','<=','2017-06-30');            
-        $this->bills =  $this->bills->where('area','Jardim Asturias');
-       echo $this->bills->id;
-        return($this->bills);
+    public function allPayMounth($mesAno){
+        $this->data = $mesAno;
+        $contas = $this->contas->contasMensais($this->data);  
+                 
+            foreach($contas as $conta){              
+                $valoresContasAPagar = $this->valoresContasAPagar->valorParaPagar($this->data, $conta->id);
+                foreach($valoresContasAPagar as $valores){
+                    $conta->valor = $valores->valor;
+                    $conta->item = $valores->item;
+                    $conta->ccustos = $valores->ccustos;
+                    $conta->favorecido = $valores->favorecido;
+                    $conta->dia = date('d', strtotime($valores->inicio_mes));                    
+                }                                              
+            }
+           
+           
+           // SOMAR $contasSoma = $contas->sum('valor');
+        return($contas);
     }
 
 }

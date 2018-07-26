@@ -114,12 +114,16 @@
             
             @foreach($dado['valor'] as $val)
                <td  class="text-right point point-link" onclick="enviar('favorecido',{{$val['mes']}},{{$listaAnual['anoContas']}},'{{$val['unidade']}}','Todos');">
-                    {{ $val['valor']}}
+                   @if($val['valor'] > 0) 
+                   {{number_format($val['valor'] ,2,',','.')}}
+                   @else
+                   0,00
+                   @endif 
                 </td>
             @endforeach
             @foreach($dado['total'] as $total)
         <td class="bold text-warning text-right">
-            {{ $total }}
+                {{number_format($total ,2,',','.')}}
         </td>
     @endforeach
         </tr>

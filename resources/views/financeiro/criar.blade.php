@@ -31,13 +31,14 @@
                         <select name="tipo" id="tipo" class="form-control ">
                            <option value="Extra">À Vista</option>
                            <option value="Parcelado">Parcelado</option>
+                           <option value="Fixo">Mensal</option>
                         </select>
                     </div>
                 </div>
 
 
 
-                
+                <date-util format="dd/MM/yyyy"></date-util>
 
                 <div class="form-group">
                     <label for="inicio_conta" class="col-xs-4 control-label">Data Pagamento</label>

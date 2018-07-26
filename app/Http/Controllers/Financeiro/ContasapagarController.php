@@ -8,25 +8,22 @@ use App\Models\financeiro\financeiro;
 use App\Models\financeiro\contasAPagar;
 use App\Models\data\dataClass;
 use App\Http\Controllers\Controller;
-use App\Models\financeiro\valorContasAPagar;
+use App\Models\tables\valor_contas_a_pagar;
 
 class ContasapagarController extends Controller {
 
-    public function __construct(contasAPagar $contasAPagar){
-        $this->bills = $contasAPagar;
+    public function __construct(contasAPagar $contasAPagar, valor_contas_a_pagar $valorContasAPagar){
+        $this->billsToPay = $contasAPagar;
+        $this->valorContasAPagar = $valorContasAPagar;
     }
 
     function apiContas(){
-        $bills = valorContasAPagar::all();
+        $billsToPay = $this->billsToPay->allPayMounth("2018-05");
+        $dados = ['contas' => $billsToPay];
+       
+    return view('financeiro.Newcontasapagar')->with($dados);
         
-        foreach($bills as $bill){
-            echo("$bill->valor<br>");
-        }
 
-       // return($valor->valor);
-
-       // $billsToPay = $this->bills->allPayMounth();
-      //  return($billsToPay);
     }
 
     function Index() {
@@ -130,8 +127,8 @@ class ContasapagarController extends Controller {
     function store(Request $request){
        
         $dados = $request->all();
-        $finaceiro = new financeiro();
-        $finaceiro->salvar($dados);
+        $financeiro = new financeiro();
+        $financeiro->salvar($dados);
         return('<script>opener.location.reload(); window.close();</script>');
 
     }

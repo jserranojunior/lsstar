@@ -27,9 +27,10 @@
                 <div class="form-group">
                     <label for="tipo" class='col-xs-4 control-label'>Tipo de conta</label>	
                     <div class="col-xs-8">
-                        <select name="tipo" id="tipo" class="form-control ">                            
+                        <select name="tipo" id="tipo" class="form-control ">                                                    
                            <option @if($objeto->tipo == "Extra")selected @endif value="Extra">À Vista</option>
                            <option @if($objeto->tipo == "Parcelado")selected @endif  value="Parcelado">Parcelado</option>
+                           <option @if($objeto->tipo == "Fixo")selected @endif  value="Fixo">Mensal</option>
                         </select>
                     </div>
                 </div>
@@ -105,13 +106,15 @@
                         </select>
                     </div>
                 </div>
-   
+  
 
         </div>
         <div class="box-footer with-border">
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-4">
+                <input type="hidden" name="tipo_atual" value="{{$objeto->tipo}}">
                 <input type="hidden" name="id" value="{{ $objeto->id }}">
+                <input type="hidden" name="$data_atual" value="{{$data_atual}}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="submit" value="Atualizar" class="btn btn-primary">
                 </div> 

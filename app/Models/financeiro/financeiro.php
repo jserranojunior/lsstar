@@ -75,9 +75,7 @@ class financeiro extends Model {
             foreach($unidades as $da){ 
                 foreach($da['valores'] as $key => $valor){ 
                         if($key == $ano){   
-                            $valorSemVirgula = str_ireplace(".","",$valor); //remove o separador de milhares
-                            $valorSemVirgula = str_ireplace(",",".",$valorSemVirgula); //substitui a virgula por ponto 
-                            $somaTotalAno += $valorSemVirgula;                                        
+                            $somaTotalAno += $valor;                                        
                         }  
                 }      
             }
@@ -138,11 +136,10 @@ class financeiro extends Model {
                     $valorSemVirgula  = 0;                        
                 }else{                    
                     $valor = $valores->valor;
-                    $valorSemVirgula = str_ireplace(".","",$valor); //remove o separador de milhares
-                    $valorSemVirgula = str_ireplace(",",".",$valorSemVirgula); //substitui a virgula por ponto 
+                     
                 }
               
-                $valorMensal +=  $valorSemVirgula;  
+                $valorMensal +=  $valor;  
             }
             $valorAnual += $valorMensal;    
         }                    
@@ -151,12 +148,10 @@ class financeiro extends Model {
 
     public function anual($ano){
        
-        
         $unidades = DB::table('area')
         ->select('nome','id')
         ->orderBy('ordem', 'asc')
         ->get(); 
-        
         
 
         $totalAno = 0;      
@@ -176,7 +171,6 @@ class financeiro extends Model {
             $arrayTotal = array(); 
             $arrayTotalMes = array();
             
-
             for($mes = 1; $mes <= 12; $mes++){   
 
                 if($mes == 1){
@@ -220,41 +214,34 @@ class financeiro extends Model {
                 $mesbusca = date("Y-m",strtotime($mesano));
                 $mesanoanterior = date($mesbusca,strtotime( "-1 month" ));
                
-            $valor = $this->valormensal($mesbusca, $mesanoanterior, $unidade); 
+            $valor = $this->valormensal($mesbusca, $mesanoanterior, $unidade);           
             
-            
-            $valorSemVirgula = str_ireplace(".","",$valor); //remove o separador de milhares
-            $valorSemVirgula = str_ireplace(",",".",$valorSemVirgula); //substitui a virgula por ponto 
-            
-
-
             $dataatual = date('Y-m');            
             if($mesbusca > $dataatual){
                 
-                $valorSemVirgula = 0.00;
+               
                 $valorTotalMes = "0,00";
                 $valor = "0,00";                
             }else{
 
-                $valorTotal = $valorTotal + $valorSemVirgula;
+                $valorTotal = $valorTotal + $valor;
 
                 $valorTotalMes = $this->totalmensal($mesbusca,$mesanoanterior);
 
             }
 
             
-              array_push($arrayTotalMes,array('valorTotal' => $valorTotalMes, 'mes' => $mes)); 
-              
+              array_push($arrayTotalMes,array('valorTotal' => $valorTotalMes, 'mes' => $mes));               
                      
                 array_push($arrayMes,array('valor' => $valor, 'mes' => $mes, 'unidade' => $unidade));     
 
                   array_push($arrayMeses, $mes);
                     
-            }     
+            }   //  dd($valorTotal);
           
             $totalAno += $valorTotal;
         
-            $valorTotal  = number_format($valorTotal ,2,',','.');           
+            //$valorTotal  = number_format($valorTotal ,2,',','.');           
              
                  array_push($arrayTotal, $valorTotal);
               
@@ -327,8 +314,7 @@ class financeiro extends Model {
             }
         }
         $valor = $valor->valor;
-        $valor = str_ireplace(".","",$valor); //remove o separador de milhares
-        $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto    
+          
         $valortotal = $valortotal + $valor;
         }
         $valortotal = number_format($valortotal, 2,',','.');
@@ -382,12 +368,9 @@ class financeiro extends Model {
             }
 
         $valor = $valor->valor;
-        $valor = str_ireplace(".","",$valor); //remove o separador de milhares
-        $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto    
+   
         $valortotal = $valortotal + $valor;
-        }
-
-        $valortotal = number_format($valortotal, 2,',','.');
+        }        
 
         return($valortotal);
     }
@@ -410,8 +393,7 @@ class financeiro extends Model {
             $numero_cheque = $pagamento->numero_cheque;
             $link_comprovante = $pagamento->link_comprovante;
 
-            $valor = str_ireplace(".","",$valor); //remove o separador de milhares
-            $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto
+            
 
             $valortotal = $valortotal + $valor;
 
@@ -473,22 +455,25 @@ class financeiro extends Model {
         
         $dataatual = date('Y-m-d',strtotime($data));
         $data = date('d/m/Y',strtotime($data));
+ 
         $somavalor = '';           
 
         if(isset($checklist)){
                 foreach($checklist as $check){
                     $id = $check;
-                    $contas =  DB::table('valor_contas_a_pagar')        
+                    $contas =  DB::table('valor_contas_a_pagar') 
+                    ->take(1)       
                     ->where('codigo','=', $id)
+                    ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '<=', $dataconta)   
+                    ->orderBy('id','desc')             
                     ->get();
+
+                    
                     
                     foreach($contas as $conta){
                         $valor = $conta->valor;
-                        $favorecido = $conta->favorecido;
-
-                        
-                        $valor = str_ireplace(".","",$valor); //remove o separador de milhares
-                        $valor = str_ireplace(",",".",$valor); //substitui a virgula por ponto
+                        $favorecido = $conta->favorecido;                       
+                    
 
                         $somavalor = $somavalor + $valor;
 
@@ -520,18 +505,21 @@ class financeiro extends Model {
     }
          
     public function atualizar($dados){
-        
+        $tipo_atual = $dados['tipo_atual'];        
         $id = $dados['id'];
         $tipo = $dados['tipo'];
         $favorecido = trim($dados['favorecido']);
         $item = $dados['item'];
         $inicio_conta = $dados['inicio_conta'];
-        $valor = $dados['valor'];
+        $valor = str_replace(',','.',str_replace('.', '', $dados['valor']));
         $parcelas = $dados['parcelas'];
         $area = $dados['area'];
         $ccustos = $dados['ccustos'];
         $pagador = $dados['pagador'];
         $fim_conta = "";  
+        $dataatual = $dados['$data_atual'];
+
+        
 
         $select_favorecido = DB::table('fornecedor_contas_a_pagar')
         ->where('fornecedor','=',$favorecido)
@@ -578,10 +566,16 @@ class financeiro extends Model {
         }
 
         if($tipo == "Parcelado"){
-        $parcelas_menos_um = $parcelas -1;    
-        $inicio_conta = date('Y-m-d', strtotime($inicio_conta));
-        $fim_conta = date('Y-m-d',strtotime(date('Y-m-d', strtotime($inicio_conta)) . "+$parcelas_menos_um month"));      
+            $parcelas_menos_um = $parcelas -1;    
+            $inicio_conta = date('Y-m-d', strtotime($inicio_conta));
+            $fim_conta = date('Y-m-d',strtotime(date('Y-m-d', strtotime($inicio_conta)) . "+$parcelas_menos_um month"));      
         }
+
+        if($tipo_atual == "Parcelado" and $tipo == "Fixo" or $tipo_atual == "Extra" and $tipo == "Fixo"){
+            $fim_conta = "";
+            $parcelas = "";
+        }
+
     
          $contas_atualizar = array('tipo' => $tipo, 
             'inicio_conta' => $inicio_conta,
@@ -601,23 +595,55 @@ class financeiro extends Model {
             'favorecido' => $favorecido,
             'valor' => $valor
         );
+        
+            try{
+                DB::table('contas_a_pagar')
+                ->where('id', '=', $id)
+                ->update($contas_atualizar);
+            }catch(\Expection $e){
+                echo dd($e);
+            }   
 
-        try{
-        DB::table('contas_a_pagar')
-        ->where('id', '=', $id)
-        ->update($contas_atualizar);
-        }catch(\Expection $e){
-            echo dd($e);
-        }       
-         
+        if($tipo == "Parcelado" or $tipo == "Extra"){  
+            try{
+                DB::table('valor_contas_a_pagar')
+                ->where('codigo', '=', $id)
+                ->update($valor_atualizar);
+            }catch(\Expection $e){
+                echo dd($e);
+            }  
+        }
+        
+        if($tipo == "Fixo"){
+            //Selecionar a conta no mês atualizar
+            $selectFixo = DB::table('valor_contas_a_pagar')
+            ->where('codigo', $id)            
+            ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '=', $dataatual)
+            ->count();
 
-        try{
-            DB::table('valor_contas_a_pagar')
-            ->where('codigo', '=', $id)
-            ->update($valor_atualizar);
-        }catch(\Expection $e){
-            echo dd($e);
-        }      
+            if($selectFixo == 1){
+                try{
+                    DB::table('valor_contas_a_pagar')
+                    ->where('codigo', '=', $id)
+                    ->update($valor_atualizar);
+                }catch(\Expection $e){
+                    echo dd($e);
+                } 
+            }else{
+                DB::table('valor_contas_a_pagar')
+                ->insert([
+                    'codigo' => $id,
+                    'inicio_mes' => $dataatual,
+                    'ccustos' => $ccustos,
+                    'item' => $item,
+                    'favorecido' => $favorecido,
+                    'valor' => $valor
+                ]);
+            }
+
+           
+            
+        }    
 }
 
     public function criar($data){
@@ -808,25 +834,30 @@ class financeiro extends Model {
                 }
 
                 /* ############# REPETE O VALOR DO FIXO APENAS POR 2 MESES ################ */
-                if (($conta->valor_anterior == "") and ($conta->tipo == "Fixo") or ($conta->tipo == "Fixo") and ($conta->valor_anterior == null)){
+               /* if (($conta->valor_anterior == "") and ($conta->tipo == "Fixo") or ($conta->tipo == "Fixo") and ($conta->valor_anterior == null)){
                         $this->selectDoisMesesAnterior($conta->id);
                         foreach ($this->valorDoisMesesAnterior as $anteriorNull) {
                             $conta->valor_anterior = $anteriorNull->valor;
                     }
-                }            
+                    } */           
                 
+               /* ######## MUDANÇAS CASO O VALOR SEJA FIXO ####### */
+                if ($conta->valor == "" and $conta->tipo_parcela !== "Especial" or $conta->valor == "NULL" and $conta->tipo_parcela !== "Especial") {
+                    $this->selectValorVazioParcelado($conta->id);
+                    foreach ($this->valorVazioParcelado as $valorVazioParcela) {
+                    $conta->valor = $valorVazioParcela->valor;               
+                }
+            }
+
                 /* ############# MUDANÇAS CASO O VALOR SEJA PARCELADO ################ */
                 if ($conta->tipo == "Parcelado") {
-
-                        $p_cont = 1;
-                        
+                        $p_cont = 1;                        
 
                         while ($conta->inicio_conta < $this->data) {
                         $p_cont += 1;
                         $conta->inicio_conta = date('Y-m', strtotime("+1 months", strtotime($conta->inicio_conta)));
 
                     }
-
                     $conta->parcelas = "$p_cont/$conta->parcelas";
                     
                     
@@ -837,6 +868,7 @@ class financeiro extends Model {
                             $conta->valor = $valorVazioParcela->valor;
                         }
                     }
+                    
                     
                     /* ############# VERIFICA SE O VALOR ANTERIOR É VAZIO E ATRIBUI O ÚLTIMO VALOR ################ */
                     if ($conta->valor_anterior == "" and $p_cont > 1 or $conta->valor_anterior == "NULL" and $p_cont > 1) {
@@ -888,35 +920,33 @@ class financeiro extends Model {
                 
 
                 /* ############# REMOVENDO VIRGULAS PARA SOMAR ################ */
-
+        /*
                 $conta->valor_anterior = str_ireplace(".", "", $conta->valor_anterior);
                 $conta->valor_anterior = str_ireplace(",", ".", $conta->valor_anterior);
                 $conta->valor = str_ireplace(".", "", $conta->valor);
                 $conta->valor = str_ireplace(",", ".", $conta->valor);
+        */
+
 
             
                 /* ############# SOMAS ################ */
                 if ($conta->tipo == "Extra") {
                     $this->somaextra += $conta->valor;
                 } else {
-                    if (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
-                        $conta->valor = 0;
-                    } else {
+                    
                         $this->somaatual += $conta->valor;
-                    }
+                    
                 }
                 /* ############# SOMA TOTAL ESTIMADO ################ */
                 $this->porcentagemconta = '';
-                if (($conta->tipo !== "Extra") and ( $conta->valor == "") and ( $conta->valor_anterior > "") and ( $conta->suspenso !== "Sim")) {
+                if (($conta->tipo !== "Extra") and ( $conta->valor == "") and ( $conta->valor_anterior > "")) {
                     $this->estimadonaolancado += $conta->valor_anterior;
                 }
 
                 /* ############# SIMBOLO PARA PAGAMENTO EMITIDO ################ */
                 if ($conta->tipo_pagamento == "Cheque") {
                     $conta->tipo_pagamento = "#2196f3";
-                    $this->totalpago += $conta->valor;
-                } elseif (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
-                    $conta->tipo_pagamento = "#2196f3";
+                    $this->totalpago += $conta->valor;                
                 } elseif ($conta->tipo_pagamento == "Transferência") {
                     $conta->tipo_pagamento = "#2196f3";
                     $this->totalpago += $conta->valor;
@@ -928,13 +958,11 @@ class financeiro extends Model {
                         
                 } elseif ($conta->tipo_pagamento == "" and $conta->valor > "") {
                     $conta->tipo_pagamento = "<input type='checkbox' form='form-emitir' name='check_list[]' value='$conta->id' class='checkbox-inline'></input>";
-                }
-
+                }               
                 
-                if ($conta->valor > '') {
-                    $conta->valor = number_format($conta->valor, 2, ',', '.');
-                }
             }
+
+         
 
             /* ############# SOMA OS TOTAIS ################ */
             $totalsomames = $this->somaextra + $this->somaatual;
@@ -951,22 +979,15 @@ class financeiro extends Model {
             $apagar = number_format($apagar, 2, ',', '.');
             $this->estimadonaolancado = number_format($this->estimadonaolancado, 2, ',', '.');
             $totalestimado = number_format($totalestimado, 2, ',', '.');
-            $necessidadefluxo = number_format($necessidadefluxo, 2, ',', '.');
-
-            /* ############# VERIFICA SE O VALOR FOI SUSPENSO E COLOCA ... ################ */
-            foreach ($contas as $conta) {
-                if (($conta->tipo == "Fixo")and ( $conta->suspenso == "Sim")) {
-                    $conta->valor = "...";
-                }
-
-                
-            }
-
-        
+            $necessidadefluxo = number_format($necessidadefluxo, 2, ',', '.');           
+       
 
             foreach ($contas as $conta) {
                 if ($conta->tipo == "Extra"){
                     $conta->tipo = "Á vista";
+                }
+                if ($conta->tipo == "Fixo"){
+                    $conta->tipo = "Mensal";
                 }
             }
 
@@ -1023,12 +1044,14 @@ class financeiro extends Model {
         $favorecido = trim($dados['favorecido']);
         $item = $dados['item'];
         $inicio_conta = $dados['inicio_conta'];
-        $valor = $dados['valor'];
+        $valor = str_replace(',','.',str_replace('.', '', $dados['valor']));
         $parcelas = $dados['parcelas'];
         $area = $dados['area'];
         $ccustos = $dados['ccustos'];
         $fim_conta = "";
         $pagador = $dados['pagador'];
+
+       
 
         $select_favorecido = DB::table('fornecedor_contas_a_pagar')
         ->where('fornecedor','=',$favorecido)

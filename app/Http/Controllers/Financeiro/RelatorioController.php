@@ -86,8 +86,12 @@ class RelatorioController extends Controller
         $data = date('Y-m', strtotime("$ano-$mes"));
         }
            $datas = array('data' => $data,'mes' => $mes,'ano' => $ano);        
-        $contas = new financeiro();         
-        $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro);   
+        $contas = new financeiro();        
+
+        $diaInicial = 1;
+        $diaFinal = 31;
+      
+        $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro, $diaInicial, $diaFinal);   
           return view('financeiro.relatoriomensal')->with($dados);
     }
 }
