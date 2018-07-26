@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         //converter
         DB::table('users')->take(1)
-        ->where('email','andreai@lsstar.com.br')
+        ->where('email','andreia@lsstar.com.br')
         ->update([         
                 'name' => 'Andrea',       
                 'email' => 'andrea@lsstar.com.br',
