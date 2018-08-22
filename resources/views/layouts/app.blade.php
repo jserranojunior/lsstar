@@ -12,6 +12,7 @@
 
     <!-- Styles -->
    <link rel="stylesheet" href="{{ URL::asset('/css/all.css') }}">
+   <link rel="shortcut icon" href="{{{ url('/img/lsstar.png') }}}">
         
 
     <!-- Scripts -->
