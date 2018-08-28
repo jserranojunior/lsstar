@@ -111,6 +111,8 @@ Route::group(['as' => 'agenda.','prefix' => 'agenda', 'middleware' => ['auth']],
     Route::any('calendariojson',['as' =>'calendariojson','uses' =>'agenda\calendarioController@json']);
 });
 
+Route::any('/send', 'EmailController@send');
+Route::any('/mail', 'EmailController@index');
 
 Auth::routes();
 

@@ -558,7 +558,9 @@ class financeiro extends Model {
             }catch(\Expection $e){
                 echo dd($e);
             }
-        }       
+        } 
+        
+        
         if($tipo == "Extra"){
             $parcelas = "";
             
@@ -578,7 +580,14 @@ class financeiro extends Model {
         }
 
     
-         $contas_atualizar = array('tipo' => $tipo, 
+         
+        
+            
+
+        if($tipo == "Parcelado" or $tipo == "Extra"){ 
+
+
+            $contas_atualizar = array('tipo' => $tipo, 
             'inicio_conta' => $inicio_conta,
             'fim_conta' => $fim_conta,
             'parcelas' => $parcelas,
@@ -596,7 +605,7 @@ class financeiro extends Model {
             'favorecido' => $favorecido,
             'valor' => $valor
         );
-        
+
             try{
                 DB::table('contas_a_pagar')
                 ->where('id', '=', $id)
@@ -605,7 +614,6 @@ class financeiro extends Model {
                 echo dd($e);
             }   
 
-        if($tipo == "Parcelado" or $tipo == "Extra"){  
             try{
                 DB::table('valor_contas_a_pagar')
                 ->where('codigo', '=', $id)
@@ -622,26 +630,41 @@ class financeiro extends Model {
             ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '=', $dataatual)
             ->count();
 
-            if($selectFixo == 1){
+            $dia = date('d', strtotime($inicio_conta));
+            $inicio_conta = "$dataatual-$dia"; 
+
+            $valor_atualizar = array(
+                'codigo' => $id,
+                'inicio_mes' => $inicio_conta, /* Só pode mudar o dia */
+                'ccustos' => $ccustos,
+                'item' => $item,
+                'favorecido' => $favorecido,
+                'valor' => $valor
+            );
+
+          
+
+            if($selectFixo >= 1){
                 try{
                     DB::table('valor_contas_a_pagar')
                     ->where('codigo', '=', $id)
+                    ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '=', $dataatual)
                     ->update($valor_atualizar);
                 }catch(\Expection $e){
                     echo dd($e);
                 } 
             }else{
+
                 DB::table('valor_contas_a_pagar')
                 ->insert([
                     'codigo' => $id,
-                    'inicio_mes' => $dataatual,
+                    'inicio_mes' => $inicio_conta, /* Só pode mudar o dia */
                     'ccustos' => $ccustos,
                     'item' => $item,
                     'favorecido' => $favorecido,
                     'valor' => $valor
                 ]);
-            }
-
+            }          
            
             
         }    
@@ -675,7 +698,7 @@ class financeiro extends Model {
                 'v.inicio_mes', 'v.observacoes', 'c.contas', 'v.favorecido', 'c.parcelas', 'v.valor', 'v.item', 'c.area')
                     ->leftjoin('valor_contas_a_pagar as v', function($join) {
                         $join->on('c.id', '=', 'v.codigo')
-                        ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '<=', $this->data)                    ;
+                        ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data);
                     })->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
                         $pago->on('c.id', '=', 'p.id_conta')
                         ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
@@ -683,8 +706,38 @@ class financeiro extends Model {
                     })
                     ->where('c.id', $id)
                     ->take(1)
-                    ->get();                   
+                    ->get();
                     
+
+                    
+
+                    
+                    foreach($objetos as $conta){
+                        
+                    if ($conta->valor == ""  or $conta->valor == "NULL") {
+                        $contaparcelada = DB::table('valor_contas_a_pagar as v')
+                                ->where('v.codigo', '=', $conta->id)
+                                ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '<', $this->data)
+                                ->orderby('inicio_mes', 'asc')
+                                ->get();
+
+                        foreach ($contaparcelada as $item) {
+                            $conta->valor = $item->valor;
+                            $conta->inicio_mes = $item->inicio_mes;
+                            $conta->observacoes = $item->observacoes;
+                            $conta->favorecido = $item->favorecido;
+                            $conta->item = $item->item;
+
+                             
+                        }
+                    }
+
+                        if($conta->tipo == "Fixo"){
+                        $dia = date('d', strtotime($conta->inicio_mes));
+                        $conta->inicio_mes = "$this->data-$dia"; 
+                        }
+                                       
+                    }
                                       
                     $favorecido = DB::table('fornecedor_contas_a_pagar')
                     ->orderBy('fornecedor','asc')
@@ -820,10 +873,8 @@ class financeiro extends Model {
                     foreach ($this->contas as $conta) {
                 
             
-                /* ############# PEGA O DIA ################ */      
+                         
                 
-                $conta->dia = date('d', strtotime($conta->inicio_conta));            
-
                 /* ############# VERIFICA SE O VALOR È VAZIO, SE TIVER MUDA VALOR PARA O ANTERIOR ################ */
                     if (isset($conta->favorecido) == false) {
                     $this->selectMesAnterior($conta->id);
@@ -831,16 +882,12 @@ class financeiro extends Model {
                         $conta->favorecido = $anterior->favorecido;
                         $conta->item = $anterior->item;
                         $conta->ccustos = $anterior->ccustos;
+                        $conta->dia = $anterior->inicio_mes;
                     }
                 }
 
-                /* ############# REPETE O VALOR DO FIXO APENAS POR 2 MESES ################ */
-               /* if (($conta->valor_anterior == "") and ($conta->tipo == "Fixo") or ($conta->tipo == "Fixo") and ($conta->valor_anterior == null)){
-                        $this->selectDoisMesesAnterior($conta->id);
-                        foreach ($this->valorDoisMesesAnterior as $anteriorNull) {
-                            $conta->valor_anterior = $anteriorNull->valor;
-                    }
-                    } */           
+                  /* ############# PEGA O DIA ################ */    
+                $conta->dia = date('d', strtotime($conta->dia));   
                 
                /* ######## MUDANÇAS CASO O VALOR SEJA FIXO ####### */
                 if ($conta->valor == "" and $conta->tipo_parcela !== "Especial" or $conta->valor == "NULL" and $conta->tipo_parcela !== "Especial") {
