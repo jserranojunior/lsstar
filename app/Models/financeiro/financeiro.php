@@ -457,7 +457,7 @@ class financeiro extends Model {
         $dataatual = date('Y-m-d',strtotime($data));
         $data = date('d/m/Y',strtotime($data));
  
-        $somavalor = '';           
+        $somavalor = 0;           
 
         if(isset($checklist)){
                 foreach($checklist as $check){
