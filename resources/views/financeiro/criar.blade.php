@@ -82,7 +82,7 @@
                     <label for="ccustos"  class="col-xs-4 control-label">Conta</label>
                     <div class="col-xs-8"> 
                         <select name="ccustos" id="ccustos" class="form-control">
-                            <option></option>
+                            
                             @foreach($contas as $conta)
                             <option>{{$conta->nome}}</option>
                             @endforeach
