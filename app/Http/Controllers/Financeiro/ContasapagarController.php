@@ -22,16 +22,11 @@ class ContasapagarController extends Controller {
         $dados = ['contas' => $billsToPay];
        
     return view('financeiro.Newcontasapagar')->with($dados);
-        
 
     }
 
     function Index() {
 
-      
-      
-
-     
       if(!isset($_POST['areafiltro'])){
             $filtroArea = 'Todos';
         }else {
@@ -66,40 +61,30 @@ class ContasapagarController extends Controller {
         $data = date('Y-m', strtotime("$ano-$mes"));
         }
 
-
         if(!isset($_POST['diaInicial'])){
             $diaInicial = 01;
         }else {        
             $diaInicial = (int) $_POST['diaInicial'];               
         }
-   
         if(!isset($_POST['diaFinal'])){
             $diaFinal = 31;              
          }else {        
-            $diaFinal = (int) $_POST['diaFinal'];   
-            
+            $diaFinal = (int) $_POST['diaFinal'];  
         }
         
 
-    
-
-        $datas = array('data' => $data,'mes' => $mes,'ano' => $ano);
-        
-        $contas = new financeiro(); 
-        
+        $datas = array('data' => $data,'mes' => $mes,'ano' => $ano);        
+        $contas = new financeiro();         
         $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro, $diaInicial, $diaFinal);
-     
-       
+            
        return view('financeiro.contasapagar')->with($dados);
     }
-
 
     function pagamento($data){
         $conta = new financeiro();
         $dados = $conta->pagamento($data);
         return view('financeiro.pagamentos')->with($dados);
     }
-
     
     function create($data){
         $conta = new financeiro();
@@ -121,8 +106,7 @@ class ContasapagarController extends Controller {
         $conta = new financeiro();
         $dados = $conta->atualizar($dados);
         return('<script>opener.location.reload(); window.close();</script>');
-    }
-    
+    } 
     
     function store(Request $request){
        

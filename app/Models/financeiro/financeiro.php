@@ -3,6 +3,7 @@
 namespace App\Models\financeiro;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\data\dataClass;
 use DB;
 
 
@@ -23,6 +24,10 @@ class financeiro extends Model {
     public $totalpago;
     public $porcentagemconta;
     public $contas;
+
+    public function __constructed(dataClass $dataClass){
+        $this->$dataClass = $dataClass;
+    }
 
     public function relatorioConsolidado(){
             $dados = array();
@@ -152,17 +157,14 @@ class financeiro extends Model {
         $unidades = DB::table('area')
         ->select('nome','id')
         ->orderBy('ordem', 'asc')
-        ->get(); 
-        
+        ->get();         
 
         $totalAno = 0;      
         $arrayMes = array('ano' => $ano);
         $arrayUnidade = array();
         $arrayValor = array();
         $arrayValorUnidade = array();    
-        $arrayMeses = array(); 
-       
-        // $valorTotalMes = $this->totalmensal($mesano,$mesanoanterior);
+        $arrayMeses = array();        
        
         foreach($unidades as $unidade){  
             $id = $unidade->id;
@@ -172,103 +174,44 @@ class financeiro extends Model {
             $arrayTotal = array(); 
             $arrayTotalMes = array();
             
-            for($mes = 1; $mes <= 12; $mes++){   
-
-                if($mes == 1){
-                    $mesEscrito = "Janeiro";
-                }
-                if($mes == 2){
-                    $mesEscrito = "Fevereiro";
-                }
-                if($mes == 3){
-                    $mesEscrito = "Março";
-                }
-                if($mes == 4){
-                    $mesEscrito = "Abril";
-                }
-                if($mes == 5){
-                    $mesEscrito = "Maio";
-                }
-                if($mes == 6){
-                    $mesEscrito = "Junho";
-                }
-                if($mes == 7){
-                    $mesEscrito = "Julho";
-                }
-                if($mes == 8){
-                    $mesEscrito = "Agosto";
-                }
-                if($mes == 9){
-                    $mesEscrito = "Setembro";
-                }
-                if($mes == 10){
-                    $mesEscrito = "Outubro";
-                }
-                if($mes == 11){
-                    $mesEscrito = "Novembro";
-                }
-                if($mes == 12){
-                    $mesEscrito = "Dezembro";
-                }
-
+            for($mes = 1; $mes <= 12; $mes++){  
                 $mesano = "$ano-$mes";
                 $mesbusca = date("Y-m",strtotime($mesano));
                 $mesanoanterior = date($mesbusca,strtotime( "-1 month" ));
                
             $valor = $this->valormensal($mesbusca, $mesanoanterior, $unidade);           
-            
             $dataatual = date('Y-m');            
-            if($mesbusca > $dataatual){
-                
-               
+            if($mesbusca > $dataatual){                
                 $valorTotalMes = "0,00";
                 $valor = "0,00";                
             }else{
-
                 $valorTotal = $valorTotal + $valor;
-
                 $valorTotalMes = $this->totalmensal($mesbusca,$mesanoanterior);
-
             }
-
-            
-              array_push($arrayTotalMes,array('valorTotal' => $valorTotalMes, 'mes' => $mes));               
-                     
-                array_push($arrayMes,array('valor' => $valor, 'mes' => $mes, 'unidade' => $unidade));     
-
-                  array_push($arrayMeses, $mes);
-                    
-            }   //  dd($valorTotal);
+            array_push($arrayTotalMes,array('valorTotal' => $valorTotalMes, 'mes' => $mes));              
+            array_push($arrayMes,array('valor' => $valor, 'mes' => $mes, 'unidade' => $unidade));     
+            array_push($arrayMeses, $mes); 
+            } 
           
             $totalAno += $valorTotal;
-        
-            //$valorTotal  = number_format($valorTotal ,2,',','.');           
-             
-                 array_push($arrayTotal, $valorTotal);
-              
+            array_push($arrayTotal, $valorTotal);              
             
             $arrayDados['unidades'][$unidade]['unidade'] = $unidade;
             $arrayDados['unidades'][$unidade]['valor'] = $arrayMes;
-            $arrayDados['unidades'][$unidade]['total'] = $arrayTotal;
-           
+            $arrayDados['unidades'][$unidade]['total'] = $arrayTotal;           
 
             $arrayunidade[$unidade] = $arrayMes;
-
              $unidades->id = $arrayMes;
-             
-          //$arrayUnidade['unidades']= $unidades;             
+                   
         }     
         $totalAno = number_format($totalAno ,2,',','.');
         $arrayDados['totalano'] = $totalAno;
         $arrayDados['anoContas'] = $ano;
-
-        $arrayDados['valores']['totalmes'] = $arrayTotalMes;
-        
+        $arrayDados['valores']['totalmes'] = $arrayTotalMes;        
         $arrayDados = collect($arrayDados);
         $dados = $arrayDados;
         
-        return($dados);     
-    
+        return($dados);         
     }
 
     function totalmensal($mesano, $mesanoanterior){ 

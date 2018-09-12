@@ -15,30 +15,7 @@
             </a>  
             
         
-</div> <!--
-<div class="col-md-4  no-print">
-    <div class="box box-info">
-        <div class="box-header with-border">
-                                        
-                                        <form method="post" action="{{route('financeiro.anual')}}" id="formularioano" name="formularioano">
-                                        <div class="col-md-6">
-                                        <label class="text-center bold"> SELECIONE O ANO </label>
-                                        </div>
-                                            <div class="col-md-6">
-                                            <select name="ano" class="form-control" id="ano" >
-                                                
-                                                <option @if( $ano == 2017) SELECTED @endif >2017</option>
-                                                <option @if( $ano == 2018) SELECTED @endif>2018</option>
-                                                <option @if( $ano == 2019) SELECTED @endif>2019</option>
-                                            </select>
-                                            </div>
-                                            <input type="hidden" form='formularioano'  name="_token" value="{{ csrf_token() }}">
-                                                
-                                        </form>
-        </div>                                    
-    </div>
-</div>
--->
+</div> 
 <div class="col-md-4 col-md-offset-4 text-right no-print">
     <input type="button" class="esquerda btn btn-success excel btn" id="btnExport"  value="Excel">            
 </div>
