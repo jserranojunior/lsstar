@@ -83,13 +83,20 @@ class RelatorioController extends Controller
         $ano = $_POST['ano'];
         $data = date('Y-m', strtotime("$ano-$mes"));
         }
+
+        if(!isset($_POST['tipofiltro'])){
+            $tipofiltro = 'Todos';
+        }else {
+            $tipofiltro = $_POST['tipofiltro'];
+        }
+
            $datas = array('data' => $data,'mes' => $mes,'ano' => $ano);        
         $contas = new financeiro();        
 
         $diaInicial = 1;
         $diaFinal = 31;
       
-        $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro, $diaInicial, $diaFinal);   
+        $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro, $diaInicial, $diaFinal, $tipofiltro);   
           return view('financeiro.relatoriomensal')->with($dados);
     }
 }

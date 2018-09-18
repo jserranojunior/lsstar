@@ -71,11 +71,17 @@ class ContasapagarController extends Controller {
          }else {        
             $diaFinal = (int) $_POST['diaFinal'];  
         }
+
+        if(!isset($_POST['tipofiltro'])){
+            $tipofiltro = 'Todos';
+        }else {
+            $tipofiltro = $_POST['tipofiltro'];
+        }
         
 
         $datas = array('data' => $data,'mes' => $mes,'ano' => $ano);        
         $contas = new financeiro();         
-        $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro, $diaInicial, $diaFinal);
+        $dados = $contas->Index($datas,$filtroOrdenacao,$filtroArea,$filtroConta,$pagadorfiltro, $diaInicial, $diaFinal, $tipofiltro);
             
        return view('financeiro.contasapagar')->with($dados);
     }

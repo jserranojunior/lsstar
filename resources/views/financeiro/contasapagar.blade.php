@@ -55,40 +55,40 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',01,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Janeiro</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',01,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Janeiro</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',02,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Fevereiro</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',02,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Fevereiro</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',03,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Março</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',03,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Março</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',04,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Abril</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',04,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Abril</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',05,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Maio</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',05,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Maio</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',06,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Junho</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',06,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Junho</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',07,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Julho</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',07,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Julho</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',08,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Agosto</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',08,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Agosto</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',09,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Setembro</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',09,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Setembro</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',10,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Outubro</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',10,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Outubro</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',11,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Novembro</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',11,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Novembro</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',12,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Dezembro</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',12,{{$ano}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Dezembro</a>
                 </li>
                 </ul>
               </div>
@@ -104,13 +104,13 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}}, 2017,'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">2017</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}}, 2017,'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">2017</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}}, 2018,'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">2018</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}}, 2018,'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">2018</a>
                 </li>
                 <li>
-                <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}}, 2019,'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">2019</a>
+                <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}}, 2019,'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">2019</a>
                 </li>
                 </ul>
               </div>
@@ -118,12 +118,12 @@
           </div>
           <div class="row">
             <div class="proxant col-md-12 text-center">
-              <a class="btn btn-default btn-xs" href="#" onclick="enviar('{{$ordenacao}}',{{$mesAnterior}},{{$anoAnterior}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');" >
+              <a class="btn btn-default btn-xs" href="#" onclick="enviar('{{$ordenacao}}',{{$mesAnterior}},{{$anoAnterior}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');" >
                 <p class="glyphicon glyphicon-menu-left"></p>
                 Anterior 
               </a>
-              <a class="btn btn-default btn-xs"  href="#" onclick="enviar('{{$ordenacao}}',{{$mesConst}},{{$anoConst}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');">Atual</a>
-              <a class="btn btn-default btn-xs"  href="#" onclick="enviar('{{$ordenacao}}',{{$mesPosterior}},{{$anoPosterior}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}');"  >
+              <a class="btn btn-default btn-xs"  href="#" onclick="enviar('{{$ordenacao}}',{{$mesConst}},{{$anoConst}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');">Atual</a>
+              <a class="btn btn-default btn-xs"  href="#" onclick="enviar('{{$ordenacao}}',{{$mesPosterior}},{{$anoPosterior}},'{{$areafiltro}}','{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}');"  >
                 Próximo
                 <p class="glyphicon glyphicon-menu-right"></p>
               </a>
@@ -231,11 +231,11 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, 'Todos', '{{$contafiltro}}', '{{$pagadorfiltro}}')">Todos</a>
+                        <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, 'Todos', '{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">Todos</a>
                       </li>
                       @foreach($all_area as $f_area)
                       <li>
-                        <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, '{{$f_area->nome}}', '{{$contafiltro}}', '{{$pagadorfiltro}}')">{{$f_area->nome}}</a>
+                        <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, '{{$f_area->nome}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">{{$f_area->nome}}</a>
                       </li>
                       @endforeach
                     </ul>
@@ -253,24 +253,51 @@
                   </a>
                   <ul class="dropdown-menu">
                     <li>
-                      <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, '{{$areafiltro}}', 'Todos', '{{$pagadorfiltro}}')">Todos</a>
+                      <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, '{{$areafiltro}}', 'Todos', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">Todos</a>
                     </li>
                     @foreach($all_conta as $f_conta)            
                     <li>
-                      <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$f_conta->nome}}', '{{$pagadorfiltro}}')">{{$f_conta->nome}}</a>
+                      <a href="#" onclick="enviar('{{$ordenacao}}',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$f_conta->nome}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">{{$f_conta->nome}}</a>
                     </li>
                     @endforeach
                   </ul>
                 </div>
               </td>
               <td>
-                <p class="bold">Tipo</p>
+
+
+                  <!-- PAINEL PAGADOR -->
+                <div class="">
+                  <ul class="nav nav-tabs nav-hr">
+                    <li class="dropdown dropdown @if($tipofiltro != "Todos")filtroselect @endif">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="filtro-hr bold"> Tipo </span> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}',  '{{$pagadorfiltro}}', 'Todos')">Todos</a>
+                      </li>
+                      <li>
+                        <a href="#" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}',  '{{$pagadorfiltro}}', 'Extra')">Á vista</a>
+                      </li>
+                      <li>
+                        <a href="#" onclick="enviar('dia',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', 'Parcelado')">Parcelado</a>
+                      </li>
+                      <li>
+                        <a href="#" onclick="enviar('dia',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', 'Fixo')">Mensal</a>
+                      </li>
+                    </ul>
+                    </li>
+                  </ul>
+                </div>
+
+
               </td>
               <td>
                 <p class="bold">Pg</p>
               </td>
               <td>
-                <a href="#" class="" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}')">
+                <a href="#" class="" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">
                 <span class="filtro-hr bold">  Favorecido </span> <span class="caret"></span>
                 </a>
               </td>
@@ -284,13 +311,13 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}',  'Todos')">Todos</a>
+                        <a href="#" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}',  'Todos', '{{$tipofiltro}}')">Todos</a>
                       </li>
                       <li>
-                        <a href="#" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}',  'Nota Fiscal')">Nota Fiscal</a>
+                        <a href="#" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}',  'Nota Fiscal', '{{$tipofiltro}}')">Nota Fiscal</a>
                       </li>
                       <li>
-                        <a href="#" onclick="enviar('dia',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', 'Recibo')">Recibo</a>
+                        <a href="#" onclick="enviar('dia',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', 'Recibo', '{{$tipofiltro}}')">Recibo</a>
                       </li>
                     </ul>
                     </li>
@@ -298,7 +325,7 @@
                 </div>
               </td>
               <td>
-                <a href="#" onclick="enviar('dia',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}')">
+                <a href="#" onclick="enviar('dia',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">
                 <span class="filtro-hr bold">  Venc </span> <span class="caret"></span>
                 </a>
               </td>
@@ -415,17 +442,19 @@
   <input type="hidden" value="" name="areafiltro" id="areafiltro">
   <input type="hidden" value="" name="contafiltro" id="contafiltro">
   <input type="hidden" value="" name="pagadorfiltro" id="pagadorfiltro">
+  <input type="hidden" value="" name="tipofiltro" id="tipofiltro">
   <input type="hidden" value="" name="ordenacao" id="ordenacao">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
 </form>
 <script>
-  function enviar(ordenacao, mes, ano, areafiltro, contafiltro, pagadorfiltro){
+  function enviar(ordenacao, mes, ano, areafiltro, contafiltro, pagadorfiltro, tipofiltro){
     var ordenacao;
   var mes;
   var ano;
   var areafiltro;
   var contafiltro;
   var pagadorfiltro;
+  var tipofiltro;
   
   document.getElementById('mes').value = mes;
   document.getElementById('ano').value = ano;
@@ -433,7 +462,7 @@
   document.getElementById('areafiltro').value = areafiltro;
   document.getElementById('contafiltro').value = contafiltro;
   document.getElementById('pagadorfiltro').value = pagadorfiltro;
-  
+  document.getElementById('tipofiltro').value = tipofiltro;
   document.getElementById("formulariofiltros").submit();
   }
   
@@ -484,7 +513,7 @@
   
   
                   function filtroDia(){
-                      enviar('{{$ordenacao}}','{{$mes}}','{{$ano}}', '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}')
+                      enviar('{{$ordenacao}}','{{$mes}}','{{$ano}}', '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')
                        }
   
                       $('#diaInicial').change(function() {                            

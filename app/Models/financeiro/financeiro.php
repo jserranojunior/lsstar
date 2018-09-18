@@ -611,7 +611,7 @@ class financeiro extends Model {
            
             
         }    
-}
+    }
 
     public function criar($data){
 
@@ -700,11 +700,11 @@ class financeiro extends Model {
                     
     }
 
-    public function Index($datas, $ordenacao, $areafiltro, $contafiltro, $pagadorfiltro, $diaInicial, $diaFinal){
+    public function Index($datas, $ordenacao, $areafiltro, $contafiltro, $pagadorfiltro, $diaInicial, $diaFinal, $tipofiltro){
 
        
 
-        $fb = array($ordenacao, $areafiltro, $contafiltro, $pagadorfiltro);
+        // $fb = array($ordenacao, $areafiltro, $contafiltro, $pagadorfiltro);
        
         
         $this->areafiltro = $areafiltro;
@@ -713,6 +713,10 @@ class financeiro extends Model {
         $this->contafiltro = $contafiltro;
 
         $this->pagadorfiltro = $pagadorfiltro;
+
+        $this->tipofiltro = $tipofiltro;
+        // Extra
+        // Fixo
 
         $this->tratarData($datas, $diaInicial, $diaFinal);
         $this->selectContas();
@@ -889,7 +893,11 @@ class financeiro extends Model {
 
                 if($this->pagadorfiltro != "Todos"){
                     $this->contas = $this->contas->where('pagador', $this->pagadorfiltro);
-                }            
+                }   
+                
+                if($this->tipofiltro != "Todos"){
+                    $this->contas = $this->contas->where('tipo', $this->tipofiltro);
+                }
 
                           
                 /* ############# ORDENAÇÃO ################ */            
@@ -1024,6 +1032,7 @@ class financeiro extends Model {
                 'dataatualcompleta' => $dataatualcompleta,
                 'diaInicial' => $this->diaInicial,
                 'diaFinal' => $this->diaFinal,
+                'tipofiltro' => $this->tipofiltro,
             );
 
             /* ############# RETORNO DOS DADOS PARA O CONTROLLER ################ */
