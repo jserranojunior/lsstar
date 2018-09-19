@@ -303,7 +303,7 @@
                             </td>
                             <td>
                                 <select name="tipocliente" class="form-control" id="tipocliente">
-                                    <option @if($cliente->tipocliente == '') selected @endif value=""></option>
+                                    <option @if($cliente->tipocliente == '') selected @endif value="">Cliente</option>
                                     <option @if($cliente->tipocliente == 'proprietario') selected @endif value="proprietario">Proprietário</option>
                                 </select>
                             </td>    

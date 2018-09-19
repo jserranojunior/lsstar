@@ -284,7 +284,7 @@
                         </td>
                         <td>
                             <select name="tipocliente" class="form-control" id="tipocliente">
-                                <option value=""></option>
+                                <option value="">Cliente</option>
                                 <option value="proprietario">Proprietario</option>
                             </select>
                         </td>
