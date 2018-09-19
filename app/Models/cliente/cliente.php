@@ -11,7 +11,7 @@ class cliente extends Model
         $id = $request->id;
         $nome = trim($request->nome);
 
-    $dados = array(        
+        $dados = array(        
         'nome' => $nome,
         'idade' => $request->idade,
         'email' =>$request->email,
@@ -51,13 +51,14 @@ class cliente extends Model
         'informacao' => $request->informacao,
 
         'observacao' => $request->observacao,
+        'tipocliente' => $request->tipocliente,
       
-    );  
+        );  
 
-  
-    DB::table('clientes')
-        ->where('id', $id)
-        ->update($dados);    
+    
+        DB::table('clientes')
+            ->where('id', $id)
+            ->update($dados);    
         
     }
 
@@ -79,8 +80,17 @@ class cliente extends Model
 
     }
 
-    public function index(){
+    public function index($request){
+       
         $clientes = DB::table('clientes')->get();
+
+        // Filtro
+        if($request->tipocliente > ''){
+            $clientes = DB::table('clientes')
+            ->where('tipocliente', $request->tipocliente)
+            ->get();
+        }
+
         $dados = array('dados' => $clientes);
         return($dados);
     }
@@ -88,52 +98,47 @@ class cliente extends Model
    public function salvar($request){
 
    
-    $nome = trim($request->nome);
-    
-    $dados = array(
-        'nome' => $nome,
-        'idade' => $request->idade,
-        'email' =>$request->email,
-        'telefone' => $request->telefone,
-        'profissao' => $request->profissao,
-        'empresa' => $request->empresa,
-
-        'segundonome' => $request->segundonome,
-        'segundoemail' =>$request->segundoemail,
-        'segundotelefone' => $request->segundotelefone,
-        'segundoprofissao' => $request->segundoprofissao,
-        'segundoempresa' => $request->segundoempresa,
-
-        'terceironome' => $request->terceironome,
-        'terceiroemail' =>$request->terceiroemail,
-        'terceirotelefone' => $request->terceirotelefone,
-        'terceiroprofissao' => $request->terceiroprofissao,
-        'terceiroempresa' => $request->terceiroempresa,
-
-        'cep' => $request->cep,
-        'bairro' => $request->bairro,
-        'logradouro' => $request->logradouro,
-        'tipomoradia' => $request->tipomoradia,
-        'numero' => $request->numero,       
-        'cidade' => $request->cidade,  
-        'casainteresse' => $request->casainteresse,
-        'renda' => $request->renda,
+        $nome = trim($request->nome);
         
-        'sinal' => $request->sinal,
-        'poupanca' => $request->poupanca,
-        'fgts' => $request->fgts,
-        'valorentrada' => $request->valorentrada,
-        'financiado' => $request->financiado,
-        'prestacao' => $request->prestacao,
+        $dados = array(
+            'nome' => $nome,
+            'idade' => $request->idade,
+            'email' =>$request->email,
+            'telefone' => $request->telefone,
+            'profissao' => $request->profissao,
+            'empresa' => $request->empresa,
+            'segundonome' => $request->segundonome,
+            'segundoemail' =>$request->segundoemail,
+            'segundotelefone' => $request->segundotelefone,
+            'segundoprofissao' => $request->segundoprofissao,
+            'segundoempresa' => $request->segundoempresa,
+            'terceironome' => $request->terceironome,
+            'terceiroemail' =>$request->terceiroemail,
+            'terceirotelefone' => $request->terceirotelefone,
+            'terceiroprofissao' => $request->terceiroprofissao,
+            'terceiroempresa' => $request->terceiroempresa,
+            'cep' => $request->cep,
+            'bairro' => $request->bairro,
+            'logradouro' => $request->logradouro,
+            'tipomoradia' => $request->tipomoradia,
+            'numero' => $request->numero,       
+            'cidade' => $request->cidade,  
+            'casainteresse' => $request->casainteresse,
+            'renda' => $request->renda,            
+            'sinal' => $request->sinal,
+            'poupanca' => $request->poupanca,
+            'fgts' => $request->fgts,
+            'valorentrada' => $request->valorentrada,
+            'financiado' => $request->financiado,
+            'prestacao' => $request->prestacao,
+            'valorprestacao' => $request->valorprestacao,
+            'informacao' => $request->informacao,
+            'observacao' => $request->observacao,
+            'tipocliente' => $request->tipocliente,
+        
+        );  
 
-        'valorprestacao' => $request->valorprestacao,
-        'informacao' => $request->informacao,
-
-        'observacao' => $request->observacao,
-      
-    );  
-
-   
-    DB::table('clientes')->insert($dados);    
+    
+        DB::table('clientes')->insert($dados);    
    }
 }

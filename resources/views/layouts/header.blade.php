@@ -71,7 +71,10 @@
                          <a href="{{Route('cliente.create')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Cadastrar</span></a>
                      </li>
                      <li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23">
-                        <a href="{{Route('cliente.index')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Visualizar</span></a>
+                        <a href="{{Route('cliente.index')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Todos</span></a>
+                     </li>
+                     <li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23">
+                        <a href="{{url('/cliente?tipocliente=proprietario')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Proprietários</span></a>
                      </li>
                      </ul>
                     
