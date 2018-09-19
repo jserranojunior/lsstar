@@ -14,7 +14,7 @@ class AddColunTipocliente extends Migration
     public function up()
     {
         Schema::table('clientes', function (Blueprint $table) {
-            $table->string('tipocliente');
+            $table->string('tipocliente')->nullable();
         });
     }
 
