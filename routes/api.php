@@ -17,4 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/clientes', 'Api\ApiCliente@index');
+Route::get('/cliente', 'Api\ApiCliente@index');
+Route::get('/cliente/{id}', 'Api\ApiCliente@edit');
+Route::post('/cliente', 'Api\ApiCliente@store');
+Route::patch('/cliente/{id}', 'Api\ApiCliente@update');
+Route::put('/cliente/{id}', 'Api\ApiCliente@update');

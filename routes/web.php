@@ -1,5 +1,13 @@
 <?php
 
+/* COMANDOS ARTISAN */
+Route::get('/executar/migrate', function() {
+    Artisan::call('migrate', []);
+    return ("Migrate Sucess");
+    });
+
+
+
 /* API */ 
 
 Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
