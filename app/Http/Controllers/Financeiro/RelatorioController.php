@@ -7,20 +7,21 @@ use App\Models\data\dataClass;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\financeiro\contasAPagar;
+use App\Models\financeiro\relatorios;
 
 
 class RelatorioController extends Controller
 {
 
+    public function __construct(relatorios $relatorios){
+        $this->relatorios = $relatorios;
+        
+    }
     
-    public function relatorioArea(contasAPagar $contasAPagar, request $request){
-
-       
+    public function relatorioArea(contasAPagar $contasAPagar, request $request){       
         //dd($request->area);
         $dados = $contasAPagar->relatorioPorUnidade($request);
-
-        $dados = array('dados' =>  $dados);
-   
+        $dados = array('dados' =>  $dados);   
         return view('financeiro.relatorioarea')->with($dados);    
     }
 
@@ -30,9 +31,7 @@ class RelatorioController extends Controller
     public function consolidado(){
         $financeiro = new financeiro();
         $valores = $financeiro->relatorioConsolidado();
-       $dados = array('dados' => $valores, 'count' => 1);
-
-       
+       $dados = array('dados' => $valores, 'count' => 1);       
         return view('financeiro.relatorioconsolidado')->with($dados);
     }
 
@@ -40,15 +39,11 @@ class RelatorioController extends Controller
         if($request->ano == null){
             $request->ano = date('Y');
         }
+        $contas = $this->relatorios->contasAnuais($request->ano);
+        $dadosAnuais = array('dados' => $contas);
+        $dados = array('dadosAnuais' => $dadosAnuais, 'ano' => $request->ano);
+        return view('financeiro.relatorios.anual')->with($dados);
         
-        $financeiro = new financeiro();
-        $dados = $financeiro->anual($request->ano);
-
-        $dadosAnuais = array('dados' => $dados);
-        $dados = array('dadosAnuais' => $dadosAnuais, 'ano' => $request->ano );
-       
-        return view('financeiro.relatorioanual')->with($dados);
-      
     }
 
     public function mensal(){

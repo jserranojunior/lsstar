@@ -7,12 +7,23 @@ Route::get('/executar/migrate', function() {
     });
 
 
-
 /* API */ 
-
 Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
 
-/* FIM API */
+
+Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio','middleware' => ['auth']], function(){
+    Route::get('/anual', ['as' => 'anual', 'uses' => 'Api\Financeiro\ApiRelatorio@anual']); 
+});
+  
+
+// CASAS
+
+Route::group(['as' => 'casa.', 'prefix' => 'casa','middleware' => ['auth']], function(){
+    Route::get('/', ['as' => 'index', 'uses' => 'Casas\CasasController@index']); 
+    Route::get('/{id}', ['as' => 'edit', 'uses' => 'Casas\CasasController@edit']);
+});
+
+
 
 Route::get('/sair',function(){
    Auth::logout(); 

@@ -22,3 +22,18 @@ Route::get('/cliente/{id}', 'Api\ApiCliente@edit');
 Route::post('/cliente', 'Api\ApiCliente@store');
 Route::patch('/cliente/{id}', 'Api\ApiCliente@update');
 Route::put('/cliente/{id}', 'Api\ApiCliente@update');
+
+Route::group(['as' => 'casa.', 'prefix' => 'casa'], function(){
+    Route::get('/', ['as' => 'index', 'uses' => 'Api\ApiCasa@index']); 
+    Route::post('/', ['as' => 'store', 'uses' => 'Api\ApiCasa@store']);
+    Route::get('/{id}', ['as' => 'edit', 'uses' => 'Api\ApiCasa@edit']);
+    Route::put('/{id}', ['as' => 'put', 'uses' => 'Api\ApiCasa@update']);
+    
+});
+
+Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio'], function(){
+    Route::get('/anual', ['as' => 'anual', 'uses' => 'Api\Financeiro\ApiRelatorio@anual']); 
+    
+    
+});
+  
