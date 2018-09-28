@@ -20,7 +20,8 @@ Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio','middleware' => ['au
 
 Route::group(['as' => 'casa.', 'prefix' => 'casa','middleware' => ['auth']], function(){
     Route::get('/', ['as' => 'index', 'uses' => 'Casas\CasasController@index']); 
-    Route::get('/{id}', ['as' => 'edit', 'uses' => 'Casas\CasasController@edit']);
+    Route::get('/editar/{id}', ['as' => 'edit', 'uses' => 'Casas\CasasController@edit']);
+    Route::get('/criar', ['as' => 'edit', 'uses' => 'Casas\CasasController@create']);
 });
 
 

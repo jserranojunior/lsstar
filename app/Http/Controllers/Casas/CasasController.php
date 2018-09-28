@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Casas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiCasa;
+use App\Http\Controllers\Api\ApiCliente;
 
 class CasasController extends Controller
 {
 
-    public function __construct(ApiCasa $casa){
+    public function __construct(ApiCasa $casa, ApiCliente $cliente){
         $this->casa = $casa;
+        $this->cliente = $cliente;
     }
 
     /**
@@ -29,9 +31,17 @@ class CasasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->cliente = $this->cliente->index($request);
+    //   dd($this->cliente);
+        foreach($this->cliente as $cliente){
+            $clientes = $cliente;
+        }
+
+        $data = ['clientes' => $cliente];
+    // dd($cliente);
+        return view('casas.create')->with($data);
     }
 
     /**
