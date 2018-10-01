@@ -56,7 +56,7 @@
                             <h5 class="text-primary">Proprietário</h5>
                         </td>
                         <td colspan="3">
-                            <select name="proprietario" id="" class="form-control">
+                            <select name="cliente_id" id="" class="form-control">
                                 @foreach($clientes as $cliente)
                                 <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
                                 @endforeach

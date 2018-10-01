@@ -38,6 +38,7 @@
                         </th>
                         <th>RGI</th>
                         <th>Status</th>
+                        
                     </tr>
 
                 </thead>
@@ -60,6 +61,7 @@
                         <td>
                             {{$item->status}}
                         </td>
+                        
                     </tr>
 
                     @endforeach

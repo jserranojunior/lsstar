@@ -8,6 +8,7 @@ use DB;
 class casas extends Model
 {
     protected $table = "casas";
+    
 
     public function store($request){
         $dados = [
@@ -16,6 +17,7 @@ class casas extends Model
             'endereco' => $request->endereco,
             'rgi' => $request->rgi,
             'status' => $request->status,
+            'cliente_id' => $request->cliente_id,
         ];
         try{
             DB::table($this->table)->insert($dados);
@@ -40,6 +42,7 @@ class casas extends Model
             'endereco' => $request->endereco,
             'rgi' => $request->rgi,
             'status' => $request->status,
+            'cliente_id' => $request->cliente_id,
         ];
 
         try{
