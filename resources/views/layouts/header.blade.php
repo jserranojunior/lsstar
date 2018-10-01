@@ -101,11 +101,7 @@
                                         class="menu-ocultar">Fornecedores </span></a>
                             </li>
 
-                            <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                                <a target="_blank" href="https://drive.google.com/open?id=1Lca0Yfic5SInOM1Jkj4CEq6A4WSU5D9I">
-                                    <i class="fa fa-cloud" aria-hidden="true"></i><span class="menu-ocultar">EXEMPLO
-                                    </span></a>
-                            </li>
+                            
 
                             </li>
 

@@ -30,7 +30,7 @@
                         <h5 class="text-primary">RGI</h5>
                     </td>
                     <td>
-                        <input class="form-control form-menor" name="rgi" type="number">
+                        <input class="form-control form-menor" name="rgi" type="text">
                     </td>
                 </tr>
                 <tr>

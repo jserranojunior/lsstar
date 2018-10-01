@@ -72,10 +72,20 @@ class CasasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        $dados = $this->casa->edit($id);
-        return view('casas.edit')->with($dados);
+    
+        $this->cliente = $this->cliente->index($request);
+          
+        
+            foreach($this->cliente as $cliente){
+                $clientes = $cliente;
+            }
+
+            $casa = $this->casa->edit($id);
+            $data = ['clientes' => $cliente, 'casa' => $casa];
+
+        return view('casas.edit')->with($data);
     }
 
     /**

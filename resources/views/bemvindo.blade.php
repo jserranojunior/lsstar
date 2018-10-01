@@ -49,10 +49,23 @@
         <div class="col-sm-3">
             <div class="box box-primary">
                 <div class="box-header with-border text-center">
-                    FORNECEDOR
+                    FORNECEDORES
                 </div>
                 <div class="box-body">
                     <img class="img-responsive" src="{{URL::asset('/img/home')}}/fornecedor.jpg">
+                </div>    
+            </div>
+        </div>
+    </a>
+
+    <a href="{{Url('/casa')}}">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    CASAS
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="{{URL::asset('/img/home')}}/casas.jpg">
                 </div>    
             </div>
         </div>
