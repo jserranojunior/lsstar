@@ -22,6 +22,8 @@ Route::group(['as' => 'casa.', 'prefix' => 'casa','middleware' => ['auth']], fun
     Route::get('/', ['as' => 'index', 'uses' => 'Casas\CasasController@index']); 
     Route::get('/editar/{id}', ['as' => 'edit', 'uses' => 'Casas\CasasController@edit']);
     Route::get('/criar', ['as' => 'edit', 'uses' => 'Casas\CasasController@create']);
+   Route::post('/cadastrar', ['as' => 'store', 'uses' => 'Casas\CasasController@store']);
+   Route::post('/atualizar', ['as' => 'update', 'uses' => 'Casas\CasasController@update']);
 });
 
 

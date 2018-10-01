@@ -52,7 +52,9 @@ class CasasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = $this->casa->store($request);
+        return redirect('casa');
+        
     }
 
     /**
@@ -75,8 +77,7 @@ class CasasController extends Controller
     public function edit(Request $request, $id)
     {
     
-        $this->cliente = $this->cliente->index($request);
-          
+        $this->cliente = $this->cliente->index($request);          
         
             foreach($this->cliente as $cliente){
                 $clientes = $cliente;
@@ -95,9 +96,11 @@ class CasasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+        $update = $this->casa->update($request,$id );
+        return redirect('casa');
     }
 
     /**

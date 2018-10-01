@@ -14,6 +14,8 @@ class casas extends Model
             'nome' => $request->nome,
             'numero' => $request->numero,
             'endereco' => $request->endereco,
+            'rgi' => $request->rgi,
+            'status' => $request->status,
         ];
         try{
             DB::table($this->table)->insert($dados);
@@ -36,6 +38,8 @@ class casas extends Model
             'nome' => $request->nome,
             'numero' => $request->numero,
             'endereco' => $request->endereco,
+            'rgi' => $request->rgi,
+            'status' => $request->status,
         ];
 
         try{

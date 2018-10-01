@@ -36,12 +36,15 @@
                         <th>
                             Endereço
                         </th>
+                        <th>RGI</th>
+                        <th>Status</th>
                     </tr>
 
                 </thead>
                 <tbody>
                     @foreach($casas as $item)
                     <tr onclick="editar('{{$item->id}}');">
+                            
                         <td>
                             {{$item->nome}}
                         </td>
@@ -50,6 +53,12 @@
                         </td>
                         <td>
                             {{$item->endereco}}
+                        </td>
+                        <td>
+                            {{$item->rgi}}
+                        </td>
+                        <td>
+                            {{$item->status}}
                         </td>
                     </tr>
 
