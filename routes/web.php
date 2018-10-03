@@ -11,6 +11,15 @@ Route::get('/executar/migrate', function() {
 Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
 
 
+// Manutencao
+Route::group(['as' => 'manutencao.', 'prefix' => 'manutencao','middleware' => ['auth']], function(){
+    Route::get('/', ['as' => 'index', 'uses' => 'Manutencao\ManutencaoController@index']); 
+    Route::get('/novo', ['as' => 'create', 'uses' => 'Manutencao\ManutencaoController@create']);
+});
+
+
+
+// Relatórios
 Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio','middleware' => ['auth']], function(){
     Route::get('/anual', ['as' => 'anual', 'uses' => 'Api\Financeiro\ApiRelatorio@anual']); 
 });
@@ -100,10 +109,7 @@ Route::group(['as' => 'stock.','prefix' => 'estoque', 'middleware' => ['auth']],
     Route::get('{id}/remover', ['as' => 'destroy', 'uses' => 'StockController@destroy']);
 });  
 
-Route::group(['as' => 'manutencao.','prefix' => 'manutencao', 'middleware' => ['auth']],function(){
-    Route::get('/orcamento',['as'=>'index','uses' => 'Manutencao\OrcamentoController@index']);
-
-});  
+ 
 
 Route::group(['as' => 'fornecedor.','prefix' => 'fornecedor', 'middleware' => ['auth']],function(){
     Route::get('/',['as'=>'index','uses' => 'Fornecedor\fornecedorController@index']);

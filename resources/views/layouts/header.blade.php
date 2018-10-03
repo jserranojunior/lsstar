@@ -66,11 +66,18 @@
                             </li>
 
                             <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                                    <a href="{{Route('casa.index')}}" class="fa fa-building"><span
-                                            class="menu-ocultar">Casas</span></a>
+                                <a href="{{Route('casa.index')}}" class="fa fa-building"><span class="menu-ocultar">Casas</span></a>
+                            </li>
+
+                            <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-11">
+                                    <a href="{{Route('manutencao.index')}}"><i class="fa fa-wrench" aria-hidden="true"></i><span class="menu-ocultar">Manutenções</span></a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23">
+                                            <a href="{{Route('manutencao.create')}}" class="glyphicon glyphicon-user"><span
+                                                    class="menu-ocultar">Cadastrar</span></a>
+                                        </li>                                       
+                                    </ul>
                                 </li>
-
-
 
                             <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-11">
                                 <a href="{{Route('cliente.index')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Clientes</span></a>
@@ -88,6 +95,7 @@
                                                 class="menu-ocultar">Proprietários</span></a>
                                     </li>
                                 </ul>
+                            </li>
 
                             <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
                                 <a href="{{Route('agenda.index')}}" class="glyphicon glyphicon-list-alt"><span class="menu-ocultar">Agenda
@@ -101,7 +109,7 @@
                                         class="menu-ocultar">Fornecedores </span></a>
                             </li>
 
-                            
+
 
                             </li>
 
