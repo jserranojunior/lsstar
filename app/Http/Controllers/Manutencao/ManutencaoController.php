@@ -14,7 +14,7 @@ class ManutencaoController extends Controller
      */
     public function index()
     {
-        return('Em desenvolvimento');
+        return view('manutencao.index');
     }
 
     /**

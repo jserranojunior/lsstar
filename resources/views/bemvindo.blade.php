@@ -70,5 +70,18 @@
             </div>
         </div>
     </a>
+
+    <a href="{{Url('/manutencao')}}">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    MANUTENÇÕES
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="{{URL::asset('/img/home')}}/manutencao.jpg">
+                </div>    
+            </div>
+        </div>
+    </a>
 </div>    
 @endsection
