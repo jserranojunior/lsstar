@@ -15,7 +15,7 @@
                 <table class="table text-center table-condensed">
                     <tr class="bg-warning">
                         <td>
-                            <h5 class="text-primary">Casa</h5>
+                            <h5 class="text-primary">Unidade de Negócio</h5>
                         </td>
                         <td>
                             <select name="casa" class="form-control" id="">
@@ -23,6 +23,14 @@
                             </select></td>
                         </td>
                     </tr>
+                    <tr class="bg-warning">
+                            <td>
+                                <h5 class="text-primary">Casa</h5>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="numero_casa">
+                            </td>
+                        </tr>
                     <tr class="bg-warning">
                         <td>
                             <h5 class="text-primary">Data de Garantia</h5>
@@ -52,7 +60,9 @@
                                 <option value="">Piso</option>
                                 <option value="">Azuleijos</option>
                                 <option value="">Alvenaria</option>
-                                <option value="">Pintura</option>                                
+                                <option value="">Pintura</option>     
+                                <option value="">Elétrica</option>  
+                                <option value="">Esquadrias</option>                         
                             </select></td>
                         </td>
                     </tr>

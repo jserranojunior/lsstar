@@ -6,7 +6,7 @@
 
     <div class="box box-info">
             <div class="box-header with-border text-center">
-                    <h3 class="box-title">CASAS</h4>
+                    <h3 class="box-title">Unidades de Negócio</h4>
   
                     <div class="box-tools pull-right">
                       <a href="casa/criar">

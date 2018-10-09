@@ -6,7 +6,7 @@
     @foreach($casa['casa'] as $item)
     <div class="box box-info">
         <div class="box-head">
-            <h3 class="text-center"> Editar Casa {{$item->id}}</h3>
+            <h3 class="text-center"> Editar {{$item->id}}</h3>
         </div>
         <form action="../atualizar" method="POST">
             <div class="box-body ">
@@ -46,8 +46,8 @@
                         <td>
                             <select name="status" id="" class="form-control">
                                 <option @if($item->status == "Construção") selected @endif>Construção</option>
-                                <option @if($item->status == "Vendendo") selected @endif>Vendendo</option>
-                                <option @if($item->status == "Comprada") selected @endif>Comprada</option>
+                                <option @if($item->status == "Á venda") selected @endif>Á venda</option>
+                                <option @if($item->status == "Vendida") selected @endif>Vendida</option>
                             </select>
                         </td>
                     </tr>
