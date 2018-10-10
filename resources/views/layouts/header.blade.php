@@ -66,30 +66,24 @@
                             </li>
 
                             <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                                <a href="{{Route('casa.index')}}" class="fa fa-building"><span class="menu-ocultar">Unidades de Negócio</span></a>
+                                <a href="{{Route('casa.index')}}" class="fa fa-building"><span class="menu-ocultar">Empreendimentos</span></a>
                             </li>
 
                             <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                                    <a href="{{Route('manutencao.index')}}"><i class="fa fa-wrench" aria-hidden="true"></i><span class="menu-ocultar">Manutenções</span></a>
-                                    
-                                </li>
+                                <a href="{{Route('manutencao.index')}}"><i class="fa fa-wrench" aria-hidden="true"></i><span
+                                        class="menu-ocultar">Manutenções</span></a>
 
-                            <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-11">
+                            </li>
+
+                            <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
                                 <a href="{{Route('cliente.index')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Clientes</span></a>
-                                <ul class="sub-menu">
-                                    <li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23">
-                                        <a href="{{Route('cliente.create')}}" class="glyphicon glyphicon-user"><span
-                                                class="menu-ocultar">Cadastrar</span></a>
-                                    </li>
-                                    <li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23">
-                                        <a href="{{Route('cliente.index')}}" class="glyphicon glyphicon-user"><span
-                                                class="menu-ocultar">Todos</span></a>
-                                    </li>
-                                    <li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23">
-                                        <a href="{{url('/cliente?tipocliente=proprietario')}}" class="glyphicon glyphicon-user"><span
-                                                class="menu-ocultar">Proprietários</span></a>
-                                    </li>
-                                </ul>
+                            </li>
+                            <li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
+                                
+
+                                <a href="{{url('/cliente?tipocliente=proprietario')}}">    <i class="fa fa-address-card-o" aria-hidden="true"></i><span
+                                        class="menu-ocultar">Proprietários</span></a>
+                            </li>
                             </li>
 
                             <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">

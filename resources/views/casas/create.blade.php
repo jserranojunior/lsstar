@@ -12,30 +12,62 @@
                 <table class="table text-center table-condensed">
                     <tr>
                         <td>
-                            <h5 class="text-primary">Nome</h5>
+                            <h5 class="text-primary">Empreendimento</h5>
                         </td>
                         <td>
                             <input class="form-control form-menor" name="nome" type="text">
                         </td>
-                        <td>
-                            <h5 class="text-primary">Numero da Matricula</h5>
-                        </td>
-                        <td>
-                            <input class="form-control form-menor" name="numero_matricula" type="text">
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
                             <h5 class="text-primary">Casa</h5>
                         </td>
                         <td>
                             <input class="form-control form-menor" name="numero" type="number">
                         </td>
+                    </tr>
+                    <tr>
                         <td>
-                            <h5 class="text-primary">Endereço</h5>
+                            <h5 class="text-primary">N° Matricula</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" name="endereco" type="text">
+                            <input class="form-control form-menor" name="numero_matricula" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Data Matricula</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="data_matricula" type="date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="text-primary">CEP</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="cep" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Logradouro</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="logradouro" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="text-primary">Bairro</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="bairro" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Status</h5>
+                        </td>
+                        <td>
+                            <select name="status" id="" class="form-control">
+                                <option>Construção</option>
+                                <option>Á venda</option>
+                                <option>Vendida</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
@@ -52,30 +84,18 @@
                     </tr>
                     <tr>
                         <td>
-                            <h5 class="text-primary">Proprietário 2</h5>
-                        </td>
-                        <td colspan="3">
-                            <select name="segundo_cliente_id" id="" class="form-control">
-                                <option value=""></option>
-                                @foreach($clientes as $cliente)
-                                <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5 class="text-primary">Inst. de luz</h5>
+                            <h5 class="text-primary">Instalação de luz</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" name="instalacao_luz" type="text">
+                            <input class="form-control form-menor" name="numero_instalacao_luz" type="text">
                         </td>
                         <td>
-                            <h5 class="text-primary">N° IPTU</h5>
+                            <h5 class="text-primary">Fornecedor de luz</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" name="numero_iptu" type="text">
+                            <input class="form-control form-menor" name="fornecedor_luz" type="text">
                         </td>
+
                     </tr>
                     <tr>
                         <td>
@@ -85,14 +105,10 @@
                             <input class="form-control form-menor" name="rgi" type="text">
                         </td>
                         <td>
-                            <h5 class="text-primary">Status</h5>
+                            <h5 class="text-primary">N° IPTU</h5>
                         </td>
                         <td>
-                            <select name="status" id="" class="form-control">
-                                <option>Construção</option>
-                                <option>Á venda</option>
-                                <option>Vendida</option>
-                            </select>
+                            <input class="form-control form-menor" name="numero_iptu" type="text">
                         </td>
                     </tr>
                     <tr>
@@ -108,6 +124,28 @@
                         <td>
                             <input class="form-control form-menor" name="inicio_garantia" type="date">
                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="text-primary">N° Habite-se</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="numero_habitese" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Data Habite-se</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="date_habitese" type="date">
+                        </td>
+                    </tr>
+                    <tr>
+                            <td>
+                                    <h5 class="text-primary">Alvará de Construção</h5>
+                                </td>
+                                <td>
+                                    <input class="form-control form-menor" name="alvara" type="text">
+                                </td>
                     </tr>
                 </table>
             </div>
