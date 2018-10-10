@@ -53,7 +53,7 @@
                             {{$item->numero}}
                         </td>
                         <td>
-                            {{$item->endereco}}
+                            {{$item->logradouro}}
                         </td>
                         <td>
                             {{$item->rgi}}

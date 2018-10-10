@@ -20,7 +20,7 @@
 
 <form action="{{Route('cliente.update')}}" method="post" class="form-horizontal">
 
-    @foreach($dados as $cliente)
+    @foreach($dados['dados'] as $cliente)
     <div class="col-xs-10 col-xs-offset-1">
 
         <div class="box box-info">
@@ -298,17 +298,25 @@
                                 type="text">
                     </tr>
                     <tr class="tr-destaque">
-                            <td>
-                                <h5>Tipo de Cliente</h5>
-                            </td>
-                            <td>
-                                <select name="tipocliente" class="form-control" id="tipocliente">
-                                    <option @if($cliente->tipocliente == '') selected @endif value="">Cliente</option>
-                                    <option @if($cliente->tipocliente == 'proprietario') selected @endif value="proprietario">Proprietário</option>
-                                </select>
-                            </td>    
-                            <td colspan="3"></td>
-                        </tr>
+                        <td>
+                            <h5>Tipo de Cliente</h5>
+                        </td>
+                        <td>
+                            <select name="tipocliente" class="form-control" id="tipocliente">
+                                <option @if($cliente->tipocliente == '') selected @endif value="">Cliente</option>
+                                <option @if($cliente->tipocliente == 'proprietario') selected @endif
+                                    value="proprietario">Proprietário</option>
+                            </select>
+                        </td>
+                        <td>
+                            <h5>Empreendimento</h5>
+                        </td>
+                        <td>
+                            <select name="empreendimento" class="form-control" id="empreendimento">
+                                <option value="">nome do emprendimento</option>
+                            </select>
+                        </td>
+                    </tr>
                     <tr class="tr-destaque">
                         <td>
                             <h5 class="">Observação</h5>
@@ -336,15 +344,42 @@
                                 Resultado
                             </th>
                         </tr>
-                        @foreach($agendamentos as $agendamento)
+
+                        @foreach($dados['agendamentos'] as $agendamento)
                         <tr>
                             <td>{{$agendamento->data}}</td>
                             <td>{{$agendamento->imovel}}</td>
                             <td>{{$agendamento->resultado}}</td>
                         <tr>
-
                             @endforeach
                     </table>
+                    <tr>
+                        <td>
+                            <h3 class="text-center"> EMPRENDIMENTO </h3>
+                        </td>
+                    </tr>
+
+                    @foreach($casas as $itemCasa)
+                    <table class="table table-condensed">
+                        <tr>
+                            <td>Empreendimento</td>
+                            <td>{{$itemCasa->nome}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Casa
+                            </td>
+                            <td>
+                                {{$itemCasa->numero}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>N° Matricula</td>
+                            <td>{{$itemCasa->numero_matricula}}</td>
+                        </tr>
+                    </table>
+                    @endforeach
+
                 </div>
                 <div class="box-footer">
                     <div class="col-sm-4">

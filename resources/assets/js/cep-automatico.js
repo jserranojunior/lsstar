@@ -5,6 +5,7 @@
             function limpa_formulário_cep() {
                 // Limpa valores do formulário de cep.
                 $("#rua").val("");
+                $("#logradouro").val("");
                 $("#bairro").val("");
                 $("#cidade").val("");
                 $("#uf").val("");
@@ -28,6 +29,7 @@
 
                         //Preenche os campos com "..." enquanto consulta webservice.
                         $("#rua").val("...");
+                        $("#logradouro").val("...");
                         $("#bairro").val("...");
                         $("#cidade").val("...");
                         $("#uf").val("...");
@@ -38,6 +40,7 @@
 
                             if (!("erro" in dados)) {
                                 //Atualiza os campos com os valores da consulta.
+                                $("#logradouro").val(dados.logradouro);
                                 $("#rua").val(dados.logradouro);
                                 $("#bairro").val(dados.bairro);
                                 $("#cidade").val(dados.localidade);

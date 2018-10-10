@@ -73,6 +73,7 @@ class ApiCasa extends Controller
     {
         
         $casa = $this->casas->edit($id);
+        
         return $casa;
     }
 

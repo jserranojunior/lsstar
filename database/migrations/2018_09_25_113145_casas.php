@@ -15,9 +15,11 @@ class Casas extends Migration
     {
         Schema::create('casas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('numero');
-            $table->string('endereco');
+            $table->string('nome')->nullable();
+            $table->string('numero')->nullable();
+            $table->string('logradouro')->nullable();
+
+   
         });
     }
 

@@ -4,12 +4,14 @@ namespace App\Http\Controllers\cliente;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiCliente;
+use App\Models\tables\casas;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class clienteController extends Controller
 {
-    public function __construct(ApiCliente $ApiCliente){        
+    public function __construct(ApiCliente $ApiCliente, casas $casas){   
+        $this->casas = $casas;     
         $this->cliente = $ApiCliente;
     }
 
@@ -33,7 +35,13 @@ class clienteController extends Controller
     }
 
     public function edit($id){
+               
         $dados =  $this->cliente->edit($id);
-        return view('cliente/editar')->with($dados);       
+
+        $casas = $this->casas::where('cliente_id', $id)->get();
+
+        $data = ['dados' => $dados, 'casas' => $casas];
+        return view('cliente/editar')->with($data);  
+
     }
 }

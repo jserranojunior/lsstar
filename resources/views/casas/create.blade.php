@@ -43,13 +43,13 @@
                             <h5 class="text-primary">CEP</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" name="cep" type="text">
+                            <input class="form-control form-menor" name="cep" id="cep" type="text">
                         </td>
                         <td>
                             <h5 class="text-primary">Logradouro</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" name="logradouro" type="text">
+                            <input class="form-control form-menor" name="logradouro" id="rua" type="text">
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +57,7 @@
                             <h5 class="text-primary">Bairro</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" name="bairro" type="text">
+                            <input class="form-control form-menor" name="bairro" id="bairro" type="text">
                         </td>
                         <td>
                             <h5 class="text-primary">Status</h5>
@@ -111,20 +111,7 @@
                             <input class="form-control form-menor" name="numero_iptu" type="text">
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <h5 class="text-primary">Entrega da Chave</h5>
-                        </td>
-                        <td>
-                            <input class="form-control" name="entrega_chave" type="date">
-                        </td>
-                        <td>
-                            <h5 class="text-primary">Inicio da Garantia</h5>
-                        </td>
-                        <td>
-                            <input class="form-control form-menor" name="inicio_garantia" type="date">
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <td>
                             <h5 class="text-primary">N° Habite-se</h5>
@@ -136,16 +123,22 @@
                             <h5 class="text-primary">Data Habite-se</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" name="date_habitese" type="date">
+                            <input class="form-control form-menor" name="data_habitese" type="date">
                         </td>
                     </tr>
                     <tr>
-                            <td>
-                                    <h5 class="text-primary">Alvará de Construção</h5>
-                                </td>
-                                <td>
-                                    <input class="form-control form-menor" name="alvara" type="text">
-                                </td>
+                        <td>
+                            <h5 class="text-primary">Alvará de Construção</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="alvara" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Data do Alvará</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="data_alvara" type="date">
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -156,5 +149,4 @@
         </form>
     </div>
 </div>
-
 @endsection

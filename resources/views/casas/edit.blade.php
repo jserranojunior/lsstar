@@ -13,36 +13,60 @@
                 <table class="table text-center table-condensed">
                     <tr>
                         <td>
-                            <h5 class="text-primary">Nome</h5>
+                            <h5 class="text-primary">Empreendimento</h5>
                         </td>
-                        <td colspan="3">
+                        <td>
                             <input class="form-control form-menor" value="{{$item->nome}}" name="nome" type="text">
                         </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <h5 class="text-primary">Número</h5>
+                            <h5 class="text-primary">Casa</h5>
                         </td>
                         <td>
                             <input class="form-control form-menor" value="{{$item->numero}}" name="numero" type="number">
                         </td>
+                    </tr>
+                    <tr>
                         <td>
-                            <h5 class="text-primary">RGI</h5>
+                            <h5 class="text-primary">N° Matricula</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" value="{{$item->rgi}}" name="rgi" type="text">
+                            <input class="form-control form-menor" value="{{$item->numero_matricula}}"  name="numero_matricula" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Data Matricula</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->data_matricula}}" name="data_matricula" type="date">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h5 class="text-primary">Endereço</h5>
+                            <h5 class="text-primary">CEP</h5>
                         </td>
                         <td>
-                            <input class="form-control form-menor" value="{{$item->endereco}}" name="endereco" type="text">
+                            <input class="form-control form-menor" name="cep" value="{{$item->cep}}" id="cep" type="text">
                         </td>
+                        <td>
+                            <h5 class="text-primary">Logradouro</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->logradouro}}" name="logradouro" id="rua"
+                                type="text">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h5 class="text-primary">Bairro</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" name="bairro" value="{{$item->bairro}}" id="bairro" type="text">
+                        </td>
+
                         <td>
                             <h5 class="text-primary">Status</h5>
                         </td>
+
                         <td>
                             <select name="status" id="" class="form-control">
                                 <option @if($item->status == "Construção") selected @endif>Construção</option>
@@ -58,11 +82,70 @@
                         <td colspan="3">
                             <select name="cliente_id" id="" class="form-control">
                                 @foreach($clientes as $cliente)
-                                <option @if($item->cliente_id == $cliente->id) selected @endif value="{{$cliente->id}}">{{$cliente->nome}}</option>
+                                <option @if($item->cliente_id == $cliente->id) selected @endif
+                                    value="{{$cliente->id}}">{{$cliente->nome}}</option>
                                 @endforeach
                             </select>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <h5 class="text-primary">Instalação de luz</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->numero_instalacao_luz}}" name="numero_instalacao_luz" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Fornecedor de luz</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->fornecedor_luz}}" name="fornecedor_luz" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <h5 class="text-primary">RGI</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->rgi}}" name="rgi" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">N° IPTU</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->numero_iptu}}" name="numero_iptu" type="text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="text-primary">N° Habite-se</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->numero_habitese}}" name="numero_habitese" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Data Habite-se</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->data_habitese}}" name="data_habitese" type="date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="text-primary">Alvará de Construção</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->alvara}}" name="alvara" type="text">
+                        </td>
+                        <td>
+                            <h5 class="text-primary">Data do Alvará</h5>
+                        </td>
+                        <td>
+                            <input class="form-control form-menor" value="{{$item->data_alvara}}" name="data_alvara" type="date">
+                        </td>
+                    </tr>
+
                 </table>
             </div>
             <div class="box-footer">
@@ -72,7 +155,7 @@
             </div>
         </form>
     </div>
-    
+
     @endforeach
 </div>
 
