@@ -7,6 +7,13 @@ use DB;
 
 class cliente extends Model
 {
+
+    public function atualizarTipoCliente($id, $tipocliente){
+        $clientes = DB::table('clientes')
+        ->where('id', $id)
+        ->update(["tipocliente" => $tipocliente]);     
+    }
+
     public function atualizar($request){
         $id = $request->id;
         $nome = trim($request->nome);

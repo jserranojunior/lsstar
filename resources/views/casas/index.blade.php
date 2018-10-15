@@ -61,6 +61,7 @@
                         <td>
                             {{$item->status}}
                         </td>
+                        <td>{{$item->cliente_id}}</td>
                         
                     </tr>
 

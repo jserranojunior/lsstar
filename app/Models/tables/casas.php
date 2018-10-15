@@ -4,15 +4,31 @@ namespace App\Models\tables;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Models\cliente\cliente;
 
 class casas extends Model
 {
     protected $table = "casas";
+
+    public function __construct(){     
+        $this->cliente = new cliente;  
+    }
+
+    public function index($request){
+        $casas = DB::table('casas')->get();
+         // Filtro
+         if($request->status > ''){
+            $casas = DB::table('casas')
+            ->where('status', $request->status)
+            ->get();
+        }
+
+        return $casas;
+
+    }
     
 
-    public function store($request){
-
-      
+    public function store($request){     
 
         $dados = [
             'nome' => $request->nome,
@@ -35,6 +51,11 @@ class casas extends Model
             'data_alvara' => $request->data_alvara,
 
         ];
+
+        if($request->cliente_id !== ''){
+            $this->cliente->atualizarTipoCliente($request->cliente_id, "proprietario");
+        }
+
         try{
             DB::table($this->table)->insert($dados);
             $message = 'cadastrado';
@@ -72,6 +93,15 @@ class casas extends Model
             'alvara' => $request->alvara,
             'data_alvara' => $request->data_alvara,
         ];
+
+        if($request->cliente_id !== ''){
+            $this->cliente->atualizarTipoCliente($request->cliente_id, "proprietario");
+        }else{
+            $select = DB::table($this->table)->select('cliente_id')->where('id', $id)->take(1)->get();
+            foreach($select as $item){
+                $this->cliente->atualizarTipoCliente($item->cliente_id, "");
+            }           
+        }
 
         try{
             $update = DB::table($this->table)->where('id', $id)->update($dados);            

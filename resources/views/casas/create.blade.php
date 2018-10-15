@@ -76,6 +76,7 @@
                         </td>
                         <td colspan="3">
                             <select name="cliente_id" id="" class="form-control">
+                                <option value=""></option>
                                 @foreach($clientes as $cliente)
                                 <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
                                 @endforeach

@@ -297,27 +297,17 @@
                         <td><input class="form-control " name="informacao" id="informacao" value="{{$cliente->informacao}}"
                                 type="text">
                     </tr>
-                    <tr class="tr-destaque">
+                    <tr>                        
                         <td>
-                            <h5>Tipo de Cliente</h5>
+                            <h5>Empreendimento que Possui</h5>
                         </td>
-                        <td>
-                            <select name="tipocliente" class="form-control" id="tipocliente">
-                                <option @if($cliente->tipocliente == '') selected @endif value="">Cliente</option>
-                                <option @if($cliente->tipocliente == 'proprietario') selected @endif
-                                    value="proprietario">Proprietário</option>
-                            </select>
-                        </td>
-                        <td>
-                            <h5>Empreendimento</h5>
-                        </td>
-                        <td>
+                        <td colspan="4">
                             <select name="empreendimento" class="form-control" id="empreendimento">
                                 <option value="">nome do emprendimento</option>
                             </select>
                         </td>
                     </tr>
-                    <tr class="tr-destaque">
+                    <tr>
                         <td>
                             <h5 class="">Observação</h5>
                         </td>
@@ -353,13 +343,15 @@
                         <tr>
                             @endforeach
                     </table>
+
+                    @foreach($casas as $itemCasa)
                     <tr>
                         <td>
                             <h3 class="text-center"> EMPRENDIMENTO </h3>
                         </td>
                     </tr>
 
-                    @foreach($casas as $itemCasa)
+                    
                     <table class="table table-condensed">
                         <tr>
                             <td>Empreendimento</td>

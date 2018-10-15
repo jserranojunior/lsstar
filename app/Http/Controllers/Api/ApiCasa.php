@@ -18,9 +18,10 @@ class ApiCasa extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($request)
     {
-        $casas = $this->casas::all();
+        
+        $casas = $this->casas->index($request);
         $dados = ['casas' => $casas];
         return $dados;
     }

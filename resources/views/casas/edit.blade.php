@@ -81,6 +81,7 @@
                         </td>
                         <td colspan="3">
                             <select name="cliente_id" id="" class="form-control">
+                                <option value=""></option>
                                 @foreach($clientes as $cliente)
                                 <option @if($item->cliente_id == $cliente->id) selected @endif
                                     value="{{$cliente->id}}">{{$cliente->nome}}</option>
