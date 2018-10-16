@@ -65,7 +65,7 @@
                         <td>
                             <select name="status" id="" class="form-control">
                                 <option>Construção</option>
-                                <option>Á venda</option>
+                                <option>Vendendo</option>
                                 <option>Vendida</option>
                             </select>
                         </td>

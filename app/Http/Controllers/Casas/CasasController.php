@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiCasa;
 use App\Http\Controllers\Api\ApiCliente;
+use DB;
 
 class CasasController extends Controller
 {
@@ -34,14 +35,11 @@ class CasasController extends Controller
      */
     public function create(Request $request)
     {
-        $this->cliente = $this->cliente->index($request);
-    //   dd($this->cliente);
-        foreach($this->cliente as $cliente){
-            $clientes = $cliente;
-        }
 
-        $data = ['clientes' => $cliente];
-    // dd($cliente);
+        $clientes = DB::table('clientes')->where('tipocliente','')->orderBy('nome', 'asc')->get(); 
+
+        $data = ['clientes' => $clientes];
+         // dd($cliente);
         return view('casas.create')->with($data);
     }
 
@@ -78,14 +76,18 @@ class CasasController extends Controller
     public function edit(Request $request, $id)
     {
     
-        $this->cliente = $this->cliente->index($request);          
+        $clientes = DB::table('clientes')->where('tipocliente','')->orderBy('nome', 'asc')->get(); 
+              
+      
         
-            foreach($this->cliente as $cliente){
-                $clientes = $cliente;
-            }
+            // foreach($this->cliente as $cliente){
+            //     $clientes = $cliente;
+            // }
 
             $casa = $this->casa->edit($id);
-            $data = ['clientes' => $cliente, 'casa' => $casa];
+                            
+
+            $data = ['clientes' => $clientes, 'casa' => $casa];
 
         return view('casas.edit')->with($data);
     }

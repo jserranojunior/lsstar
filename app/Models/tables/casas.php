@@ -28,7 +28,14 @@ class casas extends Model
     }
     
 
-    public function store($request){     
+    public function store($request){ 
+        
+        if($request->cliente_id > '' or $request->cliente_id > null)
+        {
+            $request['status'] = "Vendida";
+        }
+
+    
 
         $dados = [
             'nome' => $request->nome,
@@ -68,6 +75,14 @@ class casas extends Model
 
     public function edit($id){    
        $casa = DB::table($this->table)->where('id', $id)->get();
+
+       foreach($casa as $item){
+        $selectProprietario = DB::table('clientes')->where('id', $item->cliente_id)->get();
+        foreach($selectProprietario as $proprietario){
+            $item->cliente_nome = $proprietario->nome;
+        }     
+       }   
+
        $dados = ['casa' => $casa];
        return $dados;
     }

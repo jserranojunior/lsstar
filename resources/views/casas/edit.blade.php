@@ -70,7 +70,7 @@
                         <td>
                             <select name="status" id="" class="form-control">
                                 <option @if($item->status == "Construção") selected @endif>Construção</option>
-                                <option @if($item->status == "Á venda") selected @endif>Á venda</option>
+                                <option @if($item->status == "Vendendo") selected @endif>Vendendo</option>
                                 <option @if($item->status == "Vendida") selected @endif>Vendida</option>
                             </select>
                         </td>
@@ -81,11 +81,17 @@
                         </td>
                         <td colspan="3">
                             <select name="cliente_id" id="" class="form-control">
-                                <option value=""></option>
-                                @foreach($clientes as $cliente)
-                                <option @if($item->cliente_id == $cliente->id) selected @endif
-                                    value="{{$cliente->id}}">{{$cliente->nome}}</option>
-                                @endforeach
+
+
+                                    @if($item->cliente_id > '' or $item->cliente_id > null)
+                                    <option value="{{$item->cliente_id}}">{{$item->cliente_nome}}</option>
+                                    @else
+                                   <option value=""></option>
+                                    @foreach($clientes as $cliente)
+                                        <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
+                                        @endforeach
+                                    @endif    
+
                             </select>
                         </td>
                     </tr>

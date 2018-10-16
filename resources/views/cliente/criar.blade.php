@@ -278,19 +278,7 @@
                         <td><input class="form-control " name="informacao" id="informacao" value="" type="text">
 
                     </tr>
-                    <tr class="tr-destaque">
-                        <td>
-                            <h5>Tipo de Cliente</h5>
-                        </td>
-                        <td>
-                            <select name="tipocliente" class="form-control" id="tipocliente">
-                                <option value="">Cliente</option>
-                                <option value="proprietario">Proprietario</option>
-                            </select>
-                        </td>
-
-                        <td colspan="3"></td>
-                    </tr>
+                    
 
 
                     <tr class="tr-destaque">

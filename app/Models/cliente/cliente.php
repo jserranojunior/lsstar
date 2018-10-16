@@ -18,6 +18,14 @@ class cliente extends Model
         $id = $request->id;
         $nome = trim($request->nome);
 
+        if($request->empreendimento > ""){
+            $updateCasa =  DB::table('casas')
+            ->where('id', $request->empreendimento)
+            ->update(['cliente_id' => $id, 'status' => 'comprada']); 
+
+            $request->tipocliente = "proprietario";
+        }
+
         $dados = array(        
         'nome' => $nome,
         'idade' => $request->idade,
@@ -71,6 +79,9 @@ class cliente extends Model
 
     public function editar($id){
 
+        $casas = DB::table('casas')->where('status', 'vendendo')->orWhere('status', 'construção')->get();
+
+        
         $agendamento = DB::table("agendamento")
         ->where("id_cliente", $id)
         ->get();
@@ -82,23 +93,46 @@ class cliente extends Model
         $clientes = DB::table('clientes')
         ->where('id', $id)
         ->get();
-        $dados = array('dados' => $clientes,'agendamentos' => $agendamento);
+
+        foreach($clientes as $cliente){
+            if($cliente->tipocliente == "proprietario"){
+                $selectMinhaCasa = DB::table('casas')->select('id','nome')->take(1)->where('cliente_id', $cliente->id)->get();
+                foreach($selectMinhaCasa as $minhaCasa){
+                    $cliente->casa = $minhaCasa->id;
+                    $cliente->casa_nome = $minhaCasa->nome;
+                }
+            }else{
+                $cliente->casa = '';
+                    $cliente->casa_nome = '';
+
+            }
+        }
+        
+
+        $dados = array('dados' => $clientes,'agendamentos' => $agendamento, 'casas' => $casas);
         return($dados);
 
     }
 
     public function index($request){
        
-        $clientes = DB::table('clientes')->get();
+        $clientes = DB::table('clientes')->orderBy('id', 'asc')->get();
 
+        
         // Filtro
         if($request->tipocliente > ''){
             $clientes = DB::table('clientes')
             ->where('tipocliente', $request->tipocliente)
+            ->orderBy('id', 'asc')
+            ->get();
+        }else{
+            $clientes = DB::table('clientes')
+            ->where('tipocliente','<>', 'proprietario')
+            ->orderBy('id', 'asc')
             ->get();
         }
 
-        $dados = array('dados' => $clientes);
+        $dados = array('dados' => $clientes,'tipocliente' => $request->tipocliente);
         return($dados);
     }
 
@@ -141,7 +175,7 @@ class cliente extends Model
             'valorprestacao' => $request->valorprestacao,
             'informacao' => $request->informacao,
             'observacao' => $request->observacao,
-            'tipocliente' => $request->tipocliente,
+            'tipocliente' => "",
         
         );  
 

@@ -25,7 +25,7 @@
 
         <div class="box box-info">
             <div class="box-head">
-                <h3 class="text-center"> Editar Cliente </h3>
+                <h3 class="text-center"> EDITAR </h3>
             </div>
             <div class="box-body no-padding">
                 <table class="table table-cliente text-center table-condensed">
@@ -297,13 +297,23 @@
                         <td><input class="form-control " name="informacao" id="informacao" value="{{$cliente->informacao}}"
                                 type="text">
                     </tr>
-                    <tr>                        
+                    <tr>
                         <td>
                             <h5>Empreendimento que Possui</h5>
                         </td>
                         <td colspan="4">
                             <select name="empreendimento" class="form-control" id="empreendimento">
-                                <option value="">nome do emprendimento</option>
+
+                                @if($cliente->casa > '' or $cliente->casa > null)
+                                <option value="{{$cliente->casa}}">{{$cliente->casa_nome}}</option>
+                                @else
+                                <option value=""></option>
+                                @foreach($dados['casas'] as $casa)
+                                <option value="{{$casa->id}}">{{$casa->nome}}</option>
+                                @endforeach
+                                @endif
+
+
                             </select>
                         </td>
                     </tr>
@@ -351,7 +361,7 @@
                         </td>
                     </tr>
 
-                    
+
                     <table class="table table-condensed">
                         <tr>
                             <td>Empreendimento</td>
@@ -369,6 +379,52 @@
                             <td>N° Matricula</td>
                             <td>{{$itemCasa->numero_matricula}}</td>
                         </tr>
+                        <tr>
+                            <td>CEP</td>
+                            <td>{{$itemCasa->cep}}</td>
+                        </tr>
+                        <tr>
+                            <td>Logradouro</td>
+                            <td>{{$itemCasa->logradouro}}</td>
+                        </tr>
+                        <tr>
+                            <td>Bairro</td>
+                            <td>{{$itemCasa->bairro}}</td>
+                        </tr>
+                        <tr>
+                            <td>Instalação de Luz</td>
+                            <td>{{$itemCasa->numero_instalacao_luz}}</td>
+                        </tr>
+                        <tr>
+                            <td>Fornecedor de Luz</td>
+                            <td>{{$itemCasa->fornecedor_luz}}</td>
+                        </tr>
+                        <tr>
+                            <td>RGI</td>
+                            <td>{{$itemCasa->rgi}}</td>
+                        </tr>
+                        <tr>
+                            <td>N° IPTU</td>
+                            <td>{{$itemCasa->numero_iptu}}</td>
+                        </tr>
+                        <tr>
+                            <td>N° Habite-se</td>
+                            <td>{{$itemCasa->numero_habitese}}</td>
+                        </tr>
+                        <tr>
+                            <td>Data Habite-se</td>
+                            <td>{{$itemCasa->data_habitese}}</td>
+                        </tr>
+                        <tr>
+                            <td>Alvará de Construção</td>
+                            <td>{{$itemCasa->alvara}}</td>
+                        </tr>
+                        <tr>
+                            <td>Data do Alvará</td>
+                            <td>{{$itemCasa->data_alvara}}</td>
+                        </tr>
+
+                        
                     </table>
                     @endforeach
 

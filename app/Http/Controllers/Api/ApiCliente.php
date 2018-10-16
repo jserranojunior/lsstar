@@ -74,6 +74,7 @@ class ApiCliente extends Controller
      */
     public function update(Request $request)
     {
+        
         $atualizar = new cliente();
         $dados = $atualizar->atualizar($request);
     }

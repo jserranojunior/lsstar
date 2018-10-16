@@ -16,6 +16,7 @@ class clienteController extends Controller
     }
 
     public function update(Request $request){      
+      
         $update = $this->cliente->update($request);
         return redirect('cliente/');            
     }
