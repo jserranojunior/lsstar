@@ -21,7 +21,7 @@ class cliente extends Model
         if($request->empreendimento > ""){
             $updateCasa =  DB::table('casas')
             ->where('id', $request->empreendimento)
-            ->update(['cliente_id' => $id, 'status' => 'comprada']); 
+            ->update(['cliente_id' => $id, 'status' => 'Vendida']); 
 
             $request->tipocliente = "proprietario";
         }
@@ -79,7 +79,7 @@ class cliente extends Model
 
     public function editar($id){
 
-        $casas = DB::table('casas')->where('status', 'vendendo')->orWhere('status', 'construção')->get();
+        $casas = DB::table('casas')->where('status', 'À venda')->orWhere('status', 'construção')->get();
 
         
         $agendamento = DB::table("agendamento")

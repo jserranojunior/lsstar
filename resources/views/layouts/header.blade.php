@@ -62,10 +62,10 @@
                                 </a>
                                 <ul class="sub-menu">
                                     <li>
-                                        <a href="{{url('/casa?status=vendendo')}}">Vendendo</a>
+                                        <a href="{{url('/casa?status=Á venda')}}">Á venda</a>
                                     </li>
                                     <li>
-                                        <a href="{{url('/casa?status=comprada')}}">Comprada</a>
+                                        <a href="{{url('/casa?status=Vendida')}}">Vendida</a>
                                     </li>
                                     <li>
                                         <a href="{{url('/casa?status=construção')}}">Construção</a>

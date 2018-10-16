@@ -70,7 +70,7 @@
                         <td>
                             <select name="status" id="" class="form-control">
                                 <option @if($item->status == "Construção") selected @endif>Construção</option>
-                                <option @if($item->status == "Vendendo") selected @endif>Vendendo</option>
+                                <option @if($item->status == "Á venda") selected @endif>Á venda</option>
                                 <option @if($item->status == "Vendida") selected @endif>Vendida</option>
                             </select>
                         </td>
