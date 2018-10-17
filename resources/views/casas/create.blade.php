@@ -7,7 +7,7 @@
         <div class="box-head">
             <h3 class="text-center"> Novo </h3>
         </div>
-        <form action="./cadastrar" method="POST">
+        <form action="{{Route('casa.store')}}" method="POST">
             <div class="box-body ">
                 <table class="table text-center table-condensed">
                     <tr>
