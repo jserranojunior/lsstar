@@ -52,7 +52,8 @@ class CasasController extends Controller
     public function store(Request $request)
     {
         $store = $this->casa->store($request);
-        return redirect('casa');
+        dd($store);
+        // return redirect('casa');
         
     }
 
