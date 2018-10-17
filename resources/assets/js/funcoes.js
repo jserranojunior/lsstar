@@ -260,7 +260,7 @@ $(document).ready(function () {
 
 
     $(document).ready(function () {
-        $('.sidebar-toggle').click(function(){
+        $('.btn-menu-toogle').click(function(){
             $(".menu-ocultar").toggle();
         });
 

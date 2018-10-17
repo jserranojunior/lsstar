@@ -3,7 +3,7 @@
 
 <head>
     <title>LS STAR</title>
-    <link rel="stylesheet" href="{{ URL::asset('/css/all.css') }}">
+
     <script src="{{URL::asset('/js/all.js')}}" type="text/javascript"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,29 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{{ url('/img/lsstar.png') }}}">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- ADMIN LTE -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.8/css/AdminLTE.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.8/css/skins/skin-blue.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap.css">
+
+
+
+    <link rel="stylesheet" href="{{ URL::asset('/css/style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('/css/print.css') }}">
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -21,14 +44,21 @@
                 <span class="logo-lg"><b>LS STAR</b></span>
             </a>
             <nav class="navbar navbar-static-top">
-                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                </a>
-                <div class="">
-                    <div class="btn btn-primary" id="imprimir">
-                        <span class="glyphicon glyphicon-print"></span>
+
+                <div class="text-left col-md-6">
+                    <a class="btn btn-menu-toogle" data-toggle="offcanvas">
+                        <i class="fas fa-bars "></i>
+                    </a>
+                </div>
+
+                <div class="navbar-custom-menu">
+                    <div class="text-right">
+                        <div class="btn btn-primary" id="imprimir">
+                            <span class="glyphicon glyphicon-print"></span>
+                        </div>
                     </div>
                 </div>
+
             </nav>
         </header>
         <aside class="main-sidebar">
@@ -80,7 +110,7 @@
                                 <a href="{{Route('cliente.index')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Clientes</span></a>
                             </li>
                             <li id="menu-item-23" class="menu-item menu-item-type-custom  menu-item-object-custom menu-item-6">
-                                <a href="{{url('/cliente?tipocliente=proprietario')}}"> <i class="fa fa-address-card-o"
+                                <a href="{{url('/cliente?tipocliente=proprietario')}}"> <i class="fa fa-address-card"
                                         aria-hidden="true"></i><span class="menu-ocultar">Proprietários</span></a>
 
                             </li>
@@ -92,7 +122,7 @@
                                     </span></a>
                             </li>
                             <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                                <a href="{{Route('fornecedor.index')}}"><i class="fa fa-handshake-o" aria-hidden="true"></i><span
+                                <a href="{{Route('fornecedor.index')}}"><i class="far fa-handshake"></i><span
                                         class="menu-ocultar">Fornecedores </span></a>
                             </li>
 
