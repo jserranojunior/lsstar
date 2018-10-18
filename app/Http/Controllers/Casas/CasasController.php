@@ -36,7 +36,10 @@ class CasasController extends Controller
     public function create(Request $request)
     {
 
-        $clientes = DB::table('clientes')->where('tipocliente','<>','proprietario')->orderBy('nome', 'asc')->get(); 
+        $clientes = DB::table('clientes')
+        ->where('tipocliente','<>','proprietario')
+        ->orWhere('tipocliente','=', null)
+        ->orderBy('nome', 'asc')->get(); 
 
         $data = ['clientes' => $clientes];
          // dd($cliente);
@@ -77,7 +80,10 @@ class CasasController extends Controller
     public function edit(Request $request, $id)
     {
     
-        $clientes = DB::table('clientes')->where('tipocliente','<>','proprietario')->orderBy('nome', 'asc')->get(); 
+        $clientes = DB::table('clientes')
+        ->where('tipocliente','<>','proprietario')
+        ->orWhere('tipocliente','=', null)
+        ->orderBy('nome', 'asc')->get(); 
               
       
         
