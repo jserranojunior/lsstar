@@ -120,17 +120,20 @@ class cliente extends Model
 
         
         // Filtro
-        if($request->tipocliente > ''){
-            $clientes = DB::table('clientes')
+        if($request->tipocliente == 'proprietario'){
+        $clientes = DB::table('clientes')
             ->where('tipocliente', $request->tipocliente)
             ->orderBy('id', 'asc')
             ->get();
         }else{
             $clientes = DB::table('clientes')
             ->where('tipocliente','<>', 'proprietario')
+            ->orWhere('tipocliente', null)
             ->orderBy('id', 'asc')
             ->get();
         }
+
+        
 
         $dados = array('dados' => $clientes,'tipocliente' => $request->tipocliente);
         return($dados);
