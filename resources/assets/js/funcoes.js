@@ -256,15 +256,27 @@ $(document).ready(function () {
     });
 
     
-});/*FIM DO DOCUMENTO READY */
+    $("#possui-empreendimento").change(function(){
+        var $tipo = $('#possui-empreendimento').val();
+            if($tipo == "Sim"){
+             
+            $('.empreendimento-ocultar').addClass("mostrar");
+            $('.empreendimento-ocultar').removeClass("ocultar");                         
+            }else{
+            $('.empreendimento-ocultar').removeClass("mostrar");
+            $('.empreendimento-ocultar').addClass("ocultar");    
+            }
+        })
 
 
-    $(document).ready(function () {
-        $('.btn-menu-toogle').click(function(){
-            $(".menu-ocultar").toggle();
-        });
+}); /*FIM DO DOCUMENTO READY */
 
+
+$(document).ready(function () {
+    $('.btn-menu-toogle').click(function () {
+        $(".menu-ocultar").toggle();
     });
 
+});
 
     

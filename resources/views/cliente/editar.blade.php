@@ -299,6 +299,24 @@
                     </tr>
                     <tr>
                         <td>
+                            <h5>Possui Empreendimento?</h5>
+                        </td>
+                        <td>
+                            <select name="possui-empreendimento" class="form-control" id="possui-empreendimento">
+                                <option selected>Não</option>
+                                <option>Sim</option>
+                            </select>
+                        </td>
+
+                        <td>
+                                <h5 class="">Observação</h5>
+                            </td>
+                            <td colspan=""><input class="form-control" name="observacao" value="{{$cliente->observacao}}"
+                                    type="text">
+                            </td>
+                    </tr>
+                    <tr class="empreendimento-ocultar ocultar">
+                        <td>
                             <h5>Empreendimento que Possui</h5>
                         </td>
                         <td colspan="4">
@@ -317,14 +335,7 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <h5 class="">Observação</h5>
-                        </td>
-                        <td colspan="4"><input class="form-control" name="observacao" value="{{$cliente->observacao}}"
-                                type="text">
-                        </td>
-                    </tr>
+                   
                 </table>
                 <tr>
                     <td>
@@ -424,7 +435,7 @@
                             <td>{{$itemCasa->data_alvara}}</td>
                         </tr>
 
-                        
+
                     </table>
                     @endforeach
 

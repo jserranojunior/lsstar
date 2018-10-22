@@ -49923,6 +49923,18 @@ $(document).ready(function () {
 
     });
 
+    $("#possui-empreendimento").change(function(){
+        var $tipo = $('#possui-empreendimento').val();
+            if($tipo == "Sim"){
+             
+            $('.empreendimento-ocultar').addClass("mostrar");
+            $('.empreendimento-ocultar').removeClass("ocultar");                         
+            }else{
+            $('.empreendimento-ocultar').removeClass("mostrar");
+            $('.empreendimento-ocultar').addClass("ocultar");    
+            }
+        })
+
 
 }); /*FIM DO DOCUMENTO READY */
 
