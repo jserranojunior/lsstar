@@ -49929,9 +49929,6 @@ $(document).ready(function () {
              
             $('.empreendimento-ocultar').addClass("mostrar");
             $('.empreendimento-ocultar').removeClass("ocultar");                         
-            }else{
-            $('.empreendimento-ocultar').removeClass("mostrar");
-            $('.empreendimento-ocultar').addClass("ocultar");    
             }
         })
 

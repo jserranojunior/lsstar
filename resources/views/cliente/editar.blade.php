@@ -29,7 +29,6 @@
             </div>
             <div class="box-body no-padding">
                 <table class="table table-cliente text-center table-condensed">
-
                     <tr>
                         <td>
                             <h5 class="text-primary">[1] Nome</h5>
@@ -298,24 +297,35 @@
                                 type="text">
                     </tr>
                     <tr>
-                        <td>
-                            <h5>Possui Empreendimento?</h5>
-                        </td>
-                        <td>
-                            <select name="possui-empreendimento" class="form-control" id="possui-empreendimento">
-                                <option selected>Não</option>
-                                <option>Sim</option>
-                            </select>
-                        </td>
-
-                        <td>
-                                <h5 class="">Observação</h5>
+                            @if($cliente->casa > '' or $cliente->casa > null)
+                            {{$possui = true}}
+                            @else
+                            {{$possui = false}}
+                        <span>
+                            <td>
+                                <h5>Possui Empreendimento?</h5>
                             </td>
-                            <td colspan=""><input class="form-control" name="observacao" value="{{$cliente->observacao}}"
-                                    type="text">
+                            <td>
+                                <select name="possui-empreendimento" class="form-control" id="possui-empreendimento">
+                                    <option selected>Não</option>
+                                    <option>Sim</option>
+                                </select>
                             </td>
+                        </span>
+                        @endif
+                        <td>
+                            <h5 class="">Observação</h5>
+                        </td>
+                        <td colspan="@if($possui == true) 4 @endif"><input class="form-control" name="observacao" value="{{$cliente->observacao}}"
+                                type="text">
+                        </td>
                     </tr>
-                    <tr class="empreendimento-ocultar ocultar">
+                    <tr class="
+                    @if($possui == false)
+                    empreendimento-ocultar 
+                    ocultar
+                    @endif
+                    ">
                         <td>
                             <h5>Empreendimento que Possui</h5>
                         </td>
@@ -335,7 +345,7 @@
                             </select>
                         </td>
                     </tr>
-                   
+
                 </table>
                 <tr>
                     <td>
