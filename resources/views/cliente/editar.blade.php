@@ -298,7 +298,7 @@
                     </tr>
                     <tr>
                             @if($cliente->casa > '' or $cliente->casa > null)
-                            {{$possui = true}}
+                            <span class="ocultar">{{$possui = true}}</span>
                             @else
                             {{$possui = false}}
                         <span>
