@@ -65,11 +65,7 @@
 
 
 <script>
-    $(document).ready(function () {
-        $('#tabelaclientes').DataTable({
-            "iDisplayLength": 100
-        });
-    });
+    
 
     function editar($id) {
         window.location.href = "cliente/editar/" + $id;

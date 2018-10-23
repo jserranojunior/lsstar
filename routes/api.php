@@ -36,4 +36,6 @@ Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio'], function(){
     
     
 });
+
+Route::get('v1/financeiro', 'Api\v1\Financeiro\ApiContasAPagarController@index');
   

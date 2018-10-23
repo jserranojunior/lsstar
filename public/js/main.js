@@ -72,9 +72,24 @@ module.exports = __webpack_require__(1);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__) {
 
-console.log('main funcionando');
+"use strict";
+// import Vue from 'vue';
+// import example from './components/Example';
+
+// new Vue({
+//     el: '#appvue',
+//     data: {
+//       input: '# hello'
+//     },mounted(){
+//         console.log('vue funcionando');
+//     },components:{
+//         example,
+//     }
+//   })
+
+console.log('funcionando main');
 
 /***/ })
 /******/ ]);

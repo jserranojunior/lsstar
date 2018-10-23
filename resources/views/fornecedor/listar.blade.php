@@ -63,12 +63,6 @@
 </div>
 
 <script>
-$(document).ready( function () {
-    $('#tabelaclientes').DataTable({
-        "iDisplayLength": 18
-    });
-});
-
 function editar($id){    
     window.location.href = "fornecedor/editar/"+$id;
 }

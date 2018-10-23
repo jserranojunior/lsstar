@@ -126,32 +126,7 @@
 
     @endforeach
 
-    <script>
-        $(document).ready(function(){
-        $('#ano').on('change', function(){
-          
-            $('#formularioano').submit();
-        });
-    });
 
-
-/* EXPORTAR EXCEL */
-
-$(document).ready(function () {
-        $data = Date('d-m-Y');
-        $nomearquivo = 'relatorioanual';
-        $("#btnExport").click(function () {
-            $("#tabelaprincipal").btechco_excelexport({
-                containerid: "tabelaprincipal"
-               , datatype: $datatype.Table
-               , filename: $nomearquivo
-            });
-        });
-    });
-
-
-
-</script>
     @endsection
 
     <form method="post" action="{{Route('financeiro.index')}}" name="formulario" id="formulariofiltros">
