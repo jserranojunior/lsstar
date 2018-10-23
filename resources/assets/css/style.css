@@ -718,3 +718,15 @@ html .ui-button.ui-state-disabled:active {
 .table-hover {
     cursor: pointer;
 }
+
+.tr-destaque{
+    background-color:#cdd5db;;
+}
+.btn-add-contato{
+  
+    width:5%;
+}
+.form-menor{
+    float:left;
+    width:90%;
+}

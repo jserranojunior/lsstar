@@ -269,3 +269,13 @@ $(document).ready(function() {
         }
     } );
 } );
+
+
+// OCULTAR SEGUNDO E TERCEIRO NOME DO CLIENTE
+$(document).ready(function () {
+    $(".linha-ocultar").hide();
+
+    $("#btn-add-contato").click(function () {
+        $(".linha-ocultar").toggle('slow');
+    });
+});
