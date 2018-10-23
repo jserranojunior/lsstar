@@ -9,7 +9,10 @@
     
 
     
-    <link rel='stylesheet' href='{{URL('/css/fullcalendar.css')}}' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.0/fullcalendar.css" />
+
+
+
     <script src='{{URL('/js/fullcalendar/lib/jquery.min.js')}}'></script>
     <script src='{{URL('/js/fullcalendar/lib/moment.min.js')}}'></script>
     <script src='{{URL('/js/fullcalendar/fullcalendar.js')}}'></script>

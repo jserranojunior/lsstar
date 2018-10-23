@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-   <link rel="stylesheet" href="{{ URL::asset('/css/all.css') }}">
+    @extends('includes.styles')
    <link rel="shortcut icon" href="{{{ url('/img/lsstar.png') }}}">
         
 
@@ -82,7 +82,7 @@
     @yield('content')
 
     <!-- Scripts -->
-    <script src="{{URL::asset('/js/all.js')}}" type="text/javascript"></script>
+    @extends('includes.scripts')
   
     
 </body>

@@ -1,8 +1,4 @@
 
-
-                           
-
-
 $(document).ready(function ()  {
 
     $('#imprimir').click(function(){
@@ -72,7 +68,6 @@ $(document).ready(function ()  {
         $('#mostrar').css("display", "none");
     });
 
-
     /* GERADOR DE EXCEL DO FINANCEIRO */
     function tableToExcel(){
     var tableToExcel = (function () {
@@ -97,15 +92,11 @@ $(document).ready(function ()  {
 }
 
     /*SUBMIT DO EMITIR PAGAMENTO*/
-
-   
-
+  
     $('#form-emitir').submit(function() {
         window.open('/financeiro/emitirpagamento', 'formpopup', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=yes, width=650, height=480, left=400, top=100');
         this.target = 'formpopup';
     });
-
- 
 
 
     $('#editar_valor').click(function () {
@@ -132,8 +123,6 @@ $(document).ready(function ()  {
 
 /* MASCARA DE DINHEIRO */
 
-
-
     $('.valor_mascara').mask('000.000.000.000.000,00', {reverse: true});
     $('.placeholder').mask("00/00/0000", {placeholder: "__/__/____"});
     $('.fallback').mask("00r00r0000", {
@@ -146,10 +135,7 @@ $(document).ready(function ()  {
         }
       });
 
-
-
 /* FIM MASCARA DE DINHREIRO */
-
   
 /* MASCARA TELEFONE */
 $('.telefone_mascara').mask('(00)0000-00000');
@@ -276,4 +262,10 @@ $(document).ready(function () {
 
 });
 
-    
+$(document).ready(function() {
+    $('#example').dataTable( {
+        "language": {
+            "url": "dataTables.german.lang"
+        }
+    } );
+} );

@@ -6,19 +6,19 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h3 class="text-center"> 
-                
+            <h3 class="text-center">
+
                 @if($tipocliente == "proprietario")
-                 Proprietários 
-                 @else 
-                    Clientes 
+                Proprietários
+                @else
+                Clientes
 
-                    <a href="{{Route('cliente.create')}}">
-                            <div class="btn btn-info float-right">(+) NOVO</div>
-                        </a>
-                 @endif
+                <a href="{{Route('cliente.create')}}">
+                    <div class="btn btn-info float-right">(+) NOVO</div>
+                </a>
+                @endif
 
-                
+
             </h3>
         </div>
     </div>

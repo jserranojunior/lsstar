@@ -2,8 +2,12 @@
     <head>
         <title>VDLAP</title>
 
-        <link rel="stylesheet" href="{{ URL::asset('/css/all.css') }}">
-        <script src="{{URL::asset('/js/all.js')}}" type="text/javascript"></script>
+        @extends('includes.styles')
+        
+        @extends('includes.scripts')
+
+
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Language" content="pt-br">

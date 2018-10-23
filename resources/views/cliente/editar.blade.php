@@ -297,13 +297,13 @@
                                 type="text">
                     </tr>
                     <tr>
-                            @if($cliente->casa > '' or $cliente->casa > null)
-                            <span class="ocultar">{{$possui = true}}</span>
-                            @else
-                            {{$possui = false}}
+                        @if($cliente->casa > '' or $cliente->casa > null)
+                        <span class="ocultar">{{$possui = true}}</span>
+                        @else
+                        {{$possui = false}}
                         <span>
                             <td>
-                                <h5>Possui Empreendimento?</h5>
+                                <h5>É proprietário?</h5>
                             </td>
                             <td>
                                 <select name="possui-empreendimento" class="form-control" id="possui-empreendimento">
@@ -327,7 +327,7 @@
                     @endif
                     ">
                         <td>
-                            <h5>Empreendimento que Possui</h5>
+                            <h5>De qual empreendimento?</h5>
                         </td>
                         <td colspan="4">
                             <select name="empreendimento" class="form-control" id="empreendimento">
