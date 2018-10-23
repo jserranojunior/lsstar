@@ -317,11 +317,11 @@
                             <select name="empreendimento" class="form-control" id="empreendimento">
 
                                 @if($cliente->casa > '' or $cliente->casa > null)
-                                <option value="{{$cliente->casa}}">{{$cliente->casa_nome}}</option>
+                                <option value="{{$cliente->casa}}">{{$cliente->casa_nome}} -- {{$cliente->casa_numero}}</</option>
                                 @else
                                 <option value=""></option>
                                 @foreach($dados['casas'] as $casa)
-                                <option value="{{$casa->id}}">{{$casa->nome}}</option>
+                                <option value="{{$casa->id}}">{{$casa->nome}} - {{$casa->numero}}</option>
                                 @endforeach
                                 @endif
 

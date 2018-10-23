@@ -96,10 +96,11 @@ class cliente extends Model
 
         foreach($clientes as $cliente){
             if($cliente->tipocliente == "proprietario"){
-                $selectMinhaCasa = DB::table('casas')->select('id','nome')->take(1)->where('cliente_id', $cliente->id)->get();
+                $selectMinhaCasa = DB::table('casas')->select('id','nome','numero')->take(1)->where('cliente_id', $cliente->id)->get();
                 foreach($selectMinhaCasa as $minhaCasa){
                     $cliente->casa = $minhaCasa->id;
                     $cliente->casa_nome = $minhaCasa->nome;
+                    $cliente->casa_numero = $minhaCasa->numero;
                 }
             }else{
                 $cliente->casa = '';
