@@ -13,7 +13,7 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
    
      
-     <script src="{{ URL::asset('/js/main.js') }}"></script>
+     
     <script src="{{ URL::asset('/js/select-busca.js') }}"></script>
     <script src="{{ URL::asset('/js/cep-automatico.js') }}"></script>
     <script src="{{ URL::asset('/js/funcoes.js') }}"></script>

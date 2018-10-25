@@ -60,9 +60,17 @@ class ContasAPagar extends Model
                 $conta->ccustos = $valores->ccustos;
                 $conta->favorecido = $valores->favorecido;
                 $conta->dia = date('d', strtotime($valores->inicio_mes));                    
-            } 
+            }
+
+            
 
             foreach($pagamentoFeito as $pagamento){
+
+                $pagamento->valor_pago = str_ireplace(".","",$pagamento->valor_pago); //remove o separador de milhares
+                $pagamento->valor_pago = str_ireplace(",",".",$pagamento->valor_pago); //substitui a virgula por ponto 
+
+                $conta->valor_pago = $pagamento->valor_pago;
+
                 if($pagamento->tipo_pagamento == "Cheque"){
                     $pagamento->cor_tipo_pagamento = "#ffa303";
                 }
@@ -72,8 +80,7 @@ class ContasAPagar extends Model
                 $conta->cor_tipo_pagamento = $pagamento->cor_tipo_pagamento;
             }
 
-        }       
-        
+        }    
         
         /* ####### FILTERS #####*/            
         if($request->ordem > ''){
@@ -88,13 +95,23 @@ class ContasAPagar extends Model
         ];
         /* END FILTERS */
 
+        // $contas = $contas->values()->all();
 
+       
+        $somaContas = $contas->sum('valor');
+        $somaValorPago = $contas->sum('valor_pago');
 
-        $somaContas = 0;
+        // $somaContas = str_ireplace(".","",$somaContas); //remove o separador de milhares
+        // $somaContas = str_ireplace(",",".",$somaContas); //substitui a virgula por ponto  
+        
+       
+                                
 
-        $contas = $contas->values()->all();
-        $dados = ['contas' => $contas, 'total' => $somaContas];            
-        $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros];            
+        $valorTotalPagar = $somaContas - $somaValorPago;
+
+        // $dados = ['contas' => $contas, 'total' => $somaContas];            
+        $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros, 'somaValorPago' => $somaValorPago, 'valorTotalPagar' => $valorTotalPagar];            
+        // $data = ['data' => $dados];
         return $dados;       
         
 

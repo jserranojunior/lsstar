@@ -730,3 +730,10 @@ html .ui-button.ui-state-disabled:active {
     float:left;
     width:90%;
 }
+
+.td-without-padding{
+    padding:0px;
+  }
+  .btn-pagar{
+    padding: 2px 8px;
+  }
