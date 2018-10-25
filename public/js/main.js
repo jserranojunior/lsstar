@@ -125,10 +125,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#myappvue',
     data: {
         input: '# hello'
-    }, mounted: function mounted() {
-        console.log('vue funcionando');
-    },
-    components: {
+    }, components: {
         example: __WEBPACK_IMPORTED_MODULE_1__components_Example___default.a,
         ContasAPagar: __WEBPACK_IMPORTED_MODULE_2__components_ContasAPagar___default.a
     }
@@ -11846,23 +11843,96 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "ContasAPagar",
-    props: {
-        objThis: {}
-    },
+
     data: function data() {
         return {
-            data: 'nome'
+            data: 'nome',
+            mesAtual: '01',
+            dataAtual: '2018-12',
+            diaInicial: 1,
+            diaFinal: 31,
+            ordem: 'dia',
+            area: '',
+            ano: ''
         };
     },
+
+    methods: {
+        getApiFinanceiro: function getApiFinanceiro() {
+
+            // dataAtual = '2018-' + this.mesAtual;
+
+
+            var objThis = this;
+            var url = 'http://localhost/lsstar/public/api/v1/financeiro?data=' + this.dataAtual + '&diaInicial=' + this.diaInicial + '&diaFinal=' + this.diaFinal + '&ordem=' + this.ordem + '&area=' + this.area;
+            this.axios.get(url).then(function (response) {
+                objThis.data = response.data;
+            });
+        }
+    },
+
     mounted: function mounted() {
-        var objThis = this;
-        this.axios.get('http://localhost/lsstar/public/api/v1/financeiro?data=2018-10&diaInicial=1&diaFinal=31&ordem=&area=').then(function (response) {
-            objThis.data = response.data;
-            console.log(objThis.data);
-        });
+        this.getApiFinanceiro();
+    },
+
+    watch: {
+        dataAtual: function dataAtual(val) {
+            this.getApiFinanceiro();
+        }
     }
 });
 
@@ -11874,9 +11944,143 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    " + _vm._s(_vm.data.total) + "\n")])
+  return _c("div", [
+    _c("div", { staticClass: "col-md-3 col-md-offset-4" }, [
+      _c("div", { staticClass: "box" }, [
+        _c("div", { staticClass: "box-header" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-sm col-xs-6" }, [
+              _c("div", { staticClass: "btn-group" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default dropdown-toggle widcem",
+                    attrs: {
+                      type: "button",
+                      id: "dropdownMenu1",
+                      "data-toggle": "dropdown",
+                      "aria-haspopup": "true",
+                      "aria-expanded": "true"
+                    }
+                  },
+                  [
+                    _vm.data.datas
+                      ? _c("a", { attrs: { href: "#" } }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.data.datas.mesAtualEscrito) +
+                              "\n                  "
+                          ),
+                          _c("span", { staticClass: "caret" })
+                        ])
+                      : _vm._e()
+                  ]
+                ),
+                _c("a", { attrs: { href: "#" } }),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  {
+                    staticClass: "dropdown-menu",
+                    attrs: { "aria-labelledby": "dropdownMenu1" }
+                  },
+                  _vm._l(_vm.data.datas.meses, function(meses) {
+                    return _c("li", { key: meses.numero }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "dropdown-item",
+                          on: {
+                            click: function($event) {
+                              _vm.mesAtual = meses.numero
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(meses.nome))]
+                      )
+                    ])
+                  })
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm col-xs-6 float-right" }, [
+              _c("div", { staticClass: "btn-group  float-right" }, [
+                _vm.data.datas
+                  ? _c(
+                      "button",
+                      {
+                        staticClass:
+                          "float-right btn-sm btn btn-secondary dropdown-toggle",
+                        attrs: {
+                          type: "button",
+                          "data-toggle": "dropdown",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.data.datas.anoAtual) +
+                            "\n              "
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "dropdown-menu" })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("h6", [_vm._v("DATA")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row row-space" }, [
+      _c("div", { staticClass: "col-md text-center" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-default btn-xs ", attrs: { href: "" } },
+          [_vm._v("Anterior")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-default btn-xs float-center",
+            attrs: { href: "/financeiro" }
+          },
+          [_vm._v("Atual")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "btn btn-default btn-xs ", attrs: { href: "" } },
+          [_vm._v("Pŕoximo")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

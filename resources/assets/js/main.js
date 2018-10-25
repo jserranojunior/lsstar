@@ -10,8 +10,6 @@ new Vue({
     el: '#myappvue',
     data: {
       input: '# hello'
-    },mounted(){
-        console.log('vue funcionando');
     },components:{
         example,
         ContasAPagar,
