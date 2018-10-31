@@ -62,6 +62,9 @@ class DateFunction extends Model
             ['numero' => '11', 'nome' =>'Novembro'],
             ['numero' => '12', 'nome' =>'Dezembro']
         ); 
+
+        $meses = json_encode($meses);
+
         return $meses;
     }
 

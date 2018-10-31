@@ -17,13 +17,12 @@
                   <span class="caret"></span>
                 </a></button><a href="#">
               </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">                
-            
-               
-                <li v-for="meses in data.datas.meses" v-bind:key="meses.numero">                  
-                    <a v-on:click="mesAtual = meses.numero" class="dropdown-item">{{meses.nome}}</a>
-                  </li>              
-                           
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
+
+              <li v-if="data.meses" v-for="mes in data.meses" v-bind:key="mes.numero">                  
+                <a v-on:click="mesAtual = mes.numero" class="dropdown-item">{{mes.nome}}</a>
+              </li>  
+              
               </ul>
             </div>
           </div>
@@ -49,54 +48,59 @@
       </div>
     </div>
   </div>
-
-
-
     </div>
 </template>
 
 <script>
 export default {
-    name:"ContasAPagar",
-    
-    data(){
-        return{
-            data:'nome',
-            mesAtual: '01',
-            dataAtual: '2018-12',
-            diaInicial: 1,
-            diaFinal: 31,
-            ordem: 'dia',
-            area: '',
-            ano: '',            
-        }
+  name: "ContasAPagar",
+
+  data() {
+    return {
+      data: "nome",
+      mesAtual: "11",
+      dataAtual: "2018-12",
+      diaInicial: 1,
+      diaFinal: 31,
+      ordem: "dia",
+      area: "",
+      ano: "",
+     
+    };
+  },
+  methods: {
+    getApiFinanceiro() {
+      this.dataAtual = '2018-' + this.mesAtual;
+
+      var objThis = this;
+      var url =
+        "http://localhost/lsstar/public/api/v1/financeiro?data=" +
+        this.dataAtual +
+        "&diaInicial=" +
+        this.diaInicial +
+        "&diaFinal=" +
+        this.diaFinal +
+        "&ordem=" +
+        this.ordem +
+        "&area=" +
+        this.area;
+      this.axios.get(url).then(response => {
+        objThis.data = response.data;
+        objThis.data.meses = JSON.parse(objThis.data.datas.meses);        
+      });
+    }
+  },
+  mounted() {
+    this.getApiFinanceiro();
+  },
+  watch: {
+    dataAtual: function(val) {
+      this.getApiFinanceiro();
     },
-    methods:{
-        getApiFinanceiro(){
-
-            // dataAtual = '2018-' + this.mesAtual;
-
-        
-
-            var objThis = this;
-      var url = 'http://localhost/lsstar/public/api/v1/financeiro?data=' 
-      + this.dataAtual + '&diaInicial=' + this.diaInicial + '&diaFinal=' + this.diaFinal 
-      + '&ordem=' + this.ordem + '&area=' + this.area;
-        this.axios.get(url).then(
-            response => {
-            objThis.data = response.data;        
-      }); 
-        }
-    },    
-
-     mounted(){       
-            this.getApiFinanceiro(); 
-    },
-     watch: {
-    dataAtual: function (val) {
-        this.getApiFinanceiro(); 
+    mesAtual: function(val) {
+      this.getApiFinanceiro();
     }
   }
-}
+};
 </script>
 

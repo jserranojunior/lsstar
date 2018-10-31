@@ -105,15 +105,14 @@ class ContasAPagar extends Model
         // $somaContas = str_ireplace(",",".",$somaContas); //substitui a virgula por ponto  
         
        
-                                
+        // $datas['meses'] = json_encode($datas['meses']);
 
         $valorTotalPagar = $somaContas - $somaValorPago;
 
         // $dados = ['contas' => $contas, 'total' => $somaContas];            
         $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros, 'somaValorPago' => $somaValorPago, 'valorTotalPagar' => $valorTotalPagar];            
         // $data = ['data' => $dados];
-        return $dados;       
-        
+        return $dados;             
 
     }
 }
