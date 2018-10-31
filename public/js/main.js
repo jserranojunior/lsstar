@@ -12564,6 +12564,106 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContasAPagar",
@@ -12578,19 +12678,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       ordem: "dia",
       area: "",
       ano: ""
-
     };
   },
 
   methods: {
     getApiFinanceiro: function getApiFinanceiro() {
-      this.dataAtual = '2018-' + this.mesAtual;
+      this.dataAtual = "2018-" + this.mesAtual;
 
       var objThis = this;
       var url = "http://localhost/lsstar/public/api/v1/financeiro?data=" + this.dataAtual + "&diaInicial=" + this.diaInicial + "&diaFinal=" + this.diaFinal + "&ordem=" + this.ordem + "&area=" + this.area;
       this.axios.get(url).then(function (response) {
         objThis.data = response.data;
         objThis.data.meses = JSON.parse(objThis.data.datas.meses);
+        objThis.data.total = objThis.data.total.toLocaleString();
       });
     }
   },
@@ -12713,6 +12813,64 @@ var render = function() {
           _vm._m(1)
         ])
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "table",
+        {
+          staticClass:
+            " table table-condensed no-padding table-striped table-bordered table-hover",
+          attrs: { id: "tabelaprincipal" }
+        },
+        [
+          _c("tbody", [
+            _c("span", { staticClass: "invisible" }, [_vm._v(" # ")]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", { attrs: { colspan: "5" } }),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c("td", { staticClass: "azulclaro" }),
+              _vm._v(" "),
+              _c("td", { staticClass: "azulclaro", attrs: { colspan: "1" } }, [
+                _c("span", { staticClass: "bold numaior  direita azul" }, [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.data.total) +
+                      "\n              "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", { attrs: { colspan: "5" } }),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c("td", { staticClass: "azulclaro" }),
+              _vm._v(" "),
+              _c("td", { staticClass: "azulclaro", attrs: { colspan: "1" } }, [
+                _c("span", { staticClass: "bold direita numaior  azul" }, [
+                  _vm._v(
+                    "\n              " +
+                      _vm._s(_vm.data.total) +
+                      "\n              "
+                  )
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
     ])
   ])
 }
@@ -12751,6 +12909,90 @@ var staticRenderFns = [
           { staticClass: "btn btn-default btn-xs ", attrs: { href: "" } },
           [_vm._v("Pŕoximo")]
         )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("form", [
+      _c("tr", { staticClass: "point" }, [
+        _c("td", [_vm._v("\n              #\n            ")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("\n              area\n            ")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("\n              ccustos\n            ")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("\n              conta->tipo\n            ")]),
+        _vm._v(" "),
+        _c("td", { staticClass: "td-without-padding text-center" }, [
+          _c("span", {
+            staticClass: " btn-pagar ",
+            staticStyle: { "background-color": "#2196f3" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("td", [_vm._v("\n             favorecido\n            ")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("\n              conta->pagador\n            ")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("\n              conta->dia\n            ")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("\n            conta->valor\n            ")])
+      ]),
+      _vm._v("\n          @endforeach\n        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "azulclaro", attrs: { colspan: "2" } }, [
+      _c("span", { staticClass: "bold  numaior direita" }, [
+        _vm._v("TOTAL DO MÊS")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", { staticClass: "trcolor" }, [
+      _c("td", { attrs: { colspan: "6" } }, [_vm._v(" Total de pendencias: ")]),
+      _vm._v(" "),
+      _c("td", { attrs: { colspan: "1" } }, [
+        _c("span", { staticClass: "direita" }, [_vm._v("Total pago")])
+      ]),
+      _vm._v(" "),
+      _c("td"),
+      _vm._v(" "),
+      _c("td", {})
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", { staticClass: "trcolor" }, [
+      _c("td", { attrs: { colspan: "6" } }),
+      _vm._v(" "),
+      _c("td", { attrs: { colspan: "1" } }, [
+        _c("span", { staticClass: "direita" }, [_vm._v("A pagar")])
+      ]),
+      _vm._v(" "),
+      _c("td"),
+      _vm._v(" "),
+      _c("td", {}, [_c("span", { staticClass: "direita" })])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "azulclaro", attrs: { colspan: "2" } }, [
+      _c("span", { staticClass: "bold  numaior direita" }, [
+        _vm._v("TOTAL ESTIMADO")
       ])
     ])
   }

@@ -48,6 +48,106 @@
       </div>
     </div>
   </div>
+
+
+  <div class="col-md-12">
+    <table class=" table table-condensed no-padding table-striped table-bordered table-hover" id="tabelaprincipal">
+      <tbody>
+        <span class="invisible"> # </span>
+        <form >
+
+          <tr class="point">
+            <td>
+              #
+            </td>
+            <td>
+              area
+            </td>
+            <td>
+              ccustos
+            </td>
+            <td>
+              conta->tipo
+            </td>           
+              <td class="td-without-padding text-center">
+                  <span class=" btn-pagar " style="background-color: #2196f3;">  
+                  </span>
+                </td>
+              <td>
+             favorecido
+            </td>
+            <td>
+              conta->pagador
+            </td>
+            <td>
+              conta->dia
+            </td>
+            <td>
+            conta->valor
+            </td>
+            
+          </tr>
+          @endforeach
+        </form>
+        
+        
+
+        <tr>
+            <td colspan="5"></td>
+            <td  class="azulclaro" colspan="2">
+              <span class="bold  numaior direita">TOTAL DO MÊS</span>
+            </td>
+            <td  class="azulclaro"></td>
+            <td  class="azulclaro" colspan="1">
+              <span class="bold numaior  direita azul">
+                {{data.total}}
+              </span>
+            </td>
+        </tr>
+        <tr class="trcolor">
+            <td colspan="6"> Total de pendencias: </td>
+            <td class="" colspan="1">
+              <span class="direita">Total pago</span>
+            </td>
+            <td></td>
+            <td class="">
+  
+              </span>
+            </td>
+          </tr>
+
+          <tr class="trcolor">
+              <td colspan="6"></td>
+              <td class="" colspan="1">
+                <span class="direita">A pagar</span>
+              </td>
+              <td></td>
+              <td class="">
+                <span class="direita">
+              
+                </span>
+              </td>
+            </tr>
+
+        <tr>
+            <td colspan="5"></td>
+            <td  class="azulclaro" colspan="2">
+              <span class="bold  numaior direita">TOTAL ESTIMADO</span>
+            </td>
+            <td  class="azulclaro"></td>
+            <td  class="azulclaro" colspan="1">
+              <span class="bold direita numaior  azul">
+              {{data.total}}
+              </span>
+            </td>
+        </tr>       
+      
+      </tbody>
+    </table>
+  </div>
+
+
+
     </div>
 </template>
 
@@ -64,13 +164,12 @@ export default {
       diaFinal: 31,
       ordem: "dia",
       area: "",
-      ano: "",
-     
+      ano: ""
     };
   },
   methods: {
     getApiFinanceiro() {
-      this.dataAtual = '2018-' + this.mesAtual;
+      this.dataAtual = "2018-" + this.mesAtual;
 
       var objThis = this;
       var url =
@@ -86,7 +185,8 @@ export default {
         this.area;
       this.axios.get(url).then(response => {
         objThis.data = response.data;
-        objThis.data.meses = JSON.parse(objThis.data.datas.meses);        
+        objThis.data.meses = JSON.parse(objThis.data.datas.meses);
+        objThis.data.total = objThis.data.total.toLocaleString();
       });
     }
   },
