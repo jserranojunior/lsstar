@@ -1,4 +1,4 @@
-<aside class="main-sidebar">
+<aside class="main-sidebar" v-if="showSidebarMenu">
     <section class="sidebar">
         <div class="profile-sidebar ">
             <div class="profile-userpic ">

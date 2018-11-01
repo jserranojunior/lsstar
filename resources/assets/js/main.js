@@ -1,8 +1,15 @@
 import Vue from 'vue';
-import example from './components/Example';
-import ContasAPagar from './components/ContasAPagar';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
+
+
+import example from './components/Example';
+import ContasAPagar from './components/ContasAPagar';
+import SidebarMenuTop from './components/SidebarMenuTop';
+import EmitirPagamento from './components/EmitirPagamento';
+
+
  
 Vue.config.productionTip = false;
 
@@ -15,6 +22,8 @@ new Vue({
     },components:{
         example,
         ContasAPagar,
+        SidebarMenuTop,
+        EmitirPagamento,
     }
   })
 

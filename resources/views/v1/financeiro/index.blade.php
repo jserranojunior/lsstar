@@ -8,8 +8,8 @@
 <div class="row justify-content-center">
 
     <contas-a-pagar></contas-a-pagar>
+<emitir-pagamento></emitir-pagamento>
 
-  
 </div>
 
 

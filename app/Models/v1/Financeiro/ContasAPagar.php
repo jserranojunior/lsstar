@@ -52,24 +52,23 @@ class ContasAPagar extends Model
         $contas = $this->contasAPagar->contasMensais($this->data);           
         foreach($contas as $conta){              
             $valorContasAPagar = $this->valorContasAPagar->valorParaPagar($this->data, $conta->id); 
-            $pagamentoFeito = $this->pagamentosFeitos->pagamentoMensal($this->data, $conta->id);               
+                        
             
             foreach($valorContasAPagar as $valores){
                 $conta->valor = $valores->valor;
                 $conta->item = $valores->item;
                 $conta->ccustos = $valores->ccustos;
                 $conta->favorecido = $valores->favorecido;
-                $conta->dia = date('d', strtotime($valores->inicio_mes));                    
+                $conta->dia = date('d', strtotime($valores->inicio_mes));
+                $conta->idValor = $valores->id;              
             }
-
-            
+           
+            $pagamentoFeito = $this->pagamentosFeitos->pagamentoMensal($this->data, $conta->id);   
 
             foreach($pagamentoFeito as $pagamento){
 
-                $pagamento->valor_pago = str_ireplace(".","",$pagamento->valor_pago); //remove o separador de milhares
-                $pagamento->valor_pago = str_ireplace(",",".",$pagamento->valor_pago); //substitui a virgula por ponto 
-
-                $conta->valor_pago = $pagamento->valor_pago;
+            
+                $conta->valor_pago = $conta->valor;
 
                 if($pagamento->tipo_pagamento == "Cheque"){
                     $pagamento->cor_tipo_pagamento = "#ffa303";
@@ -93,25 +92,18 @@ class ContasAPagar extends Model
             'ordem' => $request->ordem,
             'area' => $request->area,
         ];
-        /* END FILTERS */
 
-        // $contas = $contas->values()->all();
 
        
         $somaContas = $contas->sum('valor');
         $somaValorPago = $contas->sum('valor_pago');
 
-        // $somaContas = str_ireplace(".","",$somaContas); //remove o separador de milhares
-        // $somaContas = str_ireplace(",",".",$somaContas); //substitui a virgula por ponto  
-        
-       
-        // $datas['meses'] = json_encode($datas['meses']);
 
         $valorTotalPagar = $somaContas - $somaValorPago;
 
-        // $dados = ['contas' => $contas, 'total' => $somaContas];            
+           
         $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros, 'somaValorPago' => $somaValorPago, 'valorTotalPagar' => $valorTotalPagar];            
-        // $data = ['data' => $dados];
+
         return $dados;             
 
     }

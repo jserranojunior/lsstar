@@ -30,28 +30,13 @@
 
 
         <div class="wrapper">
-            <header class="main-header">
-                <a href="{{Route('inicio.index')}}" class="logo">
-                    <span class="logo-mini"><b>L</b></span>
-                    <span class="logo-lg"><b>LS STAR</b></span>
-                </a>
-                <nav class="navbar navbar-static-top">
-                    <div class="text-left col-md-6">
-                        <a class="btn btn-menu-toogle" data-toggle="offcanvas">
-                            <i class="fas fa-bars "></i>
-                        </a>
-                    </div>
-                    <div class="navbar-custom-menu">
-                        <div class="text-right">
-                            <div class="btn btn-primary" id="imprimir">
-                                <span class="glyphicon glyphicon-print"></span>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </header>
-    
-            @extends('layouts.sidebar')
+            
+            <sidebar-menu-top></sidebar-menu-top>
+          
+            
+                        @extends('layouts.sidebar')
+                
+            
             <!-- FIM BARRA LATERAL -->
     
             <div class="content-wrapper" id="">
