@@ -23,10 +23,11 @@ class financeiro_pagamentos_feitos extends Model
         
         $dados = [
             'id_conta' => $request->id,
-            'mes_referencia' => $request->data,1,7,
+            'mes_referencia' => $request->data,
             'data_conta' => $request->data,
             'valor_pago' => $request->valor,
             'tipo_pagamento' => $request->tipo_pagamento,
+            'link_comprovante' => '',
         ];              
 
         
