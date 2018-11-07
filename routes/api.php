@@ -37,5 +37,10 @@ Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio'], function(){
     
 });
 
+// V1
 Route::get('v1/financeiro', 'Api\v1\Financeiro\ApiContasAPagarController@index');
+
+// Emitir Pagamento
+Route::get('v1/emitirpagamento/{id}', 'Api\v1\Financeiro\ApiEmitirPagamentoController@edit');
+Route::post('v1/emitirpagamento', 'Api\v1\Financeiro\ApiEmitirPagamentoController@store');
   
