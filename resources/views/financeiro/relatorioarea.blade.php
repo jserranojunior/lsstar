@@ -14,7 +14,7 @@
 
 </style>
 
-<div class="row">
+<div class="row no-print">
 
 <form action="{{Route('financeiro.relatorioarea')}}" method="post">
     <div class="col-md-4">
