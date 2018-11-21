@@ -82,26 +82,36 @@ class ContasAPagar extends Model
         }    
         
         /* ####### FILTERS #####*/            
-        if($request->ordem > ''){
-            $contas = $contas->sortBy($request->ordem);
-        }
+        
+        //AREA
         if($request->area > ''){
             $contas = $contas->where('area','=', $request->area);
         }
+
+        // DIA
+        $contas = $contas->where('dia','>=', $diaInicial)->where('dia','<=', $diaFinal);
+
+        if($request->tipo > ''){
+            $contas = $contas->where('tipo', '=', $request->tipo);
+        }
+
         $filtros = [
             'ordem' => $request->ordem,
             'area' => $request->area,
         ];
 
-
+        
        
         $somaContas = $contas->sum('valor');
         $somaValorPago = $contas->sum('valor_pago');
 
-
+        
         $valorTotalPagar = $somaContas - $somaValorPago;
 
-           
+        if($request->ordem > ''){                  
+            $contas = $contas->sortBy($request->ordem); 
+        }
+        
         $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros, 'somaValorPago' => $somaValorPago, 'valorTotalPagar' => $valorTotalPagar];            
 
         return $dados;             

@@ -15114,11 +15114,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContasAPagar",
@@ -15137,10 +15132,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       emitirPagamentoId: "",
       dataAtualHoje: "",
       emitirPagamentoValor: "",
-      showModalEmitir: ""
+      showModalEmitir: "",
+      sortProperty: 'favorecido',
+      sortDirection: 1,
+      tipo: ''
     };
   },
 
+  filters: {
+    touppercase: function touppercase(value) {
+      if (!value) return '';
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+    money: function money(value) {
+      if (!value) return '0,00';
+      var val = (value / 1).toFixed(2).replace('.', ',');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+  },
   methods: {
     editarConta: function editarConta(id) {
       var $url = "../financeiro/" + id + "/" + this.dataAtual + "/editar";
@@ -15168,7 +15178,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     getApiFinanceiro: function getApiFinanceiro() {
       var objThis = this;
-      var url = "http://localhost/lsstar/public/api/v1/financeiro?data=" + this.dataAtual + "&diaInicial=" + this.diaInicial + "&diaFinal=" + this.diaFinal + "&ordem=" + this.ordem + "&area=" + this.area;
+      var url = "http://localhost/lsstar/public/api/v1/financeiro?data=" + this.dataAtual + "&diaInicial=" + this.diaInicial + "&diaFinal=" + this.diaFinal + "&ordem=" + this.ordem + "&area=" + this.area + "&tipo=" + this.tipo;
+      console.log(url);
       this.axios.get(url).then(function (response) {
         objThis.data = response.data;
         objThis.data.meses = JSON.parse(objThis.data.datas.meses);
@@ -15207,6 +15218,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     ano: function ano(val) {
       this.dataAtual = this.ano + "-" + this.mesAtual;
+      this.getApiFinanceiro();
+    },
+    ordem: function ordem(val) {
+      this.ordem = val;
+      this.getApiFinanceiro();
+    },
+    area: function area(val) {
+      this.area = val;
+      this.getApiFinanceiro();
+    },
+    tipo: function tipo(val) {
+      this.tipo = val;
       this.getApiFinanceiro();
     }
   }
@@ -15547,7 +15570,184 @@ var render = function() {
             attrs: { id: "tabelaprincipal" }
           },
           [
-            _vm._m(4),
+            _c("thead", [
+              _c("tr", [
+                _c("td", { staticClass: "text-center" }),
+                _vm._v(" "),
+                _c("td", [
+                  _c("div", {}, [
+                    _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
+                      _c("li", { staticClass: "dropdown " }, [
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("ul", { staticClass: "dropdown-menu" }, [
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.area = ""
+                                  }
+                                }
+                              },
+                              [_vm._v("Todos")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.area = "01 - Administrativo"
+                                  }
+                                }
+                              },
+                              [_vm._v("01 - Administrativo")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.area = "02 - Diretoria"
+                                  }
+                                }
+                              },
+                              [_vm._v("02 - Diretoria")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.area = "03 - Rua Rio Grande"
+                                  }
+                                }
+                              },
+                              [_vm._v("03 - Rua Rio Grande")]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
+                _c("td", [
+                  _c("div", {}, [
+                    _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
+                      _c("li", { staticClass: "dropdown dropdown " }, [
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _c("ul", { staticClass: "dropdown-menu" }, [
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.tipo = ""
+                                  }
+                                }
+                              },
+                              [_vm._v("Todos")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.tipo = "Extra"
+                                  }
+                                }
+                              },
+                              [_vm._v("Á vista")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.tipo = "Parcelado"
+                                  }
+                                }
+                              },
+                              [_vm._v("Parcelado")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.tipo = "Fixo"
+                                  }
+                                }
+                              },
+                              [_vm._v("Mensal")]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(7),
+                _vm._v(" "),
+                _c("td", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "filtro-hr bold",
+                        on: {
+                          click: function($event) {
+                            _vm.ordem = "favorecido"
+                          }
+                        }
+                      },
+                      [_vm._v(" Favorecido")]
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "caret" })
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(8),
+                _vm._v(" "),
+                _vm._m(9),
+                _vm._v(" "),
+                _vm._m(10)
+              ])
+            ]),
             _vm._v(" "),
             _c(
               "tbody",
@@ -15616,9 +15816,11 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._v(
-                          "\n            " + _vm._s(conta.tipo) + "\n          "
-                        )
+                        conta.tipo == "Fixo"
+                          ? _c("span", [_vm._v("Mensal")])
+                          : conta.tipo == "Extra"
+                            ? _c("span", [_vm._v("Á vista")])
+                            : _c("span", [_vm._v(_vm._s(conta.tipo))])
                       ]
                     ),
                     _vm._v(" "),
@@ -15663,7 +15865,9 @@ var render = function() {
                       },
                       [
                         _c("span", { staticClass: "text-bold" }, [
-                          _vm._v(_vm._s(conta.favorecido))
+                          _vm._v(
+                            _vm._s(_vm._f("touppercase")(conta.favorecido))
+                          )
                         ]),
                         _vm._v(" | " + _vm._s(conta.item) + "\n          ")
                       ]
@@ -15715,7 +15919,7 @@ var render = function() {
                       [
                         _vm._v(
                           "\n            " +
-                            _vm._s(conta.valor) +
+                            _vm._s(_vm._f("money")(conta.valor)) +
                             "\n          "
                         )
                       ]
@@ -15726,7 +15930,7 @@ var render = function() {
                 _c("tr", [
                   _c("td", { attrs: { colspan: "5" } }),
                   _vm._v(" "),
-                  _vm._m(5),
+                  _vm._m(11),
                   _vm._v(" "),
                   _c("td", { staticClass: "azulclaro" }),
                   _vm._v(" "),
@@ -15754,7 +15958,7 @@ var render = function() {
                     _vm._v(" Total de pendencias: ")
                   ]),
                   _vm._v(" "),
-                  _vm._m(6),
+                  _vm._m(12),
                   _vm._v(" "),
                   _c("td"),
                   _vm._v(" "),
@@ -15772,7 +15976,7 @@ var render = function() {
                 _c("tr", { staticClass: "trcolor" }, [
                   _c("td", { attrs: { colspan: "6" } }),
                   _vm._v(" "),
-                  _vm._m(7),
+                  _vm._m(13),
                   _vm._v(" "),
                   _c("td"),
                   _vm._v(" "),
@@ -15790,7 +15994,7 @@ var render = function() {
                 _c("tr", [
                   _c("td", { attrs: { colspan: "5" } }),
                   _vm._v(" "),
-                  _vm._m(8),
+                  _vm._m(14),
                   _vm._v(" "),
                   _c("td", { staticClass: "azulclaro" }),
                   _vm._v(" "),
@@ -15977,213 +16181,151 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("td", { staticClass: "text-center" }),
+    return _c(
+      "a",
+      {
+        staticClass: "dropdown-toggle",
+        attrs: { "data-toggle": "dropdown", href: "#" }
+      },
+      [
+        _c("span", { staticClass: "filtro-hr bold" }, [_vm._v(" Negócios ")]),
         _vm._v(" "),
-        _c("td", [
-          _c("div", {}, [
-            _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
-              _c("li", { staticClass: "dropdown " }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", href: "#" }
-                  },
-                  [
-                    _c("span", { staticClass: "filtro-hr bold" }, [
-                      _vm._v(" Negócios ")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "caret" })
-                  ]
-                ),
+        _c("span", { staticClass: "caret" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", {}, [
+        _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
+          _c("li", { staticClass: "dropdown " }, [
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-toggle",
+                attrs: { "data-toggle": "dropdown", href: "#" }
+              },
+              [
+                _c("span", { staticClass: "filtro-hr bold" }, [
+                  _vm._v(" Contas ")
+                ]),
                 _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Todos")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("01 - Administrativo")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("02 - Diretoria")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("03 - Rua Rio Grande")
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("td", [
-          _c("div", {}, [
-            _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
-              _c("li", { staticClass: "dropdown " }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", href: "#" }
-                  },
-                  [
-                    _c("span", { staticClass: "filtro-hr bold" }, [
-                      _vm._v(" Contas ")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "caret" })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Todos")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("10 - Hidráulica")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("11 - Elétrica")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("12 - Piso Revest. Louças")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("13 - Porta Janela e Vidro")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("14 - Pintura")])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("td", [
-          _c("div", {}, [
-            _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
-              _c("li", { staticClass: "dropdown dropdown " }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", href: "#" }
-                  },
-                  [
-                    _c("span", { staticClass: "filtro-hr bold" }, [
-                      _vm._v(" Tipo ")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "caret" })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Todos")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Á vista")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Parcelado")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Mensal")])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("td", [_c("p", { staticClass: "bold" }, [_vm._v("Pg")])]),
-        _vm._v(" "),
-        _c("td", [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("span", { staticClass: "filtro-hr bold" }, [
-              _vm._v(" Favorecido ")
-            ]),
+                _c("span", { staticClass: "caret" })
+              ]
+            ),
             _vm._v(" "),
-            _c("span", { staticClass: "caret" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("td", [
-          _c("div", {}, [
-            _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
-              _c("li", { staticClass: "dropdown dropdown " }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", href: "#" }
-                  },
-                  [
-                    _c("span", { staticClass: "filtro-hr bold" }, [
-                      _vm._v(" REC/NF ")
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "caret" })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Todos")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Nota Fiscal")])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Recibo")])
-                  ])
+            _c("ul", { staticClass: "dropdown-menu" }, [
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Todos")])]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("10 - Hidráulica")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("11 - Elétrica")])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v("12 - Piso Revest. Louças")
                 ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [
+                  _vm._v("13 - Porta Janela e Vidro")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("14 - Pintura")])
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("td", [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("span", { staticClass: "filtro-hr bold" }, [_vm._v(" Venc ")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "caret" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("td", [_c("p", { staticClass: "bold" }, [_vm._v("Á Pagar")])])
+        ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "dropdown-toggle",
+        attrs: { "data-toggle": "dropdown", href: "#" }
+      },
+      [
+        _c("span", { staticClass: "filtro-hr bold" }, [_vm._v(" Tipo ")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "caret" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("p", { staticClass: "bold" }, [_vm._v("Pg")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", {}, [
+        _c("ul", { staticClass: "nav nav-tabs nav-hr" }, [
+          _c("li", { staticClass: "dropdown dropdown " }, [
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-toggle",
+                attrs: { "data-toggle": "dropdown", href: "#" }
+              },
+              [
+                _c("span", { staticClass: "filtro-hr bold" }, [
+                  _vm._v(" REC/NF ")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "caret" })
+              ]
+            ),
+            _vm._v(" "),
+            _c("ul", { staticClass: "dropdown-menu" }, [
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Todos")])]),
+              _vm._v(" "),
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Nota Fiscal")])
+              ]),
+              _vm._v(" "),
+              _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("Recibo")])])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("span", { staticClass: "filtro-hr bold" }, [_vm._v(" Venc ")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "caret" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("p", { staticClass: "bold" }, [_vm._v("Á Pagar")])])
   },
   function() {
     var _vm = this

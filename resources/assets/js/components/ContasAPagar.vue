@@ -144,16 +144,16 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#">Todos</a>
+                        <a href="#" @click="area = ''">Todos</a>
                       </li>
                       <li>
-                        <a href="#">01 - Administrativo</a>
+                        <a href="#" @click="area = '01 - Administrativo'">01 - Administrativo</a>
                       </li>
                       <li>
-                        <a href="#">02 - Diretoria</a>
+                        <a href="#" @click="area = '02 - Diretoria'">02 - Diretoria</a>
                       </li>
                       <li>
-                        <a href="#">03 - Rua Rio Grande</a>
+                        <a href="#" @click="area = '03 - Rua Rio Grande'">03 - Rua Rio Grande</a>
                       </li>
                     </ul>
                   </li>
@@ -206,16 +206,16 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#">Todos</a>
+                        <a href="#" @click="tipo = ''">Todos</a>
                       </li>
                       <li>
-                        <a href="#">Á vista</a>
+                        <a href="#" @click="tipo = 'Extra'">Á vista</a>
                       </li>
                       <li>
-                        <a href="#">Parcelado</a>
+                        <a href="#" @click="tipo = 'Parcelado'">Parcelado</a>
                       </li>
                       <li>
-                        <a href="#">Mensal</a>
+                        <a href="#" @click="tipo = 'Fixo'">Mensal</a>
                       </li>
                     </ul>
                   </li>
@@ -227,8 +227,8 @@
             </td>
             <td>
               <a href="#" class="">
-                <span class="filtro-hr bold"> Favorecido </span> <span class="caret"></span>
-              </a>
+                <span class="filtro-hr bold" @click="ordem = 'favorecido'"> Favorecido</span> <span class="caret"></span>
+              </a> 
             </td>
             <td>
               <!-- PAINEL PAGADOR -->
@@ -277,7 +277,9 @@
               {{conta.ccustos}}
             </td>
             <td @click="editarConta(conta.id)">
-              {{conta.tipo}}
+              <span v-if="conta.tipo == 'Fixo'">Mensal</span>
+              <span v-else-if="conta.tipo == 'Extra'">Á vista</span>
+              <span v-else>{{conta.tipo}}</span>
             </td>
             <td class="td-without-padding text-center" v-if="conta.valor_pago  > ''">
 
@@ -289,7 +291,7 @@
               <i class="far fa-clone" data-toggle="modal" data-target="#modalEmitirPagamento" @click="emitirPagamento(conta.id, conta.valor)"></i>
             </td>
             <td @click="editarConta(conta.id)">
-              <span class="text-bold">{{conta.favorecido}}</span> | {{conta.item}}
+              <span class="text-bold">{{conta.favorecido | touppercase }}</span> | {{conta.item}}
             </td>
             <td @click="editarConta(conta.id)">
               {{conta.pagador}}
@@ -298,7 +300,7 @@
               {{conta.dia}}
             </td>
             <td @click="editarConta(conta.id)">
-              {{conta.valor}}
+              {{conta.valor | money}}
             </td>
           </tr>
           <tr>
@@ -356,13 +358,6 @@
       @event-emitir-pagamento="getApiFinanceiro()" @event-fechar-modal-emitir="fecharModalEmitir()"></emitir-pagamento>
   </div>
 </template>
-
-
-
-
-
-
-
 <script>
   export default {
     name: "ContasAPagar",
@@ -381,8 +376,23 @@
         emitirPagamentoId: "",
         dataAtualHoje: "",
         emitirPagamentoValor: "",
-        showModalEmitir: ""
+        showModalEmitir: "",
+        sortProperty:'favorecido',
+        sortDirection:1,
+        tipo:'',
       };
+    },
+    filters: {
+      touppercase: function (value) {
+      if (!value) return '';
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+      },
+     money: function(value){
+        if (!value) return '0,00';
+        let val = (value/1).toFixed(2).replace('.', ',')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      }
     },
     methods: {
       editarConta(id) {
@@ -445,7 +455,11 @@
           "&ordem=" +
           this.ordem +
           "&area=" +
-          this.area;
+          this.area +
+          "&tipo=" +
+          this.tipo
+          ;
+          console.log(url);
         this.axios.get(url).then(response => {
           objThis.data = response.data;
           objThis.data.meses = JSON.parse(objThis.data.datas.meses);
@@ -484,7 +498,19 @@
       ano: function (val) {
         this.dataAtual = this.ano + "-" + this.mesAtual;
         this.getApiFinanceiro();
-      }
+      },
+      ordem:function (val) {
+        this.ordem = val;
+        this.getApiFinanceiro();
+      },
+      area:function (val) {
+        this.area = val;
+        this.getApiFinanceiro();
+      },
+      tipo:function (val) {
+        this.tipo = val;
+        this.getApiFinanceiro();
+      },
     }
   };
 </script>
