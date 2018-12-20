@@ -227,7 +227,7 @@
             </td>
             <td>
               <a href="#" class="">
-                <span class="filtro-hr bold" @click="ordem = 'favorecido'"> Favorecido</span> <span class="caret"></span>
+                <span class="filtro-hr bold" @click="ordernarFavorecido()"> Favorecido</span> <span class="caret"></span>
               </a> 
             </td>
             <td>
@@ -255,7 +255,7 @@
             </td>
             <td>
               <a href="#">
-                <span class="filtro-hr bold"> Venc </span> <span class="caret"></span>
+                <span @click="ordenarVencimento()" class="filtro-hr bold"> Venc </span> <span class="caret"></span>
               </a>
             </td>
             <td>
@@ -359,6 +359,7 @@
   </div>
 </template>
 <script>
+import _ from 'lodash';
   export default {
     name: "ContasAPagar",
 
@@ -473,11 +474,22 @@
         this.ano = dataAtual.getFullYear();
         this.mesAtual = dataAtual.getUTCMonth() + 1;
         this.dataAtual = this.ano + "-" + this.mesAtual;
-      }
+      },
+      ordernarFavorecido(){
+        this.data.contas = _.sortBy(this.data.contas,[conta => conta.favorecido.toLowerCase()],['desc'])
+        },
+        ordenarVencimento(){
+          this.data.contas = _.sortBy(this.data.contas,[conta => conta.dia],['asc'])
+        }
+      
     },
     mounted() {
       this.getDataAtual();
       this.getApiFinanceiro();
+      // return _.sortBy(this.data.contas, 'id');
+
+      // this.data.contas = _.sortBy(this.data.contas,[conta => conta.valor.toLowerCase()],['desc']);
+      
     },
     watch: {
       dataAtual: function (val) {
@@ -511,6 +523,7 @@
         this.tipo = val;
         this.getApiFinanceiro();
       },
+      
     }
   };
 </script>

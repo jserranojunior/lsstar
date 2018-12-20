@@ -36,12 +36,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -57,23 +77,20 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
+/******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 86);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 86:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(87);
-
-
-/***/ }),
-
-/***/ 87:
+/***/ "./resources/assets/js/select-busca.js":
+/*!*********************************************!*\
+  !*** ./resources/assets/js/select-busca.js ***!
+  \*********************************************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
 /*
@@ -90,21 +107,19 @@ o nome da classe
 /* BUSCA DINAMICA EM INPUT DO TIPO SELECT */
 
 /* ##############  SELECIONAR FORNECEDOR ################# */
-
 $(function () {
   $.widget("custom.combobox", {
     _create: function _create() {
       this.wrapper = $("<span>").addClass("custom-combobox").insertAfter(this.element);
-
       this.element.hide();
+
       this._createAutocomplete();
+
       this._createShowAllButton();
     },
-
     _createAutocomplete: function _createAutocomplete() {
       var selected = this.element.children(":selected"),
           value = selected.val() ? selected.text() : "";
-
       this.input = $("<input>").appendTo(this.wrapper).val(value).attr("title", "").addClass("form-control form-fornecedor custom-combobox-input   ui-corner-left").autocomplete({
         delay: 0,
         minLength: 0,
@@ -118,19 +133,17 @@ $(function () {
       this._on(this.input, {
         autocompleteselect: function autocompleteselect(event, ui) {
           ui.item.option.selected = true;
+
           this._trigger("select", event, {
             item: ui.item.option
           });
         },
-
         autocompletechange: "_removeIfInvalid"
       });
     },
-
     _createShowAllButton: function _createShowAllButton() {
       var input = this.input,
           wasOpen = false;
-
       $("<a>").attr("tabIndex", -1).attr("title", "Mostrar Todos").tooltip().appendTo(this.wrapper).button({
         icons: {
           primary: "ui-icon-triangle-1-s"
@@ -139,18 +152,16 @@ $(function () {
       }).removeClass("ui-corner-all").addClass("custom-combobox-toggle ui-corner-right").on("mousedown", function () {
         wasOpen = input.autocomplete("widget").is(":visible");
       }).on("click", function () {
-        input.trigger("focus");
+        input.trigger("focus"); // Close if already visible
 
-        // Close if already visible
         if (wasOpen) {
           return;
-        }
+        } // Pass empty string as value to search for, displaying all results
 
-        // Pass empty string as value to search for, displaying all results
+
         input.autocomplete("search", "");
       });
     },
-
     _source: function _source(request, response) {
       var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
       response(this.element.children("option").map(function () {
@@ -162,15 +173,13 @@ $(function () {
         };
       }));
     },
-
     _removeIfInvalid: function _removeIfInvalid(event, ui) {
-
       // Selected an item, nothing to do
       if (ui.item) {
         return;
-      }
+      } // Search for a match (case-insensitive)
 
-      // Search for a match (case-insensitive)
+
       var value = this.input.val(),
           valueLowerCase = value.toLowerCase(),
           valid = false;
@@ -179,36 +188,31 @@ $(function () {
           this.selected = valid = true;
           return false;
         }
-      });
+      }); // Found a match, nothing to do
 
-      // Found a match, nothing to do
       if (valid) {
         return;
-      }
-
-      // COLOCAR O VALOR NO INPUT
+      } // COLOCAR O VALOR NO INPUT
       // this.input.val(value);
 
 
       this.element.val("value");
+
       this._delay(function () {
         this.input.tooltip("close").attr("title", "");
       }, 2500);
+
       this.input.autocomplete("instance").term = "";
     },
-
     _destroy: function _destroy() {
       this.wrapper.remove();
       this.element.show();
     }
-
   });
-
   $("#favorecido").combobox();
   $("#toggle").on("click", function () {
     $("#favorecido").toggle();
   });
-
   /*FIM BUSCA INPUT */
 
   $('.form-fornecedor').change(function () {
@@ -221,7 +225,6 @@ $(function () {
     $('.id_100 option[value=value]').attr('selected', 'selected');
   });
 });
-
 /* ##############  SELECIONAR CLIENTE ################# */
 
 /* BUSCA DINAMICA EM INPUT DO TIPO SELECT */
@@ -230,16 +233,15 @@ $(function () {
   $.widget("custom.combobox", {
     _create: function _create() {
       this.wrapper = $("<span>").addClass("custom-combobox").insertAfter(this.element);
-
       this.element.hide();
+
       this._createAutocomplete();
+
       this._createShowAllButton();
     },
-
     _createAutocomplete: function _createAutocomplete() {
       var selected = this.element.children(":selected"),
           value = selected.val() ? selected.text() : "";
-
       this.input = $("<input>").appendTo(this.wrapper).val(value).attr("title", "").addClass("form-control form-nome custom-combobox-input   ui-corner-left").autocomplete({
         delay: 0,
         minLength: 0,
@@ -253,19 +255,17 @@ $(function () {
       this._on(this.input, {
         autocompleteselect: function autocompleteselect(event, ui) {
           ui.item.option.selected = true;
+
           this._trigger("select", event, {
             item: ui.item.option
           });
         },
-
         autocompletechange: "_removeIfInvalid"
       });
     },
-
     _createShowAllButton: function _createShowAllButton() {
       var input = this.input,
           wasOpen = false;
-
       $("<a>").attr("tabIndex", -1).attr("title", "Mostrar Todos").tooltip().appendTo(this.wrapper).button({
         icons: {
           primary: "ui-icon-triangle-1-s"
@@ -274,18 +274,16 @@ $(function () {
       }).removeClass("ui-corner-all").addClass("custom-combobox-toggle ui-corner-right").on("mousedown", function () {
         wasOpen = input.autocomplete("widget").is(":visible");
       }).on("click", function () {
-        input.trigger("focus");
+        input.trigger("focus"); // Close if already visible
 
-        // Close if already visible
         if (wasOpen) {
           return;
-        }
+        } // Pass empty string as value to search for, displaying all results
 
-        // Pass empty string as value to search for, displaying all results
+
         input.autocomplete("search", "");
       });
     },
-
     _source: function _source(request, response) {
       var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
       response(this.element.children("option").map(function () {
@@ -297,15 +295,13 @@ $(function () {
         };
       }));
     },
-
     _removeIfInvalid: function _removeIfInvalid(event, ui) {
-
       // Selected an item, nothing to do
       if (ui.item) {
         return;
-      }
+      } // Search for a match (case-insensitive)
 
-      // Search for a match (case-insensitive)
+
       var value = this.input.val(),
           valueLowerCase = value.toLowerCase(),
           valid = false;
@@ -314,36 +310,31 @@ $(function () {
           this.selected = valid = true;
           return false;
         }
-      });
+      }); // Found a match, nothing to do
 
-      // Found a match, nothing to do
       if (valid) {
         return;
-      }
-
-      // COLOCAR O VALOR NO INPUT
+      } // COLOCAR O VALOR NO INPUT
       // this.input.val(value);
 
 
       this.element.val("value");
+
       this._delay(function () {
         this.input.tooltip("close").attr("title", "");
       }, 2500);
+
       this.input.autocomplete("instance").term = "";
     },
-
     _destroy: function _destroy() {
       this.wrapper.remove();
       this.element.show();
     }
-
   });
-
   $("#nome").combobox();
   $("#toggle").on("click", function () {
     $("#nome").toggle();
   });
-
   $('.form-nome').change(function () {
     var value = $('.form-nome').val();
     $('#nome').append($('<option>', {
@@ -354,6 +345,18 @@ $(function () {
     $('.id_100 option[value=value]').attr('selected', 'selected');
   });
 });
+
+/***/ }),
+
+/***/ 3:
+/*!***************************************************!*\
+  !*** multi ./resources/assets/js/select-busca.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/lsstar/resources/assets/js/select-busca.js */"./resources/assets/js/select-busca.js");
+
 
 /***/ })
 
