@@ -12,14 +12,16 @@
         </div>
         <div class="box-body">
           <div class="row">
-            <div class="col-md-5 ">
-              <a class="btn btn-warning btn-xs" href="{{Route('financeiro.mensal')}}" role="button">Relatório Mensal</a>
-            </div>
-            <div class="col-md-3 text-center">
+            
+            <div class="col-md-4 text-center">
               <a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2017')}}" role="button">Anual 2017</a>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-md-4 text-center">
               <a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2018')}}" role="button">Anual 2018</a>
+            </div>
+
+            <div class="col-md-4 text-center">
+              <a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2019')}}" role="button">Anual 2019</a>
             </div>
           </div>
           <br>
@@ -33,8 +35,18 @@
           </div>
         </div>
         <div class="box-footer">
-          <input type="button" class="esquerda btn btn-success excel btn-sm" id="btnExport"  value="Exportar Excel">
+
+        <div class="col-md-6">
+        <input type="button" class="btn btn-success excel btn-xs" id="btnExport"  value="Exportar Excel">
+       
+             </div>
+         
+          <div class="col-md-6 ">
+              <a class="btn btn-warning btn-xs" href="{{Route('financeiro.mensal')}}" role="button">Relatório Mensal</a>
+            </div>
+
         </div>
+        
       </div>
     </div>
     @endif
