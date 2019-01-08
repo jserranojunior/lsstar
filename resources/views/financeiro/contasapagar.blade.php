@@ -19,7 +19,7 @@
               <a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2017')}}" role="button">Anual 2017</a>
             </div>
             <div class="col-md-3 text-center">
-              <a class="btn btn-primary btn-xs" href="{{Route('financeiro.anual')}}" role="button">Anual 2018</a>
+              <a class="btn btn-primary btn-xs" href="{{Url('financeiro/anual/2018')}}" role="button">Anual 2018</a>
             </div>
           </div>
           <br>
