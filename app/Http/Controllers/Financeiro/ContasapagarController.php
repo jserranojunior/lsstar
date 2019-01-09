@@ -108,6 +108,7 @@ class ContasapagarController extends Controller {
     }
     
     function update(Request $request){
+        
         $dados = $request->all();
         $conta = new financeiro();
         $dados = $conta->atualizar($dados);

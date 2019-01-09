@@ -449,6 +449,7 @@ class financeiro extends Model {
     }
          
     public function atualizar($dados){
+       
         $tipo_atual = $dados['tipo_atual'];        
         $id = $dados['id'];
         $tipo = $dados['tipo'];
@@ -469,8 +470,7 @@ class financeiro extends Model {
         ->where('fornecedor','=',$favorecido)
         ->count();
 
-        if($select_favorecido < 1){
-            
+        if($select_favorecido < 1){            
             try{
                 DB::table('fornecedor_contas_a_pagar')->insert(['fornecedor' => $favorecido]);
             }catch(\Expection $e){
@@ -482,8 +482,7 @@ class financeiro extends Model {
         ->where('nome','=',$area)
         ->count();
 
-        if($select_area < 1){
-            
+        if($select_area < 1){            
             try{
                 DB::table('area')->insert(['nome' => $area]);
             }catch(\Expection $e){
@@ -549,7 +548,7 @@ class financeiro extends Model {
             'valor' => $valor
         );
 
-            try{
+            try{              
                 DB::table('contas_a_pagar')
                 ->where('id', '=', $id)
                 ->update($contas_atualizar);
@@ -585,6 +584,15 @@ class financeiro extends Model {
                 'valor' => $valor
             );
 
+            $contas_atualizar = array(           
+            'area' => $area,
+            'contas' => $ccustos,
+            'pagador' => $pagador
+            ); /* Falta atualizar outros campos */ 
+
+            
+
+
           
 
             if($selectFixo >= 1){
@@ -607,7 +615,15 @@ class financeiro extends Model {
                     'favorecido' => $favorecido,
                     'valor' => $valor
                 ]);
-            }          
+            }
+            
+            try{              
+                DB::table('contas_a_pagar')
+                ->where('id', '=', $id)
+                ->update($contas_atualizar);
+            }catch(\Expection $e){
+                echo dd($e);
+            }   
            
             
         }    

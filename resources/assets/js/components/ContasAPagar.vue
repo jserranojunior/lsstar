@@ -522,8 +522,7 @@ import _ from 'lodash';
       tipo:function (val) {
         this.tipo = val;
         this.getApiFinanceiro();
-      },
-      
+      },      
     }
   };
 </script>
