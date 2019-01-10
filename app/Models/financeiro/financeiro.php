@@ -584,7 +584,9 @@ class financeiro extends Model {
                 'valor' => $valor
             );
 
-            $contas_atualizar = array(           
+            $contas_atualizar = array(      
+                'tipo' => $tipo,
+                'fim_conta' => "",
             'area' => $area,
             'contas' => $ccustos,
             'pagador' => $pagador
