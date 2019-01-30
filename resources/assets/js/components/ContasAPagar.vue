@@ -473,7 +473,8 @@ import _ from 'lodash';
           objThis.data.total = objThis.data.total.toLocaleString();
           objThis.data.somaValorPago = objThis.data.somaValorPago.toLocaleString();
           objThis.data.valorTotalPagar = objThis.data.valorTotalPagar.toLocaleString();
-        });
+        });        
+       
       },
       getDataAtual() {
         var dataAtual = new Date();
@@ -490,17 +491,21 @@ import _ from 'lodash';
         }
       
     },
-    mounted() {
+    beforeMount() {
       this.getDataAtual();
-      this.getApiFinanceiro();
-      
+      this.getApiFinanceiro();    
+                
       
       // return _.sortBy(this.data.contas, 'id');
 
       // this.data.contas = _.sortBy(this.data.contas,[conta => conta.valor.toLowerCase()],['desc']);
       
+
+    
+      
     },
     watch: {
+      
       dataAtual: function (val) {
         this.getApiFinanceiro();
       },

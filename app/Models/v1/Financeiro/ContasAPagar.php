@@ -51,12 +51,9 @@ class ContasAPagar extends Model
       
         $contas = $this->contasAPagar->contasMensais($this->data);  
         
-
-
         foreach($contas as $conta){              
             $valorContasAPagar = $this->valorContasAPagar->valorParaPagar($this->data, $conta->id); 
-                        
-            
+                                    
             foreach($valorContasAPagar as $valores){
                 $conta->valor = $valores->valor;
                 $conta->item = $valores->item;
@@ -64,18 +61,12 @@ class ContasAPagar extends Model
                 $conta->favorecido = $valores->favorecido;
                 $conta->dia = date('d', strtotime($valores->inicio_mes));
                 $conta->idValor = $valores->id;              
-            }
-
-           
-        
-           
+            }         
+                   
             $pagamentoFeito = $this->pagamentosFeitos->pagamentoMensal($this->data, $conta->id);   
 
-            foreach($pagamentoFeito as $pagamento){
-
-            
+            foreach($pagamentoFeito as $pagamento){            
                 $conta->valor_pago = $conta->valor;
-
                 if($pagamento->tipo_pagamento == "Cheque"){
                     $pagamento->cor_tipo_pagamento = "#ffa303";
                 }
@@ -84,7 +75,6 @@ class ContasAPagar extends Model
                 }
                 $conta->cor_tipo_pagamento = $pagamento->cor_tipo_pagamento;
             }
-
         }    
         
         /* ####### FILTERS #####*/            
@@ -106,21 +96,29 @@ class ContasAPagar extends Model
             'area' => $request->area,
         ];
 
-        
+        // if($request->ordem > ''){                  
+        //     $contas = $contas->sortBy($request->ordem); 
+        // }else{
+        //     $contas = $contas->sortBy('dia'); 
+        // }
+
+        $contas = $contas->toArray();                
+                $contas = collect($contas);            
+                $contas = $contas->sortBy('dia');
+                $contas = $contas->values()->all();
+                $contas = collect($contas);
+
+       
+        // dd($contas);
        
         $somaContas = $contas->sum('valor');
-        $somaValorPago = $contas->sum('valor_pago');
-
-        
+        $somaValorPago = $contas->sum('valor_pago');        
         $valorTotalPagar = $somaContas - $somaValorPago;
 
-        if($request->ordem > ''){                  
-            $contas = $contas->sortBy($request->ordem); 
-        }else{
-            $contas = $contas->sortBy('dia'); 
-        }
         
         $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros, 'somaValorPago' => $somaValorPago, 'valorTotalPagar' => $valorTotalPagar];            
+
+        
 
         return $dados;             
 

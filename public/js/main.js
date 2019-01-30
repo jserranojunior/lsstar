@@ -2219,7 +2219,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log('ordenando');
     }
   },
-  mounted: function mounted() {
+  beforeMount: function beforeMount() {
     this.getDataAtual();
     this.getApiFinanceiro(); // return _.sortBy(this.data.contas, 'id');
     // this.data.contas = _.sortBy(this.data.contas,[conta => conta.valor.toLowerCase()],['desc']);
