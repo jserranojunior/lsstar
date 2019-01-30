@@ -2152,6 +2152,12 @@ __webpack_require__.r(__webpack_exports__);
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
     },
+    toLimit: function toLimit(value) {
+      if (!value) return '';
+      value = value.toString();
+      value = value.substring(0, 45);
+      return value;
+    },
     money: function money(value) {
       if (!value) return '0,00';
       var val = (value / 1).toFixed(2).replace('.', ',');
@@ -2210,6 +2216,7 @@ __webpack_require__.r(__webpack_exports__);
       this.data.contas = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.sortBy(this.data.contas, [function (conta) {
         return conta.dia;
       }], ['asc']);
+      console.log('ordenando');
     }
   },
   mounted: function mounted() {
@@ -21472,7 +21479,11 @@ var render = function() {
                             _vm._s(_vm._f("touppercase")(conta.favorecido))
                           )
                         ]),
-                        _vm._v(" | " + _vm._s(conta.item) + "\n          ")
+                        _vm._v(
+                          " | " +
+                            _vm._s(_vm._f("toLimit")(conta.item)) +
+                            "\n          "
+                        )
                       ]
                     ),
                     _vm._v(" "),

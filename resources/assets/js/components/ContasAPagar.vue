@@ -291,7 +291,7 @@
               <i class="far fa-clone" data-toggle="modal" data-target="#modalEmitirPagamento" @click="emitirPagamento(conta.id, conta.valor)"></i>
             </td>
             <td @click="editarConta(conta.id)">
-              <span class="text-bold">{{conta.favorecido | touppercase }}</span> | {{conta.item}}
+              <span class="text-bold">{{conta.favorecido | touppercase }}</span> | {{conta.item | toLimit }}
             </td>
             <td @click="editarConta(conta.id)">
               {{conta.pagador}}
@@ -389,13 +389,19 @@ import _ from 'lodash';
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
       },
+      toLimit: function (value) {
+      if (!value) return '';
+      value = value.toString()
+      value = value.substring(0,45);
+      return value
+      },
      money: function(value){
         if (!value) return '0,00';
         let val = (value/1).toFixed(2).replace('.', ',')
         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
       }
     },
-    methods: {
+    methods: { 
       editarConta(id) {
         var $url = "../financeiro/" + id + "/" + this.dataAtual + "/editar";
         var width = 560;
@@ -480,12 +486,15 @@ import _ from 'lodash';
         },
         ordenarVencimento(){
           this.data.contas = _.sortBy(this.data.contas,[conta => conta.dia],['asc'])
+          console.log('ordenando')
         }
       
     },
     mounted() {
       this.getDataAtual();
       this.getApiFinanceiro();
+      
+      
       // return _.sortBy(this.data.contas, 'id');
 
       // this.data.contas = _.sortBy(this.data.contas,[conta => conta.valor.toLowerCase()],['desc']);

@@ -49,7 +49,10 @@ class ContasAPagar extends Model
 
 
       
-        $contas = $this->contasAPagar->contasMensais($this->data);           
+        $contas = $this->contasAPagar->contasMensais($this->data);  
+        
+
+
         foreach($contas as $conta){              
             $valorContasAPagar = $this->valorContasAPagar->valorParaPagar($this->data, $conta->id); 
                         
@@ -62,6 +65,9 @@ class ContasAPagar extends Model
                 $conta->dia = date('d', strtotime($valores->inicio_mes));
                 $conta->idValor = $valores->id;              
             }
+
+           
+        
            
             $pagamentoFeito = $this->pagamentosFeitos->pagamentoMensal($this->data, $conta->id);   
 
@@ -110,6 +116,8 @@ class ContasAPagar extends Model
 
         if($request->ordem > ''){                  
             $contas = $contas->sortBy($request->ordem); 
+        }else{
+            $contas = $contas->sortBy('dia'); 
         }
         
         $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros, 'somaValorPago' => $somaValorPago, 'valorTotalPagar' => $valorTotalPagar];            

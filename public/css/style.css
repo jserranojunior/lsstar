@@ -737,3 +737,9 @@ html .ui-button.ui-state-disabled:active {
   .btn-pagar{
     padding: 2px 8px;
   }
+
+  td {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: wrap;
+}

@@ -40,7 +40,7 @@ class ContasapagarController extends Controller {
         }
 
         if(!isset($_POST['ordenacao'])){
-            $filtroOrdenacao = 'favorecido';
+            $filtroOrdenacao = 'dia';
         }else {
             $filtroOrdenacao = $_POST['ordenacao'];
         }
