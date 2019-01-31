@@ -197,8 +197,8 @@
         <table  class=" table table-condensed no-padding table-striped table-bordered table-hover" id="tabelaprincipal">
           <thead>
             <tr>
-              <td class="text-center"></td>
-              <td>
+              <th class="text-center"></th>
+              <th>
                 <style>
                   .row-ecra{
                   margin-bottom:5px;
@@ -254,8 +254,8 @@
                     </li>
                   </ul>
                 </div>
-              </td>
-              <td>
+              </th>
+              <th>
                 <!-- PAINEL CONTAS -->
                 <div class="">
                   <ul class="nav nav-tabs nav-hr">
@@ -274,8 +274,8 @@
                     @endforeach
                   </ul>
                 </div>
-              </td>
-              <td>
+              </th>
+              <th>
 
 
                   <!-- PAINEL PAGADOR -->
@@ -304,16 +304,16 @@
                 </div>
 
 
-              </td>
-              <td>
+              </th>
+              <th>
                 <p class="bold">Pg</p>
-              </td>
-              <td>
+              </th>
+              <th>
                 <a href="#" class="" onclick="enviar('favorecido',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">
                 <span class="filtro-hr bold">  Favorecido </span> <span class="caret"></span>
                 </a>
-              </td>
-              <td>
+              </th>
+              <th>
                 <!-- PAINEL PAGADOR -->
                 <div class="">
                   <ul class="nav nav-tabs nav-hr">
@@ -335,15 +335,15 @@
                     </li>
                   </ul>
                 </div>
-              </td>
-              <td>
+              </th>
+              <th>
                 <a href="#" onclick="enviar('dia',{{$mes}},{{$ano}}, '{{$areafiltro}}', '{{$contafiltro}}', '{{$pagadorfiltro}}', '{{$tipofiltro}}')">
                 <span class="filtro-hr bold">  Venc </span> <span class="caret"></span>
                 </a>
-              </td>
-              <td>
+              </th>
+              <th>
                 <p class="bold">Á Pagar</p>
-              </td>
+              </th>
           </thead>
           <tbody>
             <span class="invisible">   {{($i = 1)}} </span>

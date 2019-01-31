@@ -743,3 +743,7 @@ html .ui-button.ui-state-disabled:active {
 	text-overflow: ellipsis;
 	white-space: wrap;
 }
+
+.nav-tabs>li>a {
+    line-height: 0;
+}

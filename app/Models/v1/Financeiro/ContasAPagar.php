@@ -84,6 +84,10 @@ class ContasAPagar extends Model
             $contas = $contas->where('area','=', $request->area);
         }
 
+        if($request->contasfiltro > ''){
+            $contas = $contas->where('contas','=', $request->contasfiltro);
+        }
+
         // DIA
         $contas = $contas->where('dia','>=', $diaInicial)->where('dia','<=', $diaFinal);
 
@@ -91,9 +95,15 @@ class ContasAPagar extends Model
             $contas = $contas->where('tipo', '=', $request->tipo);
         }
 
+        if($request->pagador > ''){
+            $contas = $contas->where('pagador', '=', $request->pagador);
+        }
+
         $filtros = [
             'ordem' => $request->ordem,
             'area' => $request->area,
+            'contasfiltro' => $request->contasfiltro,
+            'pagador' => $request->pagador,
         ];
 
         // if($request->ordem > ''){                  
