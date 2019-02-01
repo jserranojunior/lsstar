@@ -7,7 +7,7 @@ Route::get('v1/financeiro', 'v1\Financeiro\ContasAPagarController@index');
 
 /* COMANDOS ARTISAN */
 Route::get('/executar/migrate', function() {
-    Artisan::call('migrate', []);
+    Artisan::call('migrate', ['--seed' => true]);
     return ("Migrate Sucess");
     });
 
