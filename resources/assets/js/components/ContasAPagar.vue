@@ -517,7 +517,7 @@ export default {
     getApiFinanceiro() {
       var objThis = this;
       var url =
-        "http://localhost/lsstar/public/api/v1/financeiro?data=" +
+        "/../public/api/v1/financeiro?data=" +
         this.dataAtual +
         "&diaInicial=" +
         this.diaInicial +
