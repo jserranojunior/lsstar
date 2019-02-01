@@ -2255,7 +2255,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getApiFinanceiro: function getApiFinanceiro() {
       var objThis = this;
-      var url = "http://localhost/lsstar/public/api/v1/financeiro?data=" + this.dataAtual + "&diaInicial=" + this.diaInicial + "&diaFinal=" + this.diaFinal + "&ordem=" + this.ordem + "&area=" + this.area + "&tipo=" + "&contasfiltro=" + this.contasfiltro + "&pagador=" + this.pagador + "&tipo=" + this.tipo;
+      var url = "/../public/api/v1/financeiro?data=" + this.dataAtual + "&diaInicial=" + this.diaInicial + "&diaFinal=" + this.diaFinal + "&ordem=" + this.ordem + "&area=" + this.area + "&tipo=" + "&contasfiltro=" + this.contasfiltro + "&pagador=" + this.pagador + "&tipo=" + this.tipo;
       console.log(url);
       this.axios.get(url).then(function (response) {
         objThis.data = response.data;
@@ -2460,7 +2460,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var objThis = this;
-      var url = "http://localhost/lsstar/public/api/v1/emitirpagamento";
+      var url = "/../public/api/v1/emitirpagamento";
       this.axios.post(url, {
         id: this.id,
         valor: this.valor,

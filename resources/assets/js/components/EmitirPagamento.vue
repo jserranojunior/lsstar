@@ -113,7 +113,7 @@ export default {
     },
     fazerPagamento() {
       var objThis = this;
-      var url = "http://localhost/lsstar/public/api/v1/emitirpagamento";
+      var url = "/../public/api/v1/emitirpagamento";
       this.axios
         .post(url, {
           id: this.id,
