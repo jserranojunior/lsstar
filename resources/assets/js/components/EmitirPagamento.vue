@@ -113,7 +113,7 @@ export default {
     },
     fazerPagamento() {
       var objThis = this;
-      var url = "/../public/api/v1/emitirpagamento";
+      var url = "../api/v1/emitirpagamento";
       this.axios
         .post(url, {
           id: this.id,
