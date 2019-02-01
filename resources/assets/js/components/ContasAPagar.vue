@@ -213,15 +213,11 @@
                       <li>
                         <a class="dropdown-item" href="#" @click="area = ''">Todos</a>
                       </li>
-                      <li>
-                        <a  class="dropdown-item" href="#" @click="area = '01 - Administrativo'">01 - Administrativo</a>
+                      <li v-for="unidade in data.unidades"  v-bind:key="unidade.id">
+                        <a  class="dropdown-item" href="#" @click="area = unidade.name">{{unidade.name}}</a>
                       </li>
-                      <li>
-                        <a class="dropdown-item"  href="#" @click="area = '02 - Diretoria'">02 - Diretoria</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item"  href="#" @click="area = '03 - Rua Rio Grande'">03 - Rua Rio Grande</a>
-                      </li>
+                      
+                      
                     </ul>
                   </li>
                 </ul>
@@ -297,7 +293,7 @@
               </div>
             </th>
             <th>
-              <p class="bold">Pg</p>
+              <p class="bold text-primary">Pg</p>
             </th>
             <th>
               <a href="#" class>
@@ -336,7 +332,7 @@
               </a>
             </th>
             <th>
-              <p class="bold">Á Pagar</p>
+              <p class="bold text-primary">Á Pagar</p>
             </th>
           </tr>
         </thead>

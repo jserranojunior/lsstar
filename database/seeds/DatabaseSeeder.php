@@ -12,14 +12,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        // $this->call([
+        //         UnidadesNegocio::class,
+        //     ]);
+
         //converter
-        DB::table('users')->take(1)
-        ->where('email','andreia@lsstar.com.br')
-        ->update([         
-                'name' => 'Andrea',       
-                'email' => 'andrea@lsstar.com.br',
-                'password' => bcrypt('senha'),
-            ]);
+        // DB::table('users')->take(1)
+        // ->where('email','andreia@lsstar.com.br')
+        // ->update([         
+        //         'name' => 'Andrea',       
+        //         'email' => 'andrea@lsstar.com.br',
+        //         'password' => bcrypt('senha'),
+        //     ]);
 
         // cadastrar usuario
         /*DB::table('users')->insert([

@@ -2185,10 +2185,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContasAPagar",
@@ -21268,71 +21264,46 @@ var render = function() {
                         [_vm._v("Negócios")]
                       ),
                       _vm._v(" "),
-                      _c("ul", { staticClass: "dropdown-menu" }, [
-                        _c("li", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "dropdown-item",
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  _vm.area = ""
+                      _c(
+                        "ul",
+                        { staticClass: "dropdown-menu" },
+                        [
+                          _c("li", [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "dropdown-item",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.area = ""
+                                  }
                                 }
-                              }
-                            },
-                            [_vm._v("Todos")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "dropdown-item",
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  _vm.area = "01 - Administrativo"
-                                }
-                              }
-                            },
-                            [_vm._v("01 - Administrativo")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "dropdown-item",
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  _vm.area = "02 - Diretoria"
-                                }
-                              }
-                            },
-                            [_vm._v("02 - Diretoria")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("li", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "dropdown-item",
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  _vm.area = "03 - Rua Rio Grande"
-                                }
-                              }
-                            },
-                            [_vm._v("03 - Rua Rio Grande")]
-                          )
-                        ])
-                      ])
+                              },
+                              [_vm._v("Todos")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.data.unidades, function(unidade) {
+                            return _c("li", { key: unidade.id }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "dropdown-item",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.area = unidade.name
+                                    }
+                                  }
+                                },
+                                [_vm._v(_vm._s(unidade.name))]
+                              )
+                            ])
+                          })
+                        ],
+                        2
+                      )
                     ])
                   ])
                 ]),
@@ -22030,7 +22001,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("th", [_c("p", { staticClass: "bold" }, [_vm._v("Pg")])])
+    return _c("th", [
+      _c("p", { staticClass: "bold text-primary" }, [_vm._v("Pg")])
+    ])
   },
   function() {
     var _vm = this
@@ -22053,7 +22026,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("th", [_c("p", { staticClass: "bold" }, [_vm._v("Á Pagar")])])
+    return _c("th", [
+      _c("p", { staticClass: "bold text-primary" }, [_vm._v("Á Pagar")])
+    ])
   },
   function() {
     var _vm = this

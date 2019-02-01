@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\v1\Tables\contas_a_pagar;
 use App\Models\v1\Tables\valor_contas_a_pagar;
 use App\Models\v1\Tables\financeiro_pagamentos_feitos;
+use App\Models\v1\Tables\unidades_negocio;
 use App\Models\v1\Functions\DateFunction;
 
 class ContasAPagar extends Model
@@ -14,9 +15,11 @@ class ContasAPagar extends Model
     public function __construct(contas_a_pagar $conta, 
     DateFunction $DateFunction,
     valor_contas_a_pagar $valorContasAPagar,
-    financeiro_pagamentos_feitos $pagamentosFeitos
+    financeiro_pagamentos_feitos $pagamentosFeitos,
+    unidades_negocio $unidades
     ){
         $this->contasAPagar = $conta;
+        $this->unidades_negocio = $unidades;
         $this->dataFunctions = $DateFunction;
         $this->valorContasAPagar = $valorContasAPagar;
         $this->pagamentosFeitos = $pagamentosFeitos;
@@ -125,8 +128,15 @@ class ContasAPagar extends Model
         $somaValorPago = $contas->sum('valor_pago');        
         $valorTotalPagar = $somaContas - $somaValorPago;
 
+        //unidades
+        $this->unidades_negocio = $this->unidades_negocio->all();
         
-        $dados = ['datas' => $datas, 'contas' => $contas, 'total' => $somaContas, 'filtros' => $filtros, 'somaValorPago' => $somaValorPago, 'valorTotalPagar' => $valorTotalPagar];            
+        $dados = ['datas' => $datas, 'contas' => $contas, 
+        'total' => $somaContas, 'filtros' => $filtros, 
+        'somaValorPago' => $somaValorPago, 
+        'valorTotalPagar' => $valorTotalPagar,
+        'unidades' => $this->unidades_negocio
+    ];            
 
         
 
