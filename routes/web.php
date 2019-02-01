@@ -13,8 +13,8 @@ Route::get('/executar/migrate', function() {
 
     /* COMANDOS ARTISAN */
 Route::get('/executar/seed/unidades', function() {
-    Artisan::call('make:seeder --class=UnidadesNegocio', []);
-    return ("Migrate Sucess");
+    Artisan::call('db:seed', ['--class'=> 'UnidadesNegocio']);
+    return ("Seed Sucess");
     });
 
 
