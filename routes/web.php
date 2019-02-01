@@ -13,7 +13,7 @@ Route::get('/executar/migrate', function() {
 
     /* COMANDOS ARTISAN */
 Route::get('/executar/seed/unidades', function() {
-    Artisan::call('make:seeder', ['--class' => 'Namespace\Seeds\UnidadesNegocio']);
+    Artisan::call('make:seeder --class=UnidadesNegocio', []);
     return ("Migrate Sucess");
     });
 
