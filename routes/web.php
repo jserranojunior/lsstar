@@ -11,6 +11,12 @@ Route::get('/executar/migrate', function() {
     return ("Migrate Sucess");
     });
 
+    /* COMANDOS ARTISAN */
+Route::get('/executar/seed/unidades', function() {
+    Artisan::call('php artisan db:seed --class=UnidadesNegocio', []);
+    return ("Migrate Sucess");
+    });
+
 
 /* API */ 
 Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
