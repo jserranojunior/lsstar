@@ -13,7 +13,7 @@ Route::get('/executar/migrate', function() {
 
     /* COMANDOS ARTISAN */
 Route::get('/executar/seed/unidades', function() {
-    Artisan::call('db:seed ', ['--class=UnidadesNegocio']);
+    Artisan::call('db:seed ', ['--class' => 'Namespace\Seeds\UnidadesNegocio']);
     return ("Migrate Sucess");
     });
 
