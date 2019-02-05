@@ -37,7 +37,7 @@
         <div class="box-footer">
 
         <div class="col-md-6">
-        <input type="button" class="btn btn-success excel btn-xs" id="btnExport"  value="Exportar Excel">
+        <input type="button" class="btn btn-success excel btn-xs" onclick="tableToExcel('tabelaprincipal', 'Contas a pagar')"   value="Exportar Excel">
        
              </div>
          
@@ -505,20 +505,26 @@
        window.open($url,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
       
      }
-  
-  /* EXPORTAR EXCEL */
-      $(document).ready(function () {
-          $data = Date('d-m-Y');
-          $nomearquivo = 'contas a pagar ';
-          $("#btnExport").click(function () {
-              $("#tabelaprincipal").btechco_excelexport({
-                  containerid: "tabelaprincipal"
-                 , datatype: $datatype.Table
-                 , filename: $nomearquivo
-              });
-          });
-      });
-  
+     /* Defaults */ 
+
+
+     //excel
+     var tableToExcel = (function() {
+  var uri = 'data:application/vnd.ms-excel;base64,'
+    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->   <meta charset="utf-8"></head><body><table>{table}</table></body></html>'
+    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+  return function(table, name) {
+    if (!table.nodeType) table = document.getElementById(table)
+    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+    // window.location.href = uri + base64(format(template, ctx))
+    var link = document.createElement("a");
+                    link.download = "exportado.xls";
+                    link.href = uri + base64(format(template, ctx));
+                    link.click();
+  }
+})()
+ 
   
       $(document).ready(function(){
   

@@ -18,4 +18,5 @@
     <link rel="stylesheet" href="{{ URL::asset('/css/style.css') }}">
 <link rel="stylesheet" href="{{ URL::asset('/css/print.css') }}">
 
+
 <!-- {{--  CSS  --}} -->

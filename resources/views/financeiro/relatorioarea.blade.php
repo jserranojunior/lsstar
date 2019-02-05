@@ -30,9 +30,13 @@
                     <option @if($itemArea->nome == $dados['area']) selected @endif value="{{$itemArea->nome}}">{{$itemArea->nome}}</option>
                     @endforeach
             
-            </select>
+            </select>           
             
-                </div>          
+                </div>   
+                <div class="col-md-3">
+                <input type="button" class=" text-right btn btn-success excel" onclick="tableToExcel('tabelaprincipal', 'Relatório Mensal')"   value="Exportar Excel">
+       
+                </div>       
             </div>
         </div>
     </div>
@@ -76,8 +80,9 @@
 
     <div class="col-md-4 ">
         <div class="box box-info">
-            <div class="box-header with-border">
-                <p class="center bold"> DATA FIM </p>
+            <div class="box-header text-center with-border">
+                <span class="text-center bold"> DATA FIM </span>
+                
             </div>
             <div class="box-body">
                 <div class="col-md-6">
@@ -117,7 +122,7 @@
 </div>
 
 <div class=" scroll-horizontal">       
-            <table class="table table-responsive">
+            <table id="tabelaprincipal" class="table table-responsive">
                 <thead>        
                     <th>#</th>
                     <th>Categorias</th>
@@ -149,6 +154,24 @@
             </table>
 </div>
 
+<script>
+    //excel
+    var tableToExcel = (function() {
+  var uri = 'data:application/vnd.ms-excel;base64,'
+    , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->   <meta charset="utf-8"></head><body><table>{table}</table></body></html>'
+    , base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) }
+    , format = function(s, c) { return s.replace(/{(\w+)}/g, function(m, p) { return c[p]; }) }
+  return function(table, name) {
+    if (!table.nodeType) table = document.getElementById(table)
+    var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML}
+    // window.location.href = uri + base64(format(template, ctx))
+    var link = document.createElement("a");
+                    link.download = "exportado.xls";
+                    link.href = uri + base64(format(template, ctx));
+                    link.click();
+  }
+})()
+</script>
 
 @endsection
 
