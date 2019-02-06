@@ -464,6 +464,12 @@ class financeiro extends Model {
         $fim_conta = "";  
         $dataatual = $dados['$data_atual'];
 
+     
+
+
+        if($valor == ""){
+            $valor = 0;
+        }
         
 
         $select_favorecido = DB::table('fornecedor_contas_a_pagar')
