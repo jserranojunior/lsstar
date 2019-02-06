@@ -94,9 +94,6 @@ class contasAPagar extends Model
          $totaisDoMes  = $this->contas->contasMensais($dataInicioMeses);        
          $totaisDoMes = $totaisDoMes->where('area', $area);         
 
-        
-
-         
 
                          foreach($totaisDoMes as $totalMes){
                             $valoresContasAPagar = $this->valoresContasAPagar::where('codigo', $totalMes->id) 
@@ -118,7 +115,7 @@ class contasAPagar extends Model
                             }                
                         }
                         
-                      
+                    //   dd($totaisDoMes);
 
                      $valorTotalAno += $totaisDoMes->sum('valor');
                      $meses[$count]['valoresTotais'] = $totaisDoMes->sum('valor'); 
@@ -158,7 +155,8 @@ class contasAPagar extends Model
                             $valoresContasAPagar = $this->valoresContasAPagar::where('codigo', $conta->id) 
                             ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '=', $data)      
                             ->orWhere('codigo', $conta->id)
-                            ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '<=', $data)      
+                            ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '<=', $data)    
+                            ->orderBy('id', 'desc')  
                             ->take(1)
                             ->select('valor')
                             ->get();
