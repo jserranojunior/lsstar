@@ -389,6 +389,7 @@ class ComposerStaticInit603b535d5978930813f455942c0664e1
         'App\\Models\\v1\\Functions\\DateFunction' => __DIR__ . '/../..' . '/app/Models/v1/Functions/DateFunction.php',
         'App\\Models\\v1\\Tables\\contas_a_pagar' => __DIR__ . '/../..' . '/app/Models/v1/Tables/contas_a_pagar.php',
         'App\\Models\\v1\\Tables\\financeiro_pagamentos_feitos' => __DIR__ . '/../..' . '/app/Models/v1/Tables/financeiro_pagamentos_feitos.php',
+        'App\\Models\\v1\\Tables\\unidades_negocio' => __DIR__ . '/../..' . '/app/Models/v1/Tables/unidades_negocio.php',
         'App\\Models\\v1\\Tables\\valor_contas_a_pagar' => __DIR__ . '/../..' . '/app/Models/v1/Tables/valor_contas_a_pagar.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -4031,6 +4032,7 @@ class ComposerStaticInit603b535d5978930813f455942c0664e1
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+        'valorVazio' => __DIR__ . '/../..' . '/database/seeds/valorVazio.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

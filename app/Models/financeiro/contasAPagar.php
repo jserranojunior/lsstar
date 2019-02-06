@@ -21,35 +21,27 @@ class contasAPagar extends Model
     }
 
     public function relatorioPorUnidade($request){
-
-        
         $request = array();
-
         if(!isset($_POST['area'])){
             $area = 'Administrativo';
         }else {
             $area = $_POST['area'];
         }
-
         if(!isset($_POST['mesInicio'])){
             $mesInicio =  date('m');
         }else {
             $mesInicio = $_POST['mesInicio'];
         }
-
         if(!isset($_POST['anoInicio'])){
             $anoInicio =  date('Y');
         }else {
             $anoInicio = $_POST['anoInicio'];
-        }
-        
+        }        
         $dataInicio = "$anoInicio-$mesInicio";
-
         if(!isset($_POST['anoInicio']) or !isset($_POST['mesInicio'])){
             $dataInicio = date('Y-m', strtotime("-12 months", strtotime($dataInicio)));
             $anoInicio = date('Y', strtotime($dataInicio));
         }
-
         if(!isset($_POST['mesFim'])){
             $mesFim =  date('m');
         }else {
@@ -61,31 +53,22 @@ class contasAPagar extends Model
             $anoFim = $_POST['anoFim'];
         }
 
-        $dataFim = "$anoFim-$mesFim";
-
-    
-
-
+        $dataFim = "$anoFim-$mesFim";   
         $count = 0;
         $dados = array();        
-        $valorTotalAno = 0;
- 
+        $valorTotalAno = 0; 
         if($dataInicio > $dataFim){
             $dataFim = date('Y-m', strtotime("+12 months", strtotime($dataInicio)));
             $mesFim = date('m', strtotime($dataFim));
             $anoFim = date('Y', strtotime($dataFim));
         }
 
-
         $area = $area;
         $dataInicio = $dataInicio;
         $dataFim = $dataFim;
         $dataInicioMeses = $dataInicio;
-
-        $areas = $this->areas->select('nome', 'ordem')->orderBy('ordem')->get();
-      
-       
-        
+        $areas = $this->areas->select('nome', 'ordem')->orderBy('ordem')->get();     
+               
         /* MES TOPO || MES SOMA ANUAL || MES SOMA CATEGORIA ANUAL*/
         
         while($dataInicioMeses <= $dataFim){
@@ -101,28 +84,41 @@ class contasAPagar extends Model
                 case "Oct":    $nomeMes = "Out";     break;
                 case "Dec":    $nomeMes = "Dez";    break; 
          }        
+
             $meses[$count]['numeroMes'] =  $numeroMes;
             $meses[$count]['nomeMes'] = $nomeMes;
             $meses[$count]['ano'] = $ano;
 
+            $dataInicioMeses = date('Y-m', strtotime($dataInicioMeses));  
+
          $totaisDoMes  = $this->contas->contasMensais($dataInicioMeses);        
          $totaisDoMes = $totaisDoMes->where('area', $area);         
+
+        
+
+         
 
                          foreach($totaisDoMes as $totalMes){
                             $valoresContasAPagar = $this->valoresContasAPagar::where('codigo', $totalMes->id) 
                             ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '=', $dataInicioMeses)      
                             ->orWhere('codigo', $totalMes->id)
-                            ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '<=', $dataInicioMeses)      
+                            ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '<=', $dataInicioMeses)  
+                            ->orderBy('id', 'desc')    
                             ->take(1)
-                            ->select('valor')
+                            ->select('valor', 'codigo')
                             ->get();
+
+                            // dd($valoresContasAPagar);
                             
                             foreach($valoresContasAPagar as $valores){
                                 ///$valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
                                 //$valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
-                                $totalMes->valor =  $valores->valor;                             
+                                $totalMes->valor =  $valores->valor; 
+                                $totalMes->codigo =  $valores->codigo;                             
                             }                
-                        }                       
+                        }
+                        
+                      
 
                      $valorTotalAno += $totaisDoMes->sum('valor');
                      $meses[$count]['valoresTotais'] = $totaisDoMes->sum('valor'); 

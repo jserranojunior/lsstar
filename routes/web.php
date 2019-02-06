@@ -17,6 +17,12 @@ Route::get('/executar/seed/unidades', function() {
     return ("Seed Sucess");
     });
 
+        /* COMANDOS ARTISAN */
+Route::get('/executar/seed/valor/vazio', function() {
+    Artisan::call('db:seed', ['--class'=> 'valorVazio']);
+    return ("Seed Sucess");
+    });
+
 
 /* API */ 
 Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');

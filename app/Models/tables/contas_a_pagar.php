@@ -12,6 +12,8 @@ class contas_a_pagar extends Model
    
     public function contasMensais($anoMes){
         $this->data = $anoMes;
+
+        $this->data = date('Y-m', strtotime($this->data));   
          
         $this->contas = self::where(DB::raw("SUBSTRING(inicio_conta,1,7)"), '<=', $this->data) 
         ->where(DB::raw("SUBSTRING(fim_conta,1,7)"), '>=', $this->data)  
