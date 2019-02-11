@@ -10,6 +10,7 @@
         <th>NOME</th>
         <th class="text-right">2017</th>
         <th class="text-right">2018</th>
+        <th class="text-right">2019</th>
         <th class="text-right">TOTAL</th>
     </tr>
 

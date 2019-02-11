@@ -45,25 +45,17 @@ class financeiro extends Model {
 
             foreach($unidades as $unidade){  
                 $id = $unidade->id;
-                $unidade = $unidade->nome;
-            
-
+                $unidade = $unidade->nome;           
                 $anoFinal = date('Y', strtotime('+1 year'));
-
                 $valorSoma = 0;
                 $arrayTotalAno = array();
                 
                 for($ano = 2017; $ano < $anoFinal; $ano++){   
-
                     $valor = $this->somaTotalPorUnidade($ano, $unidade);
                     $valorAnual[$ano] = $valor; //number_format($valor, 2,',','.');  
-                    $valorSoma += $valor; 
-                    
-                }
-
-            
+                    $valorSoma += $valor;                     
+                }            
                 $totalTudo +=  $valorSoma;
-
                 $valorSoma = $valorSoma; //number_format($valorSoma, 2,',','.');
         
                 $dadosUnidades['unidades'][$unidade]['soma'] = $valorSoma; 
@@ -71,8 +63,7 @@ class financeiro extends Model {
                 $dadosUnidades['unidades'][$unidade]['valores']  = $valorAnual;
             }
 
-        $unidades =  $dadosUnidades['unidades'];
-        
+        $unidades =  $dadosUnidades['unidades'];        
         $somaTotalAnoArray = array(); 
 
         for($ano = 2017; $ano < $anoFinal; $ano++){
@@ -81,20 +72,13 @@ class financeiro extends Model {
                 foreach($da['valores'] as $key => $valor){ 
                         if($key == $ano){   
                             $somaTotalAno += $valor;                                        
-                        }
-                         
+                        }                         
                 }      
             }
             $somaTotalAnoArray[$ano] = number_format($somaTotalAno, 2,',','.'); 
         }    
-
-
-        $somaTotalAnoArray['totalTudo'] = number_format($totalTudo, 2,',','.');
-
-    
-
-        $dadosUnidades['total'] = $somaTotalAnoArray;
-        
+        $somaTotalAnoArray['totalTudo'] = number_format($totalTudo, 2,',','.');   
+        $dadosUnidades['total'] = $somaTotalAnoArray;        
 
         //echo("<pre>$somaTotalAno</pre>");
     
@@ -105,49 +89,76 @@ class financeiro extends Model {
     public function somaTotalPorUnidade($ano, $unidade){
             $valor = 0;          
             $mes = 01;         
-            $valorAnual = 0;  
-            //$ano = 2017;
-           // $unidade = "Administração";
+            $valorAnual = 0;       
             
-            $datePrev = date("Y-m");
-            //
-            
+            $datePrev = date("Y-m");          
             
 
         for($mes = 1; $mes <= 12; $mes++){  
-            $valorMensal = 0;
-
+                $valorMensal = 0;
                 $this->data = "$ano-$mes";   
                $dataAtual = $this->data;
                $this->data = date("Y-m", strtotime($dataAtual));
                 $this->dataAnterior = date("Y-m", strtotime(date("Y-m", strtotime($this->data)) . " -1 month"));
+                
 
                 
 
-           $select_valores = DB::table('contas_a_pagar as c')
-            ->select('c.id','a.valor','c.inicio_conta as data')
-                ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
-                    $anterior->on('c.id', '=', 'a.codigo');                                         
-                })           
-            ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
-            ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
-            ->where('c.area','=', $unidade)
-            ->distinct()
-            ->get();  
-            
-            foreach($select_valores as $valores){                 
+            // $select_valores = DB::table('contas_a_pagar as c')
+            // ->select('c.id','c.inicio_conta as data')
+                          
+            // ->where(DB::raw("SUBSTRING(c.inicio_conta,1,7)"), '<=', $this->data)
+            // ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
+            // ->where('c.area','=', $unidade)
+            // ->orderBy('id', 'desc')
+            // ->distinct()
+            // ->get();  
 
+            $select_valores = DB::table('contas_a_pagar')
+            ->select('id','inicio_conta as data', 'fim_conta','area')            
+            ->where(DB::raw("SUBSTRING(inicio_conta,1,7)"), '<=', $this->data) 
+            ->where(DB::raw("SUBSTRING(fim_conta,1,7)"), '>=', $this->data) 
+            ->where('area','=', $unidade) 
+            ->orWhere('id' ,'>', '0')  
+            ->where(DB::raw("SUBSTRING(fim_conta,1,7)"), '=', null)                                    
+            ->where(DB::raw("SUBSTRING(inicio_conta,1,7)"), '<=', $this->data) 
+            ->where('area','=', $unidade)
+            ->orWhere(DB::raw("SUBSTRING(fim_conta,1,7)"), '=', '')                                
+            ->where(DB::raw("SUBSTRING(inicio_conta,1,7)"), '<=', $this->data) 
+            ->where('area','=', $unidade)
+            ->get();
+           
+
+
+
+
+            foreach($select_valores as $contas){
+                $select_valor = DB::table('valor_contas_a_pagar')
+                ->where('codigo', '=', $contas->id)                
+                ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '=', $this->data)
+                ->orWhere('codigo', '=',  $contas->id)
+                ->where(DB::raw("SUBSTRING(inicio_mes,1,7)"), '<=', $this->data)
+                ->orderBy('id', 'desc')
+                ->take(1)
+                ->get();  
+
+                foreach($select_valor as $valor){
+                    $contas->valor = $valor->valor;
+                }
+            } 
+
+            foreach($select_valores as $valores){                
                 if($this->data > $datePrev){
                     $valores->valor = 0; 
                     $valorSemVirgula  = 0;                        
-                }else{                    
-                    $valor = $valores->valor;
-                     
-                }
-              
-                $valorMensal +=  $valor;  
+                }           
+                $valorMensal +=  $valores->valor;  
             }
-            $valorAnual += $valorMensal;    
+            $valorAnual += $valorMensal;  
+            
+            // if($this->data == "2019-02"){
+            //     dd($select_valores);
+            // }
         }                    
         return($valorAnual);   
     }
