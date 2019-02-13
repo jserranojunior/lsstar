@@ -127,11 +127,7 @@ class financeiro extends Model {
             ->where(DB::raw("SUBSTRING(inicio_conta,1,7)"), '<=', $this->data) 
             ->where('area','=', $unidade)
             ->get();
-           
-
-
-
-
+            
             foreach($select_valores as $contas){
                 $select_valor = DB::table('valor_contas_a_pagar')
                 ->where('codigo', '=', $contas->id)                
@@ -142,23 +138,39 @@ class financeiro extends Model {
                 ->take(1)
                 ->get();  
 
+                
+
                 foreach($select_valor as $valor){
+                    $valor_pago = DB::table('financeiro_pagamentos_feitos')
+                    ->where('id_conta', $contas->id)
+                    ->where('mes_referencia', $this->data)
+                    ->count();
+
+                    $contas->pago = $valor_pago;
+                    
+
                     $contas->valor = $valor->valor;
+                    $contas->referencia = $this->data;
+
+
+                    $contas->id_valor = $valor->id;
                 }
             } 
 
-            foreach($select_valores as $valores){                
-                if($this->data > $datePrev){
+            foreach($select_valores as $valores){   
+                if($valores->pago == 0){
+                    $valores->valor = 0; 
+                }
+                
+                if($this->data >= $datePrev){
                     $valores->valor = 0; 
                     $valorSemVirgula  = 0;                        
                 }           
                 $valorMensal +=  $valores->valor;  
             }
-            $valorAnual += $valorMensal;  
-            
-            // if($this->data == "2019-02"){
-            //     dd($select_valores);
-            // }
+            // dd($select_valores);
+            $valorAnual += $valorMensal;            
+           
         }                    
         return($valorAnual);   
     }
