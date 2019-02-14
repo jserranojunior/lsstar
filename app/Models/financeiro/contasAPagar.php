@@ -53,7 +53,17 @@ class contasAPagar extends Model
             $anoFim = $_POST['anoFim'];
         }
 
-        $dataFim = "$anoFim-$mesFim";   
+        $dataFim = "$anoFim-$mesFim";  
+        $dataAtual = date('Y-m');
+
+        //mes anterior
+        $dataAtualAnterior = date('Y-m', strtotime("-1 months", strtotime($dataAtual)));        
+        if($dataFim > $dataAtualAnterior){
+            $dataFim =  $dataAtualAnterior;
+            $mesFim =  date('m', strtotime($dataAtualAnterior));
+            $anoFim =  date('Y', strtotime($dataAtualAnterior));
+        }
+        
         $count = 0;
         $dados = array();        
         $valorTotalAno = 0; 
@@ -65,7 +75,7 @@ class contasAPagar extends Model
 
         $area = $area;
         $dataInicio = $dataInicio;
-        $dataFim = $dataFim;
+        
         $dataInicioMeses = $dataInicio;
         $areas = $this->areas->select('nome', 'ordem')->orderBy('ordem')->get();     
                
@@ -110,7 +120,22 @@ class contasAPagar extends Model
                             foreach($valoresContasAPagar as $valores){
                                 ///$valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
                                 //$valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
-                                $totalMes->valor =  $valores->valor; 
+                                
+                                $valor_pago = DB::table('financeiro_pagamentos_feitos')
+                                ->where('id_conta', $valores->codigo)
+                                ->where('mes_referencia', $dataInicioMeses)
+                                ->count();
+
+                                $totalMes->pago = $valor_pago;  
+                                
+                                if($totalMes->pago == 0){
+                                    $totalMes->valor = 0; 
+                                }else{
+                                    $totalMes->valor =  $valores->valor; 
+                                }
+                                
+                                
+                                // $totalMes->valor =  $valores->valor; 
                                 $totalMes->codigo =  $valores->codigo;                             
                             }                
                         }
@@ -162,10 +187,21 @@ class contasAPagar extends Model
                             ->get();
                             
                             foreach($valoresContasAPagar as $valores){
-                                //$valores->valor = str_ireplace(".","",$valores->valor); //remove o separador de milhares
-                               // $valores->valor = str_ireplace(",",".",$valores->valor); //substitui a virgula por ponto   
-                                $conta->valor =  $valores->valor;
-                                //$conta->valorExibir = number_format($conta->valor, 2,'.',',');
+                                
+                                $valor_pago = DB::table('financeiro_pagamentos_feitos')
+                                ->where('id_conta', $conta->id)
+                                ->where('mes_referencia', $data)
+                                ->count();
+
+                                $conta->pago = $valor_pago;  
+                                
+                                if($conta->pago == 0){
+                                    $conta->valor = 0; 
+                                }else{
+                                    $conta->valor =  $valores->valor; 
+                                }
+                                
+                                                              
                             }                
                         }                        
                             

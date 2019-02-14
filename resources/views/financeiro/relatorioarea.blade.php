@@ -34,7 +34,7 @@
             
                 </div>   
                 <div class="col-md-3">
-                <input type="button" class=" text-right btn btn-success excel" onclick="tableToExcel('tabelaprincipal', 'Relatório Mensal')"   value="Exportar Excel">
+                <input type="button" class=" text-right btn btn-success excel" onclick="tableToExcel('tabelaprincipal', 'Relatório Mensal')"   value="Excel">
        
                 </div>       
             </div>
