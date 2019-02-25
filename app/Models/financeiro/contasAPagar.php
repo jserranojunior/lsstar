@@ -23,7 +23,7 @@ class contasAPagar extends Model
     public function relatorioPorUnidade($request){
         $request = array();
         if(!isset($_POST['area'])){
-            $area = 'Administrativo';
+            $area = '01 - Administrativo';
         }else {
             $area = $_POST['area'];
         }

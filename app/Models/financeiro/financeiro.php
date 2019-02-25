@@ -832,6 +832,7 @@ class financeiro extends Model {
                     ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
                     ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
                     ->distinct()
+                    // ->take(1)
                     ->get();
            
     }
