@@ -49,10 +49,38 @@ class relatorios extends Model
                 foreach($contas as $conta){              
                     $valoresContasAPagar = $this->valoresContasAPagar->valorParaPagar($mesano, $conta->id);
                     foreach($valoresContasAPagar as $valores){
+                        
+                        // $conta->valor = $valores->valor;
+                        // $conta->inicio_mes = $valores->inicio_mes;  
+                        
+                        
+                        $dataReferencia = date('Y-m', strtotime($mesano));
+
+                        $valor_pago = DB::table('financeiro_pagamentos_feitos')
+                        ->where('id_conta', $conta->id)
+                        ->where('mes_referencia',  $dataReferencia )
+                        ->count();
+    
+                        $conta->pago = $valor_pago;                        
+                        $conta->referencia =  $dataReferencia;
+    
                         $conta->valor = $valores->valor;
-                        $conta->inicio_mes = $valores->inicio_mes;    
+                        $conta->inicio_mes = $valores->inicio_mes; 
+
+                         
+                            if($conta->pago == 0){
+                                $conta->valor = 0;                            
+                        }
+
+                        if($dataReferencia == date('Y-m')){
+                            $conta->valor = 0;  
+                        }
+
+                      
                     }                                                                              
                 }
+// dd($contas);
+               
 
             $dataatual = date('Y-m');            
             if($mesbusca > $dataatual){               
@@ -80,7 +108,7 @@ class relatorios extends Model
              $unidades->id = $arrayMes;        
         }     
 
-        /* NOVA CONSULTA */ 
+        /* NOVA CONSULTA LINHA DE BAIXO */ 
         for($mes = 1; $mes <= 12; $mes++){ 
             $mesano = "$ano-$mes";
         
@@ -88,9 +116,30 @@ class relatorios extends Model
                 foreach($contasNovaConsulta as $conta){ 
                                
                     $valoresContasAPagar = $this->valoresContasAPagar->valorParaPagar($mesano, $conta->id);
-                    foreach($valoresContasAPagar as $valores){
+                    foreach($valoresContasAPagar as $valores){                         
+
+                        $dataReferencia = date('Y-m', strtotime($mesano));
+
+                        $valor_pago = DB::table('financeiro_pagamentos_feitos')
+                        ->where('id_conta', $conta->id)
+                        ->where('mes_referencia',  $dataReferencia )
+                        ->count();
+
+                        $conta->pago = $valor_pago;      
+
                         $conta->valor = $valores->valor;
-                        $conta->inicio_mes = $valores->inicio_mes;    
+                        $conta->inicio_mes = $valores->inicio_mes;  
+
+                        
+                            if($conta->pago == 0){
+                                $conta->valor = 0; 
+                            }
+
+                            if($dataReferencia == date('Y-m')){
+                                $conta->valor = 0;  
+                            }
+                        
+
                     }                                            
                 }            
 
