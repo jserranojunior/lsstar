@@ -27,6 +27,12 @@ Route::get('/executar/seed/valor/vazio', function() {
 /* API */ 
 Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
 
+Route::get('criar',['as'=>'create','uses' => 'cliente\clienteController@create']);
+
+Route::get('/api/v1/clientelaspalmas', function () {
+    return view('v1.clientes.createlaspalmas');
+});
+
 
 // Manutencao
 Route::group(['as' => 'manutencao.', 'prefix' => 'manutencao','middleware' => ['auth']], function(){
