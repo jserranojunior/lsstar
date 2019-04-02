@@ -2583,6 +2583,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2697,8 +2699,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "CreateClientes"
+  name: "CreateClientes",
+  data: function data() {
+    return {
+      inputs: {}
+    };
+  },
+  // ADICIONAR UMA COLUNA PRA MARCAR QUE È LAS PALMAS
+  methods: {
+    cadastrarClienteLasPalmas: function cadastrarClienteLasPalmas(data) {
+      var _this = this;
+
+      var url = '../v1/cliente';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, data).then(function (response) {
+        console.log("cadastrado");
+        _this.inputs = "";
+      }).catch(function (error) {
+        console.log(error);
+        console.log("naõ cadastrado");
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -22621,173 +22644,467 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "col-xs-10 col-xs-offset-1" }, [
+      _c("div", { staticClass: "box box-info" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "box-body no-padding" }, [
+          _c("table", { staticClass: "table text-center table-condensed" }, [
+            _c("tr", [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "4" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.nome,
+                      expression: "inputs.nome"
+                    }
+                  ],
+                  staticClass: "form-control ",
+                  attrs: { name: "nome", type: "text" },
+                  domProps: { value: _vm.inputs.nome },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "nome", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "4" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.email,
+                      expression: "inputs.email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "email", type: "text" },
+                  domProps: { value: _vm.inputs.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.telefone,
+                      expression: "inputs.telefone"
+                    }
+                  ],
+                  staticClass: "form-control telefone_mascara",
+                  attrs: { colspan: "2", name: "telefone", type: "text" },
+                  domProps: { value: _vm.inputs.telefone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "telefone", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.idade,
+                      expression: "inputs.idade"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "idade", name: "idade", type: "number" },
+                  domProps: { value: _vm.inputs.idade },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "idade", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.profissao,
+                      expression: "inputs.profissao"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { colspan: "2", name: "profissao", type: "text" },
+                  domProps: { value: _vm.inputs.profissao },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "profissao", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.empresa,
+                      expression: "inputs.empresa"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "empresa", type: "text" },
+                  domProps: { value: _vm.inputs.empresa },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "empresa", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(7),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.cep,
+                      expression: "inputs.cep"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "cep", id: "cep", type: "number" },
+                  domProps: { value: _vm.inputs.cep },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "cep", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.bairro,
+                      expression: "inputs.bairro"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "bairro", id: "bairro", type: "text" },
+                  domProps: { value: _vm.inputs.bairro },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "bairro", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(9),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.logradouro,
+                      expression: "inputs.logradouro"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "logradouro", id: "rua", type: "text" },
+                  domProps: { value: _vm.inputs.logradouro },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "logradouro", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(10),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.inputs.tipomoradia,
+                        expression: "inputs.tipomoradia"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "tipomoradia" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.inputs,
+                          "tipomoradia",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option"),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Aluguel")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Própria")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Parente")])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(11),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.numero,
+                      expression: "inputs.numero"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "numero", type: "number" },
+                  domProps: { value: _vm.inputs.numero },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "numero", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(12),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.cidade,
+                      expression: "inputs.cidade"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "cidade", id: "cidade", type: "text" },
+                  domProps: { value: _vm.inputs.cidade },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "cidade", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box-footer" }, [
+            _c("div", { staticClass: "col-sm-4" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.cadastrarClienteLasPalmas(_vm.inputs)
+                    }
+                  }
+                },
+                [_vm._v("CADASTRAR")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "col-xs-10 col-xs-offset-1" }, [
-        _c("div", { staticClass: "box box-info" }, [
-          _c("div", { staticClass: "box-head" }, [
-            _c("h3", { staticClass: "text-center" }, [
-              _vm._v(" Cadastro de Cliente ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-body no-padding" }, [
-            _c("table", { staticClass: "table text-center table-condensed" }, [
-              _c("tr", [
-                _c("td", [
-                  _c("h5", { staticClass: "text-primary" }, [_vm._v("Nome")])
-                ]),
-                _vm._v(" "),
-                _c("td", { attrs: { colspan: "4" } }, [
-                  _c("input", {
-                    staticClass: "form-control ",
-                    attrs: { name: "nome", type: "text" }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_c("h5", {}, [_vm._v("Email")])]),
-                _vm._v(" "),
-                _c("td", { attrs: { colspan: "4" } }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { name: "email", type: "text" }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_c("h5", {}, [_vm._v("Telefone")])]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    staticClass: "form-control telefone_mascara",
-                    attrs: { colspan: "2", name: "telefone", type: "text" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("td", [_c("h5", {}, [_vm._v("Idade")])]),
-                _vm._v(" "),
-                _c("td", { attrs: { colspan: "2" } }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { id: "idade", name: "idade", type: "number" }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_c("h5", {}, [_vm._v("Profissão")])]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { colspan: "2", name: "profissao", type: "text" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("td", [_c("h5", [_vm._v("Empresa")])]),
-                _vm._v(" "),
-                _c("td", { attrs: { colspan: "2" } }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { name: "empresa", type: "text" }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_c("h5", {}, [_vm._v("CEP")])]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { name: "cep", id: "cep", type: "number" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("td", [_c("h5", [_vm._v("Bairro")])]),
-                _vm._v(" "),
-                _c("td", { attrs: { colspan: "2" } }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { name: "bairro", id: "bairro", type: "text" }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_c("h5", {}, [_vm._v("Logradouro")])]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { name: "logradouro", id: "rua", type: "text" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("td", [_c("h5", {}, [_vm._v("Moradia")])]),
-                _vm._v(" "),
-                _c("td", { attrs: { colspan: "2" } }, [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "form-control",
-                      attrs: { name: "tipomoradia" }
-                    },
-                    [
-                      _c("option"),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Aluguel")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Própria")]),
-                      _vm._v(" "),
-                      _c("option", [_vm._v("Parente")])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [_c("h5", {}, [_vm._v("Número")])]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { name: "numero", type: "number" }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("td", [_c("h5", [_vm._v("Cidade")])]),
-                _vm._v(" "),
-                _c("td", { attrs: { colspan: "2" } }, [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { name: "cidade", id: "cidade", type: "text" }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "box-footer" }, [
-              _c("div", { staticClass: "col-sm-4" }, [
-                _c("input", {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "submit", value: "CADASTRAR" }
-                })
-              ])
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "box-head" }, [
+      _c("h3", { staticClass: "text-center" }, [
+        _vm._v(" Cadastro de Cliente ")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("h5", { staticClass: "text-primary" }, [_vm._v("Nome")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Email")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Telefone")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Idade")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Profissão")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", [_vm._v("Empresa")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("CEP")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", [_vm._v("Bairro")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Logradouro")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Moradia")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Número")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", [_vm._v("Cidade")])])
   }
 ]
 render._withStripped = true

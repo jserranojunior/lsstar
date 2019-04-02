@@ -13,26 +13,26 @@
                             <td>
                                 <h5 class="text-primary">Nome</h5>
                             </td>
-                            <td colspan="4"><input class="form-control " name="nome" type="text">
-                                
+                            <td colspan="4"><input v-model="inputs.nome" class="form-control " name="nome" type="text">
+    
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <h5 class="">Email</h5>
                             </td>
-                            <td colspan="4"><input class="form-control" name="email" type="text"> </td>
+                            <td colspan="4"><input v-model="inputs.email" class="form-control" name="email" type="text"> </td>
                         </tr>
                         <tr>
                             <td>
                                 <h5 class="">Telefone</h5>
                             </td>
-                            <td><input colspan="2" class="form-control telefone_mascara" name="telefone" type="text"> </td>
+                            <td><input colspan="2" v-model="inputs.telefone" class="form-control telefone_mascara" name="telefone" type="text"> </td>
     
                             <td>
                                 <h5 class="">Idade</h5>
                             </td>
-                            <td colspan="2"><input class="form-control" id="idade" name="idade" type="number"> </td>
+                            <td colspan="2"><input v-model="inputs.idade" class="form-control" id="idade" name="idade" type="number"> </td>
     
                         </tr>
                         <tr>
@@ -40,14 +40,14 @@
                             <td>
                                 <h5 class="">Profissão</h5>
                             </td>
-                            <td><input colspan="2" class="form-control" name="profissao" type="text"> </td>
+                            <td><input colspan="2" v-model="inputs.profissao" class="form-control" name="profissao" type="text"> </td>
     
                             <td>
                                 <h5>Empresa</h5>
                             </td>
                             <td colspan="2">
     
-                                <input class="form-control" name="empresa" type="text">
+                                <input v-model="inputs.empresa" class="form-control" name="empresa" type="text">
                             </td>
     
                         </tr>
@@ -56,31 +56,31 @@
                             <td>
                                 <h5 class="">CEP</h5>
                             </td>
-                            <td><input class="form-control" name="cep" id="cep" type="number"> </td>
+                            <td><input v-model="inputs.cep" class="form-control" name="cep" id="cep" type="number"> </td>
     
                             <td>
                                 <h5>Bairro</h5>
                             </td>
                             <td colspan="2">
-                                <input class="form-control" name="bairro" id="bairro" type="text">
+                                <input v-model="inputs.bairro" class="form-control" name="bairro" id="bairro" type="text">
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <h5 class="">Logradouro</h5>
                             </td>
-                            <td><input class="form-control" name="logradouro" id="rua" type="text"> </td>
+                            <td><input v-model="inputs.logradouro" class="form-control" name="logradouro" id="rua" type="text"> </td>
     
                             <td>
                                 <h5 class="">Moradia</h5>
                             </td>
                             <td colspan="2">
-                                <select class="form-control" name="tipomoradia">
-                                                    <option></option>
-                                                    <option>Aluguel</option>
-                                                    <option>Própria</option>
-                                                    <option>Parente</option>
-                                                </select>
+                                <select v-model="inputs.tipomoradia" class="form-control" name="tipomoradia">
+                                                        <option></option>
+                                                        <option>Aluguel</option>
+                                                        <option>Própria</option>
+                                                        <option>Parente</option>
+                                                    </select>
                             </td>
     
                         </tr>
@@ -89,32 +89,55 @@
                             <td>
                                 <h5 class="">Número</h5>
                             </td>
-                            <td><input class="form-control" name="numero" type="number"> </td>
+                            <td><input v-model="inputs.numero" class="form-control" name="numero" type="number"> </td>
                             <td>
                                 <h5>Cidade</h5>
                             </td>
-                            <td colspan="2"><input class="form-control" name="cidade" id="cidade" type="text"> </td>
+                            <td colspan="2">
+                                <input v-model="inputs.cidade" class="form-control" name="cidade" id="cidade" type="text"> </td>
                         </tr>
     
                     </table>
     
                     <div class="box-footer">
                         <div class="col-sm-4">
-                            <input type="submit" class="btn btn-primary" value="CADASTRAR">
+                            <div class="btn btn-primary" @click="cadastrarClienteLasPalmas(inputs)">CADASTRAR</div>
                         </div>
                     </div>
                 </div>
     
             </div>
         </div>
-
-    </div>
     
+    </div>
 </template>
 
 <script>
+import axios from "axios"
 export default {
-    name: "CreateClientes"
+    name: "CreateClientes",
+    data() {
+        return {
+            inputs: {},
+        };
+    },
+    // ADICIONAR UMA COLUNA PRA MARCAR QUE È LAS PALMAS
+    methods: {
+        cadastrarClienteLasPalmas(data) {
+             let url = '../v1/cliente';        
+        axios
+            .post(url, data)
+              .then(response => {
+                console.log("cadastrado")
+                this.inputs = ""
+              }                
+            )
+            .catch(function (error) {
+            console.log(error);
+            console.log("naõ cadastrado")
+            });
+        }
+    }
 }
 </script>
 
