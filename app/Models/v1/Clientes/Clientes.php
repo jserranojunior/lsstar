@@ -9,7 +9,7 @@ class Clientes extends Model
    public $table = "clientes";
 
    protected $fillable = ['nome', 'email', 'telefone', 'profissao', 'idade', 'empresa',
-   'cep', 'bairro','logradouro', 'tipomoradia','numero','cidade'
+   'cep', 'bairro','logradouro', 'tipomoradia','numero','cidade', 'evento_palmas'
 ];
 
    public function cadastrar($request){

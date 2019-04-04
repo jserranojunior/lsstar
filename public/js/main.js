@@ -2707,6 +2707,9 @@ __webpack_require__.r(__webpack_exports__);
       inputs: {}
     };
   },
+  mounted: function mounted() {
+    this.inputs.evento_palmas = true;
+  },
   // ADICIONAR UMA COLUNA PRA MARCAR QUE È LAS PALMAS
   methods: {
     cadastrarClienteLasPalmas: function cadastrarClienteLasPalmas(data) {
@@ -23000,7 +23003,7 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "box-footer" }, [
+          _c("div", { staticClass: "box-footer no-print" }, [
             _c("div", { staticClass: "col-sm-4" }, [
               _c(
                 "div",
@@ -23028,7 +23031,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-head" }, [
       _c("h3", { staticClass: "text-center" }, [
-        _vm._v(" Cadastro de Cliente ")
+        _vm._v(" Cadastro de Cliente - Las Palmas")
       ])
     ])
   },

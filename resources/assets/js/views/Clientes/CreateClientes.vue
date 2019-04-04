@@ -5,7 +5,7 @@
         <div class="col-xs-10 col-xs-offset-1">
             <div class="box box-info">
                 <div class="box-head">
-                    <h3 class="text-center"> Cadastro de Cliente </h3>
+                    <h3 class="text-center"> Cadastro de Cliente - Las Palmas</h3>
                 </div>
                 <div class="box-body no-padding">
                     <table class="table text-center table-condensed">
@@ -99,7 +99,7 @@
     
                     </table>
     
-                    <div class="box-footer">
+                    <div class="box-footer no-print">
                         <div class="col-sm-4">
                             <div class="btn btn-primary" @click="cadastrarClienteLasPalmas(inputs)">CADASTRAR</div>
                         </div>
@@ -120,6 +120,9 @@ export default {
         return {
             inputs: {},
         };
+    },
+    mounted(){
+        this.inputs.evento_palmas = true
     },
     // ADICIONAR UMA COLUNA PRA MARCAR QUE È LAS PALMAS
     methods: {

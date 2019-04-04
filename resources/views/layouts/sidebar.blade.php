@@ -46,6 +46,9 @@
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
                         <a href="{{Route('cliente.index')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Clientes</span></a>
                     </li>
+                    <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
+                        <a href="{{url('/api/v1/clientelaspalmas')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Las Palmas</span></a>
+                    </li>
                     <li id="menu-item-23" class="menu-item menu-item-type-custom  menu-item-object-custom menu-item-6">
                         <a href="{{url('/cliente?tipocliente=proprietario')}}"> <i class="fa fa-address-card"
                                 aria-hidden="true"></i><span class="menu-ocultar">Proprietários</span></a>
