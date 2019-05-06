@@ -96,7 +96,24 @@
                             <td colspan="2">
                                 <input v-model="inputs.cidade" class="form-control" name="cidade" id="cidade" type="text"> </td>
                         </tr>
-    
+
+                         <tr>
+                            <td>
+                                <h5 class="">Como ficou sabendo?</h5>
+                            </td>
+                            <td  colspan="3">
+                                <input v-model="inputs.indicacao" class="form-control" name="indicacao" type="text"> 
+                            </td>                            
+                        </tr>   
+
+                        <tr>
+                            <td>
+                                <h5 class="">Data da visita</h5>
+                            </td>
+                            <td  colspan="">
+                                <input v-model="inputs.data_visita" class="form-control" name="data_visita" type="date"> 
+                            </td>                            
+                        </tr> 
                     </table>
     
                     <div class="box-footer no-print">
@@ -144,3 +161,9 @@ export default {
 }
 </script>
 
+<style>
+td, th {
+    padding-top: 3px! important;
+}
+
+</style>
