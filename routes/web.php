@@ -33,6 +33,13 @@ Route::get('/api/v1/clientelaspalmas', function () {
     return view('v1.clientes.createlaspalmas');
 });
 
+Route::get('/api/v1/relatoriovisitaslaspalmas', function () {
+    return view('v1.clientes.relatoriovisitaslaspalmas');
+});
+
+
+
+
 
 // Manutencao
 Route::group(['as' => 'manutencao.', 'prefix' => 'manutencao','middleware' => ['auth']], function(){

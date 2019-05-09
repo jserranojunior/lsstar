@@ -48,6 +48,13 @@
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
                         <a href="{{url('/api/v1/clientelaspalmas')}}" class="glyphicon glyphicon-user"><span class="menu-ocultar">Las Palmas</span></a>
+
+                        <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
+                        <a href="{{url('/api/v1/relatoriovisitaslaspalmas')}}"> <i class="far fa-file-alt"></i><span class="menu-ocultar">Relatorio de Visitas</span></a>
+
+                            
+
+
                     </li>
                     <li id="menu-item-23" class="menu-item menu-item-type-custom  menu-item-object-custom menu-item-6">
                         <a href="{{url('/cliente?tipocliente=proprietario')}}"> <i class="fa fa-address-card"

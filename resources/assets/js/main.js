@@ -11,6 +11,7 @@ import ContasAPagar from './components/ContasAPagar';
 import SidebarMenuTop from './components/SidebarMenuTop';
 import Emitir_Pagamento from './components/EmitirPagamento';
 import CreateClientes from './views/Clientes/CreateClientes';
+import RelatorioVisitas from './views/LasPalmas/RelatorioVisitas'
 
 let EmitirPagamento = Vue.component('EmitirPagamento', Emitir_Pagamento);
  
@@ -28,6 +29,7 @@ new Vue({
         ContasAPagar,
         SidebarMenuTop,
         EmitirPagamento,
+        RelatorioVisitas,
         CreateClientes,
     }
   })
