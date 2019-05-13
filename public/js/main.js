@@ -2755,14 +2755,65 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "RelatorioVisitas"
+  name: "RelatorioVisitas",
+  data: function data() {
+    return {
+      clientes: {}
+    };
+  },
+  methods: {
+    getRelatorios: function getRelatorios() {
+      var _this = this;
+
+      var url = '../v1/getclientelaspalmas';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+        _this.clientes = response.data;
+        console.log(_this.clientes);
+      }).catch(function (error) {
+        console.log(error);
+        console.log("naõ cadastrado");
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getRelatorios();
+  }
 });
 
 /***/ }),
@@ -23286,9 +23337,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Relatório de visitasem desenvolvimento\n")])
+  return _vm.clientes
+    ? _c("div", [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6 col-md-offset-3" }, [
+            _c("h4", { staticClass: "text-center" }, [
+              _vm._v("\n            Relatório de visita\n       ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "box" }, [
+              _c("div", { staticClass: "box-body" }, [
+                _c(
+                  "table",
+                  {
+                    staticClass:
+                      " table table-striped table-bordered table-hover"
+                  },
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.clientes, function(cliente) {
+                      return _c("tr", [
+                        _c("td", [_vm._v(_vm._s(cliente.nome))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(cliente.data_visita))])
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("\n                Nome\n            ")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("\n                Data\n            ")])
+    ])
+  }
+]
 render._withStripped = true
 
 

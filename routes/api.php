@@ -16,6 +16,7 @@ Route::put('/cliente/{id}', 'Api\ApiCliente@update');
 // V1 CLIENTES
 
 Route::get('/v1/cliente', 'Api\v1\Clientes\ApiClientes@index');
+
 Route::post('v1/cliente', 'Api\v1\Clientes\ApiClientes@store');
 
 Route::group(['as' => 'casa.', 'prefix' => 'casa'], function(){
@@ -23,6 +24,8 @@ Route::group(['as' => 'casa.', 'prefix' => 'casa'], function(){
     Route::post('/', ['as' => 'store', 'uses' => 'Api\ApiCasa@store']);
     Route::get('/{id}', ['as' => 'edit', 'uses' => 'Api\ApiCasa@edit']);
     Route::put('/{id}', ['as' => 'put', 'uses' => 'Api\ApiCasa@update']);
+
+    
     
 });
 

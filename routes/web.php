@@ -33,6 +33,8 @@ Route::get('/api/v1/clientelaspalmas', function () {
     return view('v1.clientes.createlaspalmas');
 });
 
+Route::get('/api/v1/getclientelaspalmas', 'Api\v1\Clientes\ApiClientes@lasPalmas');
+
 Route::get('/api/v1/relatoriovisitaslaspalmas', function () {
     return view('v1.clientes.relatoriovisitaslaspalmas');
 });
