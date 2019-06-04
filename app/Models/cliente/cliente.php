@@ -4,9 +4,11 @@ namespace App\Models\cliente;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Models\tables\casas;
 
 class cliente extends Model
 {
+   
 
     public function atualizarTipoCliente($id, $tipocliente){
         $clientes = DB::table('clientes')
@@ -126,6 +128,21 @@ class cliente extends Model
             ->where('tipocliente', $request->tipocliente)
             ->orderBy('id', 'asc')
             ->get();
+
+            foreach($clientes as $cliente){
+                $this->casas = new casas;
+                $this->casas = $this->casas::where('cliente_id', $cliente->id)->get();
+
+                // dd($this->casas);
+                foreach($this->casas as $casa){
+
+                    $cliente->nome_empreendimento = $casa->nome;
+                    $cliente->numero_empreendimento = $casa->numero; 
+                }
+                
+            }
+
+            // dd($clientes);
         }else{
             $clientes = DB::table('clientes')
             ->where('tipocliente','<>', 'proprietario')

@@ -10,9 +10,9 @@ class casas extends Model
 {
     protected $table = "casas";
 
-    public function __construct(){     
-        $this->cliente = new cliente;  
-    }
+    // public function __construct(cliente $cliente){     
+    //     $this->cliente = $cliente;  
+    // }
 
     public function index($request){
         $casas = DB::table('casas')->get();
@@ -60,6 +60,7 @@ class casas extends Model
         ];
 
         if($request->cliente_id !== ''){
+            $this->cliente = new cliente;
             $this->cliente->atualizarTipoCliente($request->cliente_id, "proprietario");
         }
 
@@ -108,6 +109,8 @@ class casas extends Model
             'alvara' => $request->alvara,
             'data_alvara' => $request->data_alvara,
         ];
+
+        $this->cliente = new cliente;
 
         if($request->cliente_id !== ''){
             $this->cliente->atualizarTipoCliente($request->cliente_id, "proprietario");

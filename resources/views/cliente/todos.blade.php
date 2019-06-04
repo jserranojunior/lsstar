@@ -37,11 +37,22 @@
                         <th>
                             Telefone
                         </th>
+                        @if($tipocliente == "proprietario")
+                        <th>
+                            Empreendimento
+                        </th>
+                        <th>
+                            Numero
+                        </th>
+                        @endif
+                        
                     </tr>
 
                 </thead>
                 <tbody>
+           
                     @foreach($dados as $cliente)
+                    
                     <tr onclick="editar('{{$cliente->id}}');">
                         <td>
                             {{$cliente->nome}}
@@ -52,6 +63,19 @@
                         <td>
                             {{$cliente->telefone}}
                         </td>
+                        @if($tipocliente == "proprietario")
+                        <td>
+                        @if(!empty($cliente->nome_empreendimento))
+                            {{$cliente->nome_empreendimento}}
+                        @endif    
+
+                        </td>
+                        <td>
+                        @if(!empty($cliente->numero_empreendimento))
+                            {{$cliente->numero_empreendimento}}
+                        @endif    
+                        </td>
+                        @endif
                     </tr>
 
                     @endforeach
