@@ -1,5 +1,9 @@
 <?php
 
+// vue
+Route::get('/vue', function () {
+    return view('vue.index');
+});
 
 // v1
 Route::get('v1/financeiro', 'v1\Financeiro\ContasAPagarController@index');
