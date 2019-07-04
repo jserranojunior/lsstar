@@ -12,9 +12,15 @@ class ApiClientes extends Controller
         $this->clientes = $clientes;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        dd($this->clientes::all());
+        $data = $this->clientes->Todos($request);        
+        
+        return response()->json([
+            'data' => $data           
+        ]);
+      
+
     }
 
 

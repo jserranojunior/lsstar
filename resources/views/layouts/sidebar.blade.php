@@ -40,7 +40,7 @@
                         </ul>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a href="{{Route('manutencao.index')}}"><i class="fa fa-wrench" aria-hidden="true"></i><span
+                        <a href="http://localhost/lsstar/public/vue#/manutencoes"><i class="fa fa-wrench" aria-hidden="true"></i><span
                                 class="menu-ocultar">Manutenções</span></a>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">

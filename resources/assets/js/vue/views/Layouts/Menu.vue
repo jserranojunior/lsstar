@@ -1,106 +1,77 @@
 <template>
     <div>
-        <aside id="left-panel" class="left-panel">
-            <nav class="navbar navbar-expand-sm navbar-default">
+        <nav class="side-navbar">
+          <div class="side-navbar-wrapper">
+            <!-- Sidebar Header    -->
+            <div class="sidenav-header d-flex align-items-center justify-content-center">
+              <!-- User Info-->
+              <div class="sidenav-header-inner text-center"><img src="tema/assets/img/avatar.png" alt="person" class="img-fluid rounded-circle">
+                <h2 class="h5">Nome do usuario</h2><span>Administrador</span>
+              </div>
+              <!-- Small Brand information, appears on minimized sidebar-->
+              <div class="sidenav-header-logo">
+                <a href="index.html" class="brand-small text-center"> 
+                  <strong>L</strong><strong class="text-primary">S</strong></a></div>
+            </div>
+            <!-- Sidebar Navigation Menus-->
+            <div class="main-menu">
+              <h5 class="sidenav-heading">Menu</h5>
+              <ul id="side-main-menu" class="side-menu list-unstyled">                  
+                <li>
+                   <router-link to="/">
+                      <i class="fas fa-home"></i>
+                      Home                  
+                    </router-link>
+                </li>
+                <li>
+                   <a href="http://localhost/lsstar/public/financeiro">
+                      <i class="fas fa-money-check-alt"></i>
+                      Financeiro                
+                    </a>
+                </li>
+                <li>
+                   <router-link to="/manutencoes">
+                      <i class="fas fa-tools"></i>
+                      Manutenções                  
+                    </router-link>
+                </li>
+
     
-    
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <a href="#">
-                                    <img class="user-avatar rounded-circle" src="tema/assets/images/admin.jpg" alt="User Avatar">
-                                </a>
-    
-                        <p>
-                            <a class="text-center" href="#"><i class="fa fa-power -off"></i>Sair</a>
-                        </p>
-    
-                    </div>
-                   
-                </div>
-    
-                <div id="main-menu" class="main-menu collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <!-- <li class="active">
-                            <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
-                        </li>
-                        <li class="menu-title">UI elements</li> -->
-                        <!-- /.menu-title -->
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Components</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
-                                <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
-                                <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
-    
-                                <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
-                                <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
-                                <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Progress Bars</a></li>
-                                <li><i class="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
-                                <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
-                                <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
-                                <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                                <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                                <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
-                            </ul>
-                        </li>
-    
-                        <li class="menu-title">Icons</li>
-                        <!-- /.menu-title -->
-    
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
-                                <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
-                        </li>
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
-                                <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
-                                <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
-                            </ul>
-                        </li>
-    
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
-                                <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-title">Extras</li>
-                        <!-- /.menu-title -->
-                        <li class="menu-item-has-children dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
-                            <ul class="sub-menu children dropdown-menu">
-                                <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
-                                <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
-                                <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </nav>
-        </aside>
-    
+
+
+                
+                <li>
+                  <a href="#clientesDropdown" class="dropdown-toggle-menu" aria-expanded="false" data-toggle="collapse"> 
+                    <i class="fas fa-users"></i>
+                    Clientes <i class="fa-dropdown fas fa-caret-down"></i>
+                    
+                  </a>
+                  <ul id="clientesDropdown" class="collapse list-unstyled ">
+                     <li>
+                   <router-link to="/clientes/todos">
+                      <i class="fas fa-users"></i>
+                      Todos                 
+                    </router-link>
+                </li>
+                   <li>
+                   <router-link to="/clientes/proprietarios">
+                      <i class="fas fa-users"></i>
+                      Proprietários                 
+                    </router-link>
+                </li>
+                   <li>
+                   <router-link to="/clientes/clientes">
+                      <i class="fas fa-users"></i>
+                      Clientes                  
+                    </router-link>
+                </li>
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
     </div>
 </template>
 
@@ -111,12 +82,17 @@ export default {
 </script>
 
 <style>
-img.user-avatar.rounded-circle {
-    margin-top: 15px;
-    width: 60px;
+.dropdown-toggle-menu::after {
+    display: none! important
 }
-aside.left-panel{
-    width: 220px;
-        top: 58px;
+
+.dropdown-toggle-menu::before {
+    display: none! important
+}
+
+.fa-dropdown{
+  float:right;
+  margin-top: 4px;
+
 }
 </style>

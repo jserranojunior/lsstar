@@ -4,6 +4,8 @@ import routes from './routes'
 import store from './store'
 
 
+
+
 import App from './views/Layouts/App.vue';
 
 const router = new VueRouter({
@@ -12,6 +14,7 @@ const router = new VueRouter({
 
 Vue.use(VueRouter)
 new Vue({
+
     store,
     router,
     components:{
