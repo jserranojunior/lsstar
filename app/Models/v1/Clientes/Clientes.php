@@ -9,8 +9,12 @@ class Clientes extends Model
 {
    public $table = "clientes";
 
-   protected $fillable = ['nome', 'email', 'telefone', 'profissao', 'idade', 'empresa',
-   'cep', 'bairro','logradouro', 'tipomoradia','numero','cidade', 'evento_palmas', 'data_visita', 'indicacao'
+   protected $fillable = ['nome', 'email', 'telefone', 'idade', 'profissao',  'empresa', 'rg', 'cpf',
+   'segundonome', 'segundoemail', 'segundotelefone', 'segundoidade', 'segundoprofissao',  'segundoempresa',
+   'terceironome', 'terceiroemail', 'terceirotelefone', 'terceiroidade', 'terceiroprofissao',  'terceiroempresa', 
+   'cep', 'bairro','logradouro', 'tipomoradia','numero','cidade', 'evento_palmas', 'data_visita', 'indicacao',
+  'casainteresse', 'renda', 'sinal', 'poupanca', 'fgts', 'valorentrada', 'financiado', 'prestacao',
+'observacao', 'valorprestacao','informacao', 'tipocliente', 'cpf', 'rg'
 ];
 
 public function Todos($request){
@@ -48,5 +52,7 @@ public function Todos($request){
        $clientes = new clientes;
     $clientes->fill($request);      
     $clientes->save();
+
+    return $clientes;
    }
 }

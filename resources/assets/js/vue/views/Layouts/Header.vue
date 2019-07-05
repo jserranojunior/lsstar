@@ -1,6 +1,6 @@
 <template> 
     <div>
-<header class="header">
+          <header class="header">   
             <nav class="navbar">
               <div class="container-fluid">
                 <div class="navbar-holder d-flex align-items-center justify-content-between">

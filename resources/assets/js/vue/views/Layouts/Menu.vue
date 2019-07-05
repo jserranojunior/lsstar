@@ -36,10 +36,6 @@
                     </router-link>
                 </li>
 
-    
-
-
-                
                 <li>
                   <a href="#clientesDropdown" class="dropdown-toggle-menu" aria-expanded="false" data-toggle="collapse"> 
                     <i class="fas fa-users"></i>
@@ -47,6 +43,12 @@
                     
                   </a>
                   <ul id="clientesDropdown" class="collapse list-unstyled ">
+                    <li>
+                   <router-link to="/novo/cliente">
+                      <i class="fas fa-plus-circle"></i>
+                      Novo               
+                    </router-link>
+                  </li>
                      <li>
                    <router-link to="/clientes/todos">
                       <i class="fas fa-users"></i>

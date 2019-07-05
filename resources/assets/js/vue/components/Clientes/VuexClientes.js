@@ -2,11 +2,15 @@ import axios from "axios"
 
 export default {
     state:{
-        data:{},        
+        data:{}, 
+        addcliente: "",       
     },
     mutations:{
         GET_CLIENTES(state, data){
             state.data = data
+        },
+        ADD_CLIENTE(state, data){
+            state.addcliente = data.data.data
         },
       
     },
@@ -23,6 +27,21 @@ export default {
                     console.log("naõ cadastrado")
                 });
         }, 
+
+        addCliente(context, data) {
+            let url = '/sistema/public/api/v1/cliente';        
+            axios
+                .post(url, data)
+                  .then(response => {
+                    console.log("cadastrado")
+                    this.inputs = ""
+                  }                
+                )
+                .catch(function (error) {
+                console.log(error);
+                console.log("naõ cadastrado")
+                });
+            }, 
         
     }
 }

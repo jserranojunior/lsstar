@@ -1257,23 +1257,23 @@ label {
 }
 
 .form-control::-moz-placeholder {
-  font-size: 0.75em;
+  font-size: 0.9em;
   font-weight: 400;
-  color: #aaa;
+  color: #495057;
   font-family: "Roboto", sans-serif;
 }
 
 .form-control::-webkit-input-placeholder {
-  font-size: 0.75em;
+  font-size: 0.9em;
   font-weight: 400;
-  color: #aaa;
+  color: #495057;
   font-family: "Roboto", sans-serif;
 }
 
 .form-control:-ms-input-placeholder {
-  font-size: 0.75em;
+  font-size: 0.9em;
   font-weight: 400;
-  color: #aaa;
+  color: #495057;
   font-family: "Roboto", sans-serif;
 }
 

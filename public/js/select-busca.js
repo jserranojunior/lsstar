@@ -355,7 +355,7 @@ $(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/lsstar/resources/assets/js/select-busca.js */"./resources/assets/js/select-busca.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/sistema/resources/assets/js/select-busca.js */"./resources/assets/js/select-busca.js");
 
 
 /***/ })

@@ -161,7 +161,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/lsstar/resources/assets/js/cep-automatico.js */"./resources/assets/js/cep-automatico.js");
+module.exports = __webpack_require__(/*! /opt/lampp/htdocs/sistema/resources/assets/js/cep-automatico.js */"./resources/assets/js/cep-automatico.js");
 
 
 /***/ })

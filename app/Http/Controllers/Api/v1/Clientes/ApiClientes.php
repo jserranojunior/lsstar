@@ -37,8 +37,14 @@ class ApiClientes extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        
         $this->clientes->cadastrar($request->all());
+
+
+        
+        return response()->json([
+            'data' => $this->clientes           
+        ]);
     }
 
  
