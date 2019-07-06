@@ -11,8 +11,7 @@ export default {
         },
         ADD_CLIENTE(state, data){
             state.addcliente = data.data.data
-        },
-      
+        },      
     },
     actions:{
         getClientes(context, parametro) {
@@ -29,7 +28,7 @@ export default {
         }, 
 
         addCliente(context, data) {
-            let url = '/sistema/public/api/v1/cliente';        
+            let url = '../public/api/v1/cliente';        
             axios
                 .post(url, data)
                   .then(response => {
@@ -43,5 +42,6 @@ export default {
                 });
             }, 
         
+           
     }
 }

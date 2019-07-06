@@ -5,8 +5,8 @@
             <!-- Sidebar Header    -->
             <div class="sidenav-header d-flex align-items-center justify-content-center">
               <!-- User Info-->
-              <div class="sidenav-header-inner text-center"><img src="tema/assets/img/avatar.png" alt="person" class="img-fluid rounded-circle">
-                <h2 class="h5">Nome do usuario</h2><span>Administrador</span>
+              <div class="sidenav-header-inner text-center"><img :src="'img/usuarios/'+userLaravel.photo" alt="person" class="img-fluid rounded-circle">
+                <h2 class="h5">{{userLaravel.name}}</h2><span>Administrador</span>
               </div>
               <!-- Small Brand information, appears on minimized sidebar-->
               <div class="sidenav-header-logo">
@@ -24,7 +24,7 @@
                     </router-link>
                 </li>
                 <li>
-                   <a href="http://localhost/lsstar/public/financeiro">
+                   <a href="../public/financeiro">
                       <i class="fas fa-money-check-alt"></i>
                       Financeiro                
                     </a>
@@ -79,7 +79,18 @@
 
 <script>
 export default {
-    name: "Menu"
+    name: "Menu",
+    data(){
+      return{
+        userLaravel: {},
+      }
+    },    
+    created(){
+      this.userLaravel.id = document.querySelector("meta[name='user-id']").getAttribute('content');
+      this.userLaravel.photo = document.querySelector("meta[name='user-photo']").getAttribute('content');
+      this.userLaravel.name = document.querySelector("meta[name='user-name']").getAttribute('content');
+      console.log(this.userLaravel)
+    }
 }
 </script>
 

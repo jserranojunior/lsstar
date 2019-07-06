@@ -40,16 +40,16 @@
                                         Telefone
                                     </th>
     
-                                    <th>
+                                    <th v-if="$route.params.tipocliente == 'proprietarios'">
                                         Empreendimento
                                     </th>
-                                    <th>
+                                    <th v-if="$route.params.tipocliente == 'proprietarios'">
                                         Numero
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="pointer" v-for="(cliente, key, index ) in clientes" :key="cliente.id">
+                                <tr  class="pointer" v-for="(cliente, key, index ) in clientes" :key="cliente.id" @click="edit(cliente.id)">
                                     <td>{{index + 1}}</td>
     
                                     <td>{{cliente.nome}}</td>
@@ -57,8 +57,8 @@
                                     <td class="nowrap">{{cliente.cpf}}</td>
                                     <td class="nowrap">{{cliente.rg}}</td>
                                     <td class="nowrap">{{cliente.telefone}}</td>
-                                    <td>{{cliente.nome_empreendimento}}</td>
-                                    <td>{{cliente.numero_empreendimento}}</td>
+                                    <td v-if="$route.params.tipocliente == 'proprietarios'">{{cliente.nome_empreendimento}}</td>
+                                    <td v-if="$route.params.tipocliente == 'proprietarios'">{{cliente.numero_empreendimento}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -84,7 +84,10 @@ export default {
     methods: {
         ...mapActions([
             'getClientes',
-        ])
+        ]),
+        edit(id){
+            this.$router.push({ name: 'novoclienteid', params: { id: id }});
+        }
     },
     computed: {
         ...mapState({
@@ -93,7 +96,6 @@ export default {
     },
     watch: {
         $route() {
-            this.clientes = ""
             this.getClientes(this.$route.params.tipocliente)
         }
     },

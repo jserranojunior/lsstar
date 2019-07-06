@@ -7,13 +7,17 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="all,follow">
+        <meta name="user-id" content="{{ Auth::user()->id }}">
+        <meta name="user-photo" content="{{ Auth::user()->photo }}">
+        <meta name="user-name" content="{{ Auth::user()->name }}">
+
         <!-- Bootstrap CSS-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
         <!-- Font Awesome CSS-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />        <!-- Fontastic Custom icon font-->
         <link rel="stylesheet" href="tema/assets/css/fontastic.css">
         <!-- Google fonts - Roboto -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" href="https://fonts.gstatic.com/stats/Roboto/normal/400">
         <!-- jQuery Circle-->
         <!-- <link rel="stylesheet" href="tema/assets/css/grasp_mobile_progress_circle-1.0.0.min.css"> -->
         <!-- Custom Scrollbar-->

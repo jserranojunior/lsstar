@@ -56,12 +56,16 @@ class ApiClientes extends Controller
  
     public function edit($id)
     {
-        //
+        $editar = $this->clientes;
+        $dados = $editar->editar($id);
+        return $dados;
     }
 
     public function update(Request $request, $id)
     {
-        //
+         
+        $atualizar = $this->clientes;
+        $dados = $atualizar->atualizar($request);
     }
 
     public function destroy($id)

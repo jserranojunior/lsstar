@@ -16,7 +16,7 @@
                   <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                     <!-- Notifications dropdown-->
                     <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">0</span></a>
-                      <ul aria-labelledby="notifications" class="dropdown-menu">
+                      <!-- <ul aria-labelledby="notifications" class="dropdown-menu">
                         <li><a rel="nofollow" href="#" class="dropdown-item"> 
                             <div class="notification d-flex justify-content-between">
                               <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
@@ -38,11 +38,11 @@
                               <div class="notification-time"><small>10 minutes ago</small></div>
                             </div></a></li>
                         <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications                                            </strong></a></li>
-                      </ul>
+                      </ul> -->
                     </li>
                     <!-- Messages dropdown-->
-                    <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info"></span></a>
-                      <ul aria-labelledby="notifications" class="dropdown-menu">
+                    <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">0</span></a>
+                      <!-- <ul aria-labelledby="notifications" class="dropdown-menu">
                         <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
                             <div class="msg-profile"> <img src="tema/assets/img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
                             <div class="msg-body">
@@ -59,11 +59,17 @@
                               <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
                             </div></a></li>
                         <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
-                      </ul>
+                      </ul> -->
+                    </li>
+
+                    <li class="nav-item dropdown">
+                      <a href="#" class="nav-link" @click="imprimir()">
+                         <i class="text-white fas fa-print"></i>
+                      </a>
                     </li>
                     
                     <!-- Log out-->
-                    <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline-block">Sair</span><i class="fa fa-sign-out"></i></a></li>
+                    <li class="nav-item"><a href="../public/sair" class="nav-link logout"> <span class="d-none d-sm-inline-block">Sair</span><i class="fa fa-sign-out"></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -77,6 +83,12 @@
 
 export default {
     name: "Header",
+    
+    methods:{
+      imprimir(){
+        window.print();
+      }
+    }
 
 }
 </script>

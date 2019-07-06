@@ -18,7 +18,6 @@
 import Menu from '../Layouts/Menu'
 import Header from '../Layouts/Header'
 import Footer from '../Layouts/Footer'
-console.log('app funcionnando')
     export default {
         name: "App",
         components: {
