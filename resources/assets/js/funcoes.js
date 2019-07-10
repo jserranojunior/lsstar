@@ -219,7 +219,7 @@ $(document).ready(function () {
         $('#email-login').change(function(){
             
             $emailLogin = $('#email-login').val();
-            $url = 'imagem/'+$emailLogin;
+            $url = 'login/imagem/'+$emailLogin;
 
             $.ajax({
                 method: 'get',

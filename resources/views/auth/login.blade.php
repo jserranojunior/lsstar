@@ -9,7 +9,7 @@
 
         <div class="col-md-4 col-md-offset-4" id="painel-login">
             <div class="col-md-12" id="img-login">
-                <img id="imagem-perfil" class="img-responsive img-circle center-block" alt="imagem de login" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                <img id="imagem-perfil" class="img-login-inicial img-responsive img-circle center-block" alt="imagem de login" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             </div>
             <div class="col-md-10 col-md-offset-1">
                 <span id="feito"></span>

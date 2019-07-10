@@ -284,7 +284,7 @@ $(document).ready(function () {
     $asset = $('#asset').val();
     $('#email-login').change(function () {
       $emailLogin = $('#email-login').val();
-      $url = 'imagem/' + $emailLogin;
+      $url = 'login/imagem/' + $emailLogin;
       $.ajax({
         method: 'get',
         url: $url,

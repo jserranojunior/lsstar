@@ -747,3 +747,7 @@ html .ui-button.ui-state-disabled:active {
 .nav-tabs>li>a {
     line-height: 0;
 }
+
+img#imagem-perfil{
+    max-width: 150px;
+}
