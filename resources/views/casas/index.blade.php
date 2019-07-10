@@ -24,7 +24,7 @@
        
 
         <div class="box-body ">
-            <table id="tabelaclientes" class=" display table table-condensed table-striped table-hover">
+            <table id="tabelacasa" class=" display table table-condensed table-striped table-hover">
                 <thead>
                     <tr>
                         <th>
@@ -75,7 +75,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#tabelaclientes').DataTable({
+        $('#tabelacasas').DataTable({
             "iDisplayLength": 100
         });
     });
