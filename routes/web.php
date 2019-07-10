@@ -8,9 +8,13 @@ Route::group(['as' => 'vue.', 'prefix' => 'vue','middleware' => ['auth']], funct
 });
 
 
-
 // v1
 Route::get('v1/financeiro', 'v1\Financeiro\ContasAPagarController@index');
+Route::get('/api/v1/getclientelaspalmas', 'Api\v1\Clientes\ApiClientes@lasPalmas');
+
+/* API */ 
+Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
+Route::get('criar',['as'=>'create','uses' => 'cliente\clienteController@create']);
 
 
 /* COMANDOS ARTISAN */
@@ -32,41 +36,7 @@ Route::get('/executar/seed/valor/vazio', function() {
     });
 
 
-/* API */ 
-Route::get('/api/financeiro','Financeiro\ContasapagarController@apiContas');
-
-Route::get('criar',['as'=>'create','uses' => 'cliente\clienteController@create']);
-
-Route::get('/api/v1/clientelaspalmas', function () {
-    return view('v1.clientes.createlaspalmas');
-});
-
-Route::get('/api/v1/getclientelaspalmas', 'Api\v1\Clientes\ApiClientes@lasPalmas');
-
-Route::get('/api/v1/relatoriovisitaslaspalmas', function () {
-    return view('v1.clientes.relatoriovisitaslaspalmas');
-});
-
-
-
-
-
-// Manutencao
-Route::group(['as' => 'manutencao.', 'prefix' => 'manutencao','middleware' => ['auth']], function(){
-    Route::get('/', ['as' => 'index', 'uses' => 'Manutencao\ManutencaoController@index']); 
-    Route::get('/novo', ['as' => 'create', 'uses' => 'Manutencao\ManutencaoController@create']);
-});
-
-
-
-// Relatórios
-Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio','middleware' => ['auth']], function(){
-    Route::get('/anual', ['as' => 'anual', 'uses' => 'Api\Financeiro\ApiRelatorio@anual']); 
-});
-  
-
 // CASAS
-
 Route::group(['as' => 'casa.', 'prefix' => 'casa','middleware' => ['auth']], function(){
     Route::get('/', ['as' => 'index', 'uses' => 'Casas\CasasController@index']); 
     Route::get('/editar/{id}', ['as' => 'edit', 'uses' => 'Casas\CasasController@edit']);
@@ -76,28 +46,24 @@ Route::group(['as' => 'casa.', 'prefix' => 'casa','middleware' => ['auth']], fun
 });
 
 
-
+// AUTH
 Route::get('/sair',function(){
    Auth::logout(); 
    return redirect('/login');
-});        
-  
+});          
+
+// PRECISO TESTAR
 Route::any('/login/imagem/{emaillogin?}', ['uses' =>'Auth\LoginController@imagem']);
-
  Route::get('/', ['uses' =>'InicioController@Index'])->middleware('auth'); 
-
  Route::get('/home', ['uses' =>'InicioController@Index'])->middleware('auth'); 
 
-
-Route::group(['as' => 'inicio.', 'prefix' =>'inicio'],function(){
-  Route::get('/', ['as' => 'index', 'uses' =>'InicioController@Index'])->middleware('auth');  
+// Relatórios FINANCEIRO ANUAl
+Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio','middleware' => ['auth']], function(){
+    Route::get('/anual', ['as' => 'anual', 'uses' => 'Api\Financeiro\ApiRelatorio@anual']); 
 });
+  
 
-
-Route::get('/fazer','wiki\FazerController@Index')->middleware('auth');
-
-Route::get('/teste/{id?}', 'InicioController@Teste')->middleware('auth');
-
+// FINANCEIRO
 Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => ['auth']], function(){
     
     /*CONTAS A PAGAR*/
@@ -115,9 +81,6 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
     
     Route::any('/relatorioarea',['as' => 'relatorioarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
 
-    //  Route::any('/relatorioarea/{id}',['as' => 'relatoriarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
-    
-
     /* EMITIR PAGAMENTO*/
     Route::any('emitirpagamento', ['as' => 'emitir', 'uses' => 'Financeiro\ContasapagarController@emitirpagamento']);
     Route::any('salvarpagamento', ['as' => 'salvarpagamento', 'uses' => 'Financeiro\ContasapagarController@salvarpagamento']);
@@ -127,30 +90,15 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
      /*FATURA CONSOLIDADA*/
     Route::get('faturaconsolidada',['as' =>'indexconsolidada','uses' => 'Financeiro\faturaConsolidadaController@index']); 
     Route::get('faturaconsolidada/dd',['as' =>'indexconsolidadadd','uses' => 'Financeiro\faturaConsolidadaController@dd']); 
-
-
-
 });
 
     /* AREA */
     Route::group(['as' => 'areas.', 'prefix' => 'areas', 'middleware' => ['auth']], function(){
     Route::get('/', ['uses' => 'areasController@allAreas'])->name('index');    
     Route::get('/{id}', ['uses' => 'areasController@editArea'])->name('editar');
-});
+    });
 
-
-
-Route::group(['as' => 'stock.','prefix' => 'estoque', 'middleware' => ['auth']],function(){
-    Route::get('/',['as'=>'index','uses' => 'StockController@index']);
-    Route::get('criar',['as'=>'create', 'uses'=>'StockController@create']);
-    Route::any('salvar', ['as'=>'store','uses'=>'StockController@store']);
-    Route::any('editar',['as' => 'edit','uses' => 'StockController@edit']);
-    Route::any('atualizar',['as' => 'update', 'uses' => 'StockController@update']);
-    Route::get('{id}/remover', ['as' => 'destroy', 'uses' => 'StockController@destroy']);
-});  
-
- 
-
+// FORNECEDOR
 Route::group(['as' => 'fornecedor.','prefix' => 'fornecedor', 'middleware' => ['auth']],function(){
     Route::get('/',['as'=>'index','uses' => 'Fornecedor\fornecedorController@index']);
     Route::get('criar',['as'=>'create','uses' => 'Fornecedor\fornecedorController@create']);
@@ -159,15 +107,7 @@ Route::group(['as' => 'fornecedor.','prefix' => 'fornecedor', 'middleware' => ['
     Route::any('atualizar',['as'=>'update','uses' => 'Fornecedor\fornecedorController@update']);
 });  
 
-Route::group(['as' => 'cliente.','prefix' => 'cliente', 'middleware' => ['auth']],function(){
-    Route::get('/',['as'=>'index','uses' => 'cliente\clienteController@index']);
-    Route::get('criar',['as'=>'create','uses' => 'cliente\clienteController@create']);
-    Route::any('salvar',['as'=>'store','uses' => 'cliente\clienteController@store']);
-    Route::any('editar/{id}',['as'=>'edit','uses'=>'cliente\clienteController@edit']);
-    Route::any('atualizar',['as'=>'update','uses'=>'cliente\clienteController@update']);
-});
-
-
+// AGENDA
 Route::group(['as' => 'agenda.','prefix' => 'agenda', 'middleware' => ['auth']],function(){
     Route::any('/',['as' =>'index','uses' =>'agenda\agendaController@index']);
     Route::any('criar',['as' =>'create','uses' =>'agenda\agendaController@create']);
@@ -184,3 +124,51 @@ Route::any('/mail', 'EmailController@index');
 
 Auth::routes();
 
+//  Route::any('/relatorioarea/{id}',['as' => 'relatoriarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
+    
+
+// Route::group(['as' => 'inicio.', 'prefix' =>'inicio'],function(){
+//   Route::get('/', ['as' => 'index', 'uses' =>'InicioController@Index'])->middleware('auth');  
+// });
+
+
+// Route::get('/fazer','wiki\FazerController@Index')->middleware('auth');
+
+// Route::get('/teste/{id?}', 'InicioController@Teste')->middleware('auth');
+
+// Route::group(['as' => 'stock.','prefix' => 'estoque', 'middleware' => ['auth']],function(){
+//     Route::get('/',['as'=>'index','uses' => 'StockController@index']);
+//     Route::get('criar',['as'=>'create', 'uses'=>'StockController@create']);
+//     Route::any('salvar', ['as'=>'store','uses'=>'StockController@store']);
+//     Route::any('editar',['as' => 'edit','uses' => 'StockController@edit']);
+//     Route::any('atualizar',['as' => 'update', 'uses' => 'StockController@update']);
+//     Route::get('{id}/remover', ['as' => 'destroy', 'uses' => 'StockController@destroy']);
+// });  
+
+
+
+// Route::get('/api/v1/clientelaspalmas', function () {
+//     return view('v1.clientes.createlaspalmas');
+// });
+
+
+
+// Route::get('/api/v1/relatoriovisitaslaspalmas', function () {
+//     return view('v1.clientes.relatoriovisitaslaspalmas');
+// });
+
+
+// Manutencao
+// Route::group(['as' => 'manutencao.', 'prefix' => 'manutencao','middleware' => ['auth']], function(){
+//     Route::get('/', ['as' => 'index', 'uses' => 'Manutencao\ManutencaoController@index']); 
+//     Route::get('/novo', ['as' => 'create', 'uses' => 'Manutencao\ManutencaoController@create']);
+// });
+
+
+// Route::group(['as' => 'cliente.','prefix' => 'cliente', 'middleware' => ['auth']],function(){
+//     Route::get('/',['as'=>'index','uses' => 'cliente\clienteController@index']);
+//     Route::get('criar',['as'=>'create','uses' => 'cliente\clienteController@create']);
+//     Route::any('salvar',['as'=>'store','uses' => 'cliente\clienteController@store']);
+//     Route::any('editar/{id}',['as'=>'edit','uses'=>'cliente\clienteController@edit']);
+//     Route::any('atualizar',['as'=>'update','uses'=>'cliente\clienteController@update']);
+// });

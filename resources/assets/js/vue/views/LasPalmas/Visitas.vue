@@ -22,7 +22,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr  class="pointer" v-for="(item, key, index ) in clienteslaspalmas" :key="item.id">
+                                <tr  class="pointer" v-for="(item) in clienteslaspalmas" :key="item.id">
                                     
                                     <td>{{item.nome}}</td>
                                     <td>{{item.data_visita}}</td>

@@ -16,7 +16,7 @@
             <div class="drop-menu navbar-collapse profile-usermenu">
                 <ul>
                     <li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a class="glyphicon glyphicon-home dropdown-submenu" href="{{Route('inicio.index')}}"><span
+                        <a class="glyphicon glyphicon-home dropdown-submenu" href="../public/vue"><span
                                 class="menu-ocultar">Início </span> </a>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">

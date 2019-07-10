@@ -6887,7 +6887,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.clienteslaspalmas, function(item, key, index) {
+                  _vm._l(_vm.clienteslaspalmas, function(item) {
                     return _c("tr", { key: item.id, staticClass: "pointer" }, [
                       _c("td", [_vm._v(_vm._s(item.nome))]),
                       _vm._v(" "),

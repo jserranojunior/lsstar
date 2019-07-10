@@ -15,13 +15,52 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Base64/1.0.1/base64.min.js"></script>
 
     
-    <!-- {{--  CSS  --}} -->
-    @extends('includes.styles')
-    <!-- {{--  CSS  --}} -->
+<!-- {{--  CSS  --}} -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 
-     <!-- JS -->
-     @extends('includes.scripts')
-     <!-- JS -->
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- ADMIN LTE -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.8/css/AdminLTE.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.8/css/skins/skin-blue.css">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+    crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap.css" />
+
+
+    <link rel="stylesheet" href="{{ URL::asset('/css/style.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('/css/print.css') }}">
+
+
+<!-- {{--  CSS  --}} -->
+
+     <!-- js -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+<!-- {{--  //CORRIGIR ACHAR CDN EM PORTUGUES --}} -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+<!-- // -->
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+
+ 
+ 
+<script src="{{ URL::asset('/js/select-busca.js') }}"></script>
+<script src="{{ URL::asset('/js/cep-automatico.js') }}"></script>
+<script src="{{ URL::asset('/js/funcoes.js') }}"></script>
+
+
+<!-- js -->
     
 
     <!-- {{--  <script src="{{URL::asset('/js/all.js')}}" type="text/javascript"></script>  --}} -->
@@ -34,7 +73,7 @@
 
         <div class="wrapper">
             <header class="main-header">
-                <a href="{{Route('inicio.index')}}" class="logo">
+                <a href="../public/vue" class="logo">
                     <span class="logo-mini"><b>L</b></span>
                     <span class="logo-lg"><b>LS STAR</b></span>
                 </a>
