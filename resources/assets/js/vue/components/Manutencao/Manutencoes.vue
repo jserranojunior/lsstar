@@ -1,8 +1,9 @@
 <template>
     <div>
-        <h4 class="text-center">
-            Tela de manutenção
-        </h4>
+        <header class="text-center text-primary font-weight-bold display"> 
+          <h3>MANUTENÇÕES</h3> 
+          </header>
+
         <div class="card">
             <div class="card-body">
                 <table class="table table-condensed">

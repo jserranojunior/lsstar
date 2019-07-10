@@ -30,8 +30,12 @@ class ApiClientes extends Controller
     }
 
     public function lasPalmas(){
-                $this->clientes = $this->clientes::where('evento_palmas', 1)->get();
-        return($this->clientes);
+                $this->clientes = $this->clientes->where('evento_palmas', 1)->get();
+                // return($this->clientes);
+                return response()->json([
+                    'data' => $this->clientes           
+                ]);
+        
     }
 
 

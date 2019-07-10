@@ -1,19 +1,13 @@
 <template>
     <div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body text-center">
-                        {{this.tipocliente}}
+        <header class="text-center text-primary font-weight-bold display"> 
+            {{this.tipocliente}}
                         <h3 v-if="$route.params.tipocliente == 'proprietarios'">PROPRIETÁRIOS</h3>
                         <h3 v-if="$route.params.tipocliente == 'clientes'">CLIENTES</h3>
-                        <h3 v-if="$route.params.tipocliente == 'todos'">TODOS OS CLIENTES</h3>
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+                        <h3 v-if="$route.params.tipocliente == 'todos'">TODOS OS CLIENTES</h3>                          
+        </header>
+
+        
         <div class="row">
             <div class="col-12">
                 <div class="card">

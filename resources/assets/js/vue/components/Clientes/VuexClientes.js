@@ -3,11 +3,15 @@ import axios from "axios"
 export default {
     state:{
         data:{}, 
-        addcliente: "",       
+        addcliente: "",   
+        laspalmas: {},    
     },
     mutations:{
         GET_CLIENTES(state, data){
             state.data = data
+        },
+        GET_CLIENTES_LAS_PALMAS(state, data){
+            state.laspalmas = data
         },
         ADD_CLIENTE(state, data){
             state.addcliente = data.data.data
@@ -42,6 +46,19 @@ export default {
                 });
             }, 
         
+            getClientesLasPalmas(context) {
+                let url = '../public/api/v1/getclientelaspalmas'
+                axios
+                    .get(url)
+                    .then(response => {
+                        context.commit('GET_CLIENTES_LAS_PALMAS', response.data.data)   
+                            
+                    })
+                    .catch(function(error) {
+                        console.log(error);
+                        console.log("naõ cadastrado")
+                    });
+            }, 
            
     }
 }

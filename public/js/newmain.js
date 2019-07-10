@@ -1851,6 +1851,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Manutencoes"
 });
@@ -1873,12 +1874,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2476,8 +2471,266 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "CreateClientes",
+  data: function data() {
+    return {
+      inputs: {}
+    };
+  },
+  mounted: function mounted() {
+    this.inputs.evento_palmas = true;
+  },
+  // ADICIONAR UMA COLUNA PRA MARCAR QUE È LAS PALMAS
+  methods: {
+    cadastrarClienteLasPalmas: function cadastrarClienteLasPalmas(data) {
+      var _this = this;
+
+      var url = '../public/api/v1/cliente';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, data).then(function (response) {
+        console.log("cadastrado");
+        _this.inputs = "";
+      }).catch(function (error) {
+        console.log(error);
+        console.log("naõ cadastrado");
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Visitas",
+  data: function data() {
+    return {};
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])(['getClientesLasPalmas'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+    clienteslaspalmas: function clienteslaspalmas(state) {
+      return state.Clientes.laspalmas;
+    }
+  })),
+  mounted: function mounted() {
+    this.getClientesLasPalmas();
+  }
 });
 
 /***/ }),
@@ -2566,21 +2819,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2745,6 +2983,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Menu",
   data: function data() {
@@ -2819,6 +3129,44 @@ exports.push([module.i, "\n.subtitle{\n    margin-top: 10px;\n   margin-bottom: 
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ntd, th {\n    padding-top: 3px! important;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.table td,\n.table th {\n    padding: 6px 5px;\n    font-size: 13px;\n    vertical-align: middle;\n    border-top: 1px solid #dee2e6;\n}\n.nowrap {\n    white-space: nowrap;\n}\n.pointer {\n    cursor: pointer;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/Layouts/Menu.vue?vue&type=style&index=0&lang=css&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/Layouts/Menu.vue?vue&type=style&index=0&lang=css& ***!
@@ -2831,7 +3179,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.dropdown-toggle-menu::after {\n    display: none! important\n}\n.dropdown-toggle-menu::before {\n    display: none! important\n}\n.fa-dropdown{\n  float:right;\n  margin-top: 4px;\n}\n", ""]);
+exports.push([module.i, "\n.dropdown-toggle-menu::after {\n    display: none! important\n}\n.dropdown-toggle-menu::before {\n    display: none! important\n}\n.fa-dropdown{\n  float:right;\n  margin-top: 4px;\n}\n.side-navbar .sidenav-header img {\n    width: 80px;\n    height: 80px;\n}\n", ""]);
 
 // exports
 
@@ -3419,6 +3767,66 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--5-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./NewOrEditCliente.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/Clientes/NewOrEditCliente.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--5-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--5-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Visitas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4077,9 +4485,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("h4", { staticClass: "text-center" }, [
-        _vm._v("\n        Tela de manutenção\n    ")
-      ]),
+      _c(
+        "header",
+        { staticClass: "text-center text-primary font-weight-bold display" },
+        [_c("h3", [_vm._v("MANUTENÇÕES")])]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "card" }, [
         _c("div", { staticClass: "card-body" }, [
@@ -4302,30 +4712,26 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body text-center" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(this.tipocliente) +
-                "\n                    "
-            ),
-            _vm.$route.params.tipocliente == "proprietarios"
-              ? _c("h3", [_vm._v("PROPRIETÁRIOS")])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.$route.params.tipocliente == "clientes"
-              ? _c("h3", [_vm._v("CLIENTES")])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.$route.params.tipocliente == "todos"
-              ? _c("h3", [_vm._v("TODOS OS CLIENTES")])
-              : _vm._e()
-          ])
-        ])
-      ])
-    ]),
+    _c(
+      "header",
+      { staticClass: "text-center text-primary font-weight-bold display" },
+      [
+        _vm._v(
+          " \n        " + _vm._s(this.tipocliente) + "\n                    "
+        ),
+        _vm.$route.params.tipocliente == "proprietarios"
+          ? _c("h3", [_vm._v("PROPRIETÁRIOS")])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.$route.params.tipocliente == "clientes"
+          ? _c("h3", [_vm._v("CLIENTES")])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.$route.params.tipocliente == "todos"
+          ? _c("h3", [_vm._v("TODOS OS CLIENTES")])
+          : _vm._e()
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
@@ -5725,13 +6131,75 @@ var render = function() {
         1
       ),
       _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-3" },
+        [
+          _c("router-link", { attrs: { to: "/clientes/clientes" } }, [
+            _c("div", { staticClass: "card" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: { src: "img/home/clientes.jpg" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body text-center" }, [
+                _c("h6", { staticClass: "card-title" }, [_vm._v("CLIENTES")])
+              ])
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-3" },
+        [
+          _c("router-link", { attrs: { to: "/clientes/proprietarios" } }, [
+            _c("div", { staticClass: "card" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: { src: "img/home/proprietarios.jpg" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body text-center" }, [
+                _c("h6", { staticClass: "card-title" }, [
+                  _vm._v("PROPRIETÁRIOS")
+                ])
+              ])
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
       _vm._m(2),
       _vm._v(" "),
       _vm._m(3),
       _vm._v(" "),
       _vm._m(4),
       _vm._v(" "),
-      _vm._m(5)
+      _c(
+        "div",
+        { staticClass: "col-3" },
+        [
+          _c("router-link", { attrs: { to: "/laspalmas/visitas" } }, [
+            _c("div", { staticClass: "card" }, [
+              _c("img", {
+                staticClass: "card-img-top",
+                attrs: { src: "img/home/visitalaspalmas.jpg" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body text-center" }, [
+                _c("h6", { staticClass: "card-title" }, [
+                  _vm._v("VISITAS LAS PALMAS")
+                ])
+              ])
+            ])
+          ])
+        ],
+        1
+      )
     ])
   ])
 }
@@ -5740,59 +6208,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h1", { staticClass: "text-center text-primary" }, [
-              _vm._v("Seja bem vindo!")
-            ]),
-            _vm._v(" "),
-            _c("h4", { staticClass: "text-center" }, [
-              _vm._v("Fique a vontade para testar as novas atualizações!")
-            ])
-          ])
+    return _c(
+      "header",
+      { staticClass: "text-center text-primary font-weight-bold display" },
+      [
+        _c("h3", [_vm._v("SEJA BEM VINDO!")]),
+        _vm._v(" "),
+        _c("h4", { staticClass: "text-center  text-dark" }, [
+          _vm._v("Fique a vontade para testar as novas atualizações!")
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-3" }, [
-      _c(
-        "a",
-        { attrs: { href: "http://localhost/lsstar/public/financeiro" } },
-        [
-          _c("div", { staticClass: "card" }, [
-            _c("img", {
-              staticClass: "card-img-top",
-              attrs: { src: "img/usuarios/financeiro-foto.jpg" }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body text-center" }, [
-              _c("h6", { staticClass: "card-title" }, [_vm._v("FINANCEIRO")])
-            ])
-          ])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
-      _c("a", { attrs: { href: "#" } }, [
+      _c("a", { attrs: { href: "financeiro" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {
             staticClass: "card-img-top",
-            attrs: { src: "img/home/clientes.jpg" }
+            attrs: { src: "img/usuarios/financeiro-foto.jpg" }
           }),
           _vm._v(" "),
           _c("div", { staticClass: "card-body text-center" }, [
-            _c("h6", { staticClass: "card-title" }, [_vm._v("CLIENTES")])
+            _c("h6", { staticClass: "card-title" }, [_vm._v("FINANCEIRO")])
           ])
         ])
       ])
@@ -5803,7 +6244,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-3" }, [
-      _c("a", { attrs: { href: "#" } }, [
+      _c("a", { attrs: { href: "agenda" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {
             staticClass: "card-img-top",
@@ -5822,7 +6263,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-3" }, [
-      _c("a", { attrs: { href: "#" } }, [
+      _c("a", { attrs: { href: "fornecedor" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {
             staticClass: "card-img-top",
@@ -5841,7 +6282,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-3" }, [
-      _c("a", { attrs: { href: "#" } }, [
+      _c("a", { attrs: { href: "casa" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {
             staticClass: "card-img-top",
@@ -5849,8 +6290,647 @@ var staticRenderFns = [
           }),
           _vm._v(" "),
           _c("div", { staticClass: "card-body text-center" }, [
-            _c("h6", { staticClass: "card-title" }, [_vm._v("CASAS")])
+            _c("h6", { staticClass: "card-title" }, [_vm._v("EMPREENDIMENTOS")])
           ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xs-10 col-xs-offset-1" }, [
+      _c("div", { staticClass: "box box-info" }, [
+        _c("div", { staticClass: "box-body no-padding" }, [
+          _c("table", { staticClass: "table text-center table-condensed" }, [
+            _c("tr", [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "4" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.nome,
+                      expression: "inputs.nome"
+                    }
+                  ],
+                  staticClass: "form-control ",
+                  attrs: { name: "nome", type: "text" },
+                  domProps: { value: _vm.inputs.nome },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "nome", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "4" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.email,
+                      expression: "inputs.email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "email", type: "text" },
+                  domProps: { value: _vm.inputs.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.telefone,
+                      expression: "inputs.telefone"
+                    }
+                  ],
+                  staticClass: "form-control telefone_mascara",
+                  attrs: { colspan: "2", name: "telefone", type: "text" },
+                  domProps: { value: _vm.inputs.telefone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "telefone", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.idade,
+                      expression: "inputs.idade"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { id: "idade", name: "idade", type: "number" },
+                  domProps: { value: _vm.inputs.idade },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "idade", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.profissao,
+                      expression: "inputs.profissao"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { colspan: "2", name: "profissao", type: "text" },
+                  domProps: { value: _vm.inputs.profissao },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "profissao", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.empresa,
+                      expression: "inputs.empresa"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "empresa", type: "text" },
+                  domProps: { value: _vm.inputs.empresa },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "empresa", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(7),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.cep,
+                      expression: "inputs.cep"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "cep", id: "cep", type: "number" },
+                  domProps: { value: _vm.inputs.cep },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "cep", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(8),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.bairro,
+                      expression: "inputs.bairro"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "bairro", id: "bairro", type: "text" },
+                  domProps: { value: _vm.inputs.bairro },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "bairro", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(9),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.logradouro,
+                      expression: "inputs.logradouro"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "logradouro", id: "rua", type: "text" },
+                  domProps: { value: _vm.inputs.logradouro },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "logradouro", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(10),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.inputs.tipomoradia,
+                        expression: "inputs.tipomoradia"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { name: "tipomoradia" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.inputs,
+                          "tipomoradia",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option"),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Aluguel")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Própria")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("Parente")])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(11),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.numero,
+                      expression: "inputs.numero"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "numero", type: "number" },
+                  domProps: { value: _vm.inputs.numero },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "numero", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(12),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "2" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.cidade,
+                      expression: "inputs.cidade"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "cidade", id: "cidade", type: "text" },
+                  domProps: { value: _vm.inputs.cidade },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "cidade", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(13),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "3" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.indicacao,
+                      expression: "inputs.indicacao"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "indicacao", type: "text" },
+                  domProps: { value: _vm.inputs.indicacao },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "indicacao", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(14),
+              _vm._v(" "),
+              _c("td", { attrs: { colspan: "" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputs.data_visita,
+                      expression: "inputs.data_visita"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { name: "data_visita", type: "date" },
+                  domProps: { value: _vm.inputs.data_visita },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.inputs, "data_visita", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "box-footer no-print" }, [
+            _c("div", { staticClass: "col-sm-4" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      _vm.cadastrarClienteLasPalmas(_vm.inputs)
+                    }
+                  }
+                },
+                [_vm._v("CADASTRAR")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "header",
+      { staticClass: "text-center text-primary font-weight-bold display" },
+      [_c("h3", [_vm._v("Cadastro de Cliente - Las Palmas")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("h5", { staticClass: "text-primary" }, [_vm._v("Nome")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Email")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Telefone")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Idade")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Profissão")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", [_vm._v("Empresa")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("CEP")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", [_vm._v("Bairro")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Logradouro")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Moradia")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Número")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", [_vm._v("Cidade")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Como ficou sabendo?")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("h5", {}, [_vm._v("Data da visita")])])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=template&id=31293a64&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=template&id=31293a64& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "table",
+              {
+                staticClass: "table table-striped  table-condensed table-hover"
+              },
+              [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.clienteslaspalmas, function(item, key, index) {
+                    return _c("tr", { key: item.id, staticClass: "pointer" }, [
+                      _c("td", [_vm._v(_vm._s(item.nome))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(item.data_visita))])
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "header",
+      { staticClass: "text-center text-primary font-weight-bold display" },
+      [_c("h3", [_vm._v("RELATORIO DE VISITAS LAS PALMAS")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [
+          _vm._v(
+            "\n                                    Nome\n                                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("th", [
+          _vm._v(
+            "\n                                    Data da visita\n                                "
+          )
         ])
       ])
     ])
@@ -6090,18 +7170,11 @@ var staticRenderFns = [
           staticClass: "nav-link",
           attrs: {
             id: "messages",
-            rel: "nofollow",
-            "data-target": "#",
-            href: "#",
-            "data-toggle": "dropdown",
-            "aria-haspopup": "true",
-            "aria-expanded": "false"
+            href: "http://webmail.lsstar.com.br",
+            target: "_blank"
           }
         },
-        [
-          _c("i", { staticClass: "fa fa-envelope" }),
-          _c("span", { staticClass: "badge badge-info" }, [_vm._v("0")])
-        ]
+        [_c("i", { staticClass: "fa fa-envelope" })]
       )
     ])
   },
@@ -6155,6 +7228,10 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "sidenav-header-inner text-center" }, [
+              _c("h1", { staticClass: "text-primary text-center" }, [
+                _vm._v("LS STAR")
+              ]),
+              _vm._v(" "),
               _c("img", {
                 staticClass: "img-fluid rounded-circle",
                 attrs: {
@@ -6198,6 +7275,53 @@ var render = function() {
               _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
+              _c("li", [
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  {
+                    staticClass: "collapse list-unstyled ",
+                    attrs: { id: "lasPalmasDropdown" }
+                  },
+                  [
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: "/laspalmas/novocliente" } },
+                          [
+                            _c("i", { staticClass: "fas fa-plus-circle" }),
+                            _vm._v(
+                              "\n                      Novo Cliente             \n                  "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: "/laspalmas/visitas" } },
+                          [
+                            _c("i", { staticClass: "fas fa-eye" }),
+                            _vm._v(
+                              "\n                      Visitas             \n                   "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
               _c(
                 "li",
                 [
@@ -6212,7 +7336,7 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("li", [
-                _vm._m(2),
+                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "ul",
@@ -6286,7 +7410,13 @@ var render = function() {
                     )
                   ]
                 )
-              ])
+              ]),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6)
             ]
           )
         ])
@@ -6335,6 +7465,27 @@ var staticRenderFns = [
       {
         staticClass: "dropdown-toggle-menu",
         attrs: {
+          href: "#lasPalmasDropdown",
+          "aria-expanded": "false",
+          "data-toggle": "collapse"
+        }
+      },
+      [
+        _c("i", { staticClass: "fas fa-tree" }),
+        _vm._v("\n                Las Palmas "),
+        _c("i", { staticClass: "fa-dropdown fas fa-caret-down" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "dropdown-toggle-menu",
+        attrs: {
           href: "#clientesDropdown",
           "aria-expanded": "false",
           "data-toggle": "collapse"
@@ -6346,6 +7497,98 @@ var staticRenderFns = [
         _c("i", { staticClass: "fa-dropdown fas fa-caret-down" })
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c(
+        "a",
+        {
+          staticClass: "dropdown-toggle-menu",
+          attrs: {
+            href: "#EmpreendimentosDropdown",
+            "aria-expanded": "false",
+            "data-toggle": "collapse"
+          }
+        },
+        [
+          _c("i", { staticClass: "fas fa-building" }),
+          _vm._v("\n                Empreendimentos "),
+          _c("i", { staticClass: "fa-dropdown fas fa-caret-down" })
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        {
+          staticClass: "collapse list-unstyled ",
+          attrs: { id: "EmpreendimentosDropdown" }
+        },
+        [
+          _c("li", [
+            _c("a", { attrs: { href: "casa/criar" } }, [
+              _c("i", { staticClass: "fas fa-plus-circle" }),
+              _vm._v(
+                "\n                  Novo               \n                "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "casa?status=Á%20venda" } }, [
+              _c("i", { staticClass: "fas fa-cart-arrow-down" }),
+              _vm._v(
+                "\n                      A venda         \n                  "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "casa?status=Vendida" } }, [
+              _c("i", { staticClass: "fas fa-glass-cheers" }),
+              _vm._v(
+                "\n                      Vendida            \n                  "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "casa?status=construção" } }, [
+              _c("i", { staticClass: "fas fa-paint-roller" }),
+              _vm._v(
+                "\n                      Construção           \n                  "
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "agenda" } }, [
+        _c("i", { staticClass: "far fa-list-alt" }),
+        _vm._v("\n                  Agenda               \n                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "fornecedor" } }, [
+        _c("i", { staticClass: "far fa-handshake" }),
+        _vm._v(
+          "\n                  Fornecedores                \n                "
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -21313,11 +22556,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
     data: {},
-    addcliente: ""
+    addcliente: "",
+    laspalmas: {}
   },
   mutations: {
     GET_CLIENTES: function GET_CLIENTES(state, data) {
       state.data = data;
+    },
+    GET_CLIENTES_LAS_PALMAS: function GET_CLIENTES_LAS_PALMAS(state, data) {
+      state.laspalmas = data;
     },
     ADD_CLIENTE: function ADD_CLIENTE(state, data) {
       state.addcliente = data.data.data;
@@ -21340,6 +22587,15 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, data).then(function (response) {
         console.log("cadastrado");
         _this.inputs = "";
+      }).catch(function (error) {
+        console.log(error);
+        console.log("naõ cadastrado");
+      });
+    },
+    getClientesLasPalmas: function getClientesLasPalmas(context) {
+      var url = '../public/api/v1/getclientelaspalmas';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+        context.commit('GET_CLIENTES_LAS_PALMAS', response.data.data);
       }).catch(function (error) {
         console.log(error);
         console.log("naõ cadastrado");
@@ -21495,6 +22751,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Manutencao_Manutencoes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Manutencao/Manutencoes */ "./resources/assets/js/vue/components/Manutencao/Manutencoes.vue");
 /* harmony import */ var _views_Clientes_Clientes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/Clientes/Clientes */ "./resources/assets/js/vue/views/Clientes/Clientes.vue");
 /* harmony import */ var _views_Clientes_NewOrEditCliente__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Clientes/NewOrEditCliente */ "./resources/assets/js/vue/views/Clientes/NewOrEditCliente.vue");
+/* harmony import */ var _views_LasPalmas_Visitas__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/LasPalmas/Visitas */ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue");
+/* harmony import */ var _views_LasPalmas_NovoClienteLasPalmas__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/LasPalmas/NovoClienteLasPalmas */ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue");
+
+
 
 
 
@@ -21519,6 +22779,14 @@ var routes = [{
   path: '/novo/cliente/:id',
   name: 'novoclienteid',
   component: _views_Clientes_NewOrEditCliente__WEBPACK_IMPORTED_MODULE_3__["default"]
+}, {
+  path: '/laspalmas/visitas',
+  name: 'visitaslaspalmas',
+  component: _views_LasPalmas_Visitas__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, {
+  path: '/laspalmas/novocliente',
+  name: 'novoclientelaspalmas',
+  component: _views_LasPalmas_NovoClienteLasPalmas__WEBPACK_IMPORTED_MODULE_5__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -21791,6 +23059,180 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_38722763___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_38722763___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NovoClienteLasPalmas_vue_vue_type_template_id_52df57ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea& */ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea&");
+/* harmony import */ var _NovoClienteLasPalmas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NovoClienteLasPalmas.vue?vue&type=script&lang=js& */ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _NovoClienteLasPalmas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css& */ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _NovoClienteLasPalmas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NovoClienteLasPalmas_vue_vue_type_template_id_52df57ea___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NovoClienteLasPalmas_vue_vue_type_template_id_52df57ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./NovoClienteLasPalmas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--5-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_template_id_52df57ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue?vue&type=template&id=52df57ea&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_template_id_52df57ea___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NovoClienteLasPalmas_vue_vue_type_template_id_52df57ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue":
+/*!*************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/Visitas.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Visitas_vue_vue_type_template_id_31293a64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Visitas.vue?vue&type=template&id=31293a64& */ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=template&id=31293a64&");
+/* harmony import */ var _Visitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Visitas.vue?vue&type=script&lang=js& */ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Visitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Visitas.vue?vue&type=style&index=0&lang=css& */ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Visitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Visitas_vue_vue_type_template_id_31293a64___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Visitas_vue_vue_type_template_id_31293a64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/vue/views/LasPalmas/Visitas.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Visitas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--5-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Visitas.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=template&id=31293a64&":
+/*!********************************************************************************************!*\
+  !*** ./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=template&id=31293a64& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_template_id_31293a64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Visitas.vue?vue&type=template&id=31293a64& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/views/LasPalmas/Visitas.vue?vue&type=template&id=31293a64&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_template_id_31293a64___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Visitas_vue_vue_type_template_id_31293a64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

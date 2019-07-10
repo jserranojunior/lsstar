@@ -20,7 +20,7 @@
             </div>
         </div>    
     </a>
-    <a href="{{Route('cliente.index')}}">
+    <a href="vue#/clientes/clientes">
         <div class="col-sm-3">
             <div class="box box-primary">
                 <div class="box-header with-border text-center">

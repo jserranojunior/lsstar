@@ -1,12 +1,12 @@
 <template>
     <div>
     
+        <header class="text-center text-primary font-weight-bold display">          
+            <h3>Cadastro de Cliente - Las Palmas</h3>                       
+        </header>
     
         <div class="col-xs-10 col-xs-offset-1">
-            <div class="box box-info">
-                <div class="box-head">
-                    <h3 class="text-center"> Cadastro de Cliente - Las Palmas</h3>
-                </div>
+            <div class="box box-info">                
                 <div class="box-body no-padding">
                     <table class="table text-center table-condensed">
                         <tr>
@@ -144,7 +144,7 @@ export default {
     // ADICIONAR UMA COLUNA PRA MARCAR QUE È LAS PALMAS
     methods: {
         cadastrarClienteLasPalmas(data) {
-             let url = '../v1/cliente';        
+             let url = '../public/api/v1/cliente';        
         axios
             .post(url, data)
               .then(response => {

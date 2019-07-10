@@ -154,7 +154,7 @@ h2 {
 }
 
 .section-padding {
-  padding: 3rem 0;
+  padding: 0rem 0;
 }
 
 .section-no-padding-bottom {
@@ -1858,9 +1858,9 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary:hover {
-  color: color-yiq(#2b954b);
-  background-color: #2b954b;
-  border-color: #288b46;
+  color: color-yiq(#117a8b);
+  background-color: #117a8b;
+  border-color: #007bff;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -1875,9 +1875,9 @@ STYLE SWITCHER FOR DEMO
 
 .btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  color: color-yiq(#288b46);
-  background-color: #288b46;
-  border-color: #258141;
+  color: color-yiq(#007bff);
+  background-color: #007bff;
+  border-color: #17a2b8;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(51, 179, 90, 0.5);
 }
@@ -2418,7 +2418,7 @@ a {
 }
 
 a:focus, a:hover {
-  color: #22773c;
+  color: #117a8b;
   text-decoration: underline;
 }
 
@@ -2536,7 +2536,7 @@ mark,
 }
 
 a.text-primary:focus, a.text-primary:hover {
-  color: #288b46 !important;
+  color: #007bff !important;
 }
 
 /*
@@ -2573,7 +2573,7 @@ a.text-primary:focus, a.text-primary:hover {
 }
 
 .page-link:focus, .page-link:hover {
-  color: #22773c;
+  color: #117a8b;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #ddd;
@@ -2660,7 +2660,7 @@ a.text-primary:focus, a.text-primary:hover {
 }
 
 a.bg-primary:focus, a.bg-primary:hover {
-  background-color: #288b46 !important;
+  background-color: #007bff !important;
 }
 
 .bg-secondary {
@@ -2756,7 +2756,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 a.text-primary:focus, a.text-primary:hover {
-  color: #288b46 !important;
+  color: #007bff !important;
 }
 
 .text-secondary {
@@ -2823,7 +2823,7 @@ a.text-dark:focus, a.text-dark:hover {
 .badge-primary[href]:focus, .badge-primary[href]:hover {
   color: color-yiq(#367fa9);
   text-decoration: none;
-  background-color: #288b46;
+  background-color: #007bff;
 }
 
 .badge-secondary {

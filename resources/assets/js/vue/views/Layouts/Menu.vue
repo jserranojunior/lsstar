@@ -5,7 +5,13 @@
             <!-- Sidebar Header    -->
             <div class="sidenav-header d-flex align-items-center justify-content-center">
               <!-- User Info-->
-              <div class="sidenav-header-inner text-center"><img :src="'img/usuarios/'+userLaravel.photo" alt="person" class="img-fluid rounded-circle">
+              <div class="sidenav-header-inner text-center">
+               
+                
+                    <h1 class="text-primary text-center">LS STAR</h1>
+              
+                
+                <img :src="'img/usuarios/'+userLaravel.photo" alt="person" class="img-fluid rounded-circle">
                 <h2 class="h5">{{userLaravel.name}}</h2><span>Administrador</span>
               </div>
               <!-- Small Brand information, appears on minimized sidebar-->
@@ -29,6 +35,28 @@
                       Financeiro                
                     </a>
                 </li>
+                <li>
+                  <a href="#lasPalmasDropdown" class="dropdown-toggle-menu" aria-expanded="false" data-toggle="collapse"> 
+                    <i class="fas fa-tree"></i>
+                    Las Palmas <i class="fa-dropdown fas fa-caret-down"></i>                    
+                  </a>
+                  <ul id="lasPalmasDropdown" class="collapse list-unstyled ">
+                    <li>
+                      <router-link to="/laspalmas/novocliente">
+                        <i class="fas fa-plus-circle"></i>
+                          Novo Cliente             
+                      </router-link>
+                    </li>
+                    <li>
+                      <router-link to="/laspalmas/visitas">
+                        <i class="fas fa-eye"></i>
+                          Visitas             
+                       </router-link>
+                    </li>
+                  </ul>
+                </li>  
+
+
                 <li>
                    <router-link to="/manutencoes">
                       <i class="fas fa-tools"></i>
@@ -70,6 +98,50 @@
                   </ul>
                 </li>
 
+                <li>
+                  <a href="#EmpreendimentosDropdown" class="dropdown-toggle-menu" aria-expanded="false" data-toggle="collapse"> 
+                    <i class="fas fa-building"></i>
+                    Empreendimentos <i class="fa-dropdown fas fa-caret-down"></i>                    
+                  </a>
+                  <ul id="EmpreendimentosDropdown" class="collapse list-unstyled ">
+                    <li>
+                      <a href="casa/criar">                   
+                      <i class="fas fa-plus-circle"></i>
+                      Novo               
+                    </a>
+                  </li>
+                    <li>
+                      <a href="casa?status=Á%20venda">
+                        <i class="fas fa-cart-arrow-down"></i>
+                          A venda         
+                      </a>
+                    </li>
+                    <li>
+                      <a href="casa?status=Vendida">
+                        <i class="fas fa-glass-cheers"></i>
+                          Vendida            
+                      </a>
+                    </li>
+                    <li>
+                      <a href="casa?status=construção">
+                        <i class="fas fa-paint-roller"></i>
+                          Construção           
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              <li>
+                   <a href="agenda">
+                      <i class="far fa-list-alt"></i>
+                      Agenda               
+                    </a>
+                </li>
+                <li>
+                   <a href="fornecedor">
+                      <i class="far fa-handshake"></i>
+                      Fornecedores                
+                    </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -107,5 +179,10 @@ export default {
   float:right;
   margin-top: 4px;
 
+}
+
+.side-navbar .sidenav-header img {
+    width: 80px;
+    height: 80px;
 }
 </style>
