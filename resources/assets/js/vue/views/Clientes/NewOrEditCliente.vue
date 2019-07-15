@@ -13,17 +13,18 @@
     
         <section id="contato">
             <div class="row justify-content-center">
-                <div class="col-8">
-                    <div class="form-group">
-                        <input type="text" placeholder="Nome Completo" class="form-control" v-model="inputs.nome">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="btn btn-primary float-right" @click="exibirContato = !exibirContato">
+                <div class="col-10">
+                         <div class="form-group">
+                        <input type="text" placeholder="Nome Completo" class="form-control input-menor-for-btn" v-model="inputs.nome">
+                    
+                      <div class="btn btn-primary float-right btn-for-input" @click="exibirContato = !exibirContato">
                         <i class="fas fa-chevron-down" v-if="exibirContato == false"></i>
                         <i class="fas fa-chevron-up" v-if="exibirContato"></i> CONTATOS
                     </div>
+                    
+                    </div>
                 </div>
+                
             </div>
             <div class="row justify-content-center">
                 <div class="col-10">
@@ -310,7 +311,7 @@
             </div>
         </section>
     
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" v-if="this.inputs.nome">
             <div class="col-10" v-if="this.$route.params.id">
                 <div class="btn btn-primary" @click="atualizarCliente()">ATUALIZAR</div>
             </div>
@@ -394,4 +395,22 @@ export default {
      margin-top: 10px;
     margin-bottom: 10px;
  }
+ .input-menor-for-btn{
+     width: 78%;
+     float: left;
+         margin-bottom: 12px;
+ }
+ .btn-for-input{
+     width: 20%;
+     float: left;     
+ }
+
+ @media (max-width: 576px) { 
+      .btn-for-input{
+     width: 44%; 
+ }
+ .input-menor-for-btn{
+     width: 44%;
+ }
+  }
 </style>

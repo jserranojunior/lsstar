@@ -2316,6 +2316,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3122,7 +3123,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n.subtitle{\n    margin-top: 10px;\n   margin-bottom: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.subtitle{\n    margin-top: 10px;\n   margin-bottom: 10px;\n}\n.input-menor-for-btn{\n    width: 78%;\n    float: left;\n        margin-bottom: 12px;\n}\n.btn-for-input{\n    width: 20%;\n    float: left;\n}\n@media (max-width: 576px) {\n.btn-for-input{\n    width: 44%;\n}\n.input-menor-for-btn{\n    width: 44%;\n}\n}\n", ""]);
 
 // exports
 
@@ -4893,7 +4894,7 @@ var render = function() {
     _vm._v(" "),
     _c("section", { attrs: { id: "contato" } }, [
       _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-8" }, [
+        _c("div", { staticClass: "col-10" }, [
           _c("div", { staticClass: "form-group" }, [
             _c("input", {
               directives: [
@@ -4904,7 +4905,7 @@ var render = function() {
                   expression: "inputs.nome"
                 }
               ],
-              staticClass: "form-control",
+              staticClass: "form-control input-menor-for-btn",
               attrs: { type: "text", placeholder: "Nome Completo" },
               domProps: { value: _vm.inputs.nome },
               on: {
@@ -4915,32 +4916,30 @@ var render = function() {
                   _vm.$set(_vm.inputs, "nome", $event.target.value)
                 }
               }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c(
-            "div",
-            {
-              staticClass: "btn btn-primary float-right",
-              on: {
-                click: function($event) {
-                  _vm.exibirContato = !_vm.exibirContato
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "btn btn-primary float-right btn-for-input",
+                on: {
+                  click: function($event) {
+                    _vm.exibirContato = !_vm.exibirContato
+                  }
                 }
-              }
-            },
-            [
-              _vm.exibirContato == false
-                ? _c("i", { staticClass: "fas fa-chevron-down" })
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.exibirContato
-                ? _c("i", { staticClass: "fas fa-chevron-up" })
-                : _vm._e(),
-              _vm._v(" CONTATOS\n                ")
-            ]
-          )
+              },
+              [
+                _vm.exibirContato == false
+                  ? _c("i", { staticClass: "fas fa-chevron-down" })
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.exibirContato
+                  ? _c("i", { staticClass: "fas fa-chevron-up" })
+                  : _vm._e(),
+                _vm._v(" CONTATOS\n                ")
+              ]
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -5965,37 +5964,39 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "row justify-content-center" }, [
-      this.$route.params.id
-        ? _c("div", { staticClass: "col-10" }, [
-            _c(
-              "div",
-              {
-                staticClass: "btn btn-primary",
-                on: {
-                  click: function($event) {
-                    _vm.atualizarCliente()
-                  }
-                }
-              },
-              [_vm._v("ATUALIZAR")]
-            )
-          ])
-        : _c("div", { staticClass: "col-10" }, [
-            _c(
-              "div",
-              {
-                staticClass: "btn btn-primary",
-                on: {
-                  click: function($event) {
-                    _vm.cadastrarCliente()
-                  }
-                }
-              },
-              [_vm._v("CADASTRAR")]
-            )
-          ])
-    ])
+    this.inputs.nome
+      ? _c("div", { staticClass: "row justify-content-center" }, [
+          this.$route.params.id
+            ? _c("div", { staticClass: "col-10" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        _vm.atualizarCliente()
+                      }
+                    }
+                  },
+                  [_vm._v("ATUALIZAR")]
+                )
+              ])
+            : _c("div", { staticClass: "col-10" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        _vm.cadastrarCliente()
+                      }
+                    }
+                  },
+                  [_vm._v("CADASTRAR")]
+                )
+              ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -6109,7 +6110,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-3" },
+        { staticClass: "col-sm-6 col-md-3" },
         [
           _c("router-link", { attrs: { to: "/manutencoes" } }, [
             _c("a", { attrs: { href: "#" } }, [
@@ -6133,7 +6134,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-3" },
+        { staticClass: "col-sm-6 col-md-3" },
         [
           _c("router-link", { attrs: { to: "/clientes/clientes" } }, [
             _c("div", { staticClass: "card" }, [
@@ -6153,7 +6154,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-3" },
+        { staticClass: "col-sm-6 col-md-3" },
         [
           _c("router-link", { attrs: { to: "/clientes/proprietarios" } }, [
             _c("div", { staticClass: "card" }, [
@@ -6181,7 +6182,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-3" },
+        { staticClass: "col-sm-6 col-md-3" },
         [
           _c("router-link", { attrs: { to: "/laspalmas/visitas" } }, [
             _c("div", { staticClass: "card" }, [
@@ -6224,7 +6225,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "col-sm-6 col-md-3" }, [
       _c("a", { attrs: { href: "financeiro" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {
@@ -6243,7 +6244,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "col-sm-6 col-md-3" }, [
       _c("a", { attrs: { href: "agenda" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {
@@ -6262,7 +6263,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "col-sm-6 col-md-3" }, [
       _c("a", { attrs: { href: "fornecedor" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {
@@ -6281,7 +6282,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "col-sm-6 col-md-3" }, [
       _c("a", { attrs: { href: "casa" } }, [
         _c("div", { staticClass: "card" }, [
           _c("img", {

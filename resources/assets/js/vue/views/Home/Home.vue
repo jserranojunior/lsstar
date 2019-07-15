@@ -6,7 +6,7 @@
         </header>
             
             <div class="row">
-                <div class="col-3">
+                <div class="col-sm-6 col-md-3">
                     <a href="financeiro">
                         <div class="card">
                             <img src="img/usuarios/financeiro-foto.jpg" class="card-img-top">
@@ -16,7 +16,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-6 col-md-3">
                     <router-link to="/manutencoes">
                         <a href="#">
                             <div class="card">
@@ -28,7 +28,7 @@
                         </a>
                     </router-link>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-6 col-md-3">
                     <router-link to="/clientes/clientes">
                         <div class="card">
                             <img src="img/home/clientes.jpg" class="card-img-top">
@@ -38,7 +38,7 @@
                         </div>
                     </router-link>
                 </div>
-                 <div class="col-3">
+                 <div class="col-sm-6 col-md-3">
                     <router-link to="/clientes/proprietarios">
                         <div class="card">
                             <img src="img/home/proprietarios.jpg" class="card-img-top">
@@ -48,7 +48,7 @@
                         </div>
                     </router-link>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-6 col-md-3">
                     <a href="agenda">
                         <div class="card">
                             <img src="img/home/agendamento.jpg" class="card-img-top">
@@ -58,7 +58,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-6 col-md-3">
                     <a href="fornecedor">
                         <div class="card">
                             <img src="img/home/fornecedor.jpg" class="card-img-top">
@@ -69,7 +69,7 @@
                     </a>
                 </div>
     
-                <div class="col-3">
+                <div class="col-sm-6 col-md-3">
                     <a href="casa">
                         <div class="card">
                             <img src="img/home/casas.jpg" class="card-img-top">
@@ -79,7 +79,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-6 col-md-3">
                     <router-link to="/laspalmas/visitas">
                         <div class="card">
                             <img src="img/home/visitalaspalmas.jpg" class="card-img-top">
