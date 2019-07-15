@@ -105,28 +105,34 @@
                   </a>
                   <ul id="EmpreendimentosDropdown" class="collapse list-unstyled ">
                     <li>
-                      <a href="casa/criar">                   
+                      <router-link to="/novo/empreendimento">                
                       <i class="fas fa-plus-circle"></i>
                       Novo               
-                    </a>
+                      </router-link>
                   </li>
+                   <li>
+                       <router-link to="/empreendimentos/Todos">     
+                        <i class="far fa-building"></i>
+                          Todos        
+                       </router-link>
+                    </li>
                     <li>
-                      <a href="casa?status=Á%20venda">
+                       <router-link to="/empreendimentos/Á%20venda">     
                         <i class="fas fa-cart-arrow-down"></i>
                           A venda         
-                      </a>
+                       </router-link>
                     </li>
                     <li>
-                      <a href="casa?status=Vendida">
+                       <router-link to="/empreendimentos/Vendida">
                         <i class="fas fa-glass-cheers"></i>
                           Vendida            
-                      </a>
+                       </router-link>
                     </li>
                     <li>
-                      <a href="casa?status=construção">
+                      <router-link to="/empreendimentos/Construção">
                         <i class="fas fa-paint-roller"></i>
                           Construção           
-                      </a>
+                      </router-link>
                     </li>
                   </ul>
                 </li>

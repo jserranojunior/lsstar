@@ -70,14 +70,14 @@
                 </div>
     
                 <div class="col-sm-6 col-md-3">
-                    <a href="casa">
+                     <router-link to="/empreendimentos/Todos">     
                         <div class="card">
                             <img src="img/home/casas.jpg" class="card-img-top">
                             <div class="card-body text-center">
                                 <h6 class="card-title">EMPREENDIMENTOS</h6>
                             </div>
                         </div>
-                    </a>
+                     </router-link>
                 </div>
                 <div class="col-sm-6 col-md-3">
                     <router-link to="/laspalmas/visitas">

@@ -148,4 +148,10 @@ public function Todos($request){
             ->update($dados);    
         
     }
+
+    public function atualizarTipoCliente($id, $tipocliente){
+        $clientes = DB::table('clientes')
+        ->where('id', $id)
+        ->update(["tipocliente" => $tipocliente]);     
+    }
 }

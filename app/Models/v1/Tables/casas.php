@@ -1,25 +1,24 @@
 <?php
 
-namespace App\Models\tables;
+namespace App\Models\v1\Tables;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
-use App\Models\v1\Tables\cliente;
+use App\Models\v1\Clientes\Clientes;
 
 class casas extends Model
 {
-    protected $table = "casas";
-    
+    protected $table = "casas";    
 
     public function index($request){
-        $casas = DB::table('casas')->get();
+        $casas = self::all();
          // Filtro
-         if($request->status > ''){
-            $casas = DB::table('casas')
-            ->where('status', $request->status)
-            ->get();
+         if($request->status == 'Todos'){
+            $casas = $casas->where('id', '>', '')->sortBy('nome');             
         }
-
+         elseif($request->status > ''){
+            $casas = $casas->where('status', $request->status);
+        }
         return $casas;
 
     }
@@ -57,7 +56,7 @@ class casas extends Model
         ];
 
         if($request->cliente_id !== ''){
-            $this->cliente = new cliente;
+            $this->cliente = new Clientes;
             $this->cliente->atualizarTipoCliente($request->cliente_id, "proprietario");
         }
 
@@ -86,6 +85,7 @@ class casas extends Model
     }
 
     public function atualizar($request, $id){
+        
         $dados = [
             'nome' => $request->nome,
             'numero' => $request->numero,
@@ -107,7 +107,7 @@ class casas extends Model
             'data_alvara' => $request->data_alvara,
         ];
 
-        $this->cliente = new cliente;
+        $this->cliente = new Clientes;
 
         if($request->cliente_id !== ''){
             $this->cliente->atualizarTipoCliente($request->cliente_id, "proprietario");

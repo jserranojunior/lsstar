@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\tables\casas;
+use App\Models\v1\Tables\casas;
+use DB;
 
 class ApiCasa extends Controller
 {
@@ -18,12 +19,20 @@ class ApiCasa extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($request)
+    public function index(Request $request)
     {
-        
-        $casas = $this->casas->index($request);
-        $dados = ['casas' => $casas];
-        return $dados;
+
+        $casas = DB::table('casas')->get();
+        // Filtro
+        if($request->status > ''){
+           $casas = DB::table('casas')
+           ->where('status', $request->status)
+           ->get();
+       }
+
+       return $casas   ;       
+  
+
     }
 
     /**

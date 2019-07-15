@@ -8,10 +8,8 @@ use App\Http\Requests;
 
 class InicioController extends Controller
 {
-   public function Index(){
-            
-       
-       return view('bemvindo');
+   public function Index(){       
+       return view('home.bemvindo');
    }
    
     public function Teste($id = null){

@@ -36,15 +36,7 @@ Route::get('/executar/seed/valor/vazio', function() {
     });
 
 
-// CASAS
-Route::group(['as' => 'casa.', 'prefix' => 'casa','middleware' => ['auth']], function(){
-    Route::get('/', ['as' => 'index', 'uses' => 'Casas\CasasController@index']); 
-    Route::get('/editar/{id}', ['as' => 'edit', 'uses' => 'Casas\CasasController@edit']);
-    Route::get('/criar', ['as' => 'edit', 'uses' => 'Casas\CasasController@create']);
-   Route::post('/cadastrar', ['as' => 'store', 'uses' => 'Casas\CasasController@store']);
-   Route::post('/atualizar', ['as' => 'update', 'uses' => 'Casas\CasasController@update']);
-});
-
+// 
 
 // AUTH
 Route::get('/sair',function(){
@@ -54,8 +46,8 @@ Route::get('/sair',function(){
 
 // PRECISO TESTAR
 Route::any('/login/imagem/{emaillogin?}', ['uses' =>'Auth\LoginController@imagem']);
- Route::get('/', ['uses' =>'InicioController@Index'])->middleware('auth'); 
- Route::get('/home', ['uses' =>'InicioController@Index'])->middleware('auth'); 
+ Route::get('/', ['uses' =>'Home\InicioController@Index'])->middleware('auth'); 
+ Route::get('/home', ['uses' =>'Home\InicioController@Index'])->middleware('auth'); 
 
 // Relatórios FINANCEIRO ANUAl
 Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio','middleware' => ['auth']], function(){
@@ -94,8 +86,8 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
 
     /* AREA */
     Route::group(['as' => 'areas.', 'prefix' => 'areas', 'middleware' => ['auth']], function(){
-    Route::get('/', ['uses' => 'areasController@allAreas'])->name('index');    
-    Route::get('/{id}', ['uses' => 'areasController@editArea'])->name('editar');
+        Route::get('/', ['uses' => 'areasController@allAreas'])->name('index');    
+        Route::get('/{id}', ['uses' => 'areasController@editArea'])->name('editar');
     });
 
 // FORNECEDOR
@@ -119,10 +111,23 @@ Route::group(['as' => 'agenda.','prefix' => 'agenda', 'middleware' => ['auth']],
     Route::any('calendariojson',['as' =>'calendariojson','uses' =>'agenda\calendarioController@json']);
 });
 
+// EMAIL
 Route::any('/send', 'EmailController@send');
 Route::any('/mail', 'EmailController@index');
 
+// AUTH
 Auth::routes();
+
+
+// CASAS
+// Route::group(['as' => 'casa.', 'prefix' => 'casa','middleware' => ['auth']], function(){
+//     Route::get('/', ['as' => 'index', 'uses' => 'Casas\CasasController@index']); 
+//     Route::get('/editar/{id}', ['as' => 'edit', 'uses' => 'Casas\CasasController@edit']);
+//     Route::get('/criar', ['as' => 'edit', 'uses' => 'Casas\CasasController@create']);
+//    Route::post('/cadastrar', ['as' => 'store', 'uses' => 'Casas\CasasController@store']);
+//    Route::post('/atualizar', ['as' => 'update', 'uses' => 'Casas\CasasController@update']);
+// });
+
 
 //  Route::any('/relatorioarea/{id}',['as' => 'relatoriarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
     

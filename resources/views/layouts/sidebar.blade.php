@@ -24,18 +24,18 @@
                                 class="menu-ocultar">Financeiro</span></a>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-has-children menu-item-object-custom menu-item-6">
-                        <a href="{{Route('casa.index')}}" class="fa fa-building">
+                        <a href="../public/vue#/empreendimentos/Todos" class="fa fa-building">
                             <span class="menu-ocultar">Empreendimentos</span>
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="{{url('/casa?status=Á venda')}}">Á venda</a>
+                                <a href="../public/vue#/empreendimentos/Á%20venda">Á venda</a>
                             </li>
                             <li>
-                                <a href="{{url('/casa?status=Vendida')}}">Vendida</a>
+                                <a href="../public/vue#/empreendimentos/Vendida">Vendida</a>
                             </li>
                             <li>
-                                <a href="{{url('/casa?status=construção')}}">Construção</a>
+                                <a href="../public/vue#/empreendimentos/Construção">Construção</a>
                             </li>
                         </ul>
                     </li>
