@@ -26,6 +26,16 @@ Route::group(['as' => 'casas.', 'prefix' => 'v1/casa'], function(){
     Route::post('/', ['as' => 'store', 'uses' => 'Api\v1\Empreendimentos\ApiEmpreendimentos@store']);
 });
 
+// FORNECEDORES
+Route::group(['as' => 'fornecedores.', 'prefix' => 'v1/fornecedores'], function(){
+    Route::get('/', ['as' => 'index', 'uses' => 'Api\v1\Fornecedores\ApiFornecedorController@index']); 
+    Route::get('/{id}', ['as' => 'edit', 'uses' => 'Api\v1\Fornecedores\ApiFornecedorController@edit']);
+
+    Route::put('/{id}', ['as' => 'update', 'uses' => 'Api\v1\Fornecedores\ApiFornecedorController@atualizar']);
+    Route::post('/', ['as' => 'store', 'uses' => 'Api\v1\Fornecedores\ApiFornecedorController@store']);
+});
+
+
 
 
 Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio'], function(){
