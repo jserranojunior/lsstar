@@ -5,14 +5,14 @@
         </header>
 
         
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-8">
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-striped  table-condensed table-hover">
                             <thead>
                                 <tr>
-                                    
+                                   <th>#</th> 
                                     <th>
                                         Nome
                                     </th>
@@ -22,10 +22,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr  class="pointer" v-for="(item) in clienteslaspalmas" :key="item.id">
-                                    
+                                <tr  class="pointer" v-for="(item, key, index ) in clienteslaspalmas" :key="item.id">
+                                    <td>{{index + 1}}</td>
                                     <td>{{item.nome}}</td>
-                                    <td>{{item.data_visita}}</td>
+                                    <td>{{item.data_agenda}}</td>
                                    </tr>
                             </tbody>
                         </table>

@@ -7919,8 +7919,8 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
             _c(
@@ -7933,11 +7933,13 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.clienteslaspalmas, function(item) {
+                  _vm._l(_vm.clienteslaspalmas, function(item, key, index) {
                     return _c("tr", { key: item.id, staticClass: "pointer" }, [
+                      _c("td", [_vm._v(_vm._s(index + 1))]),
+                      _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.nome))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(item.data_visita))])
+                      _c("td", [_vm._v(_vm._s(item.data_agenda))])
                     ])
                   }),
                   0
@@ -7967,6 +7969,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
         _c("th", [
           _vm._v(
             "\n                                    Nome\n                                "

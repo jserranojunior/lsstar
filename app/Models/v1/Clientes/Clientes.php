@@ -17,6 +17,28 @@ class Clientes extends Model
 'observacao', 'valorprestacao','informacao', 'tipocliente', 'cpf', 'rg'
 ];
 
+public function lasPalmasIndex(){
+    $clientes = DB::table('clientes')->where('evento_palmas', 1)->get();
+
+    foreach($clientes as $cliente){
+        
+        $agendamentos = DB::table('agendamento')->where('id_cliente', $cliente->id)->get();
+
+        foreach($agendamentos as $agenda){             
+            if($agenda > ''){
+                $cliente->data_agenda = $agenda->data;
+            }else{
+                $cliente->data_agenda = '';
+            }
+        }
+        
+       
+       
+    }
+
+    return $clientes;
+}
+
 public function Todos($request){
    $clientes = DB::table('clientes')->orderBy('id', 'asc')->get();  
    $clientes = DB::table('clientes')      
