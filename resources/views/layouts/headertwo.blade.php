@@ -25,10 +25,9 @@
      <!-- js -->
 
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
 
 
 <!-- {{--  //CORRIGIR ACHAR CDN EM PORTUGUES --}} -->
@@ -38,10 +37,13 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
  
- 
+ <script src="{{ URL::asset('/js/funcoes.js') }}"></script>
 <script src="{{ URL::asset('/js/select-busca.js') }}"></script>
 <script src="{{ URL::asset('/js/cep-automatico.js') }}"></script>
-<script src="{{ URL::asset('/js/funcoes.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha256-Kg2zTcFO9LXOc7IwcBx1YeUBJmekycsnTsq2RuFHSZU=" crossorigin="anonymous"></script>
+<script src="{{ URL::asset('/js/mascaras.js') }}"></script>
+
 
 
 <!-- js -->
@@ -54,7 +56,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="{{{ url('/img/lsstar.png') }}}">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
     </head>
    <body class="hold-transition skin-blue sidebar-mini">
        

@@ -206,29 +206,7 @@ $(document).ready(function () {
 
   /* MASCARA DE DINHEIRO */
 
-  $('.valor_mascara').mask('000.000.000.000.000,00', {
-    reverse: true
-  });
-  $('.placeholder').mask("00/00/0000", {
-    placeholder: "__/__/____"
-  });
-  $('.fallback').mask("00r00r0000", {
-    translation: {
-      'r': {
-        pattern: /[\/]/,
-        fallback: '/'
-      },
-      placeholder: "__/__/____"
-    }
-  });
   /* FIM MASCARA DE DINHREIRO */
-
-  /* MASCARA TELEFONE */
-
-  $('.telefone_mascara').mask('(00)0000-00000');
-  $('.dinheiro_mascara').mask('000.000.000.000.000,00', {
-    reverse: true
-  });
 
   if (typeof jQuery === "undefined") {
     throw new Error("AdminLTE requires jQuery");
@@ -238,63 +216,62 @@ $(document).ready(function () {
 
   (function ($, jQuery, AdminLTEOptions) {//// original code goes here
   })(jQuery, jQuery, AdminLTEOptions);
-  /* OCULTAR E MOSTRAR PARCELA */
+});
+/* OCULTAR E MOSTRAR PARCELA */
 
+$(document).ready(function () {
+  var $tipo = $('#tipo').val();
 
-  $(document).ready(function () {
+  if ($tipo == "Parcelado") {
+    $('#group-parcelas').addClass("mostrar");
+    $('#group-parcelas').removeClass("ocultar");
+  } else {
+    $('#group-parcelas').removeClass("mostrar");
+    $('#group-parcelas').addClass("ocultar");
+  }
+
+  $("#tipo").change(function () {
     var $tipo = $('#tipo').val();
 
     if ($tipo == "Parcelado") {
       $('#group-parcelas').addClass("mostrar");
       $('#group-parcelas').removeClass("ocultar");
+      $('#valor-parcela').removeClass("ocultar");
+      $('#valor-parcela').addClass("mostrar");
+      $('#valor-vista').addClass("ocultar");
+      $('#valor-vista').removeClass("mostrar");
     } else {
       $('#group-parcelas').removeClass("mostrar");
       $('#group-parcelas').addClass("ocultar");
+      $('#valor-parcela').addClass("ocultar");
+      $('#valor-parcela').removeClass("mostrar");
+      $('#valor-vista').removeClass("ocultar");
+      $('#valor-vista').addClass("mostrar");
     }
-
-    $("#tipo").change(function () {
-      var $tipo = $('#tipo').val();
-
-      if ($tipo == "Parcelado") {
-        $('#group-parcelas').addClass("mostrar");
-        $('#group-parcelas').removeClass("ocultar");
-        $('#valor-parcela').removeClass("ocultar");
-        $('#valor-parcela').addClass("mostrar");
-        $('#valor-vista').addClass("ocultar");
-        $('#valor-vista').removeClass("mostrar");
-      } else {
-        $('#group-parcelas').removeClass("mostrar");
-        $('#group-parcelas').addClass("ocultar");
-        $('#valor-parcela').addClass("ocultar");
-        $('#valor-parcela').removeClass("mostrar");
-        $('#valor-vista').removeClass("ocultar");
-        $('#valor-vista').addClass("mostrar");
+  });
+});
+$(document).ready(function () {
+  $('#excluir').click(function () {
+    alert("Deseja Realmente Excluir");
+  });
+});
+$(document).ready(function () {
+  var emailLogin;
+  var $url;
+  var asset;
+  $asset = $('#asset').val();
+  $('#email-login').change(function () {
+    $emailLogin = $('#email-login').val();
+    $url = 'login/imagem/' + $emailLogin;
+    $.ajax({
+      method: 'get',
+      url: $url,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
-    });
-  });
-  $(document).ready(function () {
-    $('#excluir').click(function () {
-      alert("Deseja Realmente Excluir");
-    });
-  });
-  $(document).ready(function () {
-    var emailLogin;
-    var $url;
-    var asset;
-    $asset = $('#asset').val();
-    $('#email-login').change(function () {
-      $emailLogin = $('#email-login').val();
-      $url = 'login/imagem/' + $emailLogin;
-      $.ajax({
-        method: 'get',
-        url: $url,
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      }).done(function (msg) {
-        $link = $asset + msg;
-        $("#imagem-perfil").attr("src", $link);
-      });
+    }).done(function (msg) {
+      $link = $asset + msg;
+      $("#imagem-perfil").attr("src", $link);
     });
   });
   $("#possui-empreendimento").change(function () {

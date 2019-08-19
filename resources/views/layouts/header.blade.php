@@ -59,6 +59,8 @@
 <script src="{{ URL::asset('/js/cep-automatico.js') }}"></script>
 <script src="{{ URL::asset('/js/funcoes.js') }}"></script>
 
+<script src="{{ URL::asset('/js/mascaras.js') }}"></script>
+
 
 <!-- js -->
     
