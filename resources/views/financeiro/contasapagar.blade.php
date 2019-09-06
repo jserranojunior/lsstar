@@ -405,7 +405,11 @@
               </td>
             </tr>
             <tr class="trcolor">
-              <td colspan="6" > Total de pendencias: </td>
+              <td colspan="6" > Total de pendencias: 
+              @if($dataatual == "2019-09")
+              <span class="bold azul">Engas - 27.000,00 </span></td>
+              @endif
+
               <td class="" colspan="1">
                 <span class="direita">Total pago</span>
               </td>
