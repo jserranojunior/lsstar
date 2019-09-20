@@ -501,11 +501,11 @@
      }
   
      function cheque($cheque) {   
-      var $url = 'financeiro/pagamento/'+$cheque;
-       var width = 560;
-       var height = 300;    
-     var left = 400;
-         var top = 100;    
+      var $url = 'vue#/financeiro/pagamentoemitido/'+$cheque;
+       var width = 900;
+       var height = 400;    
+     var left = 550;
+         var top = 250;    
        window.open($url,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
       
      }

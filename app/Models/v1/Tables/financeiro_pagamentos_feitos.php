@@ -36,4 +36,6 @@ class financeiro_pagamentos_feitos extends Model
         return('Pagamento Feito');
         // return("$id, $data, $valor");
     }
+
+    
 }

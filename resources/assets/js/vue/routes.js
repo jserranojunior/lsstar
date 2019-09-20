@@ -7,6 +7,8 @@ import Visitas from './views/LasPalmas/Visitas'
 import NovoClienteLasPalmas from './views/LasPalmas/NovoClienteLasPalmas'
 import Empreendimentos from './views/Empreendimentos/Empreendimentos'
 
+import PagamentoEmitido from './components/Financeiro/PagamentoEmitido'
+
 const routes = [
     {path:'/', name:'home', component: Home},
     {path:'/manutencoes', name:'manutencoes', component: Manutencoes},
@@ -19,6 +21,7 @@ const routes = [
     {path:'/novo/empreendimento', name:'novoempreendimento', component: NewOrEditEmpreendimento},
     {path:'/novo/empreendimento/:id', name:'novoempreendimentoid', component: NewOrEditEmpreendimento},
 
+    {path:'/financeiro/pagamentoemitido/:id', name:'pagamentoemitido', component: PagamentoEmitido},
 ]
 
 export default routes

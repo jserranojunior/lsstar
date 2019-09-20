@@ -1752,6 +1752,164 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+  name: "PagamentoEmitido",
+  data: function data() {
+    return {
+      data: {},
+      excluido: {},
+      excluir: {}
+    };
+  },
+  mounted: function mounted() {// console.log(this.$route.params.id)
+  },
+  methods: {
+    excluirPagamento: function excluirPagamento(parametro) {
+      var _this = this;
+
+      this.excluir.cheque = parametro;
+      var url = '../public/api/v1/emitirpagamento/delete';
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, this.excluir).then(function (response) {
+        _this.excluido = response.data.data; // console.log("Excluido")
+
+        console.log(_this.excluido);
+      }).catch(function (error) {
+        console.log(error.message);
+        console.log("naõ cadastrado");
+      });
+    },
+    getPagamentoEmitido: function getPagamentoEmitido(parametro) {
+      var _this2 = this;
+
+      // console.log(parametro + "top")
+      var url = '../public/api/v1/emitirpagamento/' + parametro;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (response) {
+        _this2.data = response.data.data[0]; // console.log(this.data)
+      }).catch(function (error) {
+        console.log(error);
+        console.log("naõ cadastrado");
+      });
+    }
+  },
+  watch: {
+    $route: function $route() {
+      if (this.$route.params.id) {
+        this.getPagamentoEmitido(this.$route.params.id);
+      } else {
+        this.data = {};
+      }
+    },
+    excluido: function excluido() {
+      if (this.excluido) {
+        console.log("RETURN");
+        window.opener.location.replace(window.opener.location);
+        window.close();
+      }
+    }
+  }
+}, "mounted", function mounted() {
+  if (this.$route.params.id) {
+    this.getPagamentoEmitido(this.$route.params.id);
+  }
+}));
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Manutencao/Manutencoes.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/components/Manutencao/Manutencoes.vue?vue&type=script&lang=js& ***!
@@ -3425,6 +3583,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.side-navbar,\n.navbar,\n.main-footer {\n    display: none;\n}\n.row-top{\n    margin-top: 25px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Manutencao/Manutencoes.vue?vue&type=style&index=0&lang=css&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/components/Manutencao/Manutencoes.vue?vue&type=style&index=0&lang=css& ***!
@@ -4048,6 +4225,36 @@ process.umask = function() { return 0; };
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--5-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PagamentoEmitido.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -4812,6 +5019,206 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (this && this.clearImmediate);
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=template&id=5fb8c180&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=template&id=5fb8c180& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container-fluid" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                " table table-condensed no-padding table-striped table-bordered table-hover"
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.data.numero_cheque) +
+                      "\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(_vm.data.data_conta) +
+                      "\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "text-bold",
+                      attrs: {
+                        href: _vm.data.link_comprovante,
+                        target: "_BLANK"
+                      }
+                    },
+                    [_vm._v("ACESSAR COMPROVANTE")]
+                  )
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c(
+            "table",
+            {
+              staticClass:
+                " table table-condensed no-padding table-striped table-bordered table-hover"
+            },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [
+                  _vm._v(
+                    "\n                        {favorecido}\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.data.mes_referencia) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.data.valor_pago) +
+                      "\n                    "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("td", [_c("h5", [_vm._v(_vm._s(_vm.data.valor_pago))])])
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _vm.data.numero_cheque
+          ? _c("div", { staticClass: "col-12" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function($event) {
+                      _vm.excluirPagamento(_vm.data.numero_cheque)
+                    }
+                  }
+                },
+                [_vm._v("Excluir Pagamento")]
+              )
+            ])
+          : _vm._e()
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row-top" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("h3", { staticClass: "text-center" }, [_vm._v("PAGAMENTO EMITIDO")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _vm._v(
+          "\n                            Numero Pagamento\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _vm._v(
+          "\n                            Data Pagamento\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _vm._v(
+          "\n                            Link Comprovante\n                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [
+        _vm._v("\n                        Fornecedor\n                    ")
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v("\n                        Vencimento\n                    ")
+      ]),
+      _vm._v(" "),
+      _c("th", [
+        _vm._v("\n                        Valor\n                    ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center", attrs: { colspan: "2" } }, [
+      _c("h5", [_vm._v("VALOR TOTAL")])
+    ])
+  }
+]
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -23755,6 +24162,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PagamentoEmitido_vue_vue_type_template_id_5fb8c180___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PagamentoEmitido.vue?vue&type=template&id=5fb8c180& */ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=template&id=5fb8c180&");
+/* harmony import */ var _PagamentoEmitido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PagamentoEmitido.vue?vue&type=script&lang=js& */ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PagamentoEmitido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PagamentoEmitido.vue?vue&type=style&index=0&lang=css& */ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PagamentoEmitido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PagamentoEmitido_vue_vue_type_template_id_5fb8c180___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PagamentoEmitido_vue_vue_type_template_id_5fb8c180___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PagamentoEmitido.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css& ***!
+  \*************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--5-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PagamentoEmitido.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=template&id=5fb8c180&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=template&id=5fb8c180& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_template_id_5fb8c180___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./PagamentoEmitido.vue?vue&type=template&id=5fb8c180& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue?vue&type=template&id=5fb8c180&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_template_id_5fb8c180___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagamentoEmitido_vue_vue_type_template_id_5fb8c180___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/vue/components/Manutencao/Manutencoes.vue":
 /*!***********************************************************************!*\
   !*** ./resources/assets/js/vue/components/Manutencao/Manutencoes.vue ***!
@@ -23904,6 +24398,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_LasPalmas_Visitas__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/LasPalmas/Visitas */ "./resources/assets/js/vue/views/LasPalmas/Visitas.vue");
 /* harmony import */ var _views_LasPalmas_NovoClienteLasPalmas__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/LasPalmas/NovoClienteLasPalmas */ "./resources/assets/js/vue/views/LasPalmas/NovoClienteLasPalmas.vue");
 /* harmony import */ var _views_Empreendimentos_Empreendimentos__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/Empreendimentos/Empreendimentos */ "./resources/assets/js/vue/views/Empreendimentos/Empreendimentos.vue");
+/* harmony import */ var _components_Financeiro_PagamentoEmitido__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Financeiro/PagamentoEmitido */ "./resources/assets/js/vue/components/Financeiro/PagamentoEmitido.vue");
+
 
 
 
@@ -23952,6 +24448,10 @@ var routes = [{
   path: '/novo/empreendimento/:id',
   name: 'novoempreendimentoid',
   component: _views_Empreendimentos_NewOrEditEmpreendimento__WEBPACK_IMPORTED_MODULE_4__["default"]
+}, {
+  path: '/financeiro/pagamentoemitido/:id',
+  name: 'pagamentoemitido',
+  component: _components_Financeiro_PagamentoEmitido__WEBPACK_IMPORTED_MODULE_8__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
