@@ -808,21 +808,25 @@ class financeiro extends Model {
 
             /* ############# FAZ A CONSULTA NO BANCO NO VALOR ANTERIOR E ATUAL ################ */
             $this->contas = DB::table('contas_a_pagar as c')
-                    ->select('c.id', 'p.tipo_pagamento', 'a.valor as valor_anterior', 'c.tipo',
+                    ->select('c.id',  'a.valor as valor_anterior', 'c.tipo',
                     'c.area', 'v.codigo', 'v.ccustos', 'c.sete', 'c.contas', 'c.parcelas', 
                     'c.tipo_parcela', 'v.favorecido', 'v.valor', 'v.observacoes', 'v.item',
-                    'v.inicio_mes as dia', 'c.pagador as pagador', 'p.numero_cheque' , 
+                    'v.inicio_mes as dia', 'c.pagador as pagador', 
                     'c.inicio_conta', 'c.fim_conta')
                     ->leftjoin('valor_contas_a_pagar as v', function($join) {
                         $join->on('c.id', '=', 'v.codigo')
                         ->where(DB::raw("SUBSTRING(v.inicio_mes,1,7)"), '=', $this->data)
                         ;
                     })
-                    ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
-                        $pago->on('c.id', '=', 'p.id_conta')
-                        ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
-                        ->where('p.numero_cheque', '>', '');
-                    })
+                    // ->leftjoin('financeiro_pagamentos_feitos as p', function($pago) {
+                    //     $pago->on('p.id_conta', '=', 
+                    //     DB::raw('(SELECT p.tipo_pagamento, p.numero_cheque, p.id FROM financeiro_pagamentos_feitos as p 
+                    //     WHERE p.id_conta = c.id LIMIT 1)')
+                    //     )
+                    //     ->where(DB::raw("SUBSTRING(p.mes_referencia,1,7)"), '=', $this->data)
+                    //     ->where('p.numero_cheque', '>', '');                       
+                    // })
+                    
                     ->leftjoin('valor_contas_a_pagar as a', function($anterior) {
                         $anterior->on('c.id', '=', 'a.codigo')
                         ->where(DB::raw("SUBSTRING(a.inicio_mes,1,7)"), '=', $this->dataAnterior);
@@ -831,9 +835,32 @@ class financeiro extends Model {
                     ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '>=', $this->data)
                     ->orwhere(DB::raw("SUBSTRING(c.inicio_conta, 1,7)"), '<=', $this->data)
                     ->where(DB::raw("SUBSTRING(c.fim_conta,1,7)"), '=', '')
+                
                     ->distinct()
                     // ->take(1)
                     ->get();
+
+                    // 'p.numero_cheque' , 
+                    // 'p.tipo_pagamento',
+
+
+                    $valoresPagos = '';
+                    foreach($this->contas as $conta){
+                        $conta->tipo_pagamento = '';
+                   
+                        $valoresPagos =  DB::table('financeiro_pagamentos_feitos as p')
+                        ->where('p.id_conta', $conta->id)
+                        ->take(1)   
+                        ->get();    
+                        
+                        foreach($valoresPagos as $valorPago){
+                          
+                            $conta->numero_cheque = $valorPago->numero_cheque;
+                            $conta->tipo_pagamento = $valorPago->tipo_pagamento;
+                        }
+                        
+                    }
+                 
            
     }
     
