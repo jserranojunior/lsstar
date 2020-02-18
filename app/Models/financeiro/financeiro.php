@@ -850,6 +850,7 @@ class financeiro extends Model {
                    
                         $valoresPagos =  DB::table('financeiro_pagamentos_feitos as p')
                         ->where('p.id_conta', $conta->id)
+                        ->where('p.mes_referencia', $this->data)
                         ->take(1)   
                         ->get();    
                         
