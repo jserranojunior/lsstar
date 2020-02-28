@@ -21,7 +21,8 @@ class UnidadesNegocio extends Seeder
             ['name' => '07 - Rua Arilene'],
             ['name' => '08 - Jardim Asturias'],
             ['name' => '09 - Chácara do JB'],
-            ['name' => '10 - Rua São Paulo - Enseada']
+            ['name' => '10 - Rua São Paulo - Enseada'],
+            ['name' => '11 - Attílio Gelsomini'],
         ]
         );
     }
