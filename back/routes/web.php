@@ -7,6 +7,7 @@ Route::group(['as' => 'vue.', 'prefix' => 'vue','middleware' => ['auth']], funct
     });
 });
 
+Route::get('apitoken', 'ApiTokenController@update');
 
 // v1
 Route::get('v1/financeiro', 'v1\Financeiro\ContasAPagarController@index');

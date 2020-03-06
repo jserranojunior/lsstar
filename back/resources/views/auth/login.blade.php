@@ -82,7 +82,10 @@
 
 
 
-
+<script>
+    console.log('funcionando')
+    localStorage.setItem('laravel', 0) 
+</script>
 
 
 

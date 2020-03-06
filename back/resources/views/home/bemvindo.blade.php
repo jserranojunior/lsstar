@@ -4,7 +4,7 @@
 
 <div class="row">
         <div class="col-md-12"><h1  class="bemvindo">Seja bem vindo!</h1>
-             <h4 class="text-center">Fique a vontade para testar as novas atualizações!</h4>
+             <h4 class="text-center">Fique a vontade para testar as novas atualizações.</h4>
         </div>
 </div>
 <div class="row">
@@ -84,4 +84,9 @@
         </div>
     </a>
 </div>    
+
+<script>
+    console.log('funcionando')
+    localStorage.setItem('laravel', 1) 
+</script>
 @endsection

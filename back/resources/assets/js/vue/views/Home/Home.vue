@@ -97,5 +97,8 @@
 <script>
 export default {
     name: "Home",
+    beforeMount(){
+        localStorage.setItem('laravel', 1) 
+    }
 }
 </script>

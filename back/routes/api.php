@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+// use Auth;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -22,6 +22,15 @@ Route::group([
         Route::patch('/{id}', 'Api\v1\Clientes\ApiClientes@update');
         Route::put('/{id}', 'Api\v1\Clientes\ApiClientes@update');
 });
+
+
+Route::group([
+    'middleware' => ['cors'],
+    'prefix' => 'v1/logado',
+], function ($router) {
+        Route::get('/', 'Api\v1\Auth\AuthController@logado');
+});
+
 
 
 
