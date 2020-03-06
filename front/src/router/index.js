@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import beforeEach from './beforeEach'
+import beforeEach from './beforeEach'
 import Home from '@/modules/home/pages/'
 import Login from '../modules/auth/pages/Login.vue'
 
@@ -51,6 +51,6 @@ const router = new VueRouter({
   routes
 })
 
-// router.beforeEach(beforeEach)
+router.beforeEach(beforeEach)
 
 export default router

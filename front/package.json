@@ -11,6 +11,7 @@
     "awesome-mask": "^1.1.1",
     "axios": "^0.19.1",
     "core-js": "^3.4.4",
+    "js-cookie": "^2.2.1",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
