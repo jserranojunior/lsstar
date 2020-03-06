@@ -17,7 +17,7 @@ export default async (to, from, next) => {
     laravel = localStorage.getItem('laravel')
   }
 
- if(laravel){
+ if(laravel == 1){
     next()
   }else{
     console.log(laravel)
