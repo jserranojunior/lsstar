@@ -24,6 +24,11 @@ Route::get('/executar/migrate', function() {
     return ("Migrate Sucess");
     });
 
+    Route::get('/executar/storagelink', function() {
+        Artisan::call('storage:link');
+        return ("Storage");
+        });
+
     /* COMANDOS ARTISAN */
 Route::get('/executar/seed/unidades', function() {
     Artisan::call('db:seed', ['--class'=> 'UnidadesNegocio']);
