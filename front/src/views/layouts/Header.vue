@@ -46,15 +46,15 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a v-if="!Auth.token" class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+                    <!-- <a v-if="!Auth.token" class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
                         <router-link to="/login">
                             <button class="btn btn-success  btn-sm">Login</button>
                         </router-link>
-                    </a>
+                    </a> -->
                 </li>
                 <li class="nav-item">
-                    <a @click="sair()" class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                        <a href="#" class="d-block text-center">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+                        <a :href="linkSair" class="d-block text-center">
                             <a href="#" class="text-danger">Sair</a>
                         </a>
 
@@ -73,6 +73,7 @@ import {mapState, mapActions } from 'vuex'
         name: "Header", 
         data() {
         return {
+            linkSair: process.env.VUE_APP_LARAVEL_SITE_URL + '/sair',
         }
     },
     methods:{

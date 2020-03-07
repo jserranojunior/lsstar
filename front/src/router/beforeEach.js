@@ -13,6 +13,8 @@ export default async (to, from, next) => {
   var laravel = 0
   if(process.env.VUE_APP_LARAVEL_SITE_URL == 'http://localhost/lsstar/back/public'){
     laravel = 1
+    localStorage.setItem('laravel_name', 'Jorge')
+    localStorage.setItem('laravel_photo', 'jorge.jpg')
   }else{
     laravel = localStorage.getItem('laravel')
   }

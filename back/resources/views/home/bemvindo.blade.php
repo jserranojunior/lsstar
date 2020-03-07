@@ -1,8 +1,11 @@
 @extends('layouts.header')
 @section('content')
 
+<input style="display:none" type="text" id="laravel_name" value="{{Auth::user()->name}}">
+<input style="display:none" type="text" id="laravel_photo" value="{{Auth::user()->photo}}">
 
-<div class="row">
+<div class="row"> 
+
         <div class="col-md-12"><h1  class="bemvindo">Seja bem vindo!</h1>
              <h4 class="text-center">Fique a vontade para testar as novas atualizações.</h4>
         </div>
@@ -87,6 +90,8 @@
 
 <script>
     console.log('funcionando')
-    localStorage.setItem('laravel', 1) 
+    localStorage.setItem('laravel', 1)
+    localStorage.setItem('laravel_name', document.getElementById("laravel_name").value)
+    localStorage.setItem('laravel_photo', document.getElementById("laravel_photo").value)   
 </script>
 @endsection

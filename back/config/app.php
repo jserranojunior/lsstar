@@ -28,6 +28,9 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+    'urlfront' => env('APP_URLFRONT', 'http://localhost:8080'),
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

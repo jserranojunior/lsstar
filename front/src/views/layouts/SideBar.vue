@@ -6,15 +6,15 @@
                 <!-- <img src="alitre.net/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
                 <span class="text-center brand-text font-weight-light">LS STAR</span>
             </a>
-
+           
             <div class="user-panel mt-3 pb-3 d-flex">
                 <div class="image">
-                    <img src="http://alvitre.net/alvitre/images/programador/jorge.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img :src="laravelPhoto" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Jorge Serrano Junior</a>
+                    <a href="#" class="d-block">{{laravelName}}</a>
                 </div>
-            </div>
+            </div> 
 
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -172,20 +172,25 @@
 </template>
 
 <script>
+    var Foto = require(`@/assets/img/users/${localStorage.getItem("laravel_photo")}`)
 export default {
+
     name: "SideBar",
     data() {
         return {
             linkFinanceiro: process.env.VUE_APP_LARAVEL_SITE_URL + '/financeiro',
             linkAgenda: process.env.VUE_APP_LARAVEL_SITE_URL + '/agenda',
-            linkFornecedor: process.env.VUE_APP_LARAVEL_SITE_URL + '/fornecedor'
+            linkFornecedor: process.env.VUE_APP_LARAVEL_SITE_URL + '/fornecedor',
+            laravelName:localStorage.getItem('laravel_name'),
+             laravelPhoto: Foto,
+            
         }
     },
     components: {
 
     },
     computed: {
-
+        
     },
 
     methods: {

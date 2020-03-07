@@ -16,7 +16,7 @@
             <div class="drop-menu navbar-collapse profile-usermenu">
                 <ul>
                     <li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a class="glyphicon glyphicon-home dropdown-submenu" href="../public/vue"><span
+                        <a class="glyphicon glyphicon-home dropdown-submenu" href="{{ config('app.urlfront') }}"><span
                                 class="menu-ocultar">Início </span> </a>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
@@ -24,39 +24,39 @@
                                 class="menu-ocultar">Financeiro</span></a>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-has-children menu-item-object-custom menu-item-6">
-                        <a href="../public/vue#/empreendimentos/Todos" class="fa fa-building">
+                        <a href="{{ config('app.urlfront') }}/#/empreendimentos/Todos" class="fa fa-building">
                             <span class="menu-ocultar">Empreendimentos</span>
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="../public/vue#/empreendimentos/Á%20venda">Á venda</a>
+                                <a href="{{ config('app.urlfront') }}/#/empreendimentos/Á%20venda">Á venda</a>
                             </li>
                             <li>
-                                <a href="../public/vue#/empreendimentos/Vendida">Vendida</a>
+                                <a href="{{ config('app.urlfront') }}/#/empreendimentos/Vendida">Vendida</a>
                             </li>
                             <li>
-                                <a href="../public/vue#/empreendimentos/Construção">Construção</a>
+                                <a href="{{ config('app.urlfront') }}/#/empreendimentos/Construção">Construção</a>
                             </li>
                         </ul>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a href="../public/vue#/manutencoes"><i class="fa fa-wrench" aria-hidden="true"></i><span
+                        <a href="{{ config('app.urlfront') }}/#/manutencoes"><i class="fa fa-wrench" aria-hidden="true"></i><span
                                 class="menu-ocultar">Manutenções</span></a>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a href="../public/vue#/clientes/clientes" class="glyphicon glyphicon-user">
+                        <a href="{{ config('app.urlfront') }}/#/clientes/clientes" class="glyphicon glyphicon-user">
                         <span class="menu-ocultar">Clientes</span></a>
                     </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a href="../public/vue#/laspalmas/novocliente" class="glyphicon glyphicon-user"><span class="menu-ocultar">Las Palmas</span></a>
+                        <a href="{{ config('app.urlfront') }}/#/laspalmas/novocliente" class="glyphicon glyphicon-user"><span class="menu-ocultar">Las Palmas</span></a>
 
                         <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a href="../public/vue#/laspalmas/visitas"> <i class="far fa-file-alt"></i><span class="menu-ocultar">Relatorio de Visitas</span></a>
+                        <a href="{{ config('app.urlfront') }}/#/laspalmas/visitas"> <i class="far fa-file-alt"></i><span class="menu-ocultar">Relatorio de Visitas</span></a>
 
                       
                     </li>
                     <li id="menu-item-23" class="menu-item menu-item-type-custom  menu-item-object-custom menu-item-6">
-                        <a href="../public/vue#/clientes/proprietarios"> <i class="fa fa-address-card"
+                        <a href="{{ config('app.urlfront') }}/#/clientes/proprietarios"> <i class="fa fa-address-card"
                                 aria-hidden="true"></i><span class="menu-ocultar">Proprietários</span></a>
 
                     </li>
