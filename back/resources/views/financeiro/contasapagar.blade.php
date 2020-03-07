@@ -3,7 +3,7 @@
 <div class="atualizar" onunload="window.opener.location.reload();"></div>
 <div class="parte-cima">
   <div class="row">
-    @if(Auth::user()->id == 2 or Auth::user()->id == 3 or Auth::user()->id == 5 or Auth::user()->id == 1)
+
     <!-- PANEL 1 -->
     <div class="col-md-4 ">
       <div class="box box-info">
@@ -49,7 +49,7 @@
         
       </div>
     </div>
-    @endif
+    
     <!-- PANEL 2 -->
     <div class="col-md-4 ">
       <div class="box box-info">
@@ -453,6 +453,7 @@
   </div>
 </div>
 <form method="post" action="{{Route('financeiro.index')}}" name="formulario" id="formulariofiltros">
+  <input type="hidden" id="urlfront" value="{{ config('app.urlfront') }}">
   <input type="hidden" value="" name="mes" id="mes">
   <input type="hidden" value="" name="ano" id="ano">
   <input type="hidden" value="" name="areafiltro" id="areafiltro">
@@ -471,6 +472,7 @@
   var contafiltro;
   var pagadorfiltro;
   var tipofiltro;
+  
   
   document.getElementById('mes').value = mes;
   document.getElementById('ano').value = ano;
@@ -501,13 +503,15 @@
      }
   
      function cheque($cheque) {   
-      var $url = 'vue#/financeiro/pagamentoemitido/'+$cheque;
+      var urlfront = document.getElementById('urlfront').value;
+      var $url = urlfront + '/#/financeiro/pagamentoemitido/'+$cheque;
+     
        var width = 900;
        var height = 400;    
      var left = 550;
          var top = 250;    
        window.open($url,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
-      
+      console.log('abriu')
      }
      /* Defaults */ 
 

@@ -1,11 +1,5 @@
 <?php
 
-// vue
-Route::group(['as' => 'vue.', 'prefix' => 'vue','middleware' => ['auth']], function(){
-    Route::get('/', function () {
-        return view('vue.index');
-    });
-});
 
 Route::get('apitoken', 'ApiTokenController@update');
 
