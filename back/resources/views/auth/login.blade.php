@@ -85,6 +85,8 @@
 <script>
     console.log('funcionando')
     localStorage.setItem('laravel', 0) 
+    localStorage.setItem('laravel_name', 0) 
+    localStorage.setItem('laravel_photo', 0) 
 </script>
 
 
