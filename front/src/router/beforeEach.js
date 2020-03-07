@@ -17,6 +17,8 @@ export default async (to, from, next) => {
     localStorage.setItem('laravel_photo', 'jorge.jpg')
   }else{
     laravel = localStorage.getItem('laravel')
+    localStorage.getItem('laravel_name', 'Jorge')
+    localStorage.getItem('laravel_photo', 'jorge.jpg')
   }
 
  if(laravel == 1){
