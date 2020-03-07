@@ -6,7 +6,7 @@
                 <!-- <img src="alitre.net/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
                 <span class="text-center brand-text font-weight-light">LS STAR</span>
             </a>
-           
+
             <div class="user-panel mt-3 pb-3 d-flex">
                 <div class="image">
                     <img :src="laravelPhoto" class="img-circle elevation-2" alt="User Image">
@@ -172,7 +172,7 @@
 </template>
 
 <script>
-    var Foto = require(`@/assets/img/users/${localStorage.getItem("laravel_photo")}`)
+  
 export default {
 
     name: "SideBar",
@@ -182,7 +182,7 @@ export default {
             linkAgenda: process.env.VUE_APP_LARAVEL_SITE_URL + '/agenda',
             linkFornecedor: process.env.VUE_APP_LARAVEL_SITE_URL + '/fornecedor',
             laravelName:localStorage.getItem('laravel_name'),
-             laravelPhoto: Foto,
+            laravelPhoto: process.env.VUE_APP_LARAVEL_STORAGE_URL + '/img/users/' + localStorage.getItem("laravel_photo"),
             
         }
     },
@@ -190,7 +190,8 @@ export default {
 
     },
     computed: {
-        
+       
+    
     },
 
     methods: {

@@ -53,10 +53,10 @@
                     </a> -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                        <a :href="linkSair" class="d-block text-center">
-                            <a href="#" class="text-danger">Sair</a>
-                        </a>
+                    <a class="nav-link" :href="linkSair">
+                   
+                            <p class="text-danger">Sair</p>
+                        
 
                     </a>
                 </li>
