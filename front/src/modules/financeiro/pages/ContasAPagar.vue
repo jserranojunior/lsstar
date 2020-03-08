@@ -422,7 +422,7 @@ export default {
     },
     methods: {
         editarConta(id) {
-            var $url = "http://localhost/lsstar/back/public/financeiro/" + id + "/" + this.dataAtual + "/editar";
+            var $url = process.env.VUE_APP_LARAVEL_SITE_URL + "/financeiro/" + id + "/" + this.dataAtual + "/editar";
             var width = 560;
             var height = 570;
             var left = 400;
@@ -442,7 +442,7 @@ export default {
             );
         },
         criarConta() {
-            var $url = "http://localhost/lsstar/back/public/financeiro/criar/" + this.dataAtual;
+            var $url = process.env.VUE_APP_LARAVEL_SITE_URL + "/financeiro/criar/" + this.dataAtual;
             var width = 560;
             var height = 570;
             var left = 400;

@@ -153,12 +153,10 @@
     </div>
 
 <script>
-    function submitarValor(){
-        this.object = window.opener.location.href; 
-        // console.log(this.object)
+    function submitarValor(){       
         document.getElementById("formEdicao").submit();
         window.opener.location.href = 'http://localhost:8080/#/financeiro/contasapagar';
-        self.close(); 
+        // self.close(); 
     }
 </script>
 @endforeach
