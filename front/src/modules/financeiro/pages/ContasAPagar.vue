@@ -471,8 +471,7 @@ export default {
         },
         getApiFinanceiro() {
             var objThis = this;
-            var url =
-                "http://localhost/lsstar/back/public/api/v1/financeiro?data=" +
+            var url = process.env.VUE_APP_LARAVEL_API_URL + "/financeiro?data=" +
                 this.dataAtual +
                 "&diaInicial=" +
                 this.diaInicial +

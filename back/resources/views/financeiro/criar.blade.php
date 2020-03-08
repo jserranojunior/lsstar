@@ -9,7 +9,7 @@
             ADICIONAR NOVA CONTA
         </div>
         <div class='box-body'>
-            <form class="form-horizontal" method="post" action="{{Route('financeiro.store')}}">
+            <form class="form-horizontal" id="formEdicao" method="post" action="{{Route('financeiro.store')}}">
                 
                 <div class="form-group">
                     <label for="favorecido" class='col-xs-4  control-label'>Fornecedor</label>
@@ -113,7 +113,8 @@
             <div class="form-group ">
                 <div class="col-xs-offset-4 col-xs-4">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="submit" value="CADASTRAR" class="btn btn-primary">
+                <div class="btn btn-primary" onClick="submitarValor();">CADASTRAR</div>
+                <!-- <input type="submit" value="CADASTRAR" class="btn btn-primary"> -->
                 </div> 
                 
             </div>
@@ -121,5 +122,12 @@
     </div>
 </form>
 
+<script>
+    function submitarValor(){       
+        document.getElementById("formEdicao").submit();
+        window.opener.location.reload(true);
+        self.close(); 
+    }
+</script>
 
 @endsection
