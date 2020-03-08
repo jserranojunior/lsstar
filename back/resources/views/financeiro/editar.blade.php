@@ -155,8 +155,8 @@
 <script>
     function submitarValor(){       
         document.getElementById("formEdicao").submit();
-        window.opener.location.href = 'http://localhost:8080/#/financeiro/contasapagar';
-        // self.close(); 
+        window.opener.location.reload(true);
+        self.close(); 
     }
 </script>
 @endforeach
