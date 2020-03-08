@@ -30,9 +30,15 @@
                     </router-link>
                 </li>
                 <li>
-                   <a href="../public/financeiro">
+                   <a href="/financeiro/contasapagar">
                       <i class="fas fa-money-check-alt"></i>
                       Financeiro                
+                    </a>
+                </li>
+                <li>
+                   <a href="../public/financeiro">
+                      <i class="fas fa-money-check-alt"></i>
+                      Financeiro  - Antigo              
                     </a>
                 </li>
                 <li>

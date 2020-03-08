@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\v1\Tables\contas_a_pagar;
 use App\Models\v1\Tables\valor_contas_a_pagar;
 use App\Models\v1\Tables\financeiro_pagamentos_feitos;
-use App\Models\v1\Tables\unidades_negocio;
+use App\Models\v1\Tables\areas;
+use App\Models\v1\Tables\conta;
 use App\Models\v1\Functions\DateFunction;
+
 
 class ContasAPagar extends Model
 {
@@ -16,16 +18,20 @@ class ContasAPagar extends Model
     DateFunction $DateFunction,
     valor_contas_a_pagar $valorContasAPagar,
     financeiro_pagamentos_feitos $pagamentosFeitos,
-    unidades_negocio $unidades
+    areas $areas,
+    conta $tableContas
+
     ){
         $this->contasAPagar = $conta;
-        $this->unidades_negocio = $unidades;
+        $this->areas = $areas;
+        $this->tableContas = $tableContas;
         $this->dataFunctions = $DateFunction;
         $this->valorContasAPagar = $valorContasAPagar;
         $this->pagamentosFeitos = $pagamentosFeitos;
+        $this->tableContas = $tableContas;
     }
     
-
+    // usado no front vue separado
     public function index($request){
        
         /* 
@@ -117,7 +123,7 @@ class ContasAPagar extends Model
 
         $contas = $contas->toArray();                
                 $contas = collect($contas);            
-                $contas = $contas->sortBy('dia');
+                $contas = $contas->sortBy('favorecido');
                 $contas = $contas->values()->all();
                 $contas = collect($contas);
 
@@ -129,13 +135,15 @@ class ContasAPagar extends Model
         $valorTotalPagar = $somaContas - $somaValorPago;
 
         //unidades
-        $this->unidades_negocio = $this->unidades_negocio->all();
+        $this->areas = $this->areas->orderBy('ordem','asc')->get();
+        $this->tableContas = $this->tableContas->orderBy('ordem','asc')->get();
         
         $dados = ['datas' => $datas, 'contas' => $contas, 
         'total' => $somaContas, 'filtros' => $filtros, 
         'somaValorPago' => $somaValorPago, 
         'valorTotalPagar' => $valorTotalPagar,
-        'unidades' => $this->unidades_negocio
+        'unidades' => $this->areas,
+        'tablecontas' => $this->tableContas,
     ];            
 
         

@@ -1,7 +1,9 @@
 <template>
 <div>
     <Main>
-        <template v-slot:mainpage>
+        <template v-slot:mainpage v-if="data.datas">
+
+        <div class="atualizar" onunload="window.opener.location.reload();"></div>
             <div class="row no-print">
                 <div class="col-4">
                     <div class="card card-info">
@@ -40,7 +42,7 @@
                             </div>
                             <div class="row row-space">
                                 <div class="col">
-                                    <input type="button" class="esquerda btn btn-sm btn-success excel btn-sm" value="Exportar Excel">
+                                    <div class="btn btn-success btn-sm">Exportar Excel</div>
 
                                 </div>
                             </div>
@@ -59,7 +61,7 @@
                                 <div class="col-4">
                                     <div class="btn-group btn-100w">
                                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            <a href="#" class="pointer">
+                                            <a class="pointer">
                                                 {{data.datas.mesAtualEscrito}}
                                                 <span class="caret"></span>
                                             </a>
@@ -74,12 +76,12 @@
                                 <div class="col-4 float-right text-right">
                                     <div class="btn-group btn-100w">
                                         <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            <a href="#" v-if="data.datas">
+                                            <a v-if="data.datas">
                                                 {{data.datas.anoAtual}}
                                                 <span class="caret"></span>
                                             </a>
                                         </button>
-                                        <a href="#"></a>
+                                       
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                             <li class="pointer">
                                                 <a v-on:click="ano = 2017" class="dropdown-item">2017</a>
@@ -92,19 +94,19 @@
                                 </div>
                             </div>
                             <div class="row row-space justify-content-center">
-                              <div class="col-8">
-                                <div class="row justify-content-center">
-                                  <div class="col">
- <a class="btn btn-default btn-xs btn-100w pointer" v-on:click="dataAtual = data.datas.dataAnterior">  <i class="fas fa-chevron-left"></i>  Anterior</a>
-                              </div>
-                              <div class="col">
-                                <a class="btn btn-default btn-xs btn-100w  pointer" v-on:click="getDataAtual()">Atual</a>
-                              </div>
-                              <div class="col">
-                                <a class="btn btn-default btn-xs btn-100w  pointer" v-on:click="dataAtual = data.datas.dataPosterior">Pŕoximo  <i class="fas fa-chevron-right"></i></a>
-                              </div>
+                                <div class="col-8">
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <a class="btn btn-default btn-xs btn-100w pointer" v-on:click="dataAtual = data.datas.dataAnterior"> <i class="fas fa-chevron-left"></i> Anterior</a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="btn btn-default btn-xs btn-100w  pointer" v-on:click="getDataAtual()">Atual</a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="btn btn-default btn-xs btn-100w  pointer" v-on:click="dataAtual = data.datas.dataPosterior">Pŕoximo <i class="fas fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                              </div>                                
                             </div>
                             <div class="row row-space justify-content-center">
 
@@ -133,14 +135,14 @@
                                     <br>
                                 </div>
                                 <div class="col-6">
-                                    <span class="far fa-clone"></span> À pagar
+                                    <span class="far fa-square"></span> À pagar
                                     <br>
                                 </div>
                             </div>
 
                             <div class="row row-space">
                                 <div class="col">
-                                    <a class="esquerda btn btn-primary btn-sm" href="#" @click="criarConta()">(+) Incluir</a>
+                                    <div class="esquerda btn btn-primary btn-sm" @click="criarConta()">(+) Incluir</div>
                                     <div class="col-6 float-right">
                                         <div class="btn btn-warning btn-sm  pointer" id="descerpagina">
                                             TOTAL - {{data.total}}
@@ -150,27 +152,31 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="table-responsive">
                 <table class="table table-condensed no-padding table-striped table-bordered table-hover" id="tabelaprincipal">
                     <thead>
                         <tr>
-                            <th class="text-center"></th>
+                            <th class="text-center">#</th>
                             <th>
                                 <!-- PAINEL AREAS -->
                                 <ul class="nav nav-tabs nav-hr">
                                     <li class="dropdown">
-                                        <a class="nav-link dropdown-toggle filtro-hr bold" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Negócios</a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" >
+                                            <span class="filtro-hr bold">Negócios</span>
+                                            <span class="caret"></span>
+
+                                        </a>
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a class="dropdown-item" href="#" @click="area = ''">Todos</a>
+                                                <a class="dropdown-item"  @click="area = ''">Todos</a>
                                             </li>
                                             <li v-for="unidade in data.unidades" v-bind:key="unidade.id">
-                                                <a class="dropdown-item" href="#" @click="area = unidade.name">{{unidade.name}}</a>
+                                                <a class="dropdown-item"  @click="area = unidade.nome">{{unidade.nome}}</a>
                                             </li>
 
                                         </ul>
@@ -182,37 +188,18 @@
                                 <div class>
                                     <ul class="nav nav-tabs nav-hr">
                                         <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" >
                                                 <span class="filtro-hr bold">Contas</span>
-                                                <span class="caret"></span>
+
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a class="dropdown-item" href="#" @click="contasfiltro = ''">Todos</a>
+                                                    <a class="dropdown-item"  @click="contasfiltro = ''">Todos</a>
                                                 </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#" @click="contasfiltro = '10 - Hidráulica'">10 - Hidráulica</a>
-                                                </li>
-
-                                                <li>
-                                                    <a class="dropdown-item" href="#" @click="contasfiltro = '05 - Água e Luz'">05 - Água e Luz</a>
+                                                <li v-for="tableconta in data.tablecontas" v-bind:key="tableconta.id">
+                                                    <a class="dropdown-item"  @click="contasfiltro = tableconta.nome">{{tableconta.nome}}</a>
                                                 </li>
 
-                                                <li>
-                                                    <a href="#">11 - Elétrica</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">12 - Piso Revest. Louças</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">13 - Porta Janela e Vidro</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">14 - Pintura</a>
-                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -223,22 +210,22 @@
                                 <div class>
                                     <ul class="nav nav-tabs nav-hr">
                                         <li class="dropdown dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" >
                                                 <span class="filtro-hr bold">Tipo</span>
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="#" @click="tipo = ''">Todos</a>
+                                                    <a class="dropdown-item"  @click="tipo = ''">Todos</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" @click="tipo = 'Extra'">Á vista</a>
+                                                    <a class="dropdown-item"  @click="tipo = 'Extra'">Á vista</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" @click="tipo = 'Parcelado'">Parcelado</a>
+                                                    <a class="dropdown-item"  @click="tipo = 'Parcelado'">Parcelado</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" @click="tipo = 'Fixo'">Mensal</a>
+                                                    <a class="dropdown-item"  @click="tipo = 'Fixo'">Mensal</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -246,10 +233,14 @@
                                 </div>
                             </th>
                             <th>
-                                <p class="bold text-primary">Pg</p>
+                                <a class="dropdown-toggle" >
+                                    <span class="filtro-hr bold">PG</span>
+
+                                </a>
+
                             </th>
                             <th>
-                                <a href="#" class>
+                                <a class="dropdown-toggle" >
                                     <span class="filtro-hr bold" @click="ordernarFavorecido()">Favorecido</span>
                                     <span class="caret"></span>
                                 </a>
@@ -259,19 +250,19 @@
                                 <div class>
                                     <ul class="nav nav-tabs nav-hr">
                                         <li class="dropdown dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" >
                                                 <span class="filtro-hr bold">REC/NF</span>
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="#" @click="pagador = ''">Todos</a>
+                                                    <a class="dropdown-item"  @click="pagador = ''">Todos</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" @click="pagador = 'Nota Fiscal'">Nota Fiscal</a>
+                                                    <a class="dropdown-item"  @click="pagador = 'Nota Fiscal'">Nota Fiscal</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" @click="pagador = 'Recibo'">Recibo</a>
+                                                    <a class="dropdown-item"  @click="pagador = 'Recibo'">Recibo</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -279,19 +270,23 @@
                                 </div>
                             </th>
                             <th>
-                                <a href="#">
+                                <a class="dropdown-toggle" >
                                     <span @click="ordenarVencimento()" class="filtro-hr bold">Venc</span>
                                     <span class="caret"></span>
                                 </a>
                             </th>
                             <th>
-                                <p class="bold text-primary">Á Pagar</p>
+                                <a class="dropdown-toggle" >
+                                    <span class="filtro-hr bold">Á Pagar</span>
+
+                                </a>
+
                             </th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <span class="invisible">#</span>
+                        <!-- <span class="invisible">#</span> -->
                         <tr class="pointer" v-for="conta in data.contas" v-bind:key="conta.index">
                             <td @click="editarConta(conta.id)">{{conta.id}}</td>
                             <td @click="editarConta(conta.id)">{{conta.area}}</td>
@@ -305,7 +300,7 @@
                                 <i class="fas fa-square-full text-primary"></i>
                             </td>
                             <td class="td-without-padding text-center" v-else>
-                                <i class="far fa-clone" data-toggle="modal" data-target="#modalEmitirPagamento" @click="emitirPagamento(conta.id, conta.valor)"></i>
+                                <i class="far fa-square" data-toggle="modal" data-target="#modalEmitirPagamento" @click="emitirPagamento(conta.id, conta.valor)"></i>
                             </td>
                             <td @click="editarConta(conta.id)">
                                 <span class="text-bold">{{conta.favorecido | touppercase }}</span>
@@ -373,6 +368,7 @@
 </template>
 
 <script>
+
 import Main from '@/views/layouts/Main'
 import axios from 'axios'
 import _ from "lodash";
@@ -381,6 +377,7 @@ export default {
 
     data() {
         return {
+
             data: "nome",
             mesAtual: "",
             dataAtual: "",
@@ -403,6 +400,7 @@ export default {
     },
     components: {
         Main,
+
     },
     filters: {
         touppercase: function (value) {
@@ -424,7 +422,7 @@ export default {
     },
     methods: {
         editarConta(id) {
-            var $url = "../financeiro/" + id + "/" + this.dataAtual + "/editar";
+            var $url = "http://localhost/lsstar/back/public/financeiro/" + id + "/" + this.dataAtual + "/editar";
             var width = 560;
             var height = 570;
             var left = 400;
@@ -444,9 +442,9 @@ export default {
             );
         },
         criarConta() {
-            var $url = "../financeiro/criar/" + this.dataAtual;
+            var $url = "http://localhost/lsstar/back/public/financeiro/criar/" + this.dataAtual;
             var width = 560;
-            var height = 568;
+            var height = 570;
             var left = 400;
             var top = 100;
             window.open(
@@ -504,8 +502,9 @@ export default {
         getDataAtual() {
             var dataAtual = new Date();
             this.ano = dataAtual.getFullYear();
-            this.mesAtual = dataAtual.getUTCMonth() + 1;
+            this.mesAtual =  ("0" + (dataAtual.getMonth() + 1)).slice(-2);
             this.dataAtual = this.ano + "-" + this.mesAtual;
+            console.log(this.dataAtual)
         },
         ordernarFavorecido() {
             this.data.contas = _.sortBy(
@@ -575,6 +574,26 @@ export default {
 </script>
 
 <style>
+.btn{
+  cursor:pointer;
+}
+a{
+  color: #3c8dbc;
+  cursor: pointer;
+}
+.filtro-hr {
+    color: black;
+    font-size: 13px;
+}
+
+.filtra-hr:hover {
+    color: #0056b3;
+}
+
+.table-striped tbody tr:nth-of-type(2n+1) {
+    background-color: rgba(0, 0, 0, 0.11);
+}
+
 .btn-100w {
     width: 100%;
 }

@@ -9,7 +9,7 @@
             EDITAR CONTA
         </div>
         <div class='box-body'>
-            <form class="form-horizontal" method="post" action="{{Route('financeiro.update')}}">
+            <form class="form-horizontal" id="formEdicao" method="post" action="{{Route('financeiro.update')}}">
                 
                 <div class="form-group">
                     <label for="favorecido" class='col-xs-4  control-label'>Fornecedor</label>
@@ -116,7 +116,8 @@
                 <input type="hidden" name="id" value="{{ $objeto->id }}">
                 <input type="hidden" name="$data_atual" value="{{$data_atual}}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="submit" value="Atualizar" class="btn btn-primary">
+                <div class="btn btn-primary" onClick="submitarValor();">Atualizar</div>
+                <!-- <input type="submit"  value="Atualizar" class="btn btn-primary"> -->
                 </div> 
                 </form>
 
@@ -124,33 +125,41 @@
                 <!-- Small modal -->
 
     <div class="col-sm-4">
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content text-center">
-    <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Deseja realmente excluir?</h4>
-    </div>
-    <div class="modal-body">
-    <a href=" {{Route('financeiro.destroy',$objeto->id)}}"><input type="submit" value="SIM" class="btn btn-primary"></a>
-    <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Não</button>
-    
-    </div>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content text-center">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel">Deseja realmente excluir?</h4>
+                    </div>
+                <div class="modal-body">
+                <a href=" {{Route('financeiro.destroy',$objeto->id)}}"><input type="submit" value="SIM" class="btn btn-primary"></a>
+                <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">Não</button>
+            
+            </div>
 
-      
-</div>
-  </div>
-</div>
-</div>
-
-                <div class="direita col-xs-4">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">Excluir</button>
-
+            
                 </div>
+                </div>
+        </div>
+    </div>
+    <div class="direita col-xs-4">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">
+            Excluir</button>
+
+    </div>
             </div>
         </div>
     </div>
 
-
+<script>
+    function submitarValor(){
+        this.object = window.opener.location.href; 
+        // console.log(this.object)
+        document.getElementById("formEdicao").submit();
+        window.opener.location.href = 'http://localhost:8080/#/financeiro/contasapagar';
+        self.close(); 
+    }
+</script>
 @endforeach
 @endsection

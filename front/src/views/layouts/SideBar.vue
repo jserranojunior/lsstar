@@ -27,6 +27,13 @@
                         </router-link>
                     </li>
 
+                    <!-- <li class="nav-item">
+                         <router-link to="/financeiro/contasapagar" class="nav-link">
+                            <i class="nav-icon far fa-money-bill-alt"></i>
+                            <p>Financeiro</p>
+                        </router-link>
+                    </li> -->
+
                     <li class="nav-item">
                         <a :href="linkFinanceiro" class="nav-link">
                             <i class="nav-icon far fa-money-bill-alt"></i>
