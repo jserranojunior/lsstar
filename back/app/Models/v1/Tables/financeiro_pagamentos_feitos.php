@@ -27,6 +27,7 @@ class financeiro_pagamentos_feitos extends Model
             'data_conta' => $request->data,
             'valor_pago' => $request->valor,
             'tipo_pagamento' => $request->tipo_pagamento,
+            'numero_cheque' => $request->numero_cheque,
             'link_comprovante' => '',
         ];              
 

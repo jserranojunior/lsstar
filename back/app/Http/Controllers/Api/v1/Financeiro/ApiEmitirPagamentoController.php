@@ -27,6 +27,7 @@ class ApiEmitirPagamentoController extends Controller
     
     public function store(Request $request)
     {        
+        // return $request;
         $this->pagamentosFeitos = $this->pagamentosFeitos->emitirPagamento($request);
         return $this->pagamentosFeitos;
     }

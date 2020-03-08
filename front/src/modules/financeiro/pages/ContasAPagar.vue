@@ -40,12 +40,12 @@
 
                                 </div>
                             </div>
-                            <div class="row row-space">
+                            <!-- <div class="row row-space">
                                 <div class="col">
                                     <div class="btn btn-success btn-sm">Exportar Excel</div>
 
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -297,10 +297,11 @@
                                 <span v-else>{{conta.tipo}}</span>
                             </td>
                             <td class="td-without-padding text-center" v-if="conta.valor_pago  > ''">
-                                <i class="fas fa-square-full text-primary"></i>
+                            
+                                <i class="fas fa-square-full text-primary" @click="pagamentoEmitido(conta.numero_cheque)"></i>
                             </td>
                             <td class="td-without-padding text-center" v-else>
-                                <i class="far fa-square" data-toggle="modal" data-target="#modalEmitirPagamento" @click="emitirPagamento(conta.id, conta.valor)"></i>
+                                <i class="far fa-square" data-toggle="modal" data-target="#modalEmitirPagamento" @click="emitirPagamento(conta.id, conta.valor, conta.favorecido)"></i>
                             </td>
                             <td @click="editarConta(conta.id)">
                                 <span class="text-bold">{{conta.favorecido | touppercase }}</span>
@@ -353,14 +354,15 @@
                     </tbody>
                 </table>
             </div>
-            <!-- <emitir-pagamento
+            <emitir-pagamento
       :id="emitirPagamentoId"
       :dataAtual="dataAtual"
       :valor="emitirPagamentoValor"
+      :favorecido="emitirPagamentoFavorecido"
       :showModalEmitir="showModalEmitir"
       @event-emitir-pagamento="getApiFinanceiro()"
       @event-fechar-modal-emitir="fecharModalEmitir()"
-    ></emitir-pagamento> -->
+    ></emitir-pagamento>
         </template>
 
     </Main>
@@ -368,7 +370,7 @@
 </template>
 
 <script>
-
+import EmitirPagamento from './EmitirPagamento'
 import Main from '@/views/layouts/Main'
 import axios from 'axios'
 import _ from "lodash";
@@ -390,6 +392,7 @@ export default {
             emitirPagamentoId: "",
             dataAtualHoje: "",
             emitirPagamentoValor: "",
+            emitirPagamentoFavorecido: "",
             showModalEmitir: "",
             sortProperty: "favorecido",
             sortDirection: 1,
@@ -400,6 +403,7 @@ export default {
     },
     components: {
         Main,
+        EmitirPagamento,
 
     },
     filters: {
@@ -421,6 +425,18 @@ export default {
         }
     },
     methods: {
+        pagamentoEmitido($cheque) {  
+      var $url = process.env.VUE_APP_VUE_BUILD_URL + '/#/financeiro/pagamentoemitido/' + $cheque;
+     
+       var width = 900;
+       var height = 400;    
+     var left = 550;
+         var top = 250;    
+       window.open($url,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+      console.log('abriu')
+     },
+
+
         editarConta(id) {
             var $url = process.env.VUE_APP_LARAVEL_SITE_URL + "/financeiro/" + id + "/" + this.dataAtual + "/editar";
             var width = 560;
@@ -464,12 +480,16 @@ export default {
         fecharModalEmitir() {
             this.showModalEmitir = false;
         },
-        emitirPagamento(id, valor) {
+        emitirPagamento(id, valor, favorecido) {
             this.emitirPagamentoId = id;
-            this.emitirPagamentoValor = valor;
-            this.showModalEmitir = true;
+             this.emitirPagamentoValor = valor;
+            this.emitirPagamentoFavorecido = favorecido
+  
+               
+                this.showModalEmitir = true;
+           
         },
-        getApiFinanceiro() {
+        getApiFinanceiro() {            
             var objThis = this;
             var url = process.env.VUE_APP_LARAVEL_API_URL + "/financeiro?data=" +
                 this.dataAtual +
@@ -488,7 +508,7 @@ export default {
                 this.pagador +
                 "&tipo=" +
                 this.tipo;
-            console.log(url);
+            
             axios.get(url).then(response => {
 
                 objThis.data = response.data.data;
@@ -503,7 +523,7 @@ export default {
             this.ano = dataAtual.getFullYear();
             this.mesAtual =  ("0" + (dataAtual.getMonth() + 1)).slice(-2);
             this.dataAtual = this.ano + "-" + this.mesAtual;
-            console.log(this.dataAtual)
+           
         },
         ordernarFavorecido() {
             this.data.contas = _.sortBy(

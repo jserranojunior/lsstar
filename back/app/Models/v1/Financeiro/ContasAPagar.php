@@ -83,6 +83,7 @@ class ContasAPagar extends Model
                     $pagamento->cor_tipo_pagamento = "#6f05d1";
                 }
                 $conta->cor_tipo_pagamento = $pagamento->cor_tipo_pagamento;
+                $conta->numero_cheque = $pagamento->numero_cheque;
             }
         }    
         
