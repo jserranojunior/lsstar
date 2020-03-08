@@ -13,7 +13,6 @@ class ContasAPagarController extends Controller
     }
 
     public function index(Request $request){
-        $date = $this->ApiContasAPagar->index($request);
-        return view('v1.financeiro.index')->with($date);
+        
     }
 }
