@@ -2,7 +2,8 @@
 <div>
 
     <div class="wrapper">
-        <Header></Header>
+        <Header></Header>    
+        
         <SideBar></SideBar>
         <!-- <SideBar></SideBar> -->
         <div class="content-wrapper">

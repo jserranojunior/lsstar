@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div>       
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -13,7 +13,7 @@
                 </li>
 
                 <li class="nav-item d-none d-sm-inline-block">
-                    <router-link to="/financeiro" class="nav-link">
+                    <router-link to="/financeiro/contasapagar" class="nav-link">
                         <a href="#" class="nav-link">Financeiro</a>
                     </router-link>
                 </li>
@@ -26,7 +26,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
+                        <span class="badge badge-danger navbar-badge">0</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
@@ -36,10 +36,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
+                        <span class="badge badge-warning navbar-badge">0</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <span class="dropdown-item dropdown-header">0 Notifications</span>
 
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
@@ -53,17 +53,14 @@
                     </a> -->
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" :href="linkSair">
-                   
-                            <p class="text-danger">Sair</p>
-                        
-
+                    <a class="nav-link" :href="linkSair">                   
+                            <p class="text-danger">Sair</p>                      
                     </a>
                 </li>
 
             </ul>
         </nav>
-
+        
     </div>
 </template>
 
@@ -93,6 +90,3 @@ import {mapState, mapActions } from 'vuex'
     }
 </script>
 
-<style lang="scss" scoped>
-
-</style>

@@ -5,38 +5,41 @@
 
         <div class="atualizar" onunload="window.opener.location.reload();"></div>
             <div class="row no-print">
-                <div class="col-4">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card card-info">
                         <div class="card-header with-border">
-                            <p class="center bold">Relatórios</p>
+                            <span class="center bold ">Relatórios</span>
+                          
                         </div>
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row justify-content-center text-center">
                                 <div class="col">
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Relatório Anual
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="../financeiro/anual/2017">2017</a>
-                                            <a class="dropdown-item" href="../financeiro/anual/2018">2018</a>
-                                            <a class="dropdown-item" href="../financeiro/anual/2019">2019</a>
-                                            <a class="dropdown-item" href="../financeiro/anual/2020">2020</a>
+                                            <a class="dropdown-item" @click="abrirOutraGuia('financeiro/anual/2017')">2017</a>
+                                            <a class="dropdown-item" @click="abrirOutraGuia('financeiro/anual/2018')">2018</a>
+                                            <a class="dropdown-item" @click="abrirOutraGuia('financeiro/anual/2019')">2019</a>
+                                            <a class="dropdown-item" @click="abrirOutraGuia('financeiro/anual/2020')">2020</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <a class="btn btn-warning btn-xs" href="../financeiro/mensal" role="button">Relatório Mensal</a>
+                                    <a class="btn btn-warning btn-xs" @click="abrirOutraGuia('financeiro/mensal')" role="button">Relatório Mensal</a>
 
-                                </div>
+                                </div>                                
+                            </div>
+                            <div class="row justify-content-center text-center">
                                 <div class="col">
-                                    <a class="btn btn-info btn-xs" href="../financeiro/relatorioconsolidado" role="button">
+                                    <a class="btn btn-info btn-xs" @click="abrirOutraGuia('financeiro/relatorioconsolidado')" role="button">
                                         Relatório
                                         Consolidado
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a class="btn btn-danger btn-xs" href="../financeiro/relatorioarea" role="button">Relatório de Negócios</a>
+                                    <a class="btn btn-danger btn-xs" @click="abrirOutraGuia('financeiro/relatorioarea')" role="button">Relatório de Negócios</a>
 
                                 </div>
                             </div>
@@ -50,15 +53,12 @@
 
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
-                        <div class="card-header with-border text-center">
-                            <span class="center bold ">Data</span>
-                        </div>
-
+                        
                         <div class="card-body">
                             <div class="row justify-content-center">
-                                <div class="col-4">
+                                <div class="col-5">
                                     <div class="btn-group btn-100w">
                                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             <a class="pointer">
@@ -73,7 +73,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-4 float-right text-right">
+                                <div class="col-5 float-right text-right">
                                     <div class="btn-group btn-100w">
                                         <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             <a v-if="data.datas">
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="row row-space justify-content-center">
-                                <div class="col-8">
+                                <div class="col-12 col-xs-12  col-sm-12 col-md-12 col-lg-10">
                                     <div class="row justify-content-center">
                                         <div class="col">
                                             <a class="btn btn-default btn-xs btn-100w pointer" v-on:click="dataAtual = data.datas.dataAnterior"> <i class="fas fa-chevron-left"></i> Anterior</a>
@@ -110,10 +110,10 @@
                             </div>
                             <div class="row row-space justify-content-center">
 
-                                <div class="col-4">
+                                <div class="col-5">
                                     <input type="number" class="form-control" value="1" max="31" min="1" v-model="diaInicial">
                                 </div>
-                                <div class="col-4 float-right text-right">
+                                <div class="col-5 float-right text-right">
                                     <input type="number" value="31" class="form-control" max="31" min="1" v-model="diaFinal">
                                 </div>
 
@@ -123,10 +123,11 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
                         <div class="card-header with-border">
-                            <p class="center bold">Legenda</p>
+                            
+                            <span class="center bold">Legenda</span>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -144,7 +145,7 @@
                                 <div class="col">
                                     <div class="esquerda btn btn-primary btn-sm" @click="criarConta()">(+) Incluir</div>
                                     <div class="col-6 float-right">
-                                        <div class="btn btn-warning btn-sm  pointer" id="descerpagina">
+                                        <div class="btn btn-warning btn-sm  pointer" @click="descerPagina()">
                                             TOTAL - {{data.total}}
                                             <span class="fas fa-chevron-down"></span>
                                         </div>
@@ -156,6 +157,7 @@
                     </div>
                 </div>
             </div>
+            <!-- TABELA  -->
             <div class="table-responsive">
                 <table class="table table-condensed no-padding table-striped table-bordered table-hover" id="tabelaprincipal">
                     <thead>
@@ -164,13 +166,12 @@
                             <th>
                                 <!-- PAINEL AREAS -->
                                 <ul class="nav nav-tabs nav-hr">
-                                    <li class="dropdown">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" >
-                                            <span class="filtro-hr bold">Negócios</span>
+                                    <!--   -->
+                                    <li class="'dropdown'">
+                                        <a  class="dropdown-toggle" data-toggle="dropdown" >
+                                            <span :class="[area ? 'text-success' : 'filtro-hr bold']" >Negócios</span>
                                             <span class="caret"></span>
-
                                         </a>
-
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <a class="dropdown-item"  @click="area = ''">Todos</a>
@@ -189,7 +190,8 @@
                                     <ul class="nav nav-tabs nav-hr">
                                         <li class="dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown" >
-                                                <span class="filtro-hr bold">Contas</span>
+                                           
+                                            <span :class="[contasfiltro ? 'text-success' : 'filtro-hr bold']" >Contas</span>
 
                                             </a>
                                             <ul class="dropdown-menu">
@@ -211,7 +213,8 @@
                                     <ul class="nav nav-tabs nav-hr">
                                         <li class="dropdown dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown" >
-                                                <span class="filtro-hr bold">Tipo</span>
+                                               
+                                                         <span :class="[tipo ? 'text-success' : 'filtro-hr bold']" >Tipo</span>
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
@@ -251,7 +254,8 @@
                                     <ul class="nav nav-tabs nav-hr">
                                         <li class="dropdown dropdown">
                                             <a class="dropdown-toggle" data-toggle="dropdown" >
-                                                <span class="filtro-hr bold">REC/NF</span>
+                                              
+                                                <span :class="[tipo ? 'text-success' : 'filtro-hr bold']" >REC/NF</span>
                                                 <span class="caret"></span>
                                             </a>
                                             <ul class="dropdown-menu">
@@ -287,8 +291,12 @@
 
                     <tbody>
                         <!-- <span class="invisible">#</span> -->
-                        <tr class="pointer" v-for="conta in data.contas" v-bind:key="conta.index">
-                            <td @click="editarConta(conta.id)">{{conta.id}}</td>
+                        <tr class="pointer" v-for="(conta, index) in data.contas" v-bind:key="conta.index">
+
+                            <!-- <td @click="editarConta(conta.id)">{{conta.id}}</td> -->
+
+                                <td @click="editarConta(conta.id)">{{index+1}}</td> 
+
                             <td @click="editarConta(conta.id)">{{conta.area}}</td>
                             <td @click="editarConta(conta.id)">{{conta.ccustos}}</td>
                             <td @click="editarConta(conta.id)">
@@ -309,26 +317,26 @@
                             </td>
                             <td @click="editarConta(conta.id)">{{conta.pagador}}</td>
                             <td @click="editarConta(conta.id)">{{conta.dia}}</td>
-                            <td @click="editarConta(conta.id)">{{conta.valor | money}}</td>
+                            <td class="text-right" @click="editarConta(conta.id)">{{conta.valor | money}}</td>
                         </tr>
-                        <tr>
+                        <tr class="trcolor">
                             <td colspan="5"></td>
-                            <td class="azulclaro" colspan="2">
-                                <span class="bold numaior direita">TOTAL DO MÊS</span>
+                            <td class="bg-grey" colspan="2">
+                                <h5 class="bold text-right h5-with-mp">TOTAL DO MÊS</h5>
                             </td>
-                            <td class="azulclaro"></td>
-                            <td class="azulclaro" colspan="1">
-                                <span class="bold numaior direita azul">{{data.total}}</span>
+                            <td class="trcolor"></td>
+                            <td class="bg-grey text-center" colspan="1">
+                                <h5 class="bold text-primary h5-with-mp">{{data.total}}</h5>
                             </td>
                         </tr>
                         <tr class="trcolor">
                             <td colspan="6">Total de pendencias:</td>
                             <td class colspan="1">
-                                <span class="direita">Total pago</span>
+                                <span class="text-right">Total pago</span>
                             </td>
-                            <td></td>
-                            <td class>
-                                <span class="direita">{{data.somaValorPago}}</span>
+                            <td class="trcolor"></td>
+                            <td class="text-right">
+                                <span>{{data.somaValorPago}}</span>
                             </td>
                         </tr>
                         <tr class="trcolor">
@@ -336,19 +344,19 @@
                             <td class colspan="1">
                                 <span class="direita">A pagar</span>
                             </td>
-                            <td></td>
-                            <td class>
-                                <span class="direita">{{data.valorTotalPagar}}</span>
+                            <td class="trcolor"></td>
+                            <td class="text-right">
+                                <span>{{data.valorTotalPagar}}</span>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="5"></td>
-                            <td class="azulclaro" colspan="2">
-                                <span class="bold numaior direita">TOTAL ESTIMADO</span>
+                            <td class="bg-grey" colspan="2">
+                                <h5 class="bold text-right bg-grey h5-with-mp">TOTAL ESTIMADO</h5>
                             </td>
-                            <td class="azulclaro"></td>
-                            <td class="azulclaro" colspan="1">
-                                <span class="bold direita numaior azul">{{data.total}}</span>
+                            <td class="trcolor"></td>
+                            <td class="bg-grey text-center" colspan="1">
+                                <h5 class="bold text-primary h5-with-mp">{{data.total}}</h5>
                             </td>
                         </tr>
                     </tbody>
@@ -399,6 +407,7 @@ export default {
             tipo: "",
             contasfiltro: "",
             pagador: "",
+            count: 0,
         };
     },
     components: {
@@ -407,6 +416,7 @@ export default {
 
     },
     filters: {
+        
         touppercase: function (value) {
             if (!value) return "";
             value = value.toString();
@@ -425,6 +435,23 @@ export default {
         }
     },
     methods: {
+        descerPagina(){
+            window.scroll(0,document.body.offsetHeight);
+        },
+        abrirOutraGuia(link){
+             var url = process.env.VUE_APP_LARAVEL_SITE_URL + '/' + link;
+            window.open(url);
+        },
+        abrirPopUp(link) {  
+      var $url = process.env.VUE_APP_LARAVEL_SITE_URL + '/' + link;
+     
+       var width = 1280;
+       var height = 800;    
+     var left = 550;
+         var top = 250;    
+       window.open($url,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+      console.log('abriu')
+     },
         pagamentoEmitido($cheque) {  
       var $url = process.env.VUE_APP_VUE_BUILD_URL + '/#/financeiro/pagamentoemitido/' + $cheque;
      
@@ -489,7 +516,8 @@ export default {
                 this.showModalEmitir = true;
            
         },
-        getApiFinanceiro() {            
+        getApiFinanceiro() {    
+            this.count = 0                 
             var objThis = this;
             var url = process.env.VUE_APP_LARAVEL_API_URL + "/financeiro?data=" +
                 this.dataAtual +
@@ -593,6 +621,23 @@ export default {
 </script>
 
 <style>
+.h5-with-mp{
+    margin:0px;
+    padding:0px
+}
+.bold{
+    font-weight: bold;
+}
+.bg-grey {
+    background-color: rgb(192, 192, 192) !important;
+}
+.table-bordered > tbody > tr.trcolor > td {
+    
+    background-color: white;
+    border-bottom: 1px solid white !important;
+    border-right: 1px solid white !important;
+}
+
 .btn{
   cursor:pointer;
 }

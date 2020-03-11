@@ -55,6 +55,15 @@ Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio','middleware' => ['au
 });
   
 
+//   POP UPS VUECLI 
+  Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro'], function(){
+
+  Route::any('emitirpagamento', ['as' => 'emitir', 'uses' => 'Financeiro\ContasapagarController@emitirpagamento']);
+  Route::any('salvarpagamento', ['as' => 'salvarpagamento', 'uses' => 'Financeiro\ContasapagarController@salvarpagamento']);
+  Route::any('pagamento/{numero}', ['as' => 'pagamento', 'uses' => 'Financeiro\ContasapagarController@pagamento']);
+
+});
+
 // FINANCEIRO
 Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => ['auth']], function(){
     
@@ -68,18 +77,13 @@ Route::group(['as' => 'financeiro.', 'prefix' => 'financeiro', 'middleware' => [
 
     /* RELATÓRIOS */
     Route::any('/mensal',['as' => 'mensal', 'uses' => 'Financeiro\RelatorioController@mensal']);
+
     Route::any('/anual/{ano?}',['as' => 'anual', 'uses' => 'Financeiro\RelatorioController@anual']);
     Route::any('/relatorioconsolidado',['as' => 'relatorioconsolidado', 'uses' => 'Financeiro\RelatorioController@consolidado']);
     
     Route::any('/relatorioarea',['as' => 'relatorioarea', 'uses' => 'Financeiro\RelatorioController@relatorioArea']);
 
-    /* EMITIR PAGAMENTO*/
-    Route::any('emitirpagamento', ['as' => 'emitir', 'uses' => 'Financeiro\ContasapagarController@emitirpagamento']);
-    Route::any('salvarpagamento', ['as' => 'salvarpagamento', 'uses' => 'Financeiro\ContasapagarController@salvarpagamento']);
-    Route::any('pagamento/{numero}', ['as' => 'pagamento', 'uses' => 'Financeiro\ContasapagarController@pagamento']);
-    
-
-     /*FATURA CONSOLIDADA*/
+       /*FATURA CONSOLIDADA*/
     Route::get('faturaconsolidada',['as' =>'indexconsolidada','uses' => 'Financeiro\faturaConsolidadaController@index']); 
     Route::get('faturaconsolidada/dd',['as' =>'indexconsolidadadd','uses' => 'Financeiro\faturaConsolidadaController@dd']); 
 });

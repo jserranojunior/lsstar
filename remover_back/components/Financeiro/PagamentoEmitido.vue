@@ -152,7 +152,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 .side-navbar,
 .navbar,
 .main-footer {

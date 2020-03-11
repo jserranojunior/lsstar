@@ -3,6 +3,8 @@
 
 <input style="display:none" type="text" id="laravel_name" value="{{Auth::user()->name}}">
 <input style="display:none" type="text" id="laravel_photo" value="{{Auth::user()->photo}}">
+<input style="display:none" type="text" id="vue_link" value="{{ config('app.urlfront') }}">
+
 
 <div class="row"> 
 
@@ -92,6 +94,11 @@
     console.log('funcionando')
     localStorage.setItem('laravel', 1)
     localStorage.setItem('laravel_name', document.getElementById("laravel_name").value)
-    localStorage.setItem('laravel_photo', document.getElementById("laravel_photo").value)   
+    localStorage.setItem('laravel_photo', document.getElementById("laravel_photo").value)
+    var vue_link = document.getElementById("vue_link").value
+
+    
+    window.location.href = vue_link;
+
 </script>
 @endsection
