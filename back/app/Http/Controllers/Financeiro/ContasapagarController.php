@@ -112,7 +112,12 @@ class ContasapagarController extends Controller {
         $dados = $request->all();
         $conta = new financeiro();
         $dados = $conta->atualizar($dados);
-        return('<script>opener.location.reload(); window.close();</script>');
+        return('Conta atualizada
+        <script>
+            window.opener.location.reload(true);
+            self.close(); 
+        </script>
+        ');
     } 
     
     function store(Request $request){
@@ -120,7 +125,12 @@ class ContasapagarController extends Controller {
         $dados = $request->all();
         $financeiro = new financeiro();
         $financeiro->salvar($dados);
-        return('<script>opener.location.reload(); window.close();</script>');
+        return('Conta incluida
+        <script>
+            window.opener.location.reload(true);
+            self.close(); 
+        </script>
+        ');
 
     }
     

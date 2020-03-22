@@ -153,10 +153,10 @@
     </div>
 
 <script>
-    function submitarValor(){       
+
+    function submitarValor(){     
         document.getElementById("formEdicao").submit();
-        window.opener.location.reload(true);
-        self.close(); 
+      
     }
 </script>
 @endforeach

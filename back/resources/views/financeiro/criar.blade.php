@@ -124,9 +124,7 @@
 
 <script>
     function submitarValor(){       
-        document.getElementById("formEdicao").submit();
-        window.opener.location.reload(true);
-        self.close(); 
+        document.getElementById("formEdicao").submit();    
     }
 </script>
 
