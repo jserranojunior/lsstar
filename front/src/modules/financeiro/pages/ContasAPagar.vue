@@ -242,10 +242,10 @@
                                 </a>
 
                             </th>
-                            <th>
+                            <th  @click="ordernarFavorecido()">
                                 <a class="dropdown-toggle" @click="ordernarFavorecido()">
-                                    <span class="filtro-hr bold">Favorecido</span>
-                                    <span class="caret"></span>
+                                    <span class="filtro-hr bold"  @click="ordernarFavorecido()">Favorecido</span>
+                                    <span class="caret"  @click="ordernarFavorecido()"></span>
                                 </a>
                             </th>
                             <th>
@@ -273,10 +273,10 @@
                                     </ul>
                                 </div>
                             </th>
-                            <th>
-                                <a class="dropdown-toggle" >
+                            <th @click="ordenarVencimento()">
+                                <a class="dropdown-toggle" @click="ordenarVencimento()">
                                     <span @click="ordenarVencimento()" class="filtro-hr bold">Venc</span>
-                                    <span class="caret"></span>
+                                    <span class="caret" @click="ordenarVencimento()"></span>
                                 </a>
                             </th>
                             <th>
