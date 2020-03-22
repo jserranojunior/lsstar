@@ -243,8 +243,8 @@
 
                             </th>
                             <th>
-                                <a class="dropdown-toggle" >
-                                    <span class="filtro-hr bold" @click="ordernarFavorecido()">Favorecido</span>
+                                <a class="dropdown-toggle" @click="ordernarFavorecido()">
+                                    <span class="filtro-hr bold">Favorecido</span>
                                     <span class="caret"></span>
                                 </a>
                             </th>
@@ -572,7 +572,7 @@ export default {
     beforeMount() {
         this.getDataAtual();
         this.getApiFinanceiro();
-
+       
         // return _.sortBy(this.data.contas, 'id');
         // this.data.contas = _.sortBy(this.data.contas,[conta => conta.valor.toLowerCase()],['desc']);
     },
@@ -621,6 +621,11 @@ export default {
 </script>
 
 <style>
+.dropdown-toggle:hover {
+
+    background-color: #ddb640;
+
+}
 .h5-with-mp{
     margin:0px;
     padding:0px
