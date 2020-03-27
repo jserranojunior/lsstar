@@ -24,11 +24,6 @@
                         <a href="{{ config('app.urlfront') }}/#/financeiro/contasapagar">
                          <i class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></i><span class="menu-ocultar">Financeiro</span></a>
                     </li>
-
-                    <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6">
-                        <a href="{{Route('financeiro.index')}}" class="glyphicon glyphicon-piggy-bank"><span
-                                class="menu-ocultar">Financeiro Antigo</span></a>
-                    </li>
                     <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-has-children menu-item-object-custom menu-item-6">
                         <a href="{{ config('app.urlfront') }}/#/empreendimentos/Todos" class="fa fa-building">
                             <span class="menu-ocultar">Empreendimentos</span>
