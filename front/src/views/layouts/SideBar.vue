@@ -42,6 +42,14 @@
                                <p>Financeiro</p>
                         </router-link>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="https://docs.google.com/spreadsheets/d/1R-O0wlp2gf_At02_Z2NgAQfyQpv5vP4KAUlDu2hOjQQ/edit?usp=sharing" class="nav-link">
+                             <i class="nav-icon fas fa-thumbtack"></i>
+                               <p>Feedback</p>
+                        </a>
+                    </li>
+
                     <!-- Empreendimentos  -->
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
