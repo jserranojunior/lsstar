@@ -17,6 +17,8 @@ import NovoClienteLasPalmas from '@/modules/laspalmas/pages/NovoClienteLasPalmas
 
 
 import ContasAPagar from '@/modules/financeiro/pages/ContasAPagar'
+import AdicionarContaAPagar from '@/modules/financeiro/pages/AdicionarContaAPagar'
+
 import PagamentoEmitido from '@/modules/financeiro/pages/PagamentoEmitido'
 
 
@@ -46,7 +48,8 @@ const routes = [
   {path:'/novo/empreendimento/:id', name:'novoempreendimentoid', component: NewOrEditEmpreendimento},
   {path:'/financeiro/pagamentoemitido/:id', name:'pagamentoemitido', component: PagamentoEmitido},
   {path:'/financeiro/contasapagar', name:'contaspagar', component: ContasAPagar},
-
+  {path:'/financeiro/adicionarconta', name:'contaspagar', component: AdicionarContaAPagar},
+  
 ]
 
 const router = new VueRouter({
