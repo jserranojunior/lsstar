@@ -1,0 +1,88 @@
+
+<?php $__env->startSection('content'); ?>
+
+
+<div class="row">
+        <div class="col-md-12"><h1  class="bemvindo">Seja bem vindo!</h1>
+             <h4 class="text-center">Fique a vontade para testar as novas atualizações!</h4>
+        </div>
+</div>
+<div class="row">
+    <a href="<?php echo e(Route('financeiro.index')); ?>">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    FINANCEIRO
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="<?php echo e(URL::asset('/img/usuarios')); ?>/financeiro-foto.jpg">
+                </div>    
+            </div>
+        </div>    
+    </a>
+    <a href="vue#/clientes/clientes">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    CLIENTES
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="<?php echo e(URL::asset('/img/home')); ?>/clientes.jpg">
+                </div>    
+            </div>
+        </div>
+    </a>
+    <a href="<?php echo e(Route('agenda.index')); ?>">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    AGENDA
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="<?php echo e(URL::asset('/img/home')); ?>/agendamento.jpg">
+                </div>    
+            </div>
+        </div>
+    </a>
+
+    <a href="<?php echo e(Route('fornecedor.index')); ?>">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    FORNECEDORES
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="<?php echo e(URL::asset('/img/home')); ?>/fornecedor.jpg">
+                </div>    
+            </div>
+        </div>
+    </a>
+
+    <a href="<?php echo e(Url('/casa')); ?>">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    CASAS
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="<?php echo e(URL::asset('/img/home')); ?>/casas.jpg">
+                </div>    
+            </div>
+        </div>
+    </a>
+
+    <a href="<?php echo e(Url('/manutencao')); ?>">
+        <div class="col-sm-3">
+            <div class="box box-primary">
+                <div class="box-header with-border text-center">
+                    MANUTENÇÕES
+                </div>
+                <div class="box-body">
+                    <img class="img-responsive" src="<?php echo e(URL::asset('/img/home')); ?>/manutencao.jpg">
+                </div>    
+            </div>
+        </div>
+    </a>
+</div>    
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

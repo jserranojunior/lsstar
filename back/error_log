@@ -1,0 +1,9 @@
+[06-Mar-2020 19:37:38] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[06-Mar-2020 19:37:38] PHP Parse error:  syntax error, unexpected T_STRING in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[06-Mar-2020 19:40:51] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[06-Mar-2020 19:40:51] PHP Parse error:  syntax error, unexpected T_STRING in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[06-Mar-2020 19:44:25] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[06-Mar-2020 19:44:25] PHP Parse error:  syntax error, unexpected T_STRING in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[06-Mar-2020 23:07:47] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[06-Mar-2020 23:07:47] PHP Parse error:  syntax error, unexpected T_STRING in /home1/lsstar07/public_html/sistema/back/artisan on line 33
+[31-Dec-2020 23:11:12] PHP Fatal error:  Class 'Phar' not found in /opt/cpanel/composer/bin/composer on line 23

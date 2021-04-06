@@ -1,0 +1,7 @@
+# Use PHP71 as default
+AddHandler application/x-httpd-php71 .php
+# BEGIN custom php.ini PHP71
+<IfModule mod_suphp.c>
+    suPHP_ConfigPath /home1/lsstar07/public_html/sistema
+</IfModule>
+# END custom php.ini

@@ -1,0 +1,102 @@
+[15-Jul-2019 12:55:04 America/Sao_Paulo] PHP Fatal error:  Class 'App\Http\Controllers\Home\Controller' not found in /home1/lsstar07/public_html/sistema/app/Http/Controllers/Home/InicioController.php on line 9
+[15-Jul-2019 12:56:39 America/Sao_Paulo] PHP Fatal error:  Class 'App\Http\Controllers\Home\Controller' not found in /home1/lsstar07/public_html/sistema/app/Http/Controllers/Home/InicioController.php on line 9
+[20-Nov-2019 10:48:09 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 09:18:56 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 09:19:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 09:20:36 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:19:14 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:19:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:19:33 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:19:48 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:20:02 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:20:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:34:03 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:35:28 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:37:26 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 10:38:08 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 11:00:07 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 11:02:10 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 11:02:26 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 11:07:21 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 11:11:58 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14
+[21-Nov-2019 11:21:46 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home1/lsstar07/public_html/sistema/bootstrap/app.php:14
+Stack trace:
+#0 /home1/lsstar07/public_html/sistema/public/index.php(36): require_once()
+#1 {main}
+  thrown in /home1/lsstar07/public_html/sistema/bootstrap/app.php on line 14

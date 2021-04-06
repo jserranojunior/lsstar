@@ -1,0 +1,51 @@
+version: "2"
+
+networks:
+  internal:
+    driver: bridge
+
+services:
+  lsstar_back:
+    container_name: lsstar_back
+    build: ../
+    working_dir: /usr/share/nginx/html
+    volumes:
+      - ../../back:/usr/share/nginx/html
+    command: "php artisan serve --host=0.0.0.0 --port=2030"
+    ports:
+      - "2030:2030"
+    networks:
+      - internal
+    labels:
+      - "traefik.enable=true"
+      - traefik.http.routers.backacolher.rule=Host(`sistemalsstar.localhost`)
+      - traefik.http.services.backacolher.loadbalancer.server.port=2030
+
+  frontend_acolher:
+    container_name: "frontend_acolher"
+    image: "node:lts-alpine"
+    working_dir: /app
+    volumes:
+      - "../../front:/app"
+    command: "npm run dev"
+    networks:
+      - internal
+    ports:
+      - "3080:3000"
+    labels:
+      - "traefik.enable=true"
+      - traefik.http.routers.frontintellect.rule=Host(`frontlsstar.localhost`)
+      - traefik.http.services.frontintellect.loadbalancer.server.port=3000
+
+  # lsstarapache:
+  #   container_name: "lsstar_apache"
+  #   image: webdevops/apache
+  #   restart: always
+  #   volumes:
+  #     - "../../front/dist:/app"
+  #   networks:
+  #     - internal
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.routers.frontacolher.rule=Host(`lsstar.localhost`)"
+  #     - "traefik.http.services.frontacolher.loadbalancer.server.port=80"
