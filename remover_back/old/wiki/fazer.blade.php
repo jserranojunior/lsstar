@@ -1,1 +1,0 @@
-COISAS A FAZER
