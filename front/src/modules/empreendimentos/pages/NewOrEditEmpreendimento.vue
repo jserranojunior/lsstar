@@ -159,7 +159,7 @@ import {
 import {
     mapActions
 } from 'vuex'
-import Main from '@/views/layouts/Main'
+import Main from '@/views/layouts/Main.vue'
 export default {
     name: "NewOrEditEmpreendimento",
     data() {

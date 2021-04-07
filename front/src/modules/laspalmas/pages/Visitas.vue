@@ -43,7 +43,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
- import Main from '@/views/layouts/Main'
+ import Main from '@/views/layouts/Main.vue'
 export default {
     name: "Visitas",
     data() {

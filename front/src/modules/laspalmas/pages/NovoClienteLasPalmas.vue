@@ -134,7 +134,7 @@
 </template>
 
 <script>
- import Main from '@/views/layouts/Main'
+ import Main from '@/views/layouts/Main.vue'
 import {api} from "@/http/services.js"
 export default {
     name: "CreateClientes",

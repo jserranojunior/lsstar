@@ -1,0 +1,5 @@
+Regra de negocio
+
+☐ Puxar as rotas que tem acesso
+  ☐ Puxas todas as acls com o nivel de acesso igual ao do usuario
+  ☐ Acl puxar as rotas

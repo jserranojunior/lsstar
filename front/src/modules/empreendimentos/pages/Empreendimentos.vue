@@ -45,7 +45,7 @@
 </template>
 
 <script>
- import Main from '@/views/layouts/Main'
+ import Main from '@/views/layouts/Main.vue'
 // import {api} from '@/http/services.js'
 import { mapActions, mapState } from 'vuex'
 

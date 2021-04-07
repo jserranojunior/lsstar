@@ -26,7 +26,7 @@ services:
     image: "node:lts-alpine"
     working_dir: /app
     volumes:
-      - "../../front:/app"
+      - "../../vite:/app"
     command: "npm run dev"
     networks:
       - internal

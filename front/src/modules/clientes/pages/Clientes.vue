@@ -68,7 +68,7 @@
 
 <script>
 // import axios from 'axios'
- import Main from '@/views/layouts/Main'
+ import Main from '@/views/layouts/Main.vue'
 import {
     mapActions,
     mapState

@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import Main from '@/views/layouts/Main'
+import Main from '@/views/layouts/Main.vue'
 export default {
     name: "Home",
     components: {

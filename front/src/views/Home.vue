@@ -12,7 +12,7 @@ Bem vindo {{Auth.user.username}}
 <script>
 // @ is an alias to /src
 
-import Main from '@/views/layouts/Main'
+import Main from '@/views/layouts/Main.vue'
 import {mapState } from 'vuex'
 export default {
   name: 'home',

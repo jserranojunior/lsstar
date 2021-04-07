@@ -72,7 +72,7 @@
 </template>
 
 <script>
- import Main from '@/views/layouts/Main'
+ import Main from '@/views/layouts/Main.vue'
 import {mapActions, mapState} from 'vuex'
 export default {
   name: 'Login',
