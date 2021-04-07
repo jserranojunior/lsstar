@@ -8,45 +8,56 @@
             <div class="card card-info">
               <div class="card-body">
                 <div class="flex flex-wrap">
-                  <div class="w-full">
-                    <div class="dropdown">
+                  <div class="w-1/2">
+                    <div class="dropdown inline-block relative">
                       <button
-                        class="dropdown-toggle btn btn-secondary btn-sm"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
+                        class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
                       >
-                        <i class="far fa-file-alt"></i> Anual
+                        <span>Anual</span>
                       </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a
-                          class="dropdown-item"
-                          @click="abrirOutraGuia('financeiro/anual/2017')"
-                          >2017</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          @click="abrirOutraGuia('financeiro/anual/2018')"
-                          >2018</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          @click="abrirOutraGuia('financeiro/anual/2019')"
-                          >2019</a
-                        >
-                        <a
-                          class="dropdown-item"
-                          @click="abrirOutraGuia('financeiro/anual/2020')"
-                          >2020</a
-                        >
-                      </div>
+                      <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                        <!-- <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer" href="#">Option 1</a> -->
+                        <li>
+                          <a
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                            @click="abrirOutraGuia('financeiro/anual/2017')"
+                            >2017</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                            @click="abrirOutraGuia('financeiro/anual/2018')"
+                            >2018</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                            @click="abrirOutraGuia('financeiro/anual/2019')"
+                            >2019</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                            @click="abrirOutraGuia('financeiro/anual/2020')"
+                            >2020</a
+                          >
+                        </li>
+                        <li>
+                          <a
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                            @click="abrirOutraGuia('financeiro/anual/2021')"
+                            >2021</a
+                          >
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                  <div class="w-full">
+                  <div class="w-1/2 mt-1">
                     <a
-                      class="btn btn-info btn-sm bold"
+                      class="btn-primary-tail btn-sm"
                       @click="abrirOutraGuia('financeiro/relatorioconsolidado')"
                       role="button"
                     >
@@ -54,20 +65,20 @@
                     </a>
                   </div>
                 </div>
-                <hr />
-                <div class="flex flex-wrap row-space">
-                  <div class="w-full">
+                <hr class="my-2" />
+                <div class="flex flex-wrap">
+                  <div class="w-1/2">
                     <a
-                      class="btn btn-warning btn-sm bold"
+                      class="btn btn-warning-tail btn-sm"
                       @click="abrirOutraGuia('financeiro/mensal')"
                       role="button"
                     >
                       <i class="far fa-file-alt"></i> Mensal</a
                     >
                   </div>
-                  <div class="w-full">
+                  <div class="w-1/2">
                     <a
-                      class="btn btn-danger btn-sm bold"
+                      class="btn btn-danger-tail btn-sm"
                       @click="abrirOutraGuia('financeiro/relatorioarea')"
                       role="button"
                     >
@@ -78,7 +89,7 @@
 
                 <!-- <div class="flex flex-wrap row-space">
                                 <div class="w-full">
-                                    <div class="btn btn-success btn-sm">Exportar Excel</div>
+                                    <div class="btn btn-success-tail btn-sm">Exportar Excel</div>
 
                                 </div>
                             </div> -->
@@ -90,60 +101,60 @@
               <div class="card-body">
                 <div class="flex flex-wrap justify-content-center">
                   <div class="w-1/2">
-                    <div class="btn-group btn-100w">
+                    <div class="dropdown inline-block relative">
                       <button
-                        class="btn btn-default btn-sm dropdown-toggle"
-                        type="button"
-                        id="dropdownMenu1"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="true"
+                        class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
                       >
-                        <a class="cursor-pointer">
-                          {{ data.datas.mesAtualEscrito }}
-                          <span class="caret"></span>
-                        </a>
+                        <span>{{ data.datas.mesAtualEscrito }}</span>
                       </button>
-                      <ul
-                        v-if="data.meses"
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenu1"
-                      >
+                      <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                        <!-- <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer" href="#">Option 1</a> -->
                         <li
-                          class="cursor-pointer"
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
                           v-for="mes in data.meses"
                           v-bind:key="mes.numero"
                         >
-                          <a v-on:click="mesAtual = mes.numero" class="dropdown-item">{{
-                            mes.nome
-                          }}</a>
+                          <a v-on:click="mesAtual = mes.numero">{{ mes.nome }}</a>
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="w-1/2 float-right text-right">
-                    <div class="btn-group btn-100w">
+                    <div class="dropdown inline-block relative">
                       <button
-                        class="btn btn-default dropdown-toggle btn-sm"
-                        type="button"
-                        id="dropdownMenu1"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="true"
+                        class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
                       >
-                        <a v-if="data.datas">
-                          {{ data.datas.anoAtual }}
-                          <span class="caret"></span>
-                        </a>
+                        <span v-if="data.datas">{{ data.datas.anoAtual }}</span>
                       </button>
-
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li class="cursor-pointer">
+                      <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                        <li
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                        >
                           <a v-on:click="ano = 2017" class="dropdown-item">2017</a>
+                        </li>
+                        <li
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                        >
                           <a v-on:click="ano = 2018" class="dropdown-item">2018</a>
+                        </li>
+                        <li
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                        >
                           <a v-on:click="ano = 2019" class="dropdown-item">2019</a>
+                        </li>
+                        <li
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                        >
                           <a v-on:click="ano = 2020" class="dropdown-item">2020</a>
+                        </li>
+                        <li
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                        >
                           <a v-on:click="ano = 2021" class="dropdown-item">2021</a>
+                        </li>
+                        <li
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                        >
                           <a v-on:click="ano = 2022" class="dropdown-item">2022</a>
                         </li>
                       </ul>
@@ -151,26 +162,26 @@
                   </div>
                 </div>
                 <div class="flex flex-wrap row-space justify-content-center">
-                  <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="flex flex-wrap justify-content-center">
-                      <div class="w-full">
+                  <div class="w-full">
+                    <div class="flex justify-content-center text-center">
+                      <div class="w-1/3">
                         <a
-                          class="btn btn-default btn-xs btn-100w cursor-pointer"
+                          class="btn btn-default-tail btn-sm btn-100w cursor-pointer hover:text-gray-700"
                           v-on:click="dataAtual = data.datas.dataAnterior"
                         >
                           <i class="fas fa-chevron-left"></i> Anterior</a
                         >
                       </div>
-                      <div class="w-full">
+                      <div class="w-1/3">
                         <a
-                          class="btn btn-default btn-xs btn-100w cursor-pointer"
+                          class="btn btn-default-tail btn-sm btn-100w cursor-pointer hover:text-gray-700"
                           v-on:click="getDataAtual()"
                           >Atual</a
                         >
                       </div>
-                      <div class="w-full">
+                      <div class="w-1/3">
                         <a
-                          class="btn btn-default btn-xs btn-100w cursor-pointer"
+                          class="btn btn-default-tail btn-sm btn-100w cursor-pointer hover:text-gray-700"
                           v-on:click="dataAtual = data.datas.dataPosterior"
                           >Pŕoximo <i class="fas fa-chevron-right"></i
                         ></a>
@@ -179,19 +190,19 @@
                   </div>
                 </div>
                 <div class="flex flex-wrap row-space justify-content-center">
-                  <div class="w-1/2">
+                  <div class="w-1/2 px-1">
                     <input
                       type="number"
-                      class="form-control form-control-date"
+                      class="form-tail form-control-date"
                       max="31"
                       min="1"
                       v-model="diaInicial"
                     />
                   </div>
-                  <div class="w-1/2 float-right text-right btn-xs">
+                  <div class="w-1/2 px-1 float-right text-right btn-sm">
                     <input
                       type="number"
-                      class="form-control form-control-date"
+                      class="form-tail form-control-date"
                       max="31"
                       min="1"
                       v-model="diaFinal"
@@ -206,17 +217,20 @@
             <div class="card">
               <div class="card-body">
                 <div class="flex flex-wrap justify-content-center">
-                  <div class="w-full">
+                  <div class="w-1/2 px-1">
                     <span class=" ">A pagar</span><br />
-                    <div class="btn btn-sm btn-success bold" @click="descerPagina()">
+                    <div
+                      class="btn btn-sm btn-success-tail font-bold"
+                      @click="descerPagina()"
+                    >
                       <span>{{ data.valorTotalPagar }} </span>
                       <span class="fas fa-chevron-down"></span>
                     </div>
                   </div>
-                  <div class="w-full">
+                  <div class="w-1/2 px-1">
                     <span class=" ">Total</span><br />
                     <div
-                      class="btn btn-warning btn-sm bold cursor-pointer"
+                      class="btn btn-warning-tail btn-sm font-bold cursor-pointer"
                       @click="descerPagina()"
                     >
                       {{ data.total }}
@@ -224,11 +238,11 @@
                     </div>
                   </div>
                 </div>
-                <hr />
-                <div class="flex flex-wrap justify-content-center">
-                  <div class="col text-center">
+                <hr class="my-2" />
+                <div class="flex flex-wrap justify-content-center mt-1">
+                  <div class="w-full text-center">
                     <div
-                      class="esquerda btn btn-primary btn-sm bold"
+                      class="esquerda btn btn-primary-tail btn-sm font-bold"
                       @click="criarConta()"
                     >
                       <i class="fas fa-plus"></i> Adicionar Conta
@@ -240,240 +254,268 @@
           </div>
         </div>
         <!-- TABELA  -->
-        <div class="table-responsive">
-          <table
-            class="table table-condensed no-padding table-striped table-bordered table-hover"
-            id="tabelaprincipal"
-          >
-            <thead>
-              <tr>
-                <th class="text-center">#</th>
-                <th>
-                  <!-- PAINEL AREAS -->
-                  <ul class="nav nav-tabs nav-hr">
-                    <!--   -->
-                    <li class="'dropdown'">
-                      <a class="dropdown-toggle" data-toggle="dropdown">
-                        <span :class="[area ? 'text-success' : 'filtro-hr bold']"
-                          >Negócios</span
+        <div class="flex my-4">
+          <div class="w-full mb-4">
+            <div class="table-responsive">
+              <table
+                class="table-tail table table-condensed no-padding table-striped table-bordered table-hover"
+                id="tabelaprincipal"
+              >
+                <thead>
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th>
+                      <div class="dropdown inline-block relative">
+                        <button
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
                         >
-                        <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a class="dropdown-item" @click="area = ''">Todos</a>
-                        </li>
-                        <li v-for="unidade in data.unidades" v-bind:key="unidade.id">
-                          <a class="dropdown-item" @click="area = unidade.nome">{{
-                            unidade.nome
-                          }}</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </th>
-                <th>
-                  <!-- PAINEL CONTAS -->
-                  <div class>
-                    <ul class="nav nav-tabs nav-hr">
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
+                          <span :class="[area ? 'text-success' : 'filtro-hr font-bold']"
+                            >Negócios</span
+                          >
+                        </button>
+                        <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
+                            <a class="dropdown-item" @click="area = ''">Todos</a>
+                          </li>
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                            v-for="unidade in data.unidades"
+                            v-bind:key="unidade.id"
+                          >
+                            <a class="dropdown-item" @click="area = unidade.nome">{{
+                              unidade.nome
+                            }}</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- PAINEL AREAS -->
+                    </th>
+                    <th>
+                      <!-- PAINEL CONTAS -->
+                      <div class="dropdown inline-block relative">
+                        <button
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
+                        >
                           <span
-                            :class="[contasfiltro ? 'text-success' : 'filtro-hr bold']"
+                            :class="[
+                              contasfiltro ? 'text-success' : 'filtro-hr font-bold',
+                            ]"
                             >Contas</span
                           >
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li>
+                        </button>
+                        <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="contasfiltro = ''">Todos</a>
                           </li>
                           <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
                             v-for="tableconta in data.tablecontas"
                             v-bind:key="tableconta.id"
                           >
                             <a
                               class="dropdown-item"
                               @click="contasfiltro = tableconta.nome"
-                              >{{ tableconta.nome }}</a
+                              ><span v-if="tableconta">{{ tableconta.nome }}</span></a
                             >
                           </li>
                         </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </th>
-                <th>
-                  <!-- PAINEL PAGADOR -->
-                  <div class>
-                    <ul class="nav nav-tabs nav-hr">
-                      <li class="dropdown dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                          <span :class="[tipo ? 'text-success' : 'filtro-hr bold']"
+                      </div>
+                    </th>
+                    <th>
+                      <div class="dropdown inline-block relative">
+                        <button
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
+                        >
+                          <span :class="[tipo ? 'text-success' : 'filtro-hr font-bold']"
                             >Tipo</span
                           >
-                          <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li>
+                        </button>
+                        <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="tipo = ''">Todos</a>
                           </li>
-                          <li>
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="tipo = 'Extra'">Á vista</a>
                           </li>
-                          <li>
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="tipo = 'Parcelado'"
                               >Parcelado</a
                             >
                           </li>
-                          <li>
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="tipo = 'Fixo'">Mensal</a>
                           </li>
                         </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </th>
-                <th>
-                  <a class="dropdown-toggle">
-                    <span class="filtro-hr bold">PG</span>
-                  </a>
-                </th>
-                <th @click="ordernarFavorecido()">
-                  <a class="dropdown-toggle" @click="ordernarFavorecido()">
-                    <span class="filtro-hr bold" @click="ordernarFavorecido()"
-                      >Favorecido</span
-                    >
-                    <span class="caret" @click="ordernarFavorecido()"></span>
-                  </a>
-                </th>
-                <th>
-                  <!-- PAINEL PAGADOR -->
-                  <div class>
-                    <ul class="nav nav-tabs nav-hr">
-                      <li class="dropdown dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                          <span :class="[tipo ? 'text-success' : 'filtro-hr bold']"
+                      </div>
+                      <!-- PAINEL PAGADOR -->
+                    </th>
+                    <th>
+                      <a class="dropdown-toggle">
+                        <span class="filtro-hr font-bold">PG</span>
+                      </a>
+                    </th>
+                    <th @click="ordernarFavorecido()">
+                      <a class="dropdown-toggle" @click="ordernarFavorecido()">
+                        <span class="filtro-hr font-bold" @click="ordernarFavorecido()"
+                          >Favorecido</span
+                        >
+                        <span class="caret" @click="ordernarFavorecido()"></span>
+                      </a>
+                    </th>
+                    <th>
+                      <!-- PAINEL PAGADOR -->
+                      <div class="dropdown inline-block relative">
+                        <button
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
+                        >
+                          <span :class="[tipo ? 'text-success' : 'filtro-hr font-bold']"
                             >REC/NF</span
                           >
-                          <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li>
+                        </button>
+                        <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="pagador = ''">Todos</a>
                           </li>
-                          <li>
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="pagador = 'Nota Fiscal'"
                               >Nota Fiscal</a
                             >
                           </li>
-                          <li>
+                          <li
+                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          >
                             <a class="dropdown-item" @click="pagador = 'Recibo'"
                               >Recibo</a
                             >
                           </li>
                         </ul>
-                      </li>
-                    </ul>
-                  </div>
-                </th>
-                <th @click="ordenarVencimento()">
-                  <a class="dropdown-toggle" @click="ordenarVencimento()">
-                    <span @click="ordenarVencimento()" class="filtro-hr bold">Venc</span>
-                    <span class="caret" @click="ordenarVencimento()"></span>
-                  </a>
-                </th>
-                <th>
-                  <a class="dropdown-toggle">
-                    <span class="filtro-hr bold">Á Pagar</span>
-                  </a>
-                </th>
-              </tr>
-            </thead>
+                      </div>
+                    </th>
+                    <th @click="ordenarVencimento()">
+                      <a class="dropdown-toggle" @click="ordenarVencimento()">
+                        <span @click="ordenarVencimento()" class="filtro-hr font-bold"
+                          >Venc</span
+                        >
+                        <span class="caret" @click="ordenarVencimento()"></span>
+                      </a>
+                    </th>
+                    <th>
+                      <a class="dropdown-toggle">
+                        <span class="filtro-hr font-bold">Á Pagar</span>
+                      </a>
+                    </th>
+                  </tr>
+                </thead>
 
-            <tbody>
-              <!-- <span class="invisible">#</span> -->
-              <tr
-                class="cursor-pointer"
-                v-for="(conta, index) in data.contas"
-                v-bind:key="conta.index"
-              >
-                <!-- <td @click="editarConta(conta.id)">{{conta.id}}</td> -->
+                <tbody>
+                  <!-- <span class="invisible">#</span> -->
+                  <tr
+                    class="cursor-pointer"
+                    v-for="(conta, index) in data.contas"
+                    v-bind:key="conta.index"
+                  >
+                    <!-- <td @click="editarConta(conta.id)">{{conta.id}}</td> -->
 
-                <td @click="editarConta(conta.id)">{{ index + 1 }}</td>
+                    <td @click="editarConta(conta.id)">{{ index + 1 }}</td>
 
-                <td @click="editarConta(conta.id)">{{ conta.area }}</td>
-                <td @click="editarConta(conta.id)">{{ conta.ccustos }}</td>
-                <td @click="editarConta(conta.id)">
-                  <span v-if="conta.tipo == 'Fixo'">Mensal</span>
-                  <span v-else-if="conta.tipo == 'Extra'">Á vista</span>
-                  <span v-else>{{ conta.tipo }}</span>
-                </td>
-                <td class="td-without-padding text-center" v-if="conta.valor_pago > ''">
-                  <i
-                    class="fas fa-square-full text-primary"
-                    @click="pagamentoEmitido(conta.numero_cheque)"
-                  ></i>
-                </td>
-                <td class="td-without-padding text-center" v-else>
-                  <i
-                    class="far fa-square"
-                    data-toggle="modal"
-                    data-target="#modalEmitirPagamento"
-                    @click="emitirPagamento(conta.id, conta.valor, conta.favorecido)"
-                  ></i>
-                </td>
-                <td @click="editarConta(conta.id)">
-                  <span class="text-bold">{{ conta.favorecido | touppercase }}</span>
-                  | {{ conta.item | toLimit }}
-                </td>
-                <td @click="editarConta(conta.id)">{{ conta.pagador }}</td>
-                <td @click="editarConta(conta.id)">{{ conta.dia }}</td>
-                <td class="text-right" @click="editarConta(conta.id)">
-                  {{ conta.valor | money }}
-                </td>
-              </tr>
-              <tr class="trcolor">
-                <td colspan="5"></td>
-                <td class="bg-grey" colspan="2">
-                  <h5 class="bold text-right h5-with-mp">TOTAL DO MÊS</h5>
-                </td>
-                <td class="trcolor"></td>
-                <td class="bg-grey text-center" colspan="1">
-                  <h5 class="bold text-primary h5-with-mp">{{ data.total }}</h5>
-                </td>
-              </tr>
-              <tr class="trcolor">
-                <td colspan="6">Total de pendencias:</td>
-                <td class colspan="1">
-                  <span class="text-right">Total pago</span>
-                </td>
-                <td class="trcolor"></td>
-                <td class="text-right">
-                  <span>{{ data.somaValorPago }}</span>
-                </td>
-              </tr>
-              <tr class="trcolor">
-                <td colspan="6"></td>
-                <td class colspan="1">
-                  <span class="direita">A pagar</span>
-                </td>
-                <td class="trcolor"></td>
-                <td class="text-right">
-                  <span>{{ data.valorTotalPagar }}</span>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="5"></td>
-                <td class="bg-grey" colspan="2">
-                  <h5 class="bold text-right bg-grey h5-with-mp">TOTAL ESTIMADO</h5>
-                </td>
-                <td class="trcolor"></td>
-                <td class="bg-grey text-center" colspan="1">
-                  <h5 class="bold text-primary h5-with-mp">{{ data.total }}</h5>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                    <td @click="editarConta(conta.id)">{{ conta.area }}</td>
+                    <td @click="editarConta(conta.id)">{{ conta.ccustos }}</td>
+                    <td @click="editarConta(conta.id)">
+                      <span v-if="conta.tipo == 'Fixo'">Mensal</span>
+                      <span v-else-if="conta.tipo == 'Extra'">Á vista</span>
+                      <span v-else>{{ conta.tipo }}</span>
+                    </td>
+                    <td
+                      class="td-without-padding text-center"
+                      v-if="conta.valor_pago > ''"
+                    >
+                      <i
+                        class="fas fa-square-full text-primary"
+                        @click="pagamentoEmitido(conta.numero_cheque)"
+                      ></i>
+                    </td>
+                    <td class="td-without-padding text-center" v-else>
+                      <i
+                        class="far fa-square"
+                        data-toggle="modal"
+                        data-target="#modalEmitirPagamento"
+                        @click="emitirPagamento(conta.id, conta.valor, conta.favorecido)"
+                      ></i>
+                    </td>
+                    <td @click="editarConta(conta.id)">
+                      <span class="text-font-bold">{{
+                        conta.favorecido | touppercase
+                      }}</span>
+                      | {{ conta.item | toLimit }}
+                    </td>
+                    <td @click="editarConta(conta.id)">{{ conta.pagador }}</td>
+                    <td @click="editarConta(conta.id)">{{ conta.dia }}</td>
+                    <td class="text-right" @click="editarConta(conta.id)">
+                      {{ conta.valor | money }}
+                    </td>
+                  </tr>
+                  <tr class="trcolor">
+                    <td colspan="5"></td>
+                    <td class="bg-grey" colspan="2">
+                      <h5 class="font-bold text-right h5-with-mp">TOTAL DO MÊS</h5>
+                    </td>
+                    <td class="trcolor"></td>
+                    <td class="bg-grey text-center" colspan="1">
+                      <h5 class="font-bold text-primary h5-with-mp">{{ data.total }}</h5>
+                    </td>
+                  </tr>
+                  <tr class="trcolor">
+                    <td colspan="6">Total de pendencias:</td>
+                    <td class colspan="1">
+                      <span class="text-right">Total pago</span>
+                    </td>
+                    <td class="trcolor"></td>
+                    <td class="text-right">
+                      <span>{{ data.somaValorPago }}</span>
+                    </td>
+                  </tr>
+                  <tr class="trcolor">
+                    <td colspan="6"></td>
+                    <td class colspan="1">
+                      <span class="direita">A pagar</span>
+                    </td>
+                    <td class="trcolor"></td>
+                    <td class="text-right">
+                      <span>{{ data.valorTotalPagar }}</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="5"></td>
+                    <td class="bg-grey" colspan="2">
+                      <h5 class="font-bold text-right bg-grey h5-with-mp">
+                        TOTAL ESTIMADO
+                      </h5>
+                    </td>
+                    <td class="trcolor"></td>
+                    <td class="bg-grey text-center" colspan="1">
+                      <h5 class="font-bold text-primary h5-with-mp">{{ data.total }}</h5>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
         <emitir-pagamento
           :id="emitirPagamentoId"
@@ -764,8 +806,8 @@ export default {
   padding: 0px;
 }
 
-.bold {
-  font-weight: bold;
+.font-bold {
+  font-weight: font-bold;
 }
 
 .bg-grey {

@@ -48,6 +48,9 @@
 }
 
 @tailwind components;
+.dropdown:hover > .dropdown-content {
+	@apply block;
+}
 .card {
   @apply bg-white rounded w-full px-3 py-2 shadow;
 }
