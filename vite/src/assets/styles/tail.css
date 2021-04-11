@@ -51,18 +51,7 @@
 .dropdown:hover > .dropdown-content {
 	@apply block;
 }
-.card {
-  @apply bg-white rounded w-full px-3 py-2 shadow;
-}
-.card-header {
-  @apply text-center border-b border-gray-200 py-2;
-}
-.card-body {
-  @apply border-b border-gray-200 py-2;
-}
-.card-footer {
-  @apply py-2;
-}
+
 
 .nav-icon{
   @apply text-gray-600 mr-3 w-5;
@@ -76,13 +65,13 @@
 }
 
 
-.form-tail {
+/* .form-tail {
   @apply appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight bg-white;
 }
 .form-tail:focus {
   @apply outline-none shadow;
-}
-.label-tail {
+} */
+/* .label-tail {
   @apply text-gray-700 text-sm font-bold mb-1;
 }
 
@@ -96,8 +85,8 @@
 
 .callout-success-tail {
   @apply bg-green-100 border-l-4 border-green-500 mt-3 p-2 rounded shadow font-bold;
-}
-
+} */
+/* 
 .btn-tail{
 
     @apply   py-1 px-2 rounded text-center;
@@ -141,7 +130,7 @@
 }
 .btn-gray-tail{
     @apply bg-gray-700 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
-}
+} */
 
 .nav-btn {
   @apply flex flex-row items-center w-full px-4 py-2 mt-2 text-xs font-semibold 
@@ -155,9 +144,7 @@
   @apply text-gray-900 bg-blue-200 outline-none;
 }
 
-.table-tail {
-  @apply table-auto w-full ; 
-}
+
 
 .table-tail > tbody > tr, .table-tail >thead>tr {
   @apply border-b border-gray-100 my-1 p-1;
@@ -220,3 +207,11 @@ s {
   color: #203864;
   text-decoration: none;
 }
+
+/* Adicionar ao SLIFER*/
+
+/* Dimininuir form para p1 */
+
+
+
+

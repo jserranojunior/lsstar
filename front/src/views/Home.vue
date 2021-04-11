@@ -1,32 +1,20 @@
 <template>
-<div>
-    <Main>
-        <template v-slot:mainpage>
-Bem vindo {{Auth.user.username}}
-
- </template>
-    </Main>
-</div>
+  <div>Bem vindo {{ Auth.user.username }}</div>
 </template>
 
 <script>
 // @ is an alias to /src
 
-import Main from '@/views/layouts/Main.vue'
-import {mapState } from 'vuex'
+import { mapState } from "vuex";
 export default {
-  name: 'home',
+  name: "home",
   data() {
-        return {
-        }
-    },
-    computed:{
-        ...mapState({
-            Auth: state => state.Auth
-        })
-    },
-  components: {      
-        Main,
-    }
-}
+    return {};
+  },
+  computed: {
+    ...mapState({
+      Auth: (state) => state.Auth,
+    }),
+  },
+};
 </script>

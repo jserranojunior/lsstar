@@ -1,261 +1,257 @@
 <template>
   <div>
-    <Main>
-      <template v-slot:mainpage v-if="data.datas">
-        <div class="atualizar" onunload="window.opener.location.reload();"></div>
-        <div class="flex flex-wrap no-print justify-between">
-          <div class="w-full sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4">
-            <div class="card card-info">
-              <div class="card-body">
-                <div class="flex flex-wrap">
-                  <div class="w-1/2">
-                    <div class="dropdown inline-block relative">
-                      <button
-                        class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
-                      >
-                        <span>Anual</span>
-                      </button>
-                      <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
-                        <!-- <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer" href="#">Option 1</a> -->
-                        <li>
-                          <a
-                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                            @click="abrirOutraGuia('financeiro/anual/2017')"
-                            >2017</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                            @click="abrirOutraGuia('financeiro/anual/2018')"
-                            >2018</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                            @click="abrirOutraGuia('financeiro/anual/2019')"
-                            >2019</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                            @click="abrirOutraGuia('financeiro/anual/2020')"
-                            >2020</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                            @click="abrirOutraGuia('financeiro/anual/2021')"
-                            >2021</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="w-1/2 mt-1">
-                    <a
-                      class="btn-primary-tail btn-sm"
-                      @click="abrirOutraGuia('financeiro/relatorioconsolidado')"
-                      role="button"
-                    >
-                      <i class="far fa-file-alt"></i> Consolidado
-                    </a>
+    <div class="atualizar" onunload="window.opener.location.reload();"></div>
+    <div class="flex flex-wrap no-print justify-between">
+      <div class="w-full sm:w-1/3 md:w-1/3 lg:w-1/3 xl:w-1/3 pr-2">
+        <SCard>
+          <template v-slot:body>
+            <div class="flex flex-wrap">
+              <div class="w-1/2 px-1">
+                <div class="flex">
+                  <div class="dropdown inline-block relative w-full">
+                    <SBtn color="gray" value="Anual" class="text-sm"> </SBtn>
+                    <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                      <!-- <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer" href="#">Option 1</a> -->
+                      <li>
+                        <a
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          @click="abrirOutraGuia('financeiro/anual/2017')"
+                          >2017</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          @click="abrirOutraGuia('financeiro/anual/2018')"
+                          >2018</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          @click="abrirOutraGuia('financeiro/anual/2019')"
+                          >2019</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          @click="abrirOutraGuia('financeiro/anual/2020')"
+                          >2020</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                          @click="abrirOutraGuia('financeiro/anual/2021')"
+                          >2021</a
+                        >
+                      </li>
+                    </ul>
                   </div>
                 </div>
-                <hr class="my-2" />
-                <div class="flex flex-wrap">
-                  <div class="w-1/2">
-                    <a
-                      class="btn btn-warning-tail btn-sm"
-                      @click="abrirOutraGuia('financeiro/mensal')"
-                      role="button"
-                    >
-                      <i class="far fa-file-alt"></i> Mensal</a
-                    >
-                  </div>
-                  <div class="w-1/2">
-                    <a
-                      class="btn btn-danger-tail btn-sm"
-                      @click="abrirOutraGuia('financeiro/relatorioarea')"
-                      role="button"
-                    >
-                      <i class="far fa-file-alt"></i> Negócios</a
-                    >
-                  </div>
-                </div>
-
-                <!-- <div class="flex flex-wrap row-space">
-                                <div class="w-full">
-                                    <div class="btn btn-success-tail btn-sm">Exportar Excel</div>
-
-                                </div>
-                            </div> -->
               </div>
-            </div>
-          </div>
-          <div class="w-full sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4">
-            <div class="card">
-              <div class="card-body">
-                <div class="flex flex-wrap justify-content-center">
-                  <div class="w-1/2">
-                    <div class="dropdown inline-block relative">
-                      <button
-                        class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
-                      >
-                        <span>{{ data.datas.mesAtualEscrito }}</span>
-                      </button>
-                      <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
-                        <!-- <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer" href="#">Option 1</a> -->
-                        <li
-                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                          v-for="mes in data.meses"
-                          v-bind:key="mes.numero"
-                        >
-                          <a v-on:click="mesAtual = mes.numero">{{ mes.nome }}</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="w-1/2 float-right text-right">
-                    <div class="dropdown inline-block relative">
-                      <button
-                        class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
-                      >
-                        <span v-if="data.datas">{{ data.datas.anoAtual }}</span>
-                      </button>
-                      <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
-                        <li
-                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                        >
-                          <a v-on:click="ano = 2017" class="dropdown-item">2017</a>
-                        </li>
-                        <li
-                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                        >
-                          <a v-on:click="ano = 2018" class="dropdown-item">2018</a>
-                        </li>
-                        <li
-                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                        >
-                          <a v-on:click="ano = 2019" class="dropdown-item">2019</a>
-                        </li>
-                        <li
-                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                        >
-                          <a v-on:click="ano = 2020" class="dropdown-item">2020</a>
-                        </li>
-                        <li
-                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                        >
-                          <a v-on:click="ano = 2021" class="dropdown-item">2021</a>
-                        </li>
-                        <li
-                          class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
-                        >
-                          <a v-on:click="ano = 2022" class="dropdown-item">2022</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-wrap row-space justify-content-center">
+              <div class="w-1/2">
+                <div class="flex">
                   <div class="w-full">
-                    <div class="flex justify-content-center text-center">
-                      <div class="w-1/3">
-                        <a
-                          class="btn btn-default-tail btn-sm btn-100w cursor-pointer hover:text-gray-700"
-                          v-on:click="dataAtual = data.datas.dataAnterior"
-                        >
-                          <i class="fas fa-chevron-left"></i> Anterior</a
-                        >
-                      </div>
-                      <div class="w-1/3">
-                        <a
-                          class="btn btn-default-tail btn-sm btn-100w cursor-pointer hover:text-gray-700"
-                          v-on:click="getDataAtual()"
-                          >Atual</a
-                        >
-                      </div>
-                      <div class="w-1/3">
-                        <a
-                          class="btn btn-default-tail btn-sm btn-100w cursor-pointer hover:text-gray-700"
-                          v-on:click="dataAtual = data.datas.dataPosterior"
-                          >Pŕoximo <i class="fas fa-chevron-right"></i
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-wrap row-space justify-content-center">
-                  <div class="w-1/2 px-1">
-                    <input
-                      type="number"
-                      class="form-tail form-control-date"
-                      max="31"
-                      min="1"
-                      v-model="diaInicial"
-                    />
-                  </div>
-                  <div class="w-1/2 px-1 float-right text-right btn-sm">
-                    <input
-                      type="number"
-                      class="form-tail form-control-date"
-                      max="31"
-                      min="1"
-                      v-model="diaFinal"
-                    />
+                    <SBtn
+                      color="blue"
+                      value="<i class='far fa-file-alt'></i> Consolidado"
+                      class="text-sm"
+                      @click="abrirOutraGuia('financeiro/relatorioconsolidado')"
+                    >
+                    </SBtn>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <hr class="my-2" />
+            <div class="flex flex-wrap">
+              <div class="w-1/2 px-1 text-sm">
+                <SBtn
+                  color="yellow"
+                  value="<i class='far fa-file-alt'></i> Mensal"
+                  class="text-sm"
+                  @click="abrirOutraGuia('financeiro/mensal')"
+                >
+                </SBtn>
+              </div>
+              <div class="w-1/2">
+                <div class="flex">
+                  <div class="w-full">
+                    <SBtn
+                      color="red"
+                      value="<i class='far fa-file-alt'></i> Negócios"
+                      class="text-sm"
+                      @click="abrirOutraGuia('financeiro/relatorioarea')"
+                    >
+                    </SBtn>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </SCard>
+      </div>
+      <div class="w-full sm:w-1/3 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4">
+        <SCard>
+          <template v-slot:body>
+            <div class="flex flex-wrap">
+              <div class="w-1/2">
+                <div class="dropdown inline-block relative w-full px-1">
+                  <SBtn color="ice" :value="data.datas.mesAtualEscrito" class="text-sm" />
+                  <!-- <button
+                        class="font-semi rounded inline-flex items-center btn-sm w-full text-center text-sm btn-gray"
+                      >
+                        <span>{{  }}</span>
+                      </button> -->
+                  <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                    <!-- <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer" href="#">Option 1</a> -->
+                    <li
+                      class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                      v-for="mes in data.meses"
+                      v-bind:key="mes.numero"
+                    >
+                      <a v-on:click="mesAtual = mes.numero" class="text-center">{{
+                        mes.nome
+                      }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="w-1/2">
+                <div class="dropdown inline-block relative w-full px-1">
+                  <SBtn
+                    color="ice"
+                    :value="data.datas.anoAtual"
+                    v-if="data.datas"
+                    class="text-sm"
+                  />
+                  <!-- <button
+                        class="rounded inline-flex items-center btn-sm w-full text-center text-sm btn-gray"
+                      >
+                        <span v-if="data.datas">{{  }}</span>
+                      </button> -->
+                  <ul class="dropdown-content absolute hidden text-gray-700 pt-1">
+                    <li
+                      class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                    >
+                      <a v-on:click="ano = 2017" class="dropdown-item">2017</a>
+                    </li>
+                    <li
+                      class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                    >
+                      <a v-on:click="ano = 2018" class="dropdown-item">2018</a>
+                    </li>
+                    <li
+                      class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                    >
+                      <a v-on:click="ano = 2019" class="dropdown-item">2019</a>
+                    </li>
+                    <li
+                      class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                    >
+                      <a v-on:click="ano = 2020" class="dropdown-item">2020</a>
+                    </li>
+                    <li
+                      class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                    >
+                      <a v-on:click="ano = 2021" class="dropdown-item">2021</a>
+                    </li>
+                    <li
+                      class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap cursor-pointer"
+                    >
+                      <a v-on:click="ano = 2022" class="dropdown-item">2022</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap mt-2">
+              <div class="w-1/3 px-1">
+                <SBtn
+                  color="ice"
+                  value="<i class='fas fa-chevron-left'></i> Anterior"
+                  class="text-xs"
+                  @click="dataAtual = data.datas.dataAnterior"
+                />
+              </div>
+              <div class="w-1/3 text-center">
+                <SBtn color="ice" value="Atual" class="text-xs" @click="getDataAtual()" />
+              </div>
+              <div class="w-1/3 px-1 text-center">
+                <SBtn
+                  color="ice"
+                  value="Pŕoximo <i class='fas fa-chevron-right'></i
+                    >"
+                  class="text-xs"
+                  @click="dataAtual = data.datas.dataPosterior"
+                />
+              </div>
+            </div>
+            <div class="flex flex-wrap mt-1">
+              <div class="w-1/2 px-1">
+                <SInputN
+                  name="diaInicial"
+                  v-model="diaInicial"
+                  max="31"
+                  min="1"
+                  class="form-sm"
+                />
+              </div>
+              <div class="w-1/2 px-1">
+                <SInputN
+                  name="diaFinal"
+                  v-model="diaFinal"
+                  max="31"
+                  min="1"
+                  class="form-sm"
+                />
+              </div>
+            </div>
+          </template>
+        </SCard>
+      </div>
 
-          <div class="w-full sm:w-1/4 md:w-1/4 lg:w-1/4 xl:w-1/4">
-            <div class="card">
-              <div class="card-body">
-                <div class="flex flex-wrap justify-content-center">
-                  <div class="w-1/2 px-1">
-                    <span class=" ">A pagar</span><br />
-                    <div
-                      class="btn btn-sm btn-success-tail font-bold"
-                      @click="descerPagina()"
-                    >
-                      <span>{{ data.valorTotalPagar }} </span>
-                      <span class="fas fa-chevron-down"></span>
-                    </div>
-                  </div>
-                  <div class="w-1/2 px-1">
-                    <span class=" ">Total</span><br />
-                    <div
-                      class="btn btn-warning-tail btn-sm font-bold cursor-pointer"
-                      @click="descerPagina()"
-                    >
-                      {{ data.total }}
-                      <span class="fas fa-chevron-down"></span>
-                    </div>
-                  </div>
+      <div class="w-full sm:w-1/3 md:w-1/3 lg:w-1/3 xl:w-1/3 pl-2">
+        <SCard>
+          <template v-slot:body>
+            <div class="flex flex-wrap justify-center">
+              <div class="w-1/2 sm:w-full md:w-1/2 px-1">
+                <span class=" ">A pagar</span><br />
+                <div class="btn-green font-bold btn-sm" @click="descerPagina()">
+                  <span>{{ data.valorTotalPagar }} </span>
+                  <span class="fas fa-chevron-down"></span>
                 </div>
-                <hr class="my-2" />
-                <div class="flex flex-wrap justify-content-center mt-1">
-                  <div class="w-full text-center">
-                    <div
-                      class="esquerda btn btn-primary-tail btn-sm font-bold"
-                      @click="criarConta()"
-                    >
-                      <i class="fas fa-plus"></i> Adicionar Conta
-                    </div>
-                  </div>
+              </div>
+              <div class="w-1/2 sm:w-full md:w-1/2 px-1">
+                <span class=" ">Total</span><br />
+                <div
+                  class="btn-yellow font-bold cursor-pointer btn-sm"
+                  @click="descerPagina()"
+                >
+                  {{ data.total }}
+                  <span class="fas fa-chevron-down"></span>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <!-- TABELA  -->
-        <div class="flex my-4">
-          <div class="w-full mb-4">
+            <hr class="mt-2" />
+            <div class="flex flex-wrap justify-center">
+              <div class="w-full text-center">
+                <div class="esquerda btn-blue btn-sm font-bold" @click="criarConta()">
+                  <i class="fas fa-plus"></i> Adicionar Conta
+                </div>
+              </div>
+            </div>
+          </template>
+        </SCard>
+      </div>
+    </div>
+    <!-- TABELA  -->
+    <div class="flex my-4">
+      <div class="w-full mb-4">
+        <div class="card">
+          <div class="card-body">
             <div class="table-responsive">
               <table
                 class="table-tail table table-condensed no-padding table-striped table-bordered table-hover"
@@ -267,9 +263,9 @@
                     <th>
                       <div class="dropdown inline-block relative">
                         <button
-                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-blue btn-sm"
                         >
-                          <span :class="[area ? 'text-success' : 'filtro-hr font-bold']"
+                          <span :class="[area ? 'text-success' : 'text-black font-bold']"
                             >Negócios</span
                           >
                         </button>
@@ -296,11 +292,11 @@
                       <!-- PAINEL CONTAS -->
                       <div class="dropdown inline-block relative">
                         <button
-                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-blue btn-sm"
                         >
                           <span
                             :class="[
-                              contasfiltro ? 'text-success' : 'filtro-hr font-bold',
+                              contasfiltro ? 'text-success' : 'text-black font-bold',
                             ]"
                             >Contas</span
                           >
@@ -328,9 +324,9 @@
                     <th>
                       <div class="dropdown inline-block relative">
                         <button
-                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-blue btn-sm"
                         >
-                          <span :class="[tipo ? 'text-success' : 'filtro-hr font-bold']"
+                          <span :class="[tipo ? 'text-success' : 'text-black font-bold']"
                             >Tipo</span
                           >
                         </button>
@@ -363,12 +359,12 @@
                     </th>
                     <th>
                       <a class="dropdown-toggle">
-                        <span class="filtro-hr font-bold">PG</span>
+                        <span class="text-black font-bold">PG</span>
                       </a>
                     </th>
                     <th @click="ordernarFavorecido()">
                       <a class="dropdown-toggle" @click="ordernarFavorecido()">
-                        <span class="filtro-hr font-bold" @click="ordernarFavorecido()"
+                        <span class="text-black font-bold" @click="ordernarFavorecido()"
                           >Favorecido</span
                         >
                         <span class="caret" @click="ordernarFavorecido()"></span>
@@ -378,9 +374,9 @@
                       <!-- PAINEL PAGADOR -->
                       <div class="dropdown inline-block relative">
                         <button
-                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-primary-tail btn-sm"
+                          class="bg-gray-300 text-gray-700 font-semi rounded inline-flex items-center btn-blue btn-sm"
                         >
-                          <span :class="[tipo ? 'text-success' : 'filtro-hr font-bold']"
+                          <span :class="[tipo ? 'text-success' : 'text-black font-bold']"
                             >REC/NF</span
                           >
                         </button>
@@ -409,7 +405,7 @@
                     </th>
                     <th @click="ordenarVencimento()">
                       <a class="dropdown-toggle" @click="ordenarVencimento()">
-                        <span @click="ordenarVencimento()" class="filtro-hr font-bold"
+                        <span @click="ordenarVencimento()" class="text-black font-bold"
                           >Venc</span
                         >
                         <span class="caret" @click="ordenarVencimento()"></span>
@@ -417,7 +413,7 @@
                     </th>
                     <th>
                       <a class="dropdown-toggle">
-                        <span class="filtro-hr font-bold">Á Pagar</span>
+                        <span class="text-black font-bold">Á Pagar</span>
                       </a>
                     </th>
                   </tr>
@@ -473,11 +469,13 @@
                   <tr class="trcolor">
                     <td colspan="5"></td>
                     <td class="bg-grey" colspan="2">
-                      <h5 class="font-bold text-right h5-with-mp">TOTAL DO MÊS</h5>
+                      <h5 class="font-bold text-right m-0 p-0">TOTAL DO MÊS</h5>
                     </td>
                     <td class="trcolor"></td>
                     <td class="bg-grey text-center" colspan="1">
-                      <h5 class="font-bold text-primary h5-with-mp">{{ data.total }}</h5>
+                      <h5 class="font-bold text-primary m-0 p-0">
+                        {{ data.total }}
+                      </h5>
                     </td>
                   </tr>
                   <tr class="trcolor">
@@ -503,13 +501,13 @@
                   <tr>
                     <td colspan="5"></td>
                     <td class="bg-grey" colspan="2">
-                      <h5 class="font-bold text-right bg-grey h5-with-mp">
-                        TOTAL ESTIMADO
-                      </h5>
+                      <h5 class="font-bold text-right bg-grey m-0 p-0">TOTAL ESTIMADO</h5>
                     </td>
                     <td class="trcolor"></td>
                     <td class="bg-grey text-center" colspan="1">
-                      <h5 class="font-bold text-primary h5-with-mp">{{ data.total }}</h5>
+                      <h5 class="font-bold text-primary m-0 p-0">
+                        {{ data.total }}
+                      </h5>
                     </td>
                   </tr>
                 </tbody>
@@ -517,23 +515,23 @@
             </div>
           </div>
         </div>
-        <emitir-pagamento
-          :id="emitirPagamentoId"
-          :dataAtual="dataAtual"
-          :valor="emitirPagamentoValor"
-          :favorecido="emitirPagamentoFavorecido"
-          :showModalEmitir="showModalEmitir"
-          @event-emitir-pagamento="getApiFinanceiro()"
-          @event-fechar-modal-emitir="fecharModalEmitir()"
-        ></emitir-pagamento>
-      </template>
-    </Main>
+      </div>
+    </div>
+    <emitir-pagamento
+      :id="emitirPagamentoId"
+      :dataAtual="dataAtual"
+      :valor="emitirPagamentoValor"
+      :favorecido="emitirPagamentoFavorecido"
+      :showModalEmitir="showModalEmitir"
+      @event-emitir-pagamento="getApiFinanceiro()"
+      @event-fechar-modal-emitir="fecharModalEmitir()"
+    ></emitir-pagamento>
   </div>
 </template>
 
 <script>
 import EmitirPagamento from "./EmitirPagamento.vue";
-import Main from "@/views/layouts/Main.vue";
+
 import axios from "axios";
 import _ from "lodash";
 export default {
@@ -564,7 +562,6 @@ export default {
     };
   },
   components: {
-    Main,
     EmitirPagamento,
   },
   filters: {
@@ -795,68 +792,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.dropdown-toggle:hover {
-  background-color: #ddb640;
-}
-
-.h5-with-mp {
-  margin: 0px;
-  padding: 0px;
-}
-
-.font-bold {
-  font-weight: font-bold;
-}
-
-.bg-grey {
-  background-color: rgb(192, 192, 192) !important;
-}
-
-.table-bordered > tbody > tr.trcolor > td {
-  background-color: white;
-  border-bottom: 1px solid white !important;
-  border-right: 1px solid white !important;
-}
-
-.btn {
-  cursor: cursor-pointer;
-}
-
-a {
-  color: #3c8dbc;
-  cursor: cursor-pointer;
-}
-
-.filtro-hr {
-  color: black;
-  font-size: 13px;
-}
-
-.filtra-hr:hover {
-  color: #0056b3;
-}
-
-.table-striped tbody tr:nth-of-type(2n + 1) {
-  background-color: rgba(0, 0, 0, 0.11);
-}
-
-.btn-100w {
-  width: 100%;
-}
-
-.row-space {
-  margin-top: 5px;
-}
-.content-header {
-  padding: 5px 0.5rem;
-}
-hr {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-.form-control-date {
-  height: calc(1.8rem + 2px);
-}
-</style>

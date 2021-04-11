@@ -16,7 +16,8 @@
     "validar-cpf": "^2.1.2",
     "vue-the-mask": "^0.11.1",
     "vuex": "^4.0.0",
-    "qrcode.vue": "^3.2.2"
+    "qrcode.vue": "^3.2.2",
+    "slifer": "github:jserranojunior/slifer#0.0.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.1",

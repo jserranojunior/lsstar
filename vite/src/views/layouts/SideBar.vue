@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:w-4/12 md:w-4/12 lg:w-3/12 xl:w-2/12 bg-white rounded p-3 shadow-lg">
+  <div>
     <div class="flex items-center space-x-4 p-2 mb-5">
       <!-- <img class="h-12 rounded-full" :src="laravelPhoto" alt="James Bhatta" /> -->
       <img
@@ -17,6 +17,7 @@
         <span class="text-sm tracking-wide flex items-center space-x-1">
           <a
             class="text-md no-underline hover:text-blue-dark ml-2 px-1 text-red-600"
+            v-if="linkSair"
             :href="linkSair"
           >
             Sair
@@ -176,6 +177,7 @@ export default {
   name: "SideBar",
   data() {
     return {
+      linkSair: process.env.VUE_APP_LARAVEL_SITE_URL + "/sair",
       linkFinanceiro: process.env.VUE_APP_LARAVEL_SITE_URL + "/financeiro",
       linkAgenda: process.env.VUE_APP_LARAVEL_SITE_URL + "/agenda",
       linkFornecedor: process.env.VUE_APP_LARAVEL_SITE_URL + "/fornecedor",
