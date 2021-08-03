@@ -801,9 +801,9 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-"slifer@github:jserranojunior/slifer#0.0.13":
-  version "0.0.13"
-  resolved "https://codeload.github.com/jserranojunior/slifer/tar.gz/ac277d994b738c196bb6448eb3af80edb965b4bc"
+"slifer@github:jserranojunior/slifer#0.0.17":
+  version "0.0.14"
+  resolved "https://codeload.github.com/jserranojunior/slifer/tar.gz/9b5e08f001a00a7effe953d82df4b75d347fe707"
   dependencies:
     element-plus "*"
     vue "^3.0.5"

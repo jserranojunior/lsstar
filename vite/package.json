@@ -10,7 +10,7 @@
     "awesome-mask": "^1.1.1",
     "moment": "^2.24.0",
     "qrcode.vue": "^3.2.2",
-    "slifer": "github:jserranojunior/slifer#0.0.13",
+    "slifer": "github:jserranojunior/slifer#0.0.17",
     "validar-cpf": "^2.1.2",
     "vue": "^3.0.5",
     "vue-functional-calendar": "^2.7.4",
