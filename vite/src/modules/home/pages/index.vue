@@ -100,13 +100,6 @@
               />
             </template>
           </SCard>
-          <div
-            class="card flex flex-wrap pointer transform hover:scale-105 duration-300 ease-in-out"
-          >
-            <div class="card-body text-center">
-              <h6 class="card-title"></h6>
-            </div>
-          </div>
         </a>
       </div>
 

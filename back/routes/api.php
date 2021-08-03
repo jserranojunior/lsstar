@@ -62,8 +62,16 @@ Route::group(['as' => 'relatorio.', 'prefix' => 'relatorio'], function(){
     
 });
 
+Route::group([
+    'middleware' => ['cors'],
+    'prefix' => 'v1/financeiro',
+], function ($router) {
+        Route::get('/', 'Api\v1\Financeiro\ApiContasAPagarController@index');
+
+});
+
+
 // V1
-Route::get('v1/financeiro', 'Api\v1\Financeiro\ApiContasAPagarController@index');
 
 // Emitir Pagamento
 Route::get('v1/emitirpagamento/{id}', 'Api\v1\Financeiro\ApiEmitirPagamentoController@edit');

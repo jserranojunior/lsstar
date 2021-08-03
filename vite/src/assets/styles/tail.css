@@ -54,14 +54,14 @@
 
 
 .nav-icon{
-  @apply text-gray-600 mr-3 w-5;
+  @apply text-gray-600 w-5;
 }
 
 .nav-item{
-  @apply flex flex-wrap items-center space-x-3 text-gray-700 p-2 rounded-md font-medium cursor-pointer; 
+  @apply flex text-gray-700 p-1 rounded-md font-medium ; 
 }
 .nav-item:hover{
-  @apply bg-gray-200; 
+  @apply bg-gray-200 cursor-pointer; 
 }
 
 

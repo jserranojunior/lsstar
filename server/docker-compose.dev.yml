@@ -1,0 +1,38 @@
+version: "3"
+
+networks:
+  stack_ponte:
+    external: true
+
+services:
+  frontend_lsstar:
+    container_name: "frontend_lsstar"
+    image: "node:lts-alpine"
+    working_dir: /app
+    volumes:
+      - ${APPPATH}/vite:/app
+    command: "npm run dev"
+    networks:
+      - stack_ponte
+    ports:
+      - "3080:3000"
+    labels:
+      - "traefik.enable=true"
+      - traefik.http.routers.frontintellect.rule=Host(`frontlsstar.${DOMAIN}`)
+      - traefik.http.services.frontintellect.loadbalancer.server.port=3000
+
+  backend_lsstar:
+    container_name: backend_lsstar
+    image: "bitnami/laravel"
+    working_dir: /usr/share/nginx/html
+    volumes:
+      - ${APPPATH}/back:/usr/share/nginx/html
+    command: "/bin/sh -c  'php artisan serve --host=0.0.0.0 --port=2035'"
+    ports:
+      - "2035:2035"
+    networks:
+      - stack_ponte
+    labels:
+      - "traefik.enable=true"
+      - traefik.http.routers.backlsstar.rule=Host(`backlsstar.${DOMAIN}`)
+      - traefik.http.services.backlsstar.loadbalancer.server.port=2035

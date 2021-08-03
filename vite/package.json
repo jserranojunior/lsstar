@@ -8,23 +8,23 @@
   },
   "dependencies": {
     "awesome-mask": "^1.1.1",
-    "axios": "^0.21.1",
     "moment": "^2.24.0",
-    "vue-functional-calendar": "^2.7.4",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.3",
-    "validar-cpf": "^2.1.2",
-    "vue-the-mask": "^0.11.1",
-    "vuex": "^4.0.0",
     "qrcode.vue": "^3.2.2",
-    "slifer": "github:jserranojunior/slifer#0.0.8"
+    "slifer": "github:jserranojunior/slifer#0.0.13",
+    "validar-cpf": "^2.1.2",
+    "vue": "^3.0.5",
+    "vue-functional-calendar": "^2.7.4",
+    "vue-router": "^4.0.3",
+    "vue-the-mask": "^0.11.1",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.1",
     "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^9.8.6",
+    "axios": "^0.21.1",
     "postcss": "^8.2.9",
     "tailwindcss": "^2.0.4",
-    "autoprefixer": "^9.8.6",
     "vite": "^2.1.5",
     "vite-plugin-env-compatible": "^0.2.1"
   }

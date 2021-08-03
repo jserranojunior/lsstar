@@ -16,6 +16,7 @@ function calcularAnosIdade(value) {
     return idade;
   }
 }
+
 function mesesDeVidaNoAnoAtual(value) {
   if (value.length == 10) {
     var nascimento = value.split("-");
@@ -64,6 +65,19 @@ export const money = (value) => {
     let val = (value / 1).toFixed(2).replace(".", ",");
     return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
+};
+
+export const touppercase = (value) => {
+  if (!value) return "";
+  value = value.toString();
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
+
+export const toLimit = (caracters, value) => {
+  if (!value) return "";
+  value = value.toString();
+  value = value.substring(0, caracters);
+  return value;
 };
 
 export const firstName = (value) => {

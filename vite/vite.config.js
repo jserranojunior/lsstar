@@ -26,6 +26,9 @@ export default ({ command }) => {
         host: "0.0.0.0",
         port: 3000,
         hmr: { host: "frontlsstar.localhost", port: 80 },
+        proxy: {
+          "/foo": "http://localhost:4567/foo",
+        },
       },
     };
   } else {
