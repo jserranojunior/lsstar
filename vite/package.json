@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "awesome-mask": "^1.1.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "qrcode.vue": "^3.2.2",
     "slifer": "github:jserranojunior/slifer#0.0.17",
     "validar-cpf": "^2.1.2",
