@@ -23,7 +23,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
-    "postcss": "^8.2.9",
+    "postcss": "^8.2.13",
     "tailwindcss": "^2.0.4",
     "vite": "^2.1.5",
     "vite-plugin-env-compatible": "^0.2.1"
