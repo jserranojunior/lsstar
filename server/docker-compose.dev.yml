@@ -7,15 +7,14 @@ networks:
 services:
   frontend_lsstar:
     container_name: "frontend_lsstar"
-    image: "node:lts-alpine"
+    image: "webdevops/apache"
     working_dir: /app
     volumes:
-      - ${APPPATH}/vite:/app
-    command: "npm run dev"
+      - ${APPPATH}/front/dist:/app
     networks:
       - stack_ponte
     ports:
-      - "3080:3000"
+      - "3080:80"
     labels:
       - "traefik.enable=true"
       - traefik.http.routers.frontintellect.rule=Host(`frontlsstar.${DOMAIN}`)
@@ -23,7 +22,7 @@ services:
 
   backend_lsstar:
     container_name: backend_lsstar
-    image: "bitnami/laravel"
+    image: "bitnami/laravel:8.6.8-debian-10-r11"
     working_dir: /usr/share/nginx/html
     volumes:
       - ${APPPATH}/back:/usr/share/nginx/html
